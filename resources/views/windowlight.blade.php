@@ -30,30 +30,27 @@
             <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <div class="text-gray-900 dark:text-gray-100">
                     <form method="POST" action="{{ route('windowlight.store') }}">
-                        <header class="mb-4">
-                            <label for="code">
-                                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                                    Enter code
-                                </h2>
-                            </label>
-                        </header>
-
                         @csrf
 
                         <div class="flex flex-col lg:flex-row -mx-4">
                             <fieldset class="w-full lg:w-1/2 px-4">
-                                <legend>
-                                    <label for="code">Code input</label>
+                                <legend class="mb-2">
+                                    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                                        Code
+                                    </h2>
                                 </legend>
                                 <div class="mb-4">
+                                    <x-input-label for="code" value="Code input" />
                                     <x-textarea class="block mt-1 w-full" id="code" name="code" rows="8" required autofocus>{{ $input }}</x-textarea>
                                     <x-input-error :messages="$errors->get('code')" class="mt-2" />
                                 </div>
                             </fieldset>
 
                             <fieldset class="w-full lg:w-1/2 px-4">
-                                <legend>
-                                    Settings
+                                <legend class="mb-2">
+                                    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                                        Options
+                                    </h2>
                                 </legend>
                                 <div class="mb-4">
                                     //
