@@ -143,5 +143,5 @@ trait TorchlightData
         'xml',
         'xsl',
         'yaml',
-    ]
+    ];
 }
