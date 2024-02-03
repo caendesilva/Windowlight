@@ -1,8 +1,15 @@
 @props(['result'])
 
 @php
+
+$autoWidth = true; // Todo: Add this as an option
+
+if ($autoWidth) {
+    $width = App\Helpers\ResultWindowHelper::calculateWindowWidth($result);
+}
+
 $padding = 1; // Rem
-$width = 64; // Ch
+$width = $width ?? 64; // Ch
 @endphp
 
 {{-- To improve compatability we use non-semantic elements, meaning divs everywhere, as well as inline styles. --}}
