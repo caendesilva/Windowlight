@@ -36,8 +36,8 @@ class WindowlightController extends Controller
         }
 
         return view('windowlight', [
+            'input' => $input,
             'result' => $result,
-            'input' => $input
         ]);
     }
 
