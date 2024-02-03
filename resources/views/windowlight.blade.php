@@ -33,7 +33,7 @@
                         @csrf
 
                         <div class="flex flex-col lg:flex-row -mx-4">
-                            <fieldset class="w-full lg:w-1/2 px-4">
+                            <fieldset class="w-full lg:w-1/2 xl:w-2/3 px-4">
                                 <legend class="mb-2">
                                     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                                         Code
