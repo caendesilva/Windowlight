@@ -20,6 +20,9 @@ $width = $width ?? 64; // Ch
         padding: {{ $padding }}rem;
         width: {{ $width }}ch;
 
+        /* Alternative width */
+        width: fit-content;
+
         /* Static styles */
         resize: horizontal;
         overflow: hidden;
