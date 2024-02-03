@@ -38,6 +38,7 @@ class WindowlightController extends Controller
         return view('windowlight', [
             'input' => $input,
             'result' => $result,
+            'resultId' => hash('sha256', $result)
         ]);
     }
 
