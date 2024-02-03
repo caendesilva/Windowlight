@@ -11,7 +11,7 @@ class CreateImageRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // Depending on what Aaron says regarding token usage, we may need to add logic here.
     }
 
     /**
