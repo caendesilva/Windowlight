@@ -54,7 +54,7 @@
                                 </legend>
                                 <div class="mb-4">
                                     <x-input-label for="language" value="Language"/>
-                                    <x-text-input id="language" name="language" type="text" list="languages" value="{{ $language }}" />
+                                    <x-text-input id="language" name="language" type="text" list="languages" value="{{ $language }}" class="w-48" />
                                     <x-input-error :messages="$errors->get('language')" class="mt-2" />
                                     <datalist id="languages">
                                         {!! implode('', array_map(fn(string $languageOption) => "<option value=\"$languageOption\" />", \App\Contracts\Torchlight::LANGUAGES)) !!}
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <x-input-label for="lineNumbers" value="Line numbers"/>
-                                    <x-select-input id="lineNumbers" name="lineNumbers">
+                                    <x-select-input id="lineNumbers" name="lineNumbers" class="w-48">
                                         <option value="true" {{ $lineNumbers === true ? 'selected' : ''}}>Use line numbers</option>
                                         <option value="false" {{ $lineNumbers === false ? 'selected' : ''}}>No line numbers</option>
                                     </x-select-input>
