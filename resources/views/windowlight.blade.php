@@ -61,9 +61,10 @@
     </div>
 
     <script>
-        // Progressive enhancement to move the cursor to the end of the textarea
+        // Progressive textarea enhancements
         const textarea = document.querySelector('textarea');
-        textarea.focus();
+
+        // Move the cursor to the end of the textarea when the page loads
         textarea.setSelectionRange(textarea.value.length, textarea.value.length);
     </script>
 </x-app-layout>
