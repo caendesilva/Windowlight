@@ -13,9 +13,9 @@
             </header>
         </div>
 
-        <div class="max-w-7xl mx-auto flex flex-wrap flex-col lg:flex-row sm:px-3 lg:px-5">
+        <div class="max-w-7xl mx-auto flex flex-wrap flex-col lg:flex-row items-stretch sm:px-3 lg:px-5">
             <div class="w-full lg:w-1/2 mx-auto px-3 mt-8">
-                <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <section class="h-full bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <div class="text-gray-900 dark:text-gray-100">
                         <form method="POST" action="{{ route('windowlight.store') }}">
                             <header class="mb-4">
@@ -43,7 +43,7 @@
 
             @if($result)
                 <div class="w-full lg:w-1/2 mx-auto px-3 mt-8">
-                    <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+                    <section class="h-full bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                         <header>
                             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                                 Code result
