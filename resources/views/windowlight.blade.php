@@ -62,7 +62,7 @@
                         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                             Code result
                         </h2>
-                        <x-primary-button id="download" size="sm">Download</x-primary-button>
+                        <x-primary-button id="download">Download</x-primary-button>
                     </header>
                     <div>
                         @include('windowlight.result')
