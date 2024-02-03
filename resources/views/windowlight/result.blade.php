@@ -17,6 +17,7 @@ $width = 64; // Ch
         resize: horizontal;
         overflow: hidden;
         max-width: 100%;
+        min-width: 320px;
     }
 
     #code-card-wrapper:hover {
