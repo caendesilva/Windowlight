@@ -18,6 +18,17 @@ class CreateImageRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            // Cast lineNumbers to a boolean
+            'lineNumbers' => filter_var($this->input('lineNumbers') ?? true, FILTER_VALIDATE_BOOLEAN),
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -27,6 +38,7 @@ class CreateImageRequest extends FormRequest
         return [
             'code' => 'required|string',
             'language' => 'nullable|string',
+            'lineNumbers' => 'nullable|boolean',
         ];
     }
 }

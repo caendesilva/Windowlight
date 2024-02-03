@@ -60,6 +60,14 @@
                                         {!! implode('', array_map(fn(string $languageOption) => "<option value=\"$languageOption\" />", \App\Contracts\Torchlight::LANGUAGES)) !!}
                                     </datalist>
                                 </div>
+                                <div class="mb-4">
+                                    <x-input-label for="lineNumbers" value="Line numbers"/>
+                                    <x-select-input id="lineNumbers" name="lineNumbers">
+                                        <option value="true" {{ $lineNumbers === true ? 'selected' : ''}}>Use line numbers</option>
+                                        <option value="false" {{ $lineNumbers === false ? 'selected' : ''}}>No line numbers</option>
+                                    </x-select-input>
+                                    <x-input-error :messages="$errors->get('lineNumbers')" class="mt-2" />
+                                </div>
                             </fieldset>
                         </div>
 

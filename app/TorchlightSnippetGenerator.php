@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Contracts\Torchlight;
+use Illuminate\Support\Facades\Config;
 use Torchlight\Block;
 use Torchlight\Manager;
 
@@ -14,15 +15,19 @@ class TorchlightSnippetGenerator
     protected string $language;
 
     protected string $html;
+    protected bool $lineNumbers = true;
 
-    public function __construct(string $code, string $language)
+    public function __construct(string $code, string $language, bool $lineNumbers = true)
     {
         $this->code = $code;
         $this->language = $language;
+        $this->lineNumbers = $lineNumbers;
     }
 
     public function generate(): string
     {
+        Config::set(['torchlight.options.lineNumbers' => $this->lineNumbers]);
+
         $block = new Block();
         $block->code($this->code);
         $block->language($this->language);
