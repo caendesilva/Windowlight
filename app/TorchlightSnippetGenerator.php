@@ -2,17 +2,15 @@
 
 namespace App;
 
-use App\Concerns\TorchlightData;
+use App\Contracts\Torchlight;
 use Torchlight\Block;
 use Torchlight\Manager;
 
 class TorchlightSnippetGenerator
 {
-    use TorchlightData;
-
     protected string $code;
 
-    /** @var literal-string<self::LANGUAGES> */
+    /** @var literal-string<Torchlight::LANGUAGES> */
     protected string $language;
 
     protected string $html;

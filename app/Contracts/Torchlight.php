@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Concerns;
+namespace App\Contracts;
 
-trait TorchlightData
+class Torchlight
 {
     /**
      * The available languages for Torchlight.
