@@ -11,7 +11,7 @@ trait TorchlightData
      *
      * @var array<string>
      */
-    protected const LANGUAGES = [
+    public const LANGUAGES = [
         'abap',
         'actionscript-3',
         'ada',
