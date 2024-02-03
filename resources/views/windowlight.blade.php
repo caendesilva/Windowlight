@@ -10,6 +10,22 @@
                         Windowlight is a simple wrapper for Torchlight, helping you to create beautiful code screenshots.
                     </strong>
                 </div>
+
+                <div class="text-gray-900 dark:text-gray-100">
+                    <form method="POST" action="{{ route('windowlight.store') }}">
+                        @csrf
+
+                        <div class="mb-4">
+                            <x-input-label for="code" :value="__('Enter code')" />
+                            <x-textarea class="block mt-1 w-full" name="code" rows="5" required autofocus />
+                            <x-input-error :messages="$errors->get('code')" class="mt-2" />
+                        </div>
+
+                        <x-primary-button type="submit">
+                            {{ __('Generate') }}
+                        </x-primary-button>
+                    </form>
+                </div>
             </header>
         </div>
     </div>
