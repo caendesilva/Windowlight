@@ -15,6 +15,9 @@ class WindowlightController extends Controller
 {
     public function show()
     {
+        /** @var ?string $input */
+        $input = old('code') ?? session('input');
+
         /** @var ?string $result */
         $result = session('result');
 
@@ -34,13 +37,15 @@ class WindowlightController extends Controller
 
         return view('windowlight', [
             'result' => $result,
-            'example' => $example
+            'input' => $input
         ]);
     }
 
     public function store(CreateImageRequest $request)
     {
         $validated = $request->validated();
+
+        $request->session()->put('input', $validated['code']);
 
         $torchlight = new TorchlightSnippetGenerator($validated['code'], 'php');
         $result = $torchlight->generate();
