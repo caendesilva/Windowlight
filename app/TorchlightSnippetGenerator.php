@@ -3,6 +3,8 @@
 namespace App;
 
 use App\Concerns\TorchlightData;
+use Torchlight\Block;
+use Torchlight\Manager;
 
 class TorchlightSnippetGenerator
 {
@@ -13,6 +15,8 @@ class TorchlightSnippetGenerator
     /** @var literal-string<self::LANGUAGES> */
     protected string $language;
 
+    protected string $html;
+
     public function __construct(string $code, string $language)
     {
         $this->code = $code;
@@ -21,8 +25,15 @@ class TorchlightSnippetGenerator
 
     public function generate(): string
     {
-        // TODO: Implement logic here
+        $block = new Block();
+        $block->code($this->code);
+        $block->language($this->language);
 
-        return $this->code;
+        $torchlight = new Manager();
+        $blocks = $torchlight->highlight($block);
+        $highlighted = $blocks[0];
+        $this->html = $highlighted->wrapped;
+
+        return $this->html;
     }
 }
