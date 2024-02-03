@@ -53,7 +53,9 @@
                                     </h2>
                                 </legend>
                                 <div class="mb-4">
-                                    //
+                                    <x-input-label for="language" value="Language"/>
+                                    <x-text-input id="language" name="language" type="text" list="languages" value="{{ $language }}" />
+                                    <x-input-error :messages="$errors->get('language')" class="mt-2" />
                                 </div>
                             </fieldset>
                         </div>
