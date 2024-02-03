@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateImageRequest;
 
+/**
+ * Based on the internal HydePHP Torchlight snippet generator.
+ *
+ * @see https://github.com/hydephp/central/blob/main/app/Filament/Pages/Internal/TorchlightSnippetGenerator.php
+ * @see https://github.com/hydephp/central/blob/main/resources/views/filament/pages/internal/torchlight-snippet-generator.blade.php
+ */
 class WindowlightController extends Controller
 {
     public function show()
