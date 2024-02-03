@@ -9,6 +9,8 @@ class TorchlightSnippetGenerator
     use TorchlightData;
 
     protected string $code;
+
+    /** @var literal-string<self::LANGUAGES> */
     protected string $language;
 
     public function __construct(string $code, string $language)
