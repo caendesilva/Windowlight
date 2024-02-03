@@ -28,6 +28,10 @@ class WindowlightController extends Controller
         });
         PHP;
 
+        if ($result === null) {
+            $result = (new TorchlightSnippetGenerator($example, 'php'))->generate();
+        }
+
         return view('windowlight', [
             'result' => $result,
             'example' => $example
