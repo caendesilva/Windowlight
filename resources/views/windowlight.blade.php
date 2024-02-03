@@ -46,10 +46,11 @@
             @if($result)
                 <div class="w-full lg:w-1/2 mx-auto px-3 mt-8">
                     <section class="h-full bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                        <header>
+                        <header class="flex flex-row flex-wrap items-center justify-between">
                             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                                 Code result
                             </h2>
+                            <x-primary-button id="download" size="sm">Download</x-primary-button>
                         </header>
                         <div>
                             @include('windowlight.result')
