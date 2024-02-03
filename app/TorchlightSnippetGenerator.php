@@ -2,8 +2,12 @@
 
 namespace App;
 
+use App\Concerns\TorchlightData;
+
 class TorchlightSnippetGenerator
 {
+    use TorchlightData;
+
     protected string $code;
     protected string $language;
 
