@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 
 class ResultWindowHelper
 {
+    /** @experimental */
     public static function calculateWindowWidth(string $html): int
     {
         // Extract the highlighted code
