@@ -112,7 +112,7 @@
         async function downloadImage(data) {
             const link = document.createElement('a');
             link.href = data;
-            link.download = ".png";
+            link.download = "windowlight.png";
             link.click();
             link.remove();
         }
