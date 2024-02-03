@@ -40,7 +40,7 @@
 
                         @csrf
 
-                        <div class="flex flex-col flex-wrap lg:flex-row -mx-4">
+                        <div class="flex flex-col lg:flex-row -mx-4">
                             <fieldset class="w-full lg:w-1/2 px-4">
                                 <legend>
                                     <label for="code">Code input</label>
