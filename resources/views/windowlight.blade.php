@@ -89,4 +89,34 @@
             }
         });
     </script>
+
+    <script>
+        // Download the code screenshot
+
+        const downloadButton = document.getElementById('download');
+
+        downloadButton.addEventListener('click', function() {
+            render();
+        });
+
+        function render() {
+            const codeCard = document.getElementById('code-card-wrapper');
+
+            html2canvas(codeCard, {
+                scale: 4, // Increase DPI (Resolution)
+            }).then(canvas => {
+                downloadImage(canvas.toDataURL());
+            });
+        }
+
+        async function downloadImage(data) {
+            const link = document.createElement('a');
+            link.href = data;
+            link.download = ".png";
+            link.click();
+            link.remove();
+        }
+    </script>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </x-app-layout>
