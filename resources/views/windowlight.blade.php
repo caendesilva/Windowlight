@@ -93,7 +93,7 @@
         textarea.setSelectionRange(textarea.value.length, textarea.value.length);
 
         // When inside the form and using CMD/CTRL + Enter, submit the form
-        textarea.addEventListener('keydown', function(event) {
+        textarea.addEventListener('keydown', function (event) {
             if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
                 event.preventDefault();
                 this.form.submit();
@@ -106,7 +106,7 @@
 
         const downloadButton = document.getElementById('download');
 
-        downloadButton.addEventListener('click', function() {
+        downloadButton.addEventListener('click', function () {
             render();
         });
 
