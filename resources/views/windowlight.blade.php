@@ -17,7 +17,7 @@
 
                         <div class="mb-4">
                             <x-input-label for="code" :value="__('Enter code')" />
-                            <x-textarea class="block mt-1 w-full" name="code" rows="5" required autofocus />
+                            <x-textarea class="block mt-1 w-full" name="code" rows="5" required autofocus>{{ $example }}</x-textarea>
                             <x-input-error :messages="$errors->get('code')" class="mt-2" />
                         </div>
 

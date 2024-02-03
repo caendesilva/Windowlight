@@ -18,8 +18,19 @@ class WindowlightController extends Controller
         /** @var ?string $result */
         $result = session('result');
 
+        $example = <<<'PHP'
+        <?php
+        
+        use Illuminate\Support\Facades\Route;
+        
+        Route::get('/greeting', function () {
+            return 'Hello World';
+        });
+        PHP;
+
         return view('windowlight', [
             'result' => $result,
+            'example' => $example
         ]);
     }
 
