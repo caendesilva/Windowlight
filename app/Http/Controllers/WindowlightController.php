@@ -8,7 +8,12 @@ class WindowlightController extends Controller
 {
     public function show()
     {
-        return view('windowlight');
+        /** @var ?string $result */
+        $result = session('result');
+
+        return view('windowlight', [
+            'result' => $result,
+        ]);
     }
 
     public function store(CreateImageRequest $request)
@@ -17,6 +22,9 @@ class WindowlightController extends Controller
 
         // Todo: Get code snippet
         $result = $validated['code'];
+
+        // Store in session
+        $request->session()->put('result', $result);
 
         return redirect()->route('home');
     }
