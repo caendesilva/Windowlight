@@ -27,6 +27,10 @@
                     </form>
                 </div>
             </header>
+
+            @if($result)
+                @dump($result)
+            @endif
         </div>
     </div>
 </x-app-layout>
