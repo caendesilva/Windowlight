@@ -51,12 +51,12 @@ class WindowlightController extends Controller
         /** @var ?string $input */
         $input = old('code') ?? session('input');
 
-        /** @var ?string $result */
-        $result = session('result');
-
         $options = [
             'language' => old('language') ?? session('options.language') ?? 'php',
         ];
+
+        /** @var ?string $result */
+        $result = session('result');
 
         return [$input, $result, $options];
     }
