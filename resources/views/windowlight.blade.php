@@ -40,9 +40,25 @@
 
                         @csrf
 
-                        <div class="mb-4">
-                            <x-textarea class="block mt-1 w-full" id="code" name="code" rows="8" required autofocus>{{ $input }}</x-textarea>
-                            <x-input-error :messages="$errors->get('code')" class="mt-2" />
+                        <div class="flex flex-col flex-wrap lg:flex-row -mx-4">
+                            <fieldset class="w-full lg:w-1/2 px-4">
+                                <legend>
+                                    <label for="code">Code input</label>
+                                </legend>
+                                <div class="mb-4">
+                                    <x-textarea class="block mt-1 w-full" id="code" name="code" rows="8" required autofocus>{{ $input }}</x-textarea>
+                                    <x-input-error :messages="$errors->get('code')" class="mt-2" />
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="w-full lg:w-1/2 px-4">
+                                <legend>
+                                    Settings
+                                </legend>
+                                <div class="mb-4">
+                                    //
+                                </div>
+                            </fieldset>
                         </div>
 
                         <footer class="text-right">
