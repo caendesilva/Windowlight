@@ -112,5 +112,5 @@ return [
 
     'password_timeout' => 10800,
 
-    'registration_enabled' => false
+    'registration_enabled' => false,
 ];
