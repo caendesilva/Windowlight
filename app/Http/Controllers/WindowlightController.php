@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateImageRequest;
+use App\TorchlightSnippetGenerator;
 
 /**
  * Based on the internal HydePHP Torchlight snippet generator.
@@ -26,8 +27,8 @@ class WindowlightController extends Controller
     {
         $validated = $request->validated();
 
-        // Todo: Get code snippet
-        $result = $validated['code'];
+        $torchlight = new TorchlightSnippetGenerator($validated['code'], 'php');
+        $result = $torchlight->generate();
 
         // Store in session
         $request->session()->put('result', $result);

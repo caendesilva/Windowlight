@@ -18,4 +18,11 @@ class TorchlightSnippetGenerator
         $this->code = $code;
         $this->language = $language;
     }
+
+    public function generate(): string
+    {
+        // TODO: Implement logic here
+
+        return $this->code;
+    }
 }
