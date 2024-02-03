@@ -66,5 +66,13 @@
 
         // Move the cursor to the end of the textarea when the page loads
         textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+
+        // When inside the form and using CMD/CTRL + Enter, submit the form
+        textarea.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+                event.preventDefault();
+                this.form.submit();
+            }
+        });
     </script>
 </x-app-layout>
