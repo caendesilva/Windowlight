@@ -68,6 +68,53 @@
                                     </x-select-input>
                                     <x-input-error :messages="$errors->get('lineNumbers')" class="mt-2" />
                                 </div>
+                                <div class="mb-4">
+                                    <x-input-label for="background" value="Background" />
+                                    <label for="backgroundPicker" class="sr-only">Or enter color through your browser's color picker</label>
+                                    <div class="flex flex-row justify-between w-48">
+                                        <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" class="min-w-32" />
+                                        <input type="color" name="backgroundPicker" id="backgroundPicker" class="h-auto bg-transparent cursor-pointer ml-2 min-w-12" />
+                                    </div>
+                                    <x-input-error :messages="$errors->get('background')" class="mt-2" />
+
+                                    <datalist id="colors">
+                                        <option value="transparent">Transparent</option>
+                                        <option value="none">Transparent</option>
+                                        <option value="#ffffff">White</option>
+                                        <option value="#000000">Black</option>
+                                        <option value="#f3f4f6">Gray</option>
+                                    </datalist>
+
+                                    <script>
+                                        const backgroundPicker = document.getElementById('backgroundPicker');
+                                        const background = document.getElementById('background');
+
+                                        backgroundPicker.addEventListener('input', function () {
+                                            background.value = this.value;
+                                        });
+
+                                        background.addEventListener('input', function () {
+                                            // Adds some UX normalization and reactivity to the color input
+                                            // Obviously, we do a similar validation on the backend too.
+
+                                            let value = this.value;
+
+                                            if (! value.startsWith('#')) {
+                                                value = `#${value}`;
+                                            }
+
+                                            // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+                                            if (value.length === 4) {
+                                                value = value.replace(/^#(.)(.)(.)$/, '#$1$1$2$2$3$3');
+                                            }
+
+                                            // If the value is a valid hex color
+                                            if (/^#[0-9A-F]{6}$/i.test(value)) {
+                                                backgroundPicker.value = value;
+                                            }
+                                        });
+                                    </script>
+                                </div>
                             </fieldset>
                         </div>
 
