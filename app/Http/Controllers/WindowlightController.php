@@ -15,15 +15,7 @@ class WindowlightController extends Controller
 {
     public function show()
     {
-        /** @var ?string $input */
-        $input = old('code') ?? session('input');
-
-        /** @var ?string $result */
-        $result = session('result');
-
-        $options = [
-            'language' => old('language') ?? session('options.language') ?? 'php',
-        ];
+        [$input, $result, $options] = $this->getSessionData();
 
         $example = <<<'PHP'
         <?php
@@ -63,5 +55,25 @@ class WindowlightController extends Controller
         $request->session()->put('result', $result);
 
         return redirect()->route('home');
+    }
+
+    /**
+     * To improve the user experience, we store the input and result in the session.
+     *
+     * @return array{0: string|null, 1: string|null, 2: array{language: string}}
+     */
+    protected function getSessionData(): array
+    {
+        /** @var ?string $input */
+        $input = old('code') ?? session('input');
+
+        /** @var ?string $result */
+        $result = session('result');
+
+        $options = [
+            'language' => old('language') ?? session('options.language') ?? 'php',
+        ];
+
+        return [$input, $result, $options];
     }
 }
