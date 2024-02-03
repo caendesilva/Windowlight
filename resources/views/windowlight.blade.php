@@ -29,7 +29,7 @@
             </header>
 
             @if($result)
-                @dump($result)
+                @include('windowlight.result')
             @endif
         </div>
     </div>

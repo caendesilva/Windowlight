@@ -1,0 +1,3 @@
+@props(['result'])
+
+{!! $result !!}
