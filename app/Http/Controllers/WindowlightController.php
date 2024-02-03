@@ -17,23 +17,7 @@ class WindowlightController extends Controller
     {
         [$input, $result, $options] = $this->getSessionData();
 
-        $example = <<<'PHP'
-        <?php
-        
-        use Illuminate\Support\Facades\Route;
-        
-        Route::get('/greeting', function () {
-            return 'Hello World';
-        });
-        PHP;
-
-        if ($input === null) {
-            $input = $example;
-        }
-
-        if ($result === null) {
-            $result = (new TorchlightSnippetGenerator($example, 'php'))->generate();
-        }
+        [$input, $result] = $this->injectExamplesForEmptyState($input, $result);
 
         return view('windowlight', array_merge([
             'input' => $input,
@@ -75,5 +59,33 @@ class WindowlightController extends Controller
         ];
 
         return [$input, $result, $options];
+    }
+
+    /**
+     * In case the user has not entered any input, we provide an example.
+     *
+     * @return array{0: string, 1: string}
+     */
+    public function injectExamplesForEmptyState(?string $input, ?string $result): array
+    {
+        $example = <<<'PHP'
+        <?php
+        
+        use Illuminate\Support\Facades\Route;
+        
+        Route::get('/greeting', function () {
+            return 'Hello World';
+        });
+        PHP;
+
+        if ($input === null) {
+            $input = $example;
+        }
+
+        if ($result === null) {
+            $result = (new TorchlightSnippetGenerator($example, 'php'))->generate();
+        }
+
+        return [$input, $result];
     }
 }
