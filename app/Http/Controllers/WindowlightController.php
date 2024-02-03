@@ -45,7 +45,6 @@ class WindowlightController extends Controller
         $torchlight = new TorchlightSnippetGenerator($validated['code'], 'php');
         $result = $torchlight->generate();
 
-        // Store in session
         $request->session()->put('result', $result);
 
         return redirect()->route('home');
