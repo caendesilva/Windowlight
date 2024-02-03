@@ -21,6 +21,10 @@ class WindowlightController extends Controller
         /** @var ?string $result */
         $result = session('result');
 
+        $options = [
+            'language' => old('language') ?? session('options.language') ?? 'php',
+        ];
+
         $example = <<<'PHP'
         <?php
         
@@ -35,11 +39,11 @@ class WindowlightController extends Controller
             $result = (new TorchlightSnippetGenerator($example, 'php'))->generate();
         }
 
-        return view('windowlight', [
+        return view('windowlight', array_merge([
             'input' => $input,
             'result' => $result,
             'resultId' => hash('sha256', $result)
-        ]);
+        ], $options));
     }
 
     public function store(CreateImageRequest $request)
@@ -47,8 +51,9 @@ class WindowlightController extends Controller
         $validated = $request->validated();
 
         $request->session()->put('input', $validated['code']);
+        $request->session()->put('options.language', $validated['language'] ?? '');
 
-        $torchlight = new TorchlightSnippetGenerator($validated['code'], 'php');
+        $torchlight = new TorchlightSnippetGenerator($validated['code'], $validated['language'] ?? 'plaintext');
         $result = $torchlight->generate();
 
         $request->session()->put('result', $result);

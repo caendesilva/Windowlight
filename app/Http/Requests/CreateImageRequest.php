@@ -26,6 +26,7 @@ class CreateImageRequest extends FormRequest
     {
         return [
             'code' => 'required|string',
+            'language' => 'nullable|string',
         ];
     }
 }
