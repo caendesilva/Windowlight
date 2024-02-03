@@ -33,9 +33,11 @@
                                 <x-input-error :messages="$errors->get('code')" class="mt-2" />
                             </div>
 
-                            <x-primary-button type="submit">
-                                {{ __('Generate') }}
-                            </x-primary-button>
+                            <footer class="text-right">
+                                <x-primary-button type="submit">
+                                    {{ __('Generate') }}
+                                </x-primary-button>
+                            </footer>
                         </form>
                     </div>
                 </section>
