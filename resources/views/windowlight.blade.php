@@ -109,53 +109,6 @@
                                         <option value="#000000">Black</option>
                                         <option value="#f3f4f6">Gray</option>
                                     </datalist>
-
-                                    <noscript><style>#backgroundPicker { display: none; }</style></noscript>
-
-                                    <script>
-                                        // Color picker interactivity
-
-                                        const backgroundPicker = document.getElementById('backgroundPicker');
-                                        const backgroundInput = document.getElementById('background');
-
-                                        backgroundPicker.addEventListener('input', function () {
-                                            backgroundInput.value = this.value;
-                                        });
-
-                                        backgroundInput.addEventListener('input', function () {
-                                            reactToColorInputChange();
-                                        });
-
-                                        function reactToColorInputChange() {
-                                            // Adds some UX normalization and reactivity to the color input
-                                            // Obviously, we do a similar validation on the backend too.
-
-                                            let value = backgroundInput.value;
-
-                                            if (!value.startsWith('#')) {
-                                                value = `#${value}`;
-                                            }
-
-                                            // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
-                                            if (value.length === 4) {
-                                                value = value.replace(/^#(.)(.)(.)$/, '#$1$1$2$2$3$3');
-                                            }
-
-                                            // If the value is a valid hex color
-                                            if (/^#[0-9A-F]{6}$/i.test(value)) {
-                                                backgroundPicker.value = value;
-                                            }
-
-                                            if (value === '#transparent' || value === '#none') {
-                                                backgroundPicker.value = '#ffffff';
-                                                backgroundPicker.style.opacity = '0.5';
-                                            } else {
-                                                backgroundPicker.style.opacity = '1';
-                                            }
-                                        }
-
-                                        reactToColorInputChange();
-                                    </script>
                                 </div>
                             </fieldset>
                         </div>
@@ -201,6 +154,53 @@
                 this.form.submit();
             }
         });
+    </script>
+
+    <noscript><style>#backgroundPicker { display: none; }</style></noscript>
+
+    <script>
+        // Color picker interactivity
+
+        const backgroundPicker = document.getElementById('backgroundPicker');
+        const backgroundInput = document.getElementById('background');
+
+        backgroundPicker.addEventListener('input', function () {
+            backgroundInput.value = this.value;
+        });
+
+        backgroundInput.addEventListener('input', function () {
+            reactToColorInputChange();
+        });
+
+        function reactToColorInputChange() {
+            // Adds some UX normalization and reactivity to the color input
+            // Obviously, we do a similar validation on the backend too.
+
+            let value = backgroundInput.value;
+
+            if (!value.startsWith('#')) {
+                value = `#${value}`;
+            }
+
+            // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+            if (value.length === 4) {
+                value = value.replace(/^#(.)(.)(.)$/, '#$1$1$2$2$3$3');
+            }
+
+            // If the value is a valid hex color
+            if (/^#[0-9A-F]{6}$/i.test(value)) {
+                backgroundPicker.value = value;
+            }
+
+            if (value === '#transparent' || value === '#none') {
+                backgroundPicker.value = '#ffffff';
+                backgroundPicker.style.opacity = '0.5';
+            } else {
+                backgroundPicker.style.opacity = '1';
+            }
+        }
+
+        reactToColorInputChange();
     </script>
 
     <script>
