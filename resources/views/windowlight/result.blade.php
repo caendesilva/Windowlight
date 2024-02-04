@@ -100,6 +100,12 @@ $width = $width ?? 64; // Ch
             color: rgba(255, 255, 255, .75);
             font-family: sans-serif;
         }
+
+        .header-text-placeholder {
+            /** Makes so the header has the same height regardless of header text state */
+            visibility: hidden;
+            user-select: none;
+        }
     @endif
 </style>
 
@@ -114,9 +120,14 @@ $width = $width ?? 64; // Ch
                         <span class="header-button header-button-green"></span>
                     </span>
                 @endif
-                @if($headerText)
-                    <span id="header-title">{{ $headerText }}</span>
-                @endif
+                <span id="header-title">
+                    @if($headerText)
+                        <span id="header-title-text">
+                            {{ $headerText }}
+                        </span>
+                    @endif
+                    <span class="header-text-placeholder">&nbsp;</span>
+                </span>
             </div>
         @endif
         <div id="torchlight-wrapper">

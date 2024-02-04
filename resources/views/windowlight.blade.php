@@ -332,7 +332,7 @@
 
         // Header text change
         const headerText = document.getElementById('headerText');
-        const headerTitle = document.querySelector('#code-card-header #header-title');
+        const headerTitle = document.querySelector('#code-card-header #header-title-text');
 
         headerText.addEventListener('input', function () {
             headerTitle.textContent = this.value;
