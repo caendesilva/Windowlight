@@ -43,6 +43,8 @@ class WindowlightController extends Controller
 
         $request->session()->put('result', $result);
 
+        $request->session()->flash('generated', true);
+
         return redirect()->route('home');
     }
 
@@ -63,6 +65,7 @@ class WindowlightController extends Controller
             'useHeader' => old('useHeader') ?? session('options.useHeader') ?? true,
             'headerButtons' => old('headerButtons') ?? session('options.headerButtons') ?? true,
             'headerText' => old('headerText') ?? session('options.headerText') ?? '',
+            'generated' => session('generated') ?? false,
         ];
 
         /** @var ?string $result */
