@@ -121,23 +121,23 @@
 
                                     <div>
                                         <div class="mb-4">
-                                            <x-input-label for="headerText" value="Header text" />
+                                            <x-input-label for="headerText" value="Menu bar text" />
                                             <x-text-input id="headerText" name="headerText" type="text" value="{{ $headerText }}" placeholder="App\Windowlight.php" class="w-48" />
                                             <x-input-error :messages="$errors->get('headerText')" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
                                             <x-input-label for="useHeader" value="Show menu bar" />
                                             <x-select-input id="useHeader" name="useHeader" class="w-48">
-                                                <option value="true" {{ $useHeader === true ? 'selected' : ''}}>Use header menu</option>
-                                                <option value="false" {{ $useHeader === false ? 'selected' : ''}}>No header menu</option>
+                                                <option value="true" {{ $useHeader === true ? 'selected' : ''}}>Show menu bar</option>
+                                                <option value="false" {{ $useHeader === false ? 'selected' : ''}}>Hide menu bar</option>
                                             </x-select-input>
                                             <x-input-error :messages="$errors->get('useHeader')" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
                                             <x-input-label for="headerButtons" value="Show menu buttons" />
                                             <x-select-input id="headerButtons" name="headerButtons" class="w-48">
-                                                <option value="true" {{ $headerButtons === true ? 'selected' : ''}}>Use header buttons</option>
-                                                <option value="false" {{ $headerButtons === false ? 'selected' : ''}}>No header buttons</option>
+                                                <option value="true" {{ $headerButtons === true ? 'selected' : ''}}>Show menu buttons</option>
+                                                <option value="false" {{ $headerButtons === false ? 'selected' : ''}}>Hide header buttons</option>
                                             </x-select-input>
                                             <x-input-error :messages="$errors->get('headerButtons')" class="mt-2" />
                                         </div>
