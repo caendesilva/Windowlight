@@ -116,6 +116,13 @@
                                             if (/^#[0-9A-F]{6}$/i.test(value)) {
                                                 backgroundPicker.value = value;
                                             }
+
+                                            if (value === '#transparent' || value === '#none') {
+                                                backgroundPicker.value = '#ffffff';
+                                                backgroundPicker.style.opacity = '0.5';
+                                            } else {
+                                                backgroundPicker.style.opacity = '1';
+                                            }
                                         }
 
                                         reactToColorInputChange();
