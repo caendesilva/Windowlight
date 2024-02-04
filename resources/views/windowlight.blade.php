@@ -41,7 +41,7 @@
                                 </legend>
                                 <div class="mb-4">
                                     <x-input-label for="code" value="Code input" />
-                                    <x-textarea class="block mt-1 w-full" id="code" name="code" rows="8" required autofocus>{{ $input }}</x-textarea>
+                                    <x-textarea class="block w-full" id="code" name="code" rows="8" required autofocus>{{ $input }}</x-textarea>
                                     <x-input-error :messages="$errors->get('code')" class="mt-2" />
                                 </div>
                             </fieldset>
