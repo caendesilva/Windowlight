@@ -12,7 +12,6 @@ class CreateImageRequest extends FormRequest
     public function authorize(): bool
     {
         // Todo: Depending on what Aaron says regarding token usage, we may need to add logic here.
-        //       We will also have rate limiting, regardless. (In a middleware)
 
         return true;
     }
