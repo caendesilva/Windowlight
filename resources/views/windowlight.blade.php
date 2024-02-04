@@ -123,6 +123,14 @@
                                     </x-select-input>
                                     <x-input-error :messages="$errors->get('useHeader')" class="mt-2" />
                                 </div>
+                                <div class="mb-4">
+                                    <x-input-label for="headerButtons" value="Show menu buttons" />
+                                    <x-select-input id="headerButtons" name="headerButtons" class="w-48">
+                                        <option value="true" {{ $headerButtons === true ? 'selected' : ''}}>Use header buttons</option>
+                                        <option value="false" {{ $headerButtons === false ? 'selected' : ''}}>No header buttons</option>
+                                    </x-select-input>
+                                    <x-input-error :messages="$errors->get('headerButtons')" class="mt-2" />
+                                </div>
                             </fieldset>
                         </div>
 
