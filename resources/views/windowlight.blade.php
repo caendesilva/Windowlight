@@ -173,7 +173,7 @@
         @endif
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">
-            <footer class="px-6 mt-16 -mb-4 text-center">
+            <footer class="px-6 mt-12 -mb-4 text-center">
                 <p class="text-gray-800 dark:text-gray-200 leading-tight">
                     Built by <a href="https://twitter.com/CodeWithCaen" rel="author" class="text-indigo-700 dark:text-indigo-300 font-semibold">Caen De Silva</a>
                     using <b>Laravel</b>, <b>TailwindCSS</b> and vanilla <b>JavaScript</b>.
