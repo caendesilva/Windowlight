@@ -87,6 +87,8 @@
                                     </datalist>
 
                                     <script>
+                                        // Color picker interactivity
+
                                         const backgroundPicker = document.getElementById('backgroundPicker');
                                         const backgroundInput = document.getElementById('background');
 
