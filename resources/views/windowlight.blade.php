@@ -57,7 +57,7 @@
                                     <x-text-input id="language" name="language" type="text" list="languages" value="{{ $language }}" class="w-48" />
                                     <x-input-error :messages="$errors->get('language')" class="mt-2" />
                                     <datalist id="languages">
-                                        {!! implode('', array_map(fn(string $languageOption) => "<option value=\"$languageOption\" />", \App\Contracts\Torchlight::LANGUAGES)) !!}
+                                        {{ \App\Contracts\Torchlight::languageListOptions() }}
                                     </datalist>
                                 </div>
                                 <div class="mb-4">

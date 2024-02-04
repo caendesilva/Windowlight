@@ -2,6 +2,8 @@
 
 namespace App\Contracts;
 
+use Illuminate\Support\HtmlString;
+
 class Torchlight
 {
     /**
@@ -144,4 +146,11 @@ class Torchlight
         'xsl',
         'yaml',
     ];
+
+    public static function languageListOptions(): HtmlString
+    {
+        return new HtmlString(implode('', array_map(function (string $languageOption): string {
+            return sprintf('<option value="%s" />', $languageOption);
+        }, self::LANGUAGES)));
+    }
 }
