@@ -28,9 +28,6 @@ class CreateImageRequest extends FormRequest
             'useHeader' => $this->normalizeBoolean($this->input('useHeader'), true),
             'headerButtons' => $this->normalizeBoolean($this->input('headerButtons'), true),
 
-            // If the header text is empty, set it to false
-            'headerText' => $this->input('headerText') ?: 'false',
-
             // Ensure the background color is a valid hex color
             'background' => $this->normalizeColor($this->input('background') ?: 'transparent'),
         ]);
