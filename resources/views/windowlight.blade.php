@@ -241,7 +241,7 @@
         function updateBackgroundColor(color) {
             // Reactive background color state change
 
-            if (color === '#transparent' || color === '#none') {
+            if (color === 'transparent' || color === 'none') {
                 // Low priority known bug: When setting to transparent, the html2canvas options
                 // need to be reinitialized if the page was not loaded with a transparent background
                 wrapper.style.backgroundColor = 'transparent';
@@ -256,7 +256,7 @@
 
             let value = backgroundInput.value;
 
-            if (!value.startsWith('#')) {
+            if (!value.startsWith('#') && (value.length === 6 || value.length === 3)) {
                 value = `#${value}`;
             }
 
@@ -270,7 +270,7 @@
                 backgroundPicker.value = value;
             }
 
-            if (value === '#transparent' || value === '#none') {
+            if (value === 'transparent' || value === 'none') {
                 backgroundPicker.value = '#ffffff';
                 backgroundPicker.style.opacity = '0.5';
             } else {
