@@ -94,12 +94,16 @@
                                         });
 
                                         backgroundInput.addEventListener('input', function () {
+                                            reactToColorInputChange();
+                                        });
+
+                                        function reactToColorInputChange() {
                                             // Adds some UX normalization and reactivity to the color input
                                             // Obviously, we do a similar validation on the backend too.
 
                                             let value = backgroundInput.value;
 
-                                            if (! value.startsWith('#')) {
+                                            if (!value.startsWith('#')) {
                                                 value = `#${value}`;
                                             }
 
@@ -112,7 +116,7 @@
                                             if (/^#[0-9A-F]{6}$/i.test(value)) {
                                                 backgroundPicker.value = value;
                                             }
-                                        });
+                                        }
                                     </script>
                                 </div>
                             </fieldset>
