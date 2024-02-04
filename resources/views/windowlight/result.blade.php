@@ -8,7 +8,7 @@ if ($autoWidth) {
     $width = App\Helpers\ResultWindowHelper::calculateWindowWidth($result);
 }
 
-$padding = 1; // Rem
+$padding = 2; // Rem
 $width = $width ?? 64; // Ch
 @endphp
 
