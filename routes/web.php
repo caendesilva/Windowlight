@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\WindowlightController::class, 'show'])->name('home');
-Route::post('/generate', [\App\Http\Controllers\WindowlightController::class, 'store'])->name('windowlight.store');
+Route::post('/generate', [\App\Http\Controllers\WindowlightController::class, 'store'])->name('windowlight.store')->middleware('throttle:generate');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
