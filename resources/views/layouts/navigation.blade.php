@@ -89,7 +89,7 @@
         @endauth
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
+        <div class="pb-2 border-t border-gray-200 dark:border-gray-600">
             @auth()
                 <div class="px-4">
                     <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
