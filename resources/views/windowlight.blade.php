@@ -117,6 +117,8 @@
                                                 backgroundPicker.value = value;
                                             }
                                         }
+
+                                        reactToColorInputChange();
                                     </script>
                                 </div>
                             </fieldset>
