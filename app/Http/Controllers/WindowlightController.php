@@ -34,6 +34,9 @@ class WindowlightController extends Controller
         $request->session()->put('options.language', $validated['language'] ?? '');
         $request->session()->put('options.lineNumbers', $validated['lineNumbers'] ?? true);
         $request->session()->put('options.background', $validated['background'] ?? 'transparent');
+        $request->session()->put('options.useHeader', $validated['useHeader'] ?? true);
+        $request->session()->put('options.headerButtons', $validated['headerButtons'] ?? true);
+        $request->session()->put('options.headerText', $validated['headerText'] ?? '');
 
         $torchlight = new TorchlightSnippetGenerator($validated['code'], $validated['language'] ?? '', $validated['lineNumbers'] ?? true);
         $result = $torchlight->generate();
