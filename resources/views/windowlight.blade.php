@@ -194,6 +194,9 @@
 
         backgroundPicker.addEventListener('input', function () {
             backgroundInput.value = this.value;
+
+            // Update the background element state
+            document.getElementById('code-card-wrapper').style.backgroundColor = this.value;
         });
 
         backgroundInput.addEventListener('input', function () {
@@ -225,6 +228,13 @@
                 backgroundPicker.style.opacity = '0.5';
             } else {
                 backgroundPicker.style.opacity = '1';
+            }
+
+            // Update the background element state
+            document.getElementById('code-card-wrapper').style.backgroundColor = value;
+
+            if (value === '#transparent' || value === '#none') {
+                document.getElementById('code-card-wrapper').style.backgroundColor = 'transparent';
             }
         }
 
