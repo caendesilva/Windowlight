@@ -150,7 +150,7 @@
                         </h2>
                         <x-primary-button id="download">Download</x-primary-button>
                     </header>
-                    <div>
+                    <div class="flex justify-center">
                         @include('windowlight.result')
                     </div>
                 </section>
