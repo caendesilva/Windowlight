@@ -54,7 +54,7 @@
                                 </legend>
                                 <div class="mb-4">
                                     <x-input-label for="language" value="Language" />
-                                    <x-text-input id="language" name="language" type="text" list="languages" value="{{ $language }}" class="w-48" />
+                                    <x-text-input id="language" name="language" type="text" list="languages" value="{{ $language }}" placeholder="php" class="w-48" />
                                     <x-input-error :messages="$errors->get('language')" class="mt-2" />
                                     <datalist id="languages">
                                         {{ \App\Contracts\Torchlight::languageListOptions() }}
@@ -97,7 +97,7 @@
                                             }
                                         </style>
 
-                                        <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" class="w-48" />
+                                        <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" placeholder="#FFFFFF" class="w-48" />
                                         <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2" />
                                     </div>
                                     <x-input-error :messages="$errors->get('background')" class="mt-2" />
