@@ -256,6 +256,7 @@
 
             let value = backgroundInput.value;
 
+            // Todo: If we support color names, we need to make sure they are hexadecimal before we reach this step
             if (!value.startsWith('#') && (value.length === 6 || value.length === 3)) {
                 value = `#${value}`;
             }
