@@ -32,7 +32,7 @@ $width = $width ?? 64; // Ch
     }
 
     @if($lineNumbers)
-        pre code.torchlight .line {
+        #code-card-wrapper pre code.torchlight .line {
             /* Add matching padding to the right when using alternative width */
             padding-right: 1.5rem;
         }
