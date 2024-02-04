@@ -69,7 +69,7 @@
                                     <x-input-error :messages="$errors->get('lineNumbers')" class="mt-2" />
                                 </div>
                                 <div class="mb-4">
-                                    <x-input-label for="background" value="Background" />
+                                    <x-input-label for="background" value="Background color" />
                                     <label for="backgroundPicker" class="sr-only">Or enter color through your browser's color picker</label>
                                     <div class="flex flex-row justify-between w-48" id="backgroundColorContainer">
                                         <style>
