@@ -46,7 +46,7 @@
                                 </legend>
                                 <div class="mb-4">
                                     <x-input-label for="code" value="Code input" />
-                                    <x-textarea class="block w-full" id="code" name="code" rows="8" required autofocus>{{ $input }}</x-textarea>
+                                    <x-textarea class="block w-full" id="code" name="code" rows="8" required>{{ $input }}</x-textarea>
                                     <x-input-error :messages="$errors->get('code')" class="mt-2" />
                                 </div>
                             </fieldset>
@@ -157,7 +157,7 @@
         </div>
 
         @if($result)
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">
+            <div id="result-section" class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">
                 <section class="h-full bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <header class="flex flex-row flex-wrap items-center justify-between">
                         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -193,12 +193,22 @@
         </div>
     </div>
 
+    @if($generated)
+        <script>
+            // Experimental: Scroll to the result section
+            document.getElementById('result-section').scrollIntoView();
+        </script>
+    @endif
+
     <script>
         // Progressive textarea enhancements
         const textarea = document.querySelector('textarea');
 
-        // Move the cursor to the end of the textarea when the page loads
-        textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+        @if(!$generated)
+            // Move the cursor to the end of the textarea when the page loads
+            textarea.focus(); // Experimental replacement for autofocus, while this breaks noscript, it makes so it only focuses on fresh page loads
+            textarea.setSelectionRange(textarea.value.length, textarea.value.length);
+        @endif
 
         // When inside the form and using CMD/CTRL + Enter, submit the form
         textarea.addEventListener('keydown', function (event) {
