@@ -25,6 +25,7 @@ $width = $width ?? 64; // Ch
         width: fit-content;
 
         /* Static styles */
+        margin: 1rem;
         resize: horizontal;
         overflow: hidden;
         max-width: 100%;
