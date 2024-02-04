@@ -74,6 +74,7 @@
                                     <div class="flex flex-row justify-between w-48">
                                         <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" class="min-w-32" />
                                         <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2 min-w-12" />
+                                        <noscript><style>#backgroundPicker { display: none; }</style></noscript>
                                     </div>
                                     <x-input-error :messages="$errors->get('background')" class="mt-2" />
 
