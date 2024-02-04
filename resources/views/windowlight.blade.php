@@ -166,6 +166,27 @@
                 </section>
             </div>
         @endif
+
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">
+            <footer class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 text-center">
+                <p class="text-gray-800 dark:text-gray-200 leading-tight">
+                    Built by <a href="https://twitter.com/CodeWithCaen" rel="author" class="text-indigo-700 dark:text-indigo-300 font-semibold">Caen De Silva</a>
+                    using <b>Laravel</b>, <b>TailwindCSS</b> and vanilla <b>JavaScript</b>.
+                </p>
+                <p class="text-gray-800 dark:text-gray-200 leading-tight mt-2">
+                    Syntax highlighting beautifully provided by <a href="https://torchlight.dev" rel="nofollow noopener" class="text-indigo-700 dark:text-indigo-300 font-semibold">Torchlight</a>.
+                </p>
+                <p class="text-gray-800 dark:text-gray-200 leading-tight mt-2">
+                    <small>
+                        Copyright &copy; 2024 <a href="https://github.com/caendesilva" rel="author noopener" class="text-indigo-700 dark:text-indigo-300 font-semibold">Caen De Silva</a>
+                        - Some rights reserved.
+                        <br>
+                        Source code available on <a href="https://github.com/caendesilva/Windowlight" rel="noopener" class="text-indigo-700 dark:text-indigo-300 font-semibold">GitHub</a>.
+                    </small>
+                </p>
+            </footer>
+        </div>
+
     </div>
 
     <script>
