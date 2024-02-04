@@ -87,10 +87,10 @@
                                                         height: fit-content;
                                                         border-radius: .5rem;
                                                     }
-                                                    #background {
+                                                    #backgroundInput {
                                                         position: relative;
                                                     }
-                                                    #background::-webkit-calendar-picker-indicator {
+                                                    #backgroundInput::-webkit-calendar-picker-indicator {
                                                         /* Offset the datalist arrow */
                                                         position: absolute;
                                                         right: 3rem;
@@ -104,7 +104,7 @@
                                                     }
                                                 </style>
 
-                                                <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" placeholder="#FFFFFF" class="w-48" />
+                                                <x-text-input type="text" id="backgroundInput" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" placeholder="#FFFFFF" class="w-48" />
                                                 <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2" />
                                             </div>
                                             <x-input-error :messages="$errors->get('background')" class="mt-2" />
@@ -225,7 +225,7 @@
         // Color picker interactivity
 
         const backgroundPicker = document.getElementById('backgroundPicker');
-        const backgroundInput = document.getElementById('background');
+        const backgroundInput = document.getElementById('backgroundInput');
         const wrapper = document.getElementById('code-card-wrapper');
 
         backgroundPicker.addEventListener('input', function () {
