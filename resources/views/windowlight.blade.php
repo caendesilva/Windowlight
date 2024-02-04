@@ -207,6 +207,8 @@
             // Reactive background color state change
 
             if (color === '#transparent' || color === '#none') {
+                // Low priority known bug: When setting to transparent, the html2canvas options
+                // need to be reinitialized if the page was not loaded with a transparent background
                 wrapper.style.backgroundColor = 'transparent';
             } else {
                 wrapper.style.backgroundColor = color;
