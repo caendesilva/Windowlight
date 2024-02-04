@@ -304,6 +304,14 @@
                 codeCardHeader.querySelector('#header-buttons').style.display = 'none';
             }
         });
+
+        // Header text change
+        const headerText = document.getElementById('headerText');
+        const headerTitle = document.querySelector('#code-card-header #header-title');
+
+        headerText.addEventListener('input', function () {
+            headerTitle.textContent = this.value;
+        });
     </script>
 
     <script defer src="{{ asset('vendor/html2canvas.min.js') }}"></script>
