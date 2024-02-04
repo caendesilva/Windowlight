@@ -191,17 +191,27 @@
 
         const backgroundPicker = document.getElementById('backgroundPicker');
         const backgroundInput = document.getElementById('background');
+        const wrapper = document.getElementById('code-card-wrapper');
 
         backgroundPicker.addEventListener('input', function () {
             backgroundInput.value = this.value;
 
-            // Update the background element state
-            document.getElementById('code-card-wrapper').style.backgroundColor = this.value;
+            updateBackgroundColor(this.value);
         });
 
         backgroundInput.addEventListener('input', function () {
             reactToColorInputChange();
         });
+
+        function updateBackgroundColor(color) {
+            // Reactive background color state change
+
+            if (color === '#transparent' || color === '#none') {
+                wrapper.style.backgroundColor = 'transparent';
+            } else {
+                wrapper.style.backgroundColor = color;
+            }
+        }
 
         function reactToColorInputChange() {
             // Adds some UX normalization and reactivity to the color input
@@ -230,12 +240,7 @@
                 backgroundPicker.style.opacity = '1';
             }
 
-            // Update the background element state
-            document.getElementById('code-card-wrapper').style.backgroundColor = value;
-
-            if (value === '#transparent' || value === '#none') {
-                document.getElementById('code-card-wrapper').style.backgroundColor = 'transparent';
-            }
+            updateBackgroundColor(value);
         }
 
         reactToColorInputChange();
