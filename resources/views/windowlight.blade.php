@@ -279,5 +279,32 @@
         }
     </script>
 
+    <script>
+        // Selection dropdown reactivity
+
+        // On show menu bar change
+        const useHeader = document.getElementById('useHeader');
+        const headerButtons = document.getElementById('headerButtons');
+        const codeCardHeader = document.getElementById('code-card-header');
+
+        useHeader.addEventListener('change', function () {
+            // Low priority known issue: When setting to this to false, the Torchlight
+            // <pre> element should regain its top border radius, and vice versa
+            if (this.value === 'true') {
+                codeCardHeader.style.display = 'flex';
+            } else {
+                codeCardHeader.style.display = 'none';
+            }
+        });
+
+        headerButtons.addEventListener('change', function () {
+            if (this.value === 'true') {
+                codeCardHeader.querySelector('#header-buttons').style.display = 'revert';
+            } else {
+                codeCardHeader.querySelector('#header-buttons').style.display = 'none';
+            }
+        });
+    </script>
+
     <script defer src="{{ asset('vendor/html2canvas.min.js') }}"></script>
 </x-app-layout>
