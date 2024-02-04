@@ -71,9 +71,34 @@
                                 <div class="mb-4">
                                     <x-input-label for="background" value="Background" />
                                     <label for="backgroundPicker" class="sr-only">Or enter color through your browser's color picker</label>
-                                    <div class="flex flex-row justify-between w-48">
-                                        <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" class="min-w-32" />
-                                        <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2 min-w-12" />
+                                    <div class="flex flex-row justify-between w-48" id="backgroundColorContainer">
+                                        <style>
+                                            #backgroundColorContainer {
+                                                position: relative;
+                                                overflow: hidden;
+                                                width: fit-content;
+                                                height: fit-content;
+                                                border-radius: .5rem;
+                                            }
+                                            #background {
+                                                position: relative;
+                                            }
+                                            #background::-webkit-calendar-picker-indicator {
+                                                /* Offset the datalist arrow */
+                                                position: absolute;
+                                                right: 3rem;
+                                            }
+                                            #backgroundPicker {
+                                                position: absolute;
+                                                right: -0.5rem;
+                                                top: -0.5rem;
+                                                height: 150%;
+                                                width: 3.5rem
+                                            }
+                                        </style>
+
+                                        <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" class="w-48" />
+                                        <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2" />
                                     </div>
                                     <x-input-error :messages="$errors->get('background')" class="mt-2" />
 
