@@ -17,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\WindowlightController::class, 'show'])->name('home');
 Route::post('/generate', [\App\Http\Controllers\WindowlightController::class, 'store'])->name('windowlight.store')->middleware('throttle:generate');
 
+Route::get('/about', function () {
+    return view('about', [
+        'markdown' => new \Illuminate\Support\HtmlString(\Illuminate\Support\Str::markdown(file_get_contents(resource_path('markdown/about.md'))))
+    ]);
+})->name('about');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

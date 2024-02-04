@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Basic prose styles */
+.basic-prose {
+    max-width: 70ch;
+}
+
+.basic-prose h1 {
+    @apply text-3xl font-bold mb-4 mt-2 text-center;
+}
+
+.basic-prose h2 {
+    @apply text-xl font-bold mb-2 mt-4;
+}
+
+.basic-prose h3 {
+    @apply text-lg font-bold mb-2 mt-4;
+}
+
+.basic-prose a {
+    @apply text-indigo-500 dark:text-indigo-400;
+}
+
+.basic-prose p {
+    @apply mb-4;
+}
+
+.basic-prose ul {
+    @apply list-disc ml-8 mb-4;
+}
+
 /*
  The default Torchlight CSS from https://torchlight.dev/docs/css
 */
