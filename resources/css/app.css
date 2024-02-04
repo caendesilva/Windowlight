@@ -8,11 +8,11 @@
 }
 
 .basic-prose h1 {
-    @apply text-3xl font-bold mb-4 mt-2 text-center;
+    @apply text-3xl font-bold mb-6 mt-2 text-center;
 }
 
 .basic-prose h2 {
-    @apply text-xl font-bold mb-2 mt-4;
+    @apply text-xl font-bold mb-2 mt-6;
 }
 
 .basic-prose h3 {
@@ -29,6 +29,10 @@
 
 .basic-prose ul {
     @apply list-disc ml-8 mb-4;
+}
+
+.basic-prose .subheading {
+    @apply text-2xl;
 }
 
 /*

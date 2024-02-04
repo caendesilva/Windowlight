@@ -1,6 +1,6 @@
 # About Windowlight
 
-## What is Windowlight?
+<h2 class="subheading">What is Windowlight?</h2>
 
 **[Windowlight](https://windowlight.desilva.se)** is a code screenshot generator that uses [Torchlight](https://torchlight.dev) for syntax highlighting.
 
