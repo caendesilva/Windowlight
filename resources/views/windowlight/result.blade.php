@@ -19,6 +19,7 @@ $width = $width ?? 64; // Ch
         /* Dynamic styles */
         padding: {{ $padding }}rem;
         width: {{ $width }}ch;
+        background: {{ $background }};
 
         /* Alternative width */
         width: fit-content;
