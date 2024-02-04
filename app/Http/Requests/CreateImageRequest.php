@@ -23,8 +23,14 @@ class CreateImageRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            // Cast lineNumbers to a boolean
+            // Cast dropdown inputs to booleans
             'lineNumbers' => $this->normalizeBoolean($this->input('lineNumbers'), true),
+            'useHeader' => $this->normalizeBoolean($this->input('useHeader'), true),
+            'headerButtons' => $this->normalizeBoolean($this->input('headerButtons'), true),
+
+            // If the header text is empty, set it to false
+            'headerText' => $this->input('headerText') ?: 'false',
+
             // Ensure the background color is a valid hex color
             'background' => $this->normalizeColor($this->input('background') ?: 'transparent'),
         ]);
@@ -41,6 +47,9 @@ class CreateImageRequest extends FormRequest
             'code' => 'required|string',
             'language' => 'nullable|string',
             'lineNumbers' => 'nullable|boolean',
+            'useHeader' => 'nullable|boolean',
+            'headerButtons' => 'nullable|boolean',
+            'headerText' => 'nullable|string',
             'background' => 'nullable|string|regex:/^#[a-f0-9]{6}$/i',
         ];
     }
