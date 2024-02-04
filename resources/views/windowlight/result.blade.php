@@ -30,6 +30,13 @@ $width = $width ?? 64; // Ch
         min-width: 320px;
     }
 
+    @if($lineNumbers)
+        pre code.torchlight .line {
+            /* Add matching padding to the right when using alternative width */
+            padding-right: 1.5rem;
+        }
+    @endif
+
     #code-card-wrapper:hover {
         /* Show the screenshot bounding box when highlighted */
         outline: rgba(255, 255, 255, 0.5) solid;
