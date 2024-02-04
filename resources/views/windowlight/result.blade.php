@@ -93,7 +93,7 @@ $width = $width ?? 64; // Ch
             background: #3ccb3e;
         }
 
-        #code-card-header .header-title {
+        #code-card-header #header-title {
             font-size: 14px;
             font-weight: 400;
             margin: 0 auto;
@@ -115,7 +115,7 @@ $width = $width ?? 64; // Ch
                     </span>
                 @endif
                 @if($headerText)
-                    <span class="header-title">{{ $headerText }}</span>
+                    <span id="header-title">{{ $headerText }}</span>
                 @endif
             </div>
         @endif
