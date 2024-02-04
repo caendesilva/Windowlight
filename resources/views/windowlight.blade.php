@@ -52,84 +52,91 @@
                                         Options
                                     </h2>
                                 </legend>
-                                <div class="mb-4">
-                                    <x-input-label for="language" value="Language" />
-                                    <x-text-input id="language" name="language" type="text" list="languages" value="{{ $language }}" placeholder="php" class="w-48" />
-                                    <x-input-error :messages="$errors->get('language')" class="mt-2" />
-                                    <datalist id="languages">
-                                        {{ \App\Contracts\Torchlight::languageListOptions() }}
-                                    </datalist>
-                                </div>
-                                <div class="mb-4">
-                                    <x-input-label for="lineNumbers" value="Line numbers" />
-                                    <x-select-input id="lineNumbers" name="lineNumbers" class="w-48">
-                                        <option value="true" {{ $lineNumbers === true ? 'selected' : ''}}>Use line numbers</option>
-                                        <option value="false" {{ $lineNumbers === false ? 'selected' : ''}}>No line numbers</option>
-                                    </x-select-input>
-                                    <x-input-error :messages="$errors->get('lineNumbers')" class="mt-2" />
-                                </div>
-                                <div class="mb-4">
-                                    <x-input-label for="background" value="Background color" />
-                                    <label for="backgroundPicker" class="sr-only">Or enter color through your browser's color picker</label>
-                                    <div class="flex flex-row justify-between w-48" id="backgroundColorContainer">
-                                        <style>
-                                            #backgroundColorContainer {
-                                                position: relative;
-                                                overflow: hidden;
-                                                width: fit-content;
-                                                height: fit-content;
-                                                border-radius: .5rem;
-                                            }
-                                            #background {
-                                                position: relative;
-                                            }
-                                            #background::-webkit-calendar-picker-indicator {
-                                                /* Offset the datalist arrow */
-                                                position: absolute;
-                                                right: 3rem;
-                                            }
-                                            #backgroundPicker {
-                                                position: absolute;
-                                                right: -0.5rem;
-                                                top: -0.5rem;
-                                                height: 150%;
-                                                width: 3.5rem
-                                            }
-                                        </style>
+                                <div class="flex flex-row flex-wrap space-x-4">
+                                    <div>
+                                        <div class="mb-4">
+                                            <x-input-label for="language" value="Language" />
+                                            <x-text-input id="language" name="language" type="text" list="languages" value="{{ $language }}" placeholder="php" class="w-48" />
+                                            <x-input-error :messages="$errors->get('language')" class="mt-2" />
+                                            <datalist id="languages">
+                                                {{ \App\Contracts\Torchlight::languageListOptions() }}
+                                            </datalist>
+                                        </div>
+                                        <div class="mb-4">
+                                            <x-input-label for="lineNumbers" value="Line numbers" />
+                                            <x-select-input id="lineNumbers" name="lineNumbers" class="w-48">
+                                                <option value="true" {{ $lineNumbers === true ? 'selected' : ''}}>Use line numbers</option>
+                                                <option value="false" {{ $lineNumbers === false ? 'selected' : ''}}>No line numbers</option>
+                                            </x-select-input>
+                                            <x-input-error :messages="$errors->get('lineNumbers')" class="mt-2" />
+                                        </div>
+                                        <div class="mb-4">
+                                            <x-input-label for="background" value="Background color" />
+                                            <label for="backgroundPicker" class="sr-only">Or enter color through your browser's color picker</label>
+                                            <div class="flex flex-row justify-between w-48" id="backgroundColorContainer">
+                                                <style>
+                                                    #backgroundColorContainer {
+                                                        position: relative;
+                                                        overflow: hidden;
+                                                        width: fit-content;
+                                                        height: fit-content;
+                                                        border-radius: .5rem;
+                                                    }
+                                                    #background {
+                                                        position: relative;
+                                                    }
+                                                    #background::-webkit-calendar-picker-indicator {
+                                                        /* Offset the datalist arrow */
+                                                        position: absolute;
+                                                        right: 3rem;
+                                                    }
+                                                    #backgroundPicker {
+                                                        position: absolute;
+                                                        right: -0.5rem;
+                                                        top: -0.5rem;
+                                                        height: 150%;
+                                                        width: 3.5rem
+                                                    }
+                                                </style>
 
-                                        <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" placeholder="#FFFFFF" class="w-48" />
-                                        <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2" />
+                                                <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" placeholder="#FFFFFF" class="w-48" />
+                                                <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2" />
+                                            </div>
+                                            <x-input-error :messages="$errors->get('background')" class="mt-2" />
+
+                                            <datalist id="colors">
+                                                <option value="transparent">Transparent</option>
+                                                <option value="none">Transparent</option>
+                                                <option value="#ffffff">White</option>
+                                                <option value="#000000">Black</option>
+                                                <option value="#f3f4f6">Gray</option>
+                                            </datalist>
+                                        </div>
                                     </div>
-                                    <x-input-error :messages="$errors->get('background')" class="mt-2" />
 
-                                    <datalist id="colors">
-                                        <option value="transparent">Transparent</option>
-                                        <option value="none">Transparent</option>
-                                        <option value="#ffffff">White</option>
-                                        <option value="#000000">Black</option>
-                                        <option value="#f3f4f6">Gray</option>
-                                    </datalist>
-                                </div>
-                                <div class="mb-4">
-                                    <x-input-label for="headerText" value="Header text" />
-                                    <x-text-input id="headerText" name="headerText" type="text" value="{{ $headerText }}" placeholder="App\Windowlight.php" class="w-48" />
-                                    <x-input-error :messages="$errors->get('headerText')" class="mt-2" />
-                                </div>
-                                <div class="mb-4">
-                                    <x-input-label for="useHeader" value="Show menu bar" />
-                                    <x-select-input id="useHeader" name="useHeader" class="w-48">
-                                        <option value="true" {{ $useHeader === true ? 'selected' : ''}}>Use header menu</option>
-                                        <option value="false" {{ $useHeader === false ? 'selected' : ''}}>No header menu</option>
-                                    </x-select-input>
-                                    <x-input-error :messages="$errors->get('useHeader')" class="mt-2" />
-                                </div>
-                                <div class="mb-4">
-                                    <x-input-label for="headerButtons" value="Show menu buttons" />
-                                    <x-select-input id="headerButtons" name="headerButtons" class="w-48">
-                                        <option value="true" {{ $headerButtons === true ? 'selected' : ''}}>Use header buttons</option>
-                                        <option value="false" {{ $headerButtons === false ? 'selected' : ''}}>No header buttons</option>
-                                    </x-select-input>
-                                    <x-input-error :messages="$errors->get('headerButtons')" class="mt-2" />
+                                    <div>
+                                        <div class="mb-4">
+                                            <x-input-label for="headerText" value="Header text" />
+                                            <x-text-input id="headerText" name="headerText" type="text" value="{{ $headerText }}" placeholder="App\Windowlight.php" class="w-48" />
+                                            <x-input-error :messages="$errors->get('headerText')" class="mt-2" />
+                                        </div>
+                                        <div class="mb-4">
+                                            <x-input-label for="useHeader" value="Show menu bar" />
+                                            <x-select-input id="useHeader" name="useHeader" class="w-48">
+                                                <option value="true" {{ $useHeader === true ? 'selected' : ''}}>Use header menu</option>
+                                                <option value="false" {{ $useHeader === false ? 'selected' : ''}}>No header menu</option>
+                                            </x-select-input>
+                                            <x-input-error :messages="$errors->get('useHeader')" class="mt-2" />
+                                        </div>
+                                        <div class="mb-4">
+                                            <x-input-label for="headerButtons" value="Show menu buttons" />
+                                            <x-select-input id="headerButtons" name="headerButtons" class="w-48">
+                                                <option value="true" {{ $headerButtons === true ? 'selected' : ''}}>Use header buttons</option>
+                                                <option value="false" {{ $headerButtons === false ? 'selected' : ''}}>No header buttons</option>
+                                            </x-select-input>
+                                            <x-input-error :messages="$errors->get('headerButtons')" class="mt-2" />
+                                        </div>
+                                    </div>
                                 </div>
                             </fieldset>
                         </div>
