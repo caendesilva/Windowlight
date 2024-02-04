@@ -33,6 +33,7 @@ class WindowlightController extends Controller
         $request->session()->put('input', $validated['code']);
         $request->session()->put('options.language', $validated['language'] ?? '');
         $request->session()->put('options.lineNumbers', $validated['lineNumbers'] ?? true);
+        $request->session()->put('options.background', $validated['background'] ?? 'transparent');
 
         $torchlight = new TorchlightSnippetGenerator($validated['code'], $validated['language'] ?? '', $validated['lineNumbers'] ?? true);
         $result = $torchlight->generate();
@@ -55,6 +56,7 @@ class WindowlightController extends Controller
         $options = [
             'language' => old('language') ?? session('options.language') ?? 'php',
             'lineNumbers' => old('lineNumbers') ?? session('options.lineNumbers') ?? true,
+            'background' => old('background') ?? session('options.background') ?? 'transparent',
         ];
 
         /** @var ?string $result */

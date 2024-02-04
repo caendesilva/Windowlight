@@ -73,7 +73,7 @@
                                     <label for="backgroundPicker" class="sr-only">Or enter color through your browser's color picker</label>
                                     <div class="flex flex-row justify-between w-48">
                                         <x-text-input type="text" id="background" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" class="min-w-32" />
-                                        <input type="color" name="backgroundPicker" id="backgroundPicker" class="h-auto bg-transparent cursor-pointer ml-2 min-w-12" />
+                                        <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2 min-w-12" />
                                     </div>
                                     <x-input-error :messages="$errors->get('background')" class="mt-2" />
 
