@@ -69,7 +69,7 @@ class CreateImageRequest extends FormRequest
         // PHP version of the frontend normalization
 
         if (! str_starts_with($value, '#')) {
-            $value = '#' . $value;
+            $value = "#$value";
         }
 
         // Expand shorthand form (e.g., "03F") to full form (e.g., "0033FF")
