@@ -87,17 +87,17 @@
 
                                     <script>
                                         const backgroundPicker = document.getElementById('backgroundPicker');
-                                        const background = document.getElementById('background');
+                                        const backgroundInput = document.getElementById('background');
 
                                         backgroundPicker.addEventListener('input', function () {
-                                            background.value = this.value;
+                                            backgroundInput.value = this.value;
                                         });
 
-                                        background.addEventListener('input', function () {
+                                        backgroundInput.addEventListener('input', function () {
                                             // Adds some UX normalization and reactivity to the color input
                                             // Obviously, we do a similar validation on the backend too.
 
-                                            let value = this.value;
+                                            let value = backgroundInput.value;
 
                                             if (! value.startsWith('#')) {
                                                 value = `#${value}`;
