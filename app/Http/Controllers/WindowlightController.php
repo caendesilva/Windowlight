@@ -57,6 +57,9 @@ class WindowlightController extends Controller
             'language' => old('language') ?? session('options.language') ?? 'php',
             'lineNumbers' => old('lineNumbers') ?? session('options.lineNumbers') ?? true,
             'background' => old('background') ?? session('options.background') ?? 'transparent',
+            'useHeader' => true, // Todo
+            'headerButtons' => true, // Todo
+            'headerText' => 'Windowlight.php' ?? false, // Todo
         ];
 
         /** @var ?string $result */
