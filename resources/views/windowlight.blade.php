@@ -110,6 +110,11 @@
                                         <option value="#f3f4f6">Gray</option>
                                     </datalist>
                                 </div>
+                                <div class="mb-4">
+                                    <x-input-label for="headerText" value="Header text" />
+                                    <x-text-input id="headerText" name="headerText" type="text" value="{{ $headerText }}" class="w-48" />
+                                    <x-input-error :messages="$errors->get('headerText')" class="mt-2" />
+                                </div>
                             </fieldset>
                         </div>
 
