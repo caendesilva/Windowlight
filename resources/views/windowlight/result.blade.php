@@ -67,7 +67,7 @@ $width = $width ?? 64; // Ch
             background: #212529;
             color: #fff;
         }
-        #code-card-header .header-buttons {
+        #code-card-header #header-buttons {
             /* Positions the buttons outside the flex container, making the header text centered */
             position: absolute;
         }
@@ -108,7 +108,7 @@ $width = $width ?? 64; // Ch
         @if($useHeader)
             <div id="code-card-header">
                 @if($headerButtons)
-                    <span class="header-buttons">
+                    <span id="header-buttons">
                         <span class="header-button header-button-red"></span>
                         <span class="header-button header-button-yellow"></span>
                         <span class="header-button header-button-green"></span>
