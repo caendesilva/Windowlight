@@ -175,6 +175,9 @@
 
             html2canvas(codeCard, {
                 scale: 4, // Increase DPI (Resolution)
+                @if($background === 'transparent')
+                backgroundColor: null, // Transparent background fix
+                @endif
             }).then(canvas => {
                 downloadImage(canvas.toDataURL());
             });
