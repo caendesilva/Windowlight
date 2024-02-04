@@ -24,7 +24,7 @@ class CreateImageRequest extends FormRequest
     {
         $this->merge([
             // Cast lineNumbers to a boolean
-            'lineNumbers' => filter_var($this->input('lineNumbers') ?? true, FILTER_VALIDATE_BOOLEAN),
+            'lineNumbers' => $this->normalizeBoolean($this->input('lineNumbers'), true),
             // Ensure the background color is a valid hex color
             'background' => $this->normalizeColor($this->input('background') ?: 'transparent'),
         ]);
@@ -43,6 +43,11 @@ class CreateImageRequest extends FormRequest
             'lineNumbers' => 'nullable|boolean',
             'background' => 'nullable|string|regex:/^#[a-f0-9]{6}$/i',
         ];
+    }
+
+    protected function normalizeBoolean(?string $input, bool $default): bool
+    {
+        return filter_var($input ?? $default, FILTER_VALIDATE_BOOLEAN);
     }
 
     protected function normalizeColor(string $value): ?string
