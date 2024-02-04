@@ -38,6 +38,11 @@ $width = $width ?? 64; // Ch
         }
     @endif
 
+    #code-card-wrapper pre {
+        /* Remove the default margin */
+        margin: 0;
+    }
+
     #code-card-wrapper:hover {
         /* Show the screenshot bounding box when highlighted */
         outline: rgba(255, 255, 255, 0.5) solid;
