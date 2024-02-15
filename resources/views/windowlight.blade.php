@@ -54,7 +54,7 @@
                             <fieldset class="w-full lg:w-1/2 px-4">
                                 <legend class="mb-2">
                                     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                                        Options
+                                        Settings
                                     </h2>
                                 </legend>
                                 <div class="flex flex-row flex-wrap space-x-4">
