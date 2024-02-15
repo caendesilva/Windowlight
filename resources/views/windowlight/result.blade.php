@@ -109,10 +109,6 @@ $width = $width ?? 64; // Ch
             visibility: hidden;
             user-select: none;
         }
-
-        .base-editor-styles {
-            color: white;
-        }
     @endif
 </style>
 
@@ -137,7 +133,7 @@ $width = $width ?? 64; // Ch
                 </span>
             </div>
         @endif
-        <div id="torchlight-wrapper" class="base-editor-styles" contenteditable="" spellcheck="false">
+        <div id="torchlight-wrapper" contenteditable="" spellcheck="false">
             {!! $result !!}
         </div>
     </div>
