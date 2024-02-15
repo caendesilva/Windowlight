@@ -112,6 +112,8 @@ $width = $width ?? 64; // Ch
 
         .base-editor-styles {
             color: white;
+            background-color: #292D3E;
+            --theme-selection-background: #00000080;
         }
 
         .line-number {
