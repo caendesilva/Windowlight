@@ -118,27 +118,27 @@
 
                                     <div>
                                         <div class="mb-4">
-                                            <x-input-label for="lineNumbers" value="Line numbers" />
-                                            <x-select-input id="lineNumbers" name="lineNumbers" class="w-48">
-                                                <option value="true" {{ $lineNumbers === true ? 'selected' : ''}}>Use line numbers</option>
-                                                <option value="false" {{ $lineNumbers === false ? 'selected' : ''}}>No line numbers</option>
-                                            </x-select-input>
+                                            <label class="font-medium text-base text-gray-700 dark:text-gray-300 mb-1 inline-flex items-center cursor-pointer">
+                                                <span class="me-3 ">Line numbers</span>
+                                                <input type="checkbox" value="on" {{ $lineNumbers ? 'checked' : '' }} name="lineNumbers" id="lineNumbers" class="sr-only peer">
+                                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                            </label>
                                             <x-input-error :messages="$errors->get('lineNumbers')" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
-                                            <x-input-label for="useHeader" value="Show menu bar" />
-                                            <x-select-input id="useHeader" name="useHeader" class="w-48">
-                                                <option value="true" {{ $useHeader === true ? 'selected' : ''}}>Show menu bar</option>
-                                                <option value="false" {{ $useHeader === false ? 'selected' : ''}}>Hide menu bar</option>
-                                            </x-select-input>
+                                            <label class="font-medium text-base text-gray-700 dark:text-gray-300 mb-1 inline-flex items-center cursor-pointer">
+                                                <span class="me-3 ">Show menu bar</span>
+                                                <input type="checkbox" value="on" {{ $useHeader ? 'checked' : '' }} name="useHeader" id="useHeader" class="sr-only peer">
+                                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                            </label>
                                             <x-input-error :messages="$errors->get('useHeader')" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
-                                            <x-input-label for="headerButtons" value="Show menu buttons" />
-                                            <x-select-input id="headerButtons" name="headerButtons" class="w-48">
-                                                <option value="true" {{ $headerButtons === true ? 'selected' : ''}}>Show menu buttons</option>
-                                                <option value="false" {{ $headerButtons === false ? 'selected' : ''}}>Hide header buttons</option>
-                                            </x-select-input>
+                                            <label class="font-medium text-base text-gray-700 dark:text-gray-300 mb-1 inline-flex items-center cursor-pointer">
+                                                <span class="me-3 ">Show menu buttons</span>
+                                                <input type="checkbox" value="on" {{ $headerButtons ? 'checked' : '' }} name="headerButtons" id="headerButtons" class="sr-only peer">
+                                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                            </label>
                                             <x-input-error :messages="$errors->get('headerButtons')" class="mt-2" />
                                         </div>
                                     </div>
@@ -333,7 +333,8 @@
         useHeader.addEventListener('change', function () {
             // Low priority known issue: When setting to this to false, the Torchlight
             // <pre> element should regain its top border radius, and vice versa
-            if (this.value === 'true') {
+
+            if (this.checked) {
                 codeCardHeader.style.display = 'flex';
             } else {
                 codeCardHeader.style.display = 'none';
@@ -341,7 +342,7 @@
         });
 
         headerButtons.addEventListener('change', function () {
-            if (this.value === 'true') {
+            if (this.checked) {
                 codeCardHeader.querySelector('#header-buttons').style.display = 'revert';
             } else {
                 codeCardHeader.querySelector('#header-buttons').style.display = 'none';

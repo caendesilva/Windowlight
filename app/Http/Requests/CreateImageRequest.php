@@ -22,10 +22,10 @@ class CreateImageRequest extends FormRequest
     protected function prepareForValidation(): void
     {
         $this->merge([
-            // Cast dropdown inputs to booleans
-            'lineNumbers' => $this->normalizeBoolean($this->input('lineNumbers'), true),
-            'useHeader' => $this->normalizeBoolean($this->input('useHeader'), true),
-            'headerButtons' => $this->normalizeBoolean($this->input('headerButtons'), true),
+            // Cast checkbox inputs to booleans
+            'lineNumbers' => $this->input('lineNumbers') === 'on',
+            'useHeader' => $this->input('useHeader') === 'on',
+            'headerButtons' => $this->input('headerButtons') === 'on',
 
             // Ensure the background color is a valid hex color
             'background' => $this->normalizeColor($this->input('background') ?: 'transparent'),
