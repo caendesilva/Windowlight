@@ -68,12 +68,9 @@
                                             </datalist>
                                         </div>
                                         <div class="mb-4">
-                                            <x-input-label for="lineNumbers" value="Line numbers" />
-                                            <x-select-input id="lineNumbers" name="lineNumbers" class="w-48">
-                                                <option value="true" {{ $lineNumbers === true ? 'selected' : ''}}>Use line numbers</option>
-                                                <option value="false" {{ $lineNumbers === false ? 'selected' : ''}}>No line numbers</option>
-                                            </x-select-input>
-                                            <x-input-error :messages="$errors->get('lineNumbers')" class="mt-2" />
+                                            <x-input-label for="headerText" value="Menu bar text" />
+                                            <x-text-input id="headerText" name="headerText" type="text" value="{{ $headerText }}" placeholder="App\Windowlight.php" class="w-48" />
+                                            <x-input-error :messages="$errors->get('headerText')" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
                                             <x-input-label for="background" value="Background color" />
@@ -121,9 +118,12 @@
 
                                     <div>
                                         <div class="mb-4">
-                                            <x-input-label for="headerText" value="Menu bar text" />
-                                            <x-text-input id="headerText" name="headerText" type="text" value="{{ $headerText }}" placeholder="App\Windowlight.php" class="w-48" />
-                                            <x-input-error :messages="$errors->get('headerText')" class="mt-2" />
+                                            <x-input-label for="lineNumbers" value="Line numbers" />
+                                            <x-select-input id="lineNumbers" name="lineNumbers" class="w-48">
+                                                <option value="true" {{ $lineNumbers === true ? 'selected' : ''}}>Use line numbers</option>
+                                                <option value="false" {{ $lineNumbers === false ? 'selected' : ''}}>No line numbers</option>
+                                            </x-select-input>
+                                            <x-input-error :messages="$errors->get('lineNumbers')" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
                                             <x-input-label for="useHeader" value="Show menu bar" />
