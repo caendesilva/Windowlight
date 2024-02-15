@@ -373,5 +373,45 @@
         });
     </script>
 
+    <script>
+        // Sync changes to contenteditable result to the textarea
+        const editable = document.getElementById('torchlight-wrapper');
+        const mirror = document.getElementById('code');
+
+        editable.addEventListener('input', function () {
+            let html = this.innerHTML;
+
+            // Clean the rendered Torchlight HTML into its HTML source code
+            const tempDiv = document.createElement('div');
+
+            tempDiv.innerHTML = html;
+
+            // remove all line numbers
+            const lineNumbers = tempDiv.querySelectorAll('.line-number');
+            lineNumbers.forEach((lineNumber) => {
+                lineNumber.remove();
+            });
+
+            // add newlines after each <div class='line'>
+            const lines = tempDiv.querySelectorAll('.line');
+            lines.forEach((line, index) => {
+                if (index !== lines.length - 1) {
+                    line.innerHTML += '\n';
+                }
+            });
+            // replace all <br> with newlines
+            const breaks = tempDiv.querySelectorAll('br');
+            breaks.forEach((br) => {
+                br.outerHTML = '\n';
+            });
+
+            let source = tempDiv.innerText;
+            source = source.trim();
+
+
+            mirror.value = source;
+        });
+    </script>
+
     <script defer src="{{ asset('vendor/html2canvas.min.js') }}"></script>
 </x-app-layout>
