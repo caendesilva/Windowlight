@@ -137,7 +137,7 @@ $width = $width ?? 64; // Ch
                 </span>
             </div>
         @endif
-        <div id="torchlight-wrapper" class="base-editor-styles" contenteditable="" spellcheck="false">
+        <div id="torchlight-wrapper" class="base-editor-styles">
             {!! $result !!}
         </div>
     </div>

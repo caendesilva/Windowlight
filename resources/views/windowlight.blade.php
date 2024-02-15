@@ -426,6 +426,11 @@
 
             mirror.value = source;
         });
+
+        window.onload = function() {
+            editable.setAttribute('contenteditable', 'true');
+            editable.setAttribute('spellcheck', 'false');
+        }
     </script>
 
     <script defer src="{{ asset('vendor/html2canvas.min.js') }}"></script>
