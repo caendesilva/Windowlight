@@ -338,12 +338,18 @@
                 codeCardHeader.style.display = 'flex';
             } else {
                 codeCardHeader.style.display = 'none';
+
+                headerButtons.checked = false;
+                headerButtons.dispatchEvent(new Event('change'));
             }
         });
 
         headerButtons.addEventListener('change', function () {
             if (this.checked) {
                 codeCardHeader.querySelector('#header-buttons').style.display = 'revert';
+
+                useHeader.checked = true;
+                useHeader.dispatchEvent(new Event('change'));
             } else {
                 codeCardHeader.querySelector('#header-buttons').style.display = 'none';
             }
