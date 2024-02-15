@@ -380,6 +380,8 @@
 
         // Experimental: Detect paste events to insert the plain text
         editable.addEventListener('paste', function (event) {
+            // Disabled
+            return;
 
             // if document.execCommand is not available, just return
             if (!document.execCommand) return;
