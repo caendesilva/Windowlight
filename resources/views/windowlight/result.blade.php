@@ -113,6 +113,10 @@ $width = $width ?? 64; // Ch
         .base-editor-styles {
             color: white;
         }
+
+        .line-number {
+            -webkit-user-modify: read-only;
+        }
     @endif
 </style>
 
