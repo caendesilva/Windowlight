@@ -117,13 +117,13 @@
                                     </div>
 
                                     <div>
-                                        <fieldset>
+                                        <fieldset class="ml-4">
                                             <legend>
                                                 <x-input-label>
                                                     <strong>Options</strong>
                                                 </x-input-label>
                                             </legend>
-                                            <ul class="ml-4">
+                                            <ul class="mt-1">
                                                 <li class="mb-2">
                                                     <label class="font-medium text-base text-gray-700 dark:text-gray-300 mb-1 inline-flex items-center cursor-pointer">
                                                         <span class="me-3 ">Line numbers</span>
