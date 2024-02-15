@@ -380,17 +380,17 @@
 
         // Experimental: Detect paste events to insert the plain text
         editable.addEventListener('paste', function (event) {
-
-            // if document.execCommand is not available, just return
-            if (!document.execCommand) return;
-
             event.preventDefault();
-            const text = (event.originalEvent || event).clipboardData.getData('text/plain');
-            // map each line in text in a styled element
-            // template: `<div style="font-family: monospace; text-align: left; color: white;">${text}</div>`;
-            const insert = text.split('\n').map((line) => `<div class="line" style="font-family: monospace; text-align: left; color: white; background-color: #292D3E;">${line}</div>`).join('');
 
-            document.execCommand('insertHtml', false, insert);
+            const text = (event.clipboardData || window.clipboardData).getData('text')
+            const selection = window.getSelection()
+
+            if (selection.rangeCount) {
+                selection.deleteFromDocument()
+                selection.getRangeAt(0).insertNode(document.createTextNode(text))
+            }
+
+            mirror.value = text;
         });
 
         editable.addEventListener('input', function () {
