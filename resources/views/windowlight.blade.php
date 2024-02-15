@@ -195,7 +195,7 @@
 
     @if($generated)
         <script>
-            const useResultScroll = false; // Disable result scroll for now
+            const useResultScroll = true; // Control whether to scroll to the result section after generating the code
 
             if (useResultScroll) {
                 // Experimental: Scroll to the result section
