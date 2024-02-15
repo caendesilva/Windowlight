@@ -195,8 +195,12 @@
 
     @if($generated)
         <script>
-            // Experimental: Scroll to the result section
-            document.getElementById('result-section').scrollIntoView();
+            const useResultScroll = false; // Disable result scroll for now
+
+            if (useResultScroll) {
+                // Experimental: Scroll to the result section
+                document.getElementById('result-section').scrollIntoView();
+            }
         </script>
     @endif
 
