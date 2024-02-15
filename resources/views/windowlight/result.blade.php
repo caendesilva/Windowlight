@@ -2,9 +2,10 @@
 
 @php
 
-$autoWidth = true; // Todo: Add this as an option
+// Fit, auto, or a specific width
+$widthType = 'auto'; // Todo: Add this as an option
 
-if ($autoWidth) {
+if ($widthType === 'auto') {
     $width = App\Helpers\ResultWindowHelper::calculateWindowWidth($result);
 }
 
@@ -21,8 +22,10 @@ $width = $width ?? 64; // Ch
         width: {{ $width }}ch;
         background: {{ $background }};
 
+        @if($widthType === 'fit')
         /* Alternative width */
         width: fit-content;
+        @endif
 
         /* Static styles */
         margin: 1rem 0;
