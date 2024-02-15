@@ -52,7 +52,7 @@ $width = $width ?? 64; // Ch
 
     #code-card-wrapper:hover {
         /* Show the screenshot bounding box when highlighted */
-        outline: rgba(255, 255, 255, 0.5) solid;
+        outline: rgba(128, 128, 128, 0.5) solid;
     }
 
     @if($useHeader)
