@@ -375,7 +375,7 @@
 
     <script>
         // Sync changes to contenteditable result to the textarea
-        const editable = document.getElementById('torchlight-wrapper');
+        const editable = document.querySelector('#torchlight-wrapper > pre');
         const mirror = document.getElementById('code');
 
         // Experimental: Detect paste events to insert the plain text
