@@ -10,7 +10,7 @@ class MarkdownViewController extends Controller
 {
     public function about(): View
     {
-        return view('about', [
+        return view('markdown', [
             'markdown' => new HtmlString(Str::markdown(file_get_contents(resource_path('markdown/about.md'))))
         ]);
     }
