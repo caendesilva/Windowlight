@@ -37,10 +37,11 @@ class MarkdownViewController extends Controller
     protected function getExamples(): string
     {
         $output = '';
-        $files = glob(public_path('examples/windowlight-*.png'));
 
-        foreach ($files as $file) {
-            $output .= sprintf('![%s](%s)', basename($file), asset('examples/'.basename($file)));
+        foreach (glob(public_path('examples/windowlight-*.png')) as $file) {
+            $altText = str_replace("\n", '&#10', e(trim(file_get_contents(str_replace('.png', '.txt', $file)))));
+
+            $output .= sprintf('<img src="%s" alt="%s" title="%s">', asset('examples/' . basename($file)), $altText, $altText);
         }
 
         return $output;
