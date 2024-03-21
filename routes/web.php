@@ -18,6 +18,7 @@ Route::get('/', [\App\Http\Controllers\WindowlightController::class, 'show'])->n
 Route::post('/generate', [\App\Http\Controllers\WindowlightController::class, 'store'])->name('windowlight.store')->middleware('throttle:generate');
 
 Route::get('/about', [\App\Http\Controllers\MarkdownViewController::class, 'about'])->name('about');
+Route::get('/examples', [\App\Http\Controllers\MarkdownViewController::class, 'examples'])->name('examples');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

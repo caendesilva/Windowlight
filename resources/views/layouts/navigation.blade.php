@@ -24,8 +24,12 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 @if($replaceLoginWithAbout && !Auth::check())
-                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')" class="mx-2">
                         {{ __('About') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('examples')" :active="request()->routeIs('examples')" class="mx-2">
+                        {{ __('Examples') }}
                     </x-nav-link>
                 @else
                     <x-dropdown align="right" width="48">
@@ -125,6 +129,10 @@
                     @if($replaceLoginWithAbout)
                         <x-responsive-nav-link :href="route('about')">
                             {{ __('About') }}
+                        </x-responsive-nav-link>
+
+                        <x-responsive-nav-link :href="route('examples')">
+                            {{ __('Examples') }}
                         </x-responsive-nav-link>
                     @else
                         <x-responsive-nav-link :href="route('login')">

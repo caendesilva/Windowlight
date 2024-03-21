@@ -13,6 +13,11 @@ class MarkdownViewController extends Controller
         return $this->showMarkdownPage('about');
     }
 
+    public function examples(): View
+    {
+        return $this->showMarkdownPage('examples');
+    }
+
     public function showMarkdownPage(string $view): View
     {
         return view('markdown', [
