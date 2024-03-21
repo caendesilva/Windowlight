@@ -19,7 +19,7 @@ Using Torchlight means that you can use their special directives, allowing you t
 
 - Probably the best syntax highlighting available
 - Customizable code window with support for file labels
-- High quality PNG images with support for high resolutions
+- High quality PNG images with support for ultra high resolutions
 - Choose any background color, including transparent backgrounds
 - Add annotations and highlights to your code, and even Git diffs
 - Fully online and browser-based, no need to install anything
