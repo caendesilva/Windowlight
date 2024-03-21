@@ -27,6 +27,6 @@ class MarkdownViewController extends Controller
 
     protected function getMarkdownContents(string $view): string
     {
-        return file_get_contents(resource_path("markdown/$view.md"));
+        return str_replace('/public/', '/', file_get_contents(resource_path("markdown/$view.md")));
     }
 }
