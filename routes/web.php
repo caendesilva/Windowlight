@@ -20,10 +20,6 @@ Route::post('/generate', [\App\Http\Controllers\WindowlightController::class, 's
 Route::get('/about', [\App\Http\Controllers\MarkdownViewController::class, 'about'])->name('about');
 Route::get('/examples', [\App\Http\Controllers\MarkdownViewController::class, 'examples'])->name('examples');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
