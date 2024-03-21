@@ -195,7 +195,7 @@
                         Copyright &copy; 2024 <a href="https://github.com/caendesilva" rel="author noopener" class="text-indigo-700 dark:text-indigo-300 font-semibold">Caen De Silva</a>
                         - Some rights reserved.
                         <br>
-                        Source code available on <a href="https://github.com/caendesilva/Windowlight" rel="noopener" class="text-indigo-700 dark:text-indigo-300 font-semibold">GitHub</a>.
+                        Source code available on <a href="https://github.com/caendesilva/Windowlight" rel="noopener" class="text-indigo-700 dark:text-indigo-300 font-semibold">GitHub</a>.<sup title="The source code will be made public once stable">(Soon)</sup>
                     </small>
                 </p>
             </footer>
