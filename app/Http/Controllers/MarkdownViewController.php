@@ -16,7 +16,7 @@ class MarkdownViewController extends Controller
     public function examples(): View
     {
         return $this->showMarkdownPage('examples', [
-            '/public/' => '/',
+            '{{ $examples }}' => $this->getExamples(),
         ]);
     }
 
@@ -32,5 +32,17 @@ class MarkdownViewController extends Controller
     protected function getMarkdownContents(string $view): string
     {
         return file_get_contents(resource_path("markdown/$view.md"));
+    }
+
+    protected function getExamples(): string
+    {
+        $output = '';
+        $files = glob(public_path('examples/windowlight-*.png'));
+
+        foreach ($files as $file) {
+            $output .= sprintf('![%s](%s)', basename($file), asset('examples/'.basename($file)));
+        }
+
+        return $output;
     }
 }
