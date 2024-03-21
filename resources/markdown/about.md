@@ -30,6 +30,14 @@ Using Torchlight means that you can use their special directives, allowing you t
 Additionally, since Torchlight is powered by VS Code and TextMate, you get extremely accurate and feature rich syntax highlighting.
 This includes support for virtually any programming language (over 100 languages supported, including PHP, JavaScript, Python, Ruby, Java, C++, C#, Swift, Go, Rust, and many, many more)
 
+## Feedback
+
+You can send feedback using the Twitter/X <a href="https://twitter.com/search?q=%23WindowlightApp" rel="nofollow" target="_blank">#WindowlightApp</a> hashtag, or through <a href="https://github.com/caendesilva/Windowlight/issues/new?title=Windowlight%20Feedback" rel="nofollow">GitHub Issues</a>.
+
+### Security
+
+If you need to report a security issue, please contact me directly at caen@desilva.se, with details at <a href="https://git.desilva.se/security/" rel="nofollow">git.desilva.se/security</a>.
+
 ## Terms and Conditions
 
 ### General Terms
