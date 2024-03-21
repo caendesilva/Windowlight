@@ -15,18 +15,22 @@ class MarkdownViewController extends Controller
 
     public function examples(): View
     {
-        return $this->showMarkdownPage('examples');
+        return $this->showMarkdownPage('examples', [
+            '/public/' => '/',
+        ]);
     }
 
-    protected function showMarkdownPage(string $view): View
+    protected function showMarkdownPage(string $view, array $replace = []): View
     {
         return view('markdown', [
-            'markdown' => new HtmlString(Str::markdown($this->getMarkdownContents($view)))
+            'markdown' => new HtmlString(Str::markdown(
+                str_replace(array_keys($replace), array_values($replace), $this->getMarkdownContents($view))
+            ))
         ]);
     }
 
     protected function getMarkdownContents(string $view): string
     {
-        return str_replace('/public/', '/', file_get_contents(resource_path("markdown/$view.md")));
+        return file_get_contents(resource_path("markdown/$view.md"));
     }
 }
