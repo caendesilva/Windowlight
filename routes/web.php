@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\MarkdownViewController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WindowlightController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\WindowlightController::class, 'show'])->name('home');
-Route::post('/generate', [\App\Http\Controllers\WindowlightController::class, 'store'])->name('windowlight.store')->middleware('throttle:generate');
+Route::get('/', [WindowlightController::class, 'show'])->name('home');
+Route::post('/generate', [WindowlightController::class, 'store'])->name('windowlight.store')->middleware('throttle:generate');
 
-Route::get('/about', [\App\Http\Controllers\MarkdownViewController::class, 'about'])->name('about');
-Route::get('/examples', [\App\Http\Controllers\MarkdownViewController::class, 'examples'])->name('examples');
+Route::get('/about', [MarkdownViewController::class, 'about'])->name('about');
+Route::get('/examples', [MarkdownViewController::class, 'examples'])->name('examples');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
