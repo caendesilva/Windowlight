@@ -43,7 +43,7 @@ class WindowlightController extends Controller
 
         $request->session()->put('result', $result);
 
-        $request->session()->flash('generated', true);
+        $request->session()->flash('generated');
 
         return redirect()->route('home');
     }
