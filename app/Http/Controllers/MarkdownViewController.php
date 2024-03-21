@@ -18,14 +18,14 @@ class MarkdownViewController extends Controller
         return $this->showMarkdownPage('examples');
     }
 
-    public function showMarkdownPage(string $view): View
+    protected function showMarkdownPage(string $view): View
     {
         return view('markdown', [
             'markdown' => new HtmlString(Str::markdown($this->getMarkdownContents($view)))
         ]);
     }
 
-    public function getMarkdownContents(string $view): string
+    protected function getMarkdownContents(string $view): string
     {
         return file_get_contents(resource_path("markdown/$view.md"));
     }
