@@ -22,7 +22,7 @@ class WindowlightController extends Controller
         return view('windowlight', array_merge([
             'input' => $input,
             'result' => $result,
-            'resultId' => hash('sha256', $result),
+            'resultId' => hash('sha256', $result.json_encode($options)),
         ], $options));
     }
 
