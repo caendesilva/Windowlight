@@ -425,6 +425,8 @@
 
 
             mirror.value = source;
+
+            // todo fade in text to remind user to regenerate
         });
 
         window.onload = function() {
