@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -36,15 +37,15 @@ class MarkdownViewController extends Controller
 
     protected function getExamples(): string
     {
-        $output = '';
+        $examples = Arr::mapWithKeys(array_reverse(glob(public_path('examples/windowlight-*.png'))), function (string $file): array {
+            $source = asset('examples/' . basename($file));
+            $contents = str_replace("\n", '&#10', e(trim(file_get_contents(str_replace('.png', '.txt', $file)))));
 
-        foreach (array_reverse(glob(public_path('examples/windowlight-*.png'))) as $file) {
-            $output .= view('components.example', [
-                'source' => asset('examples/' . basename($file)),
-                'contents' => str_replace("\n", '&#10', e(trim(file_get_contents(str_replace('.png', '.txt', $file))))),
-            ])->render();
-        }
+            return [
+                $source => $contents,
+            ];
+        });
 
-        return $output;
+        return view('components.examples', compact('examples'))->render();
     }
 }
