@@ -14,3 +14,5 @@ This app is built with Laravel, TailwindCSS, and vanilla JavaScript.
 
 While open source, it's not designed to be self-hosted, and no support will be provided for that.
 Breaking changes may occur at any time without notice. Contributions however, are very much welcome!
+
+Also note that large parts of the app is quickly bodged together, and is not necessarily pretty or well-designed.
