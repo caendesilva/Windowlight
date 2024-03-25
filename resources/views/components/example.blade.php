@@ -1,0 +1,1 @@
+<img src="{{ $source }}" alt="{{ $contents }}" title="{{ $contents }}">

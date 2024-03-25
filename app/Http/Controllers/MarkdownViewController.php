@@ -39,9 +39,10 @@ class MarkdownViewController extends Controller
         $output = '';
 
         foreach (array_reverse(glob(public_path('examples/windowlight-*.png'))) as $file) {
-            $altText = str_replace("\n", '&#10', e(trim(file_get_contents(str_replace('.png', '.txt', $file)))));
-
-            $output .= sprintf('<img src="%s" alt="%s" title="%s">', asset('examples/' . basename($file)), $altText, $altText);
+            $output .= view('components.example', [
+                'source' => asset('examples/' . basename($file)),
+                'contents' => str_replace("\n", '&#10', e(trim(file_get_contents(str_replace('.png', '.txt', $file))))),
+            ])->render();
         }
 
         return $output;
