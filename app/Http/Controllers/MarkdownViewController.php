@@ -24,6 +24,7 @@ class MarkdownViewController extends Controller
     protected function showMarkdownPage(string $view, array $replace = []): View
     {
         return view('markdown', [
+            'title' => Str::title($view),
             'markdown' => new HtmlString(
                 str_replace(array_keys($replace), array_values($replace), Str::markdown($this->getMarkdownContents($view)))
             ),
