@@ -19,11 +19,14 @@
         overflow: visible;
         color: transparent;
     }
+    .example-text.minimal {
+        padding: 4.8rem 5rem;
+    }
 </style>
 
 @foreach($examples as $source => $contents)
 <figure class="example-container">
     <img class="example-image" src="{{ $source }}" alt="{{ $contents }}" title="{{ $contents }}">
-    <pre class="example-text">{!! $contents !!}</pre>
+    <pre class="example-text {{ $loop->last ? 'minimal' : '' }}">{!! $contents !!}</pre>
 </figure>
 @endforeach
