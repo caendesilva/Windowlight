@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateImageRequest;
+use App\Http\Requests\GenerateRequest;
 use App\TorchlightSnippetGenerator;
 
 /**
@@ -26,7 +26,7 @@ class WindowlightController extends Controller
         ], $options));
     }
 
-    public function store(CreateImageRequest $request)
+    public function store(GenerateRequest $request)
     {
         $validated = $request->validated();
 
