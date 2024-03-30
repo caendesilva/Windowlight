@@ -1,7 +1,6 @@
 <style>
     .example-container {
         position: relative;
-
     }
     .example-text {
         position: absolute;
