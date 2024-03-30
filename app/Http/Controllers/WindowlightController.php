@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GenerateRequest;
 use App\TorchlightSnippetGenerator;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class WindowlightController extends Controller
 {
-    public function show()
+    public function show(): View
     {
         [$input, $result, $options] = $this->getSessionData();
 
