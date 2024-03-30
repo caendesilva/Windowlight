@@ -45,8 +45,8 @@ class MarkdownViewController extends Controller
         ];
 
         $examples = Arr::mapWithKeys($files, function (string $name): array {
-            $file = public_path("examples/windowlight-example-$name.png");
-            $source = asset('examples/'.basename($file));
+            $file = public_path("images/windowlight-example-$name.png");
+            $source = asset('images/'.basename($file));
             $contents = str_replace("\n", '&#10', e(trim(file_get_contents(str_replace('.png', '.txt', $file)))));
 
             return [
