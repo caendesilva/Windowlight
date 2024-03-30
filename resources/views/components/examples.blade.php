@@ -6,10 +6,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
-        padding: 8.5rem 7.25rem;
-        margin: 0;
+        margin: 8.5rem 7.25rem;
         font-size: 1.75rem;
         line-height: 1.35;
         font-family: monospace;
@@ -19,7 +16,7 @@
         color: transparent;
     }
     .example-text.minimal {
-        padding: 4.8rem 5rem;
+        margin: 4.8rem 5rem;
     }
 </style>
 
