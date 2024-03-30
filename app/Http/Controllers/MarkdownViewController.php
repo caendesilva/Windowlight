@@ -37,7 +37,14 @@ class MarkdownViewController extends Controller
 
     protected function getExamples(): string
     {
-        $examples = Arr::mapWithKeys(array_reverse(glob(public_path('examples/windowlight-*.png'))), function (string $file): array {
+        $files = [
+            'hello-world',
+            'hello-world-headerless',
+            'hello-world-minimal',
+        ];
+
+        $examples = Arr::mapWithKeys($files, function (string $name): array {
+           $file = public_path("examples/windowlight-example-$name.png");
             $source = asset('examples/' . basename($file));
             $contents = str_replace("\n", '&#10', e(trim(file_get_contents(str_replace('.png', '.txt', $file)))));
 
