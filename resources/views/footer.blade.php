@@ -9,9 +9,8 @@
     <p class="text-gray-800 dark:text-gray-200 leading-tight mt-2">
         <small>
             Copyright &copy; 2024 <a href="https://github.com/caendesilva" rel="author noopener" class="text-indigo-700 dark:text-indigo-300 font-semibold">Caen De Silva</a>
-            - Some rights reserved.
-            <br>
-            Source code available on <a href="https://github.com/caendesilva/Windowlight" rel="noopener" class="text-indigo-700 dark:text-indigo-300 font-semibold">GitHub</a>.<sup title="The source code will be made public once stable">(Soon)</sup>
+            <small class="text-gray-600 dark:text-gray-400">|</small>
+            Source code on <a href="https://github.com/caendesilva/Windowlight" rel="noopener" class="text-indigo-700 dark:text-indigo-300 font-semibold">GitHub</a>.
         </small>
     </p>
 </footer>
