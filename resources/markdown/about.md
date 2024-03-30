@@ -49,3 +49,11 @@ I'm acting in good faith and ask that you do as well.
 ### Usage Limits
 
 To prevent abuse and excessive load on both my server and the Torchlight API, there are some very generous rate limits of **30 requests per minute** or **1000 requests per day**, whichever comes first.
+
+### Who's behind Windowlight?
+
+This service is created and provided by [Caen De Silva](https://twitter.com/CodeWithCaen), you can support me by [buying me a coffee](https://www.buymeacoffee.com/caen) if you like what I'm doing.
+
+The official website for Windowlight is [https://windowlight.desilva.se](https://windowlight.desilva.se), and the source code is available on [GitHub](https://github.com/caendesilva/Windowlight), please show it some love by starring it!
+
+PS: If you find this service on any other domain, it's not affiliated with me. On a related note, I'm not affiliated with Torchlight, but have gotten the go-ahead from it's creator Aaron to use their API for this project.
