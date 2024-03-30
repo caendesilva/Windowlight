@@ -48,11 +48,6 @@ class CreateImageRequest extends FormRequest
         ];
     }
 
-    protected function normalizeBoolean(?string $input, bool $default): bool
-    {
-        return filter_var($input ?? $default, FILTER_VALIDATE_BOOLEAN);
-    }
-
     protected function normalizeColor(string $value): ?string
     {
         $value = strtolower($value);
