@@ -17,8 +17,8 @@ class Torchlight
 
     public static function languageListOptions(): HtmlString
     {
-        return new HtmlString(implode('', array_map(function (string $languageOption): string {
-            return sprintf('<option value="%s" />', $languageOption);
+        return new HtmlString(implode('', array_map(function (string $language): string {
+            return sprintf('<option value="%s" />', $language);
         }, self::LANGUAGES)));
     }
 }
