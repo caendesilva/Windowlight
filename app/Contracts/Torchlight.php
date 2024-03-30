@@ -17,8 +17,6 @@ class Torchlight
 
     /**
      * Get the available languages as an HTML select options list.
-     *
-     * @return \Illuminate\Support\HtmlString
      */
     public static function languageListOptions(): HtmlString
     {
