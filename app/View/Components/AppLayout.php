@@ -12,6 +12,18 @@ class AppLayout extends Component
      */
     public function render(): View
     {
-        return view('layouts.app');
+        return view('layouts.app', [
+            'canonical' => $this->canonical(),
+        ]);
+    }
+
+    /**
+     * Get a dynamic canonical URL for the current page, always using the official domain.
+     */
+    protected function canonical(): string
+    {
+        $path = request()->path();
+
+        return 'https://windowlight.desilva.se/' . ($path === '/' ? '' : $path);
     }
 }
