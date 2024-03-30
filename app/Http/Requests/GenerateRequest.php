@@ -11,6 +11,8 @@ class GenerateRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        // This is a public form
+
         return true;
     }
 
@@ -33,7 +35,7 @@ class GenerateRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, string>
      */
     public function rules(): array
     {
