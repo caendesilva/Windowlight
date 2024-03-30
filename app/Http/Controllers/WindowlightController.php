@@ -4,13 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GenerateRequest;
 use App\TorchlightSnippetGenerator;
+use Illuminate\Http\RedirectResponse;
 
-/**
- * Based on the internal HydePHP Torchlight snippet generator.
- *
- * @see https://github.com/hydephp/central/blob/main/app/Filament/Pages/Internal/TorchlightSnippetGenerator.php
- * @see https://github.com/hydephp/central/blob/main/resources/views/filament/pages/internal/torchlight-snippet-generator.blade.php
- */
 class WindowlightController extends Controller
 {
     public function show()
@@ -22,11 +17,11 @@ class WindowlightController extends Controller
         return view('windowlight', array_merge([
             'input' => $input,
             'result' => $result,
-            'resultId' => hash('sha256', $result.json_encode($options)),
+            'resultId' => $this->makeResultId($result, $options),
         ], $options));
     }
 
-    public function store(GenerateRequest $request)
+    public function store(GenerateRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -38,11 +33,15 @@ class WindowlightController extends Controller
         $request->session()->put('options.headerButtons', $validated['headerButtons'] ?? true);
         $request->session()->put('options.headerText', $validated['headerText'] ?? '');
 
-        $torchlight = new TorchlightSnippetGenerator($validated['code'], $validated['language'] ?? '', $validated['lineNumbers'] ?? true);
+        $torchlight = new TorchlightSnippetGenerator(
+            $validated['code'],
+            $validated['language'] ?? '',
+            $validated['lineNumbers'] ?? true
+        );
+
         $result = $torchlight->generate();
 
         $request->session()->put('result', $result);
-
         $request->session()->flash('generated');
 
         return redirect()->route('home');
@@ -79,7 +78,7 @@ class WindowlightController extends Controller
      *
      * @return array{0: string, 1: string}
      */
-    public function injectExamplesForEmptyState(?string $input, ?string $result): array
+    protected function injectExamplesForEmptyState(?string $input, ?string $result): array
     {
         $example = <<<'PHP'
         <?php
@@ -100,5 +99,10 @@ class WindowlightController extends Controller
         }
 
         return [$input, $result];
+    }
+
+    protected function makeResultId(string $result, array $options): string
+    {
+        return hash('sha256', $result . json_encode($options));
     }
 }
