@@ -61,6 +61,8 @@ class PageViewEvent extends Model
         // Due to the salting with a secret environment value, it can't be reverse engineered by creating rainbow tables.
         // The current date is also included in the hash in order to make them unique per day.
 
+        // The hash is made using the SHA-256 algorithm and truncated to 40 characters to save space, as we're not too worried about collisions.
+
         $forwardIp = $request->header('X-Forwarded-For');
 
         if ($forwardIp !== null) {
@@ -72,6 +74,6 @@ class PageViewEvent extends Model
             $ip = $request->ip();
         }
 
-        return sha1($ip . $request->userAgent() . config('hashing.anonymizer_salt'). now()->format('Y-m-d'));
+        return substr(hash('sha256', $ip . $request->userAgent() . config('hashing.anonymizer_salt'). now()->format('Y-m-d')), 0, 40);
     }
 }
