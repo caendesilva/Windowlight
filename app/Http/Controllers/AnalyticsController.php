@@ -13,4 +13,11 @@ class AnalyticsController extends Controller
             'pageViews' => PageViewEvent::all()
         ]);
     }
+
+    public function raw(Request $request)
+    {
+        return view('analytics.raw', [
+            'data' => PageViewEvent::all()
+        ]);
+    }
 }

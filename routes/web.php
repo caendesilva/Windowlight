@@ -24,6 +24,7 @@ Route::get('/about', [MarkdownViewController::class, 'about'])->name('about');
 Route::get('/examples', [MarkdownViewController::class, 'examples'])->name('examples');
 
 Route::get('/analytics', [AnalyticsController::class, 'show'])->name('analytics');
+Route::get('/analytics/raw', [AnalyticsController::class, 'raw'])->name('analytics.raw');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
