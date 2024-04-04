@@ -58,7 +58,12 @@
                         y: {
                             beginAtZero: true
                         }
-                    }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                    pointStyle: false
                 }
             });
         });
