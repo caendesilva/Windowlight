@@ -25,6 +25,7 @@ Route::get('/examples', [MarkdownViewController::class, 'examples'])->name('exam
 
 Route::get('/analytics', [AnalyticsController::class, 'show'])->name('analytics');
 Route::get('/analytics/raw', [AnalyticsController::class, 'raw'])->name('analytics.raw');
+Route::get('/analytics/json', [AnalyticsController::class, 'json'])->name('analytics.json');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

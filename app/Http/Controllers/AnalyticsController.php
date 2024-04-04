@@ -20,4 +20,9 @@ class AnalyticsController extends Controller
             'data' => PageViewEvent::all()
         ]);
     }
+
+    public function json(Request $request)
+    {
+        return response()->json(PageViewEvent::all());
+    }
 }
