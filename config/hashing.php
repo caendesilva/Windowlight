@@ -51,4 +51,9 @@ return [
         'verify' => true,
     ],
 
+    /**
+     * The secret to use for the analytics request anonymizer, in order to prevent rainbow table reverse engineering.
+     */
+    'anonymizer_salt' => env('ANONYMIZE_SECRET'),
+
 ];

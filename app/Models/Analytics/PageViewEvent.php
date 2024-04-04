@@ -55,6 +55,6 @@ class PageViewEvent extends Model
 
     protected static function anonymizeRequest(Request $request): string
     {
-        return sha1($request->ip() . $request->userAgent() . now()->format('Y-m-d'));
+        return sha1($request->ip() . $request->userAgent() . config('hashing.anonymizer_salt'). now()->format('Y-m-d'));
     }
 }
