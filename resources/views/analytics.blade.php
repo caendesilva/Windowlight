@@ -27,7 +27,6 @@
                     @else
                         <p>No page views data available.</p>
                     @endif
-
                 </section>
             </main>
         </div>
