@@ -20,8 +20,7 @@ trait AnonymizesRequests
         $forwardIp = $request->header('X-Forwarded-For');
 
         if ($forwardIp !== null) {
-            // If the request is proxied, we use the first IP in the address list,
-            // as the actual IP belongs to the proxy which may change frequently.
+            // If the request is proxied, we use the first IP in the address list, as the actual IP belongs to the proxy which may change frequently.
 
             $ip = Str::before($forwardIp, ',');
         } else {
