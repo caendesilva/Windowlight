@@ -47,7 +47,7 @@ class PageViewEvent extends Model
     {
         return static::create([
             'page' => $request->url(),
-            'referrer' => $request->header('referer'),
+            'referrer' => $request->header('referer') ?? $request->header('referrer'),
             'user_agent' => $request->userAgent(),
             'anonymous_id' => self::anonymizeRequest($request),
         ]);
