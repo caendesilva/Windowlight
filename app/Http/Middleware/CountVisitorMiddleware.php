@@ -16,6 +16,10 @@ class CountVisitorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if ($request->header('X-UptimeRobot') === 'UptimeRobot') {
+            return $next($request);
+        }
+
         PageViewEvent::dispatch($request);
 
         return $next($request);
