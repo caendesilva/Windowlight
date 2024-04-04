@@ -6,6 +6,30 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Raw Window Analytics Data</title>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            padding: 2px 4px;
+        }
+        th {
+            text-transform: uppercase;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        menu li {
+            margin-right: 12px;
+        }
+    </style>
 </head>
 <body>
 <header>
