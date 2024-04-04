@@ -31,10 +31,10 @@ class PageViewEvent extends Model
             // We only store the domain of the referrer
             $model->referrer = parse_url($model->referrer, PHP_URL_HOST);
 
+            // We don't store user agents for non-bot users
             $crawlerKeywords = ['bot', 'crawl', 'spider', 'slurp', 'search', 'yahoo', 'facebook'];
 
             if (! Str::contains($model->user_agent, $crawlerKeywords, true)) {
-                // We don't store user agents for non-bot users
                 $model->user_agent = null;
             }
         });
