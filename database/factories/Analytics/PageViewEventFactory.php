@@ -28,7 +28,7 @@ class PageViewEventFactory extends Factory
     {
         return $this->state(function (array $attributes): array {
             return [
-                'created_at' => $this->faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s')
+                'created_at' => $this->faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s'),
             ];
         });
     }
@@ -37,7 +37,7 @@ class PageViewEventFactory extends Factory
     {
         return $this->state(function (array $attributes): array {
             return [
-                'created_at' => $this->faker->dateTimeBetween('-1 month', 'now')->format('Y-m-d H:i:s')
+                'created_at' => $this->faker->dateTimeBetween('-1 month', 'now')->format('Y-m-d H:i:s'),
             ];
         });
     }
@@ -46,7 +46,7 @@ class PageViewEventFactory extends Factory
     {
         return $this->state(function (array $attributes): array {
             return [
-                'created_at' => $this->faker->dateTimeBetween('-1 week', 'now')->format('Y-m-d H:i:s')
+                'created_at' => $this->faker->dateTimeBetween('-1 week', 'now')->format('Y-m-d H:i:s'),
             ];
         });
     }
@@ -55,7 +55,7 @@ class PageViewEventFactory extends Factory
     {
         return $this->state(function (array $attributes): array {
             return [
-                'created_at' => $this->faker->dateTimeBetween('-3 days', 'now')->format('Y-m-d H:i:s')
+                'created_at' => $this->faker->dateTimeBetween('-3 days', 'now')->format('Y-m-d H:i:s'),
             ];
         });
     }
@@ -64,7 +64,7 @@ class PageViewEventFactory extends Factory
     {
         return $this->state(function (array $attributes): array {
             return [
-                'created_at' => $this->faker->dateTimeBetween('-1 day', 'now')->format('Y-m-d H:i:s')
+                'created_at' => $this->faker->dateTimeBetween('-1 day', 'now')->format('Y-m-d H:i:s'),
             ];
         });
     }

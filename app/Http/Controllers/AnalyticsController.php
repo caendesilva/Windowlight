@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Analytics\PageViewEvent;
-use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class AnalyticsController extends Controller
 {
@@ -19,7 +19,7 @@ class AnalyticsController extends Controller
     public function raw(Request $request)
     {
         return view('analytics.raw', [
-            'data' => PageViewEvent::all()
+            'data' => PageViewEvent::all(),
         ]);
     }
 
