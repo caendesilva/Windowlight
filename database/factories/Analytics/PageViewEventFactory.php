@@ -70,11 +70,11 @@ class PageViewEventFactory extends Factory
 
     public function getAnonymousId(): string
     {
-        $chanceOfBeingAnonymous = 50;
+        $chanceOfBeingAnonymous = 60;
         $uniqueUsersCount = 10;
 
         // We factor in the unique user count, as the randomization affects the distribution
-        $shouldBeAnonymous = $this->faker->boolean(($chanceOfBeingAnonymous - ($uniqueUsersCount * 3)) - 20);
+        $shouldBeAnonymous = $this->faker->boolean(($chanceOfBeingAnonymous - ($uniqueUsersCount * 3)) - 7.5);
 
         if ($shouldBeAnonymous) {
             return $this->faker->sha1;
