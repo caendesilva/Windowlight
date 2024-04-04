@@ -21,10 +21,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // We seed page views with a custom distribution of dates
-        PageViewEvent::factory()->count(250)->thisYear()->create();
-        PageViewEvent::factory()->count(100)->thisMonth()->create();
-        PageViewEvent::factory()->count(50)->thisWeek()->create();
-        PageViewEvent::factory()->count(25)->pastThreeDays()->create();
-        PageViewEvent::factory()->count(25)->today()->create();
+        PageViewEvent::factory(250)->thisYear()->create();
+        PageViewEvent::factory(100)->thisMonth()->create();
+        PageViewEvent::factory(50)->thisWeek()->create();
+        PageViewEvent::factory(25)->pastThreeDays()->create();
+        PageViewEvent::factory(25)->today()->create();
     }
 }
