@@ -55,6 +55,17 @@ class PageViewEvent extends Model
 
     protected static function anonymizeRequest(Request $request): string
     {
-        return sha1($request->ip() . $request->userAgent() . config('hashing.anonymizer_salt'). now()->format('Y-m-d'));
+        $forwardIp = $request->header('X-Forwarded-For');
+
+        if ($forwardIp !== null) {
+            // If the request is proxied, we use the first IP in the address list,
+            // as the actual IP belongs to the proxy which may change frequently.
+
+            $ip = Str::before($forwardIp, ',');
+        } else {
+            $ip = $request->ip();
+        }
+
+        return sha1($ip . $request->userAgent() . config('hashing.anonymizer_salt'). now()->format('Y-m-d'));
     }
 }
