@@ -29,6 +29,6 @@ class AppLayout extends Component
     {
         $path = request()->path();
 
-        return 'https://windowlight.desilva.se/' . ($path === '/' ? '' : $path);
+        return 'https://windowlight.desilva.se/'.($path === '/' ? '' : $path);
     }
 }
