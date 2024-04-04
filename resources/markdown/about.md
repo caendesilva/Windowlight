@@ -50,6 +50,21 @@ I'm acting in good faith and ask that you do as well.
 
 To prevent abuse and excessive load on both my server and the Torchlight API, there are some very generous rate limits of **30 requests per minute** or **1000 requests per day**, whichever comes first.
 
+### Privacy Policy
+
+Windowlight does not store any of your code, or any of the images generated. We do store some basic analytics that are designed with privacy in mind.
+
+**The analytics we collect are:**
+- The number of page visits, the URL of the page visited, and the referrer domain.
+- If the request is made by a bot, we will also store the user agent string.
+- We do not store any IP addresses or any other personal information.
+- We use a custom hashing algorithm to anonymize request identifiers, solely for the purpose of calculating unique visit counts. These cannot be reversed to identify individual users.
+
+All analytics data is public and can be viewed at [https://windowlight.desilva.se/analytics](https://windowlight.desilva.se/analytics). Here you can also get information about how exactly the data is collected and processed.
+
+As we do not store any personal information, we cannot provide any data deletion requests as there is no way to identify individual users.
+You can verify, and improve, the source code of the anonymization algorithm on [GitHub](https://github.com/caendesilva/Windowlight/blob/main/app/Concerns/AnonymizesRequests.php).
+
 ### Who's behind Windowlight?
 
 This service is created and provided by [Caen De Silva](https://twitter.com/CodeWithCaen), you can support me by [buying me a coffee](https://www.buymeacoffee.com/caen) if you like what I'm doing.
