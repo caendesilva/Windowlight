@@ -8,6 +8,13 @@
     <title>Raw Window Analytics Data</title>
 </head>
 <body>
+<header>
+    <h1>Raw Window Analytics Data</h1>
+    <p>
+        <a href="{{ route('analytics') }}">Back to Main Dashboard</a>
+        <a href="{{ route('analytics.json') }}">View Raw JSON</a>
+    </p>
+</header>
 <main>
     <table class="table">
         <thead>
