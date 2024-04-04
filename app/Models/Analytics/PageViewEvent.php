@@ -45,13 +45,11 @@ class PageViewEvent extends Model
 
     public static function dispatch(Request $request): static
     {
-        $anonymousId = self::anonymizeRequest($request);
-
         return static::create([
             'page' => $request->url(),
             'referrer' => $request->header('referer'),
             'user_agent' => $request->userAgent(),
-            'anonymous_id' => $anonymousId,
+            'anonymous_id' => self::anonymizeRequest($request),
         ]);
     }
 }
