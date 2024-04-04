@@ -8,8 +8,8 @@
             </div>
 
             <main class="dark:text-gray-200 text-gray-800">
-                <section>
-                    <header class="flex justify-between items-center mt-8 mb-4">
+                <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-8">
+                    <header class="flex justify-between items-center -mt-2 mb-2 pb-2 border-b dark:border-gray-700 border-gray-200">
                         <h2 class="text-xl font-bold">
                             Page Visits
                             <small class="text-gray-600 dark:text-gray-400">({{ count($pageViews) }} records)</small>
