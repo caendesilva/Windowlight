@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Analytics\PageViewEvent;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,8 @@ class CountVisitorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        PageViewEvent::dispatch($request);
+
         return $next($request);
     }
 }
