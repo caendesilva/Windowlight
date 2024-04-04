@@ -3,6 +3,7 @@
 namespace App\Models\Analytics;
 
 use App\Concerns\AnonymizesRequests;
+use Database\Factories\Analytics\PageViewEventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ use Illuminate\Support\Str;
  * @property ?string $user_agent User agent string of the visitor (only stored for bots)
  * @property string $anonymous_id Ephemeral anonymized visitor identifier that cannot be tied to a user
  *
- * @method \Database\Factories\Analytics\PageViewEventFactory factory(?array $parameters = [])
+ * @method PageViewEventFactory factory(?array $parameters = [])
  */
 class PageViewEvent extends Model
 {
