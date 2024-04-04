@@ -20,7 +20,7 @@ class PageViewEventFactory extends Factory
             'page' => $this->faker->url,
             'referrer' => $this->faker->url,
             'user_agent' => $this->faker->userAgent,
-            'anonymous_id' => $this->faker->sha256,
+            'anonymous_id' => $this->faker->sha1,
         ];
     }
 }
