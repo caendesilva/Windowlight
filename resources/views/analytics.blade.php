@@ -4,6 +4,18 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <header class="basic-prose mx-auto text-gray-800 dark:text-gray-200 leading-tight">
                     <h1 class="text-3xl font-bold">Public Analytics Dashboard</h1>
+                    <p class="text-center text-gray-600 dark:text-gray-400">
+                        All Windowlight Analytics data is publicly available. You can also view the raw data as
+                        <a href="{{ route('analytics.raw') }}" class="text-sm">HTML</a>
+                        or <a href="{{ route('analytics.json') }}" class="text-sm">JSON</a>.
+                    </p>
+                    <p class="text-center text-gray-600 dark:text-gray-400">
+                        <small>
+                            We do not utilize cookies or track any personal information.
+                            Requests are anonymized in order to see daily unique visitor counts. Learn more about the implementations
+                            at the bottom of this page.
+                        </small>
+                    </p>
                 </header>
             </div>
 
