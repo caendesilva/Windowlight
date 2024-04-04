@@ -21,4 +21,13 @@ class PageViewEvent extends Model
         'user_agent',
         'anonymous_id',
     ];
+
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function (self $model): void {
+            //
+        });
+    }
 }
