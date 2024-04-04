@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
  * @property ?string $user_agent User agent string of the visitor (only stored for bots)
  * @property string $anonymous_id Ephemeral anonymized visitor identifier that cannot be tied to a user
  *
- * @method PageViewEventFactory factory(?array $parameters = [])
+ * @method PageViewEventFactory factory($count = null, $state = [])
  */
 class PageViewEvent extends Model
 {
