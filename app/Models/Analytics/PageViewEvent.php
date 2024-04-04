@@ -13,6 +13,8 @@ use Illuminate\Support\Str;
  * @property ?string $referrer URL of the page that referred the user
  * @property ?string $user_agent User agent string of the visitor (only stored for bots)
  * @property string $anonymous_id Ephemeral anonymized visitor identifier that cannot be tied to a user
+ *
+ * @method \Database\Factories\Analytics\PageViewEventFactory factory(?array $parameters = [])
  */
 class PageViewEvent extends Model
 {
