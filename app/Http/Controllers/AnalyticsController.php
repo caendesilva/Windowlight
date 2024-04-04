@@ -32,7 +32,7 @@ class AnalyticsController extends Controller
     protected function getTrafficData(): array
     {
         // Get all page view events
-        $pageViewEvents = PageViewEvent::all();
+        $pageViewEvents = PageViewEvent::all()->sortBy('created_at');
 
         // Group page view events by date
         $pageViewsByDate = $pageViewEvents->groupBy(function ($pageView) {
