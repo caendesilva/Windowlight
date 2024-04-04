@@ -1,10 +1,10 @@
 <x-app-layout title="Analytics">
     <div class="py-12">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 pt-4 pb-2">
                 <header class="basic-prose mx-auto text-gray-800 dark:text-gray-200 leading-tight">
                     <h1 class="text-3xl font-bold">Public Analytics Dashboard</h1>
-                    <p class="text-center text-gray-600 dark:text-gray-400">
+                    <p class="text-center text-gray-600 dark:text-gray-400 -mt-2 mb-0">
                         All Windowlight Analytics data is publicly available. You can also view the raw data as
                         <a href="{{ route('analytics.raw') }}" class="text-sm">HTML</a>
                         or <a href="{{ route('analytics.json') }}" class="text-sm">JSON</a>.
