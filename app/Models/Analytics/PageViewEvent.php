@@ -28,6 +28,9 @@ class PageViewEvent extends Model
         parent::boot();
 
         static::creating(function (self $model): void {
+            // We only store the domain of the referrer
+            $model->referrer = parse_url($model->referrer, PHP_URL_HOST);
+
             $crawlerKeywords = ['bot', 'crawl', 'spider', 'slurp', 'search', 'yahoo', 'facebook'];
 
             if (! Str::contains($model->user_agent, $crawlerKeywords, true)) {
