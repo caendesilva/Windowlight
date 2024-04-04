@@ -21,12 +21,20 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // We seed page views with a custom distribution of dates
+        echo '  Seeding page views';
         PageViewEvent::factory(1500)->thisYear()->create();
+        echo '.';
         PageViewEvent::factory(750)->pastSixMonths()->create();
+        echo '.';
         PageViewEvent::factory(500)->pastThreeMonths()->create();
+        echo '.';
         PageViewEvent::factory(250)->thisMonth()->create();
+        echo '.';
         PageViewEvent::factory(50)->thisWeek()->create();
+        echo '.';
         PageViewEvent::factory(25)->pastThreeDays()->create();
+        echo '.';
         PageViewEvent::factory(10)->today()->create();
+        echo ".\n";
     }
 }
