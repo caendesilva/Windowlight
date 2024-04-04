@@ -29,6 +29,11 @@ class PageViewEventFactory extends Factory
         return $this->withInterval('-1 year');
     }
 
+    public function pastSixMonths(): static
+    {
+        return $this->withInterval('-6 months');
+    }
+
     public function pastThreeMonths(): static
     {
         return $this->withInterval('-3 months');
