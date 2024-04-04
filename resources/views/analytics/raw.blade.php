@@ -10,10 +10,14 @@
 <body>
 <header>
     <h1>Raw Window Analytics Data</h1>
-    <p>
-        <a href="{{ route('analytics') }}">Back to Main Dashboard</a>
-        <a href="{{ route('analytics.json') }}">View Raw JSON</a>
-    </p>
+    <menu role="toolbar">
+        <li>
+            <a href="{{ route('analytics') }}">Back to Main Dashboard</a>
+        </li>
+        <li>
+            <a href="{{ route('analytics.json') }}">View Raw JSON</a>
+        </li>
+    </menu>
 </header>
 <main>
     <table class="table">
