@@ -9,7 +9,17 @@
 
             <main class="dark:text-gray-200 text-gray-800">
                 <section>
-                    <h2 class="text-xl font-bold mt-8 mb-4">Page Visits</h2>
+                    <header class="flex justify-between items-center mt-8 mb-4">
+                        <h2 class="text-xl font-bold">
+                            Page Visits
+                            <small class="text-gray-600 dark:text-gray-400">({{ count($pageViews) }} records)</small>
+                        </h2>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            {{ array_sum($traffic['total_visitor_counts']) }} total visits
+                            and {{ array_sum($traffic['unique_visitor_counts']) }} unique visitors
+                            over the last {{ count($traffic['dates']) }} days
+                        </p>
+                    </header>
 
                     @if(count($traffic['dates']) > 0)
                         <!-- Create a canvas element for the chart -->
