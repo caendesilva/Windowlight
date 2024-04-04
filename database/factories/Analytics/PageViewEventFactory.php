@@ -26,45 +26,34 @@ class PageViewEventFactory extends Factory
 
     public function thisYear(): static
     {
-        return $this->state(function (): array {
-            return [
-                'created_at' => $this->faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d H:i:s'),
-            ];
-        });
+        return $this->withInterval('-1 year');
     }
 
     public function thisMonth(): static
     {
-        return $this->state(function (): array {
-            return [
-                'created_at' => $this->faker->dateTimeBetween('-1 month', 'now')->format('Y-m-d H:i:s'),
-            ];
-        });
+        return $this->withInterval('-1 month');
     }
 
     public function thisWeek(): static
     {
-        return $this->state(function (): array {
-            return [
-                'created_at' => $this->faker->dateTimeBetween('-1 week', 'now')->format('Y-m-d H:i:s'),
-            ];
-        });
+        return $this->withInterval('-1 week');
     }
 
     public function pastThreeDays(): static
     {
-        return $this->state(function (): array {
-            return [
-                'created_at' => $this->faker->dateTimeBetween('-3 days', 'now')->format('Y-m-d H:i:s'),
-            ];
-        });
+        return $this->withInterval('-3 days');
     }
 
     public function today(): static
     {
-        return $this->state(function (): array {
+        return $this->withInterval('-1 day');
+    }
+
+    public function withInterval(string $interval): PageViewEventFactory
+    {
+        return $this->state(function () use ($interval): array {
             return [
-                'created_at' => $this->faker->dateTimeBetween('-1 day', 'now')->format('Y-m-d H:i:s'),
+                'created_at' => $this->faker->dateTimeBetween($interval, 'now')->format('Y-m-d H:i:s'),
             ];
         });
     }
