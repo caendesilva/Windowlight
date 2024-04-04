@@ -28,6 +28,6 @@ trait AnonymizesRequests
             $ip = $request->ip();
         }
 
-        return substr(hash('sha256', $ip . $request->userAgent() . config('hashing.anonymizer_salt'). now()->format('Y-m-d')), 0, 40);
+        return substr(hash('sha256', $ip.$request->userAgent().config('hashing.anonymizer_salt').now()->format('Y-m-d')), 0, 40);
     }
 }

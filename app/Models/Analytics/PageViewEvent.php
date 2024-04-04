@@ -16,8 +16,8 @@ use Illuminate\Support\Str;
  */
 class PageViewEvent extends Model
 {
-    use HasFactory;
     use AnonymizesRequests;
+    use HasFactory;
 
     protected $fillable = [
         'page',

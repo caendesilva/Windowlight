@@ -13,7 +13,7 @@ it('generates the expected anonymized hash', function () {
     // Create a sample request with mock data
     $request = new Request([], [], [], [], [], [
         'REMOTE_ADDR' => '192.168.1.1',
-        'HTTP_USER_AGENT' => 'Test User Agent'
+        'HTTP_USER_AGENT' => 'Test User Agent',
     ]);
 
     // Invoke the anonymizer function
@@ -33,7 +33,7 @@ it('changes hash daily', function () {
     // Create a sample request with mock data
     $request = new Request([], [], [], [], [], [
         'REMOTE_ADDR' => '192.168.1.1',
-        'HTTP_USER_AGENT' => 'Test User Agent'
+        'HTTP_USER_AGENT' => 'Test User Agent',
     ]);
 
     // Baseline test
@@ -64,7 +64,7 @@ it('uses proxy headers for IP address', function () {
     $request = new Request([], [], [], [], [], [
         'REMOTE_ADDR' => '192.168.1.1',
         'HTTP_X_FORWARDED_FOR' => '192.168.1.10',
-        'HTTP_USER_AGENT' => 'Test User Agent'
+        'HTTP_USER_AGENT' => 'Test User Agent',
     ]);
 
     expect(Anonymizer::anonymize($request))->toBe('d62d82bc69857aa53e08f1e08cf3d1eb1eb7efd8');
@@ -77,7 +77,7 @@ it('uses the first proxy header for IP address', function () {
     $request = new Request([], [], [], [], [], [
         'REMOTE_ADDR' => '192.168.1.1',
         'HTTP_X_FORWARDED_FOR' => ['192.168.1.10', '192.168.1.25'],
-        'HTTP_USER_AGENT' => 'Test User Agent'
+        'HTTP_USER_AGENT' => 'Test User Agent',
     ]);
 
     expect(Anonymizer::anonymize($request))->toBe('d62d82bc69857aa53e08f1e08cf3d1eb1eb7efd8');
@@ -102,5 +102,5 @@ class Anonymizer
     public static function anonymize(Request $request): string
     {
         return static::anonymizeRequest($request);
-     }
+    }
 }
