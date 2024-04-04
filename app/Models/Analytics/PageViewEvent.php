@@ -4,6 +4,7 @@ namespace App\Models\Analytics;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * @property string $page URL of the page visited
@@ -27,7 +28,12 @@ class PageViewEvent extends Model
         parent::boot();
 
         static::creating(function (self $model): void {
-            //
+            $crawlerKeywords = ['bot', 'crawl', 'spider', 'slurp', 'search', 'yahoo', 'facebook'];
+
+            if (! Str::contains($model->user_agent, $crawlerKeywords, true)) {
+                // We don't store user agents for non-bot users
+                $model->user_agent = null;
+            }
         });
     }
 }
