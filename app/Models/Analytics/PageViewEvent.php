@@ -4,6 +4,7 @@ namespace App\Models\Analytics;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 /**
@@ -38,5 +39,22 @@ class PageViewEvent extends Model
                 $model->user_agent = null;
             }
         });
+    }
+
+    public static function dispatch(Request $request): static
+    {
+        $anonymousId = self::anonymizeRequest($request);
+
+        return static::create([
+            'page' => $request->url(),
+            'referrer' => $request->header('referer'),
+            'user_agent' => $request->userAgent(),
+            'anonymous_id' => $anonymousId,
+        ]);
+    }
+
+    protected static function anonymizeRequest(Request $request): string
+    {
+        return sha1('Todo');
     }
 }
