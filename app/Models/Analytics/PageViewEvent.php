@@ -26,6 +26,8 @@ class PageViewEvent extends Model
         'anonymous_id',
     ];
 
+    public const UPDATED_AT = null;
+
     protected static function boot(): void
     {
         parent::boot();
