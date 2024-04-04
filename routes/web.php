@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\MarkdownViewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WindowlightController;
@@ -21,6 +22,8 @@ Route::post('/generate', [WindowlightController::class, 'store'])->name('windowl
 
 Route::get('/about', [MarkdownViewController::class, 'about'])->name('about');
 Route::get('/examples', [MarkdownViewController::class, 'examples'])->name('examples');
+
+Route::get('/analytics', [AnalyticsController::class, 'show'])->name('analytics');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
