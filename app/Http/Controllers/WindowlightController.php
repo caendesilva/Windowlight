@@ -104,6 +104,6 @@ class WindowlightController extends Controller
 
     protected function makeResultId(string $result, array $options): string
     {
-        return hash('sha256', $result . json_encode($options));
+        return hash('sha256', $result.json_encode($options));
     }
 }
