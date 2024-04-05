@@ -24,7 +24,8 @@ class AnalyticsController extends Controller
             'stats' => $stats,
             'traffic' => $traffic,
             'pages' => $pages,
-            'referrers' => $referrers,
+            'referrers' => $referrers->where('is_ref', false),
+            'refs' => $referrers->where('is_ref', true),
         ]);
     }
 
