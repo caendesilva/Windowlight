@@ -48,13 +48,26 @@
             <a href="{{ route('analytics.json') }}">View Raw JSON</a>
         </li>
     </menu>
+    <nav>
+        <strong>
+            Jump to:
+        </strong>
+        <ul>
+            <li>
+                <a href="#page-view-events">Page View Events</a>
+            </li>
+            <li>
+                <a href="#code-generation-events">Code Generation Events</a>
+            </li>
+        </ul>
+    </nav>
 </header>
 <main>
-    <section>
+    <section id="page-view-events">
         <h2>Table: <code>page_view_events</code></h2>
         @include('simple-table', ['data' => $pageViewEvents])
     </section>
-    <section>
+    <section id="code-generation-events">
         <h2>Table: <code>code_generation_events</code></h2>
         @include('simple-table', ['data' => $codeGenerationEvents])
     </section>
