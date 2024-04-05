@@ -65,6 +65,19 @@
                                         <td class="text-end">{{ $data['total'] }}</td>
                                     </tr>
                                 @endforeach
+                                @php
+                                    // Insert empty padding rows to ensure consistent height
+                                    $totalPages = ceil(count($pages) / 15);
+                                    $totalRows = $totalPages * 15;
+                                    $remainingRows = $totalRows - count($pages);
+                                @endphp
+                                @for ($i = 0; $i < $remainingRows; $i++)
+                                    <tr role="presentation" x-show="currentPage * pageSize > {{ count($pages) + $i }}" x-cloak>
+                                        <td colspan="3">
+                                            <div class="px-2 mb-1">&nbsp;</div>
+                                        </td>
+                                    </tr>
+                                @endfor
                                 </tbody>
                                 <tfoot>
                                 <tr x-show="totalPages > 1" x-cloak="">
