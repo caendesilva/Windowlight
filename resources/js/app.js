@@ -147,8 +147,8 @@ if (window.location.pathname === '/') {
         </div>
         `;
 
-        const fragment = document.createRange().createContextualFragment(template);
-        document.body.appendChild(fragment);
+        const toast = document.createRange().createContextualFragment(template);
+        document.body.appendChild(toast);
 
         setTimeout(function () {
             toast.style.opacity = '1';
