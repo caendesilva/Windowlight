@@ -50,7 +50,10 @@
     </menu>
 </header>
 <main>
-    @include('simple-table', ['data' => $data])
+    <section>
+        <h2>Table: <code>page_view_events</code></h2>
+        @include('simple-table', ['data' => $data])
+    </section>
 </main>
 </body>
 </html>
