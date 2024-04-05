@@ -38,7 +38,10 @@ class PageViewEvent extends Model
         static::creating(function (self $model): void {
             // We only store the domain of the referrer
             if ($model->referrer) {
-                $model->referrer = Str::after(parse_url($model->referrer, PHP_URL_HOST), 'www.');
+                if (! str_starts_with($model->referrer, '?ref=')) {
+                    // We only store the domain of the referrer
+                    $model->referrer = Str::after(parse_url($model->referrer, PHP_URL_HOST), 'www.');
+                }
             } else {
                 $model->referrer = null;
             }
