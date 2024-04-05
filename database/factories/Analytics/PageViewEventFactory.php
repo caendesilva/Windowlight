@@ -2,9 +2,11 @@
 
 namespace Database\Factories\Analytics;
 
+use App\Models\Analytics\PageViewEvent;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
 /**
  * Highly over-engineered factory for generating realistic looking page view analytics events.
@@ -95,6 +97,16 @@ class PageViewEventFactory extends Factory
             // Return a subset of "known" users
             return substr(hash('sha256', rand(1, $uniqueUsersCount)), 0, 40);
         }
+    }
+
+    public function configure(): static
+    {
+        return $this->afterMaking(function (PageViewEvent $model) {
+            // If the user agent is a bot, we'll set the referrer to null
+            if (Str::contains($model->user_agent, ['bot', 'crawl', 'spider', 'slurp', 'search', 'yahoo', 'facebook'], true)) {
+                $model->referrer = null;
+            }
+        });
     }
 
     public function thisYear(): static
