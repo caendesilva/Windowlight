@@ -103,7 +103,7 @@ class AnalyticsController extends Controller
     {
         $totalPageViews = $pageViews->count();
 
-        return $pageViews->groupBy('referrer')->map(function (Collection $pageViews, string $referrer) use ($totalPageViews): array {
+        return $pageViews->groupBy('referrer')->map(function (Collection $pageViews, ?string $referrer) use ($totalPageViews): array {
             return [
                 'referrer' => $referrer,
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
