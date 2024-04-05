@@ -247,7 +247,8 @@ class PageViewEventFactory extends Factory
         return $referrers;
     }
 
-    protected function arrayDistribute(array $array, int $weight = 5): array {
+    protected function arrayDistribute(array $array, int $weight = 5): array
+    {
         $result = [];
         $count = count($array);
 
