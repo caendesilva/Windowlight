@@ -39,6 +39,22 @@ class PageViewEventFactory extends Factory
         return $this->faker->userAgent;
     }
 
+    public function getAnonymousId(): string
+    {
+        $chanceOfBeingAnonymous = 60;
+        $uniqueUsersCount = 10;
+
+        // We factor in the unique user count, as the randomization affects the distribution
+        $shouldBeAnonymous = $this->faker->boolean(($chanceOfBeingAnonymous - ($uniqueUsersCount * 3)) - 7.5);
+
+        if ($shouldBeAnonymous) {
+            return $this->faker->sha1;
+        } else {
+            // Return a subset of "known" users
+            return substr(hash('sha256', rand(1, $uniqueUsersCount)), 0, 40);
+        }
+    }
+
     public function thisYear(): static
     {
         return $this->withInterval('-1 year');
@@ -81,21 +97,5 @@ class PageViewEventFactory extends Factory
                 'created_at' => $this->faker->dateTimeBetween($interval, 'now')->format('Y-m-d H:i:s'),
             ];
         });
-    }
-
-    public function getAnonymousId(): string
-    {
-        $chanceOfBeingAnonymous = 60;
-        $uniqueUsersCount = 10;
-
-        // We factor in the unique user count, as the randomization affects the distribution
-        $shouldBeAnonymous = $this->faker->boolean(($chanceOfBeingAnonymous - ($uniqueUsersCount * 3)) - 7.5);
-
-        if ($shouldBeAnonymous) {
-            return $this->faker->sha1;
-        } else {
-            // Return a subset of "known" users
-            return substr(hash('sha256', rand(1, $uniqueUsersCount)), 0, 40);
-        }
     }
 }
