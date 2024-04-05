@@ -57,7 +57,7 @@
                                 @foreach($pages as $data)
                                     <tr class="group">
                                         <td class="text-start">
-                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
+                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; max-width: 50vw;">
                                                 {{ $data['page'] }}
                                             </div>
                                         </td>
@@ -98,7 +98,7 @@
                                 @foreach($referrers->where('is_ref', false) as $data)
                                     <tr class="group">
                                         <td class="text-start">
-                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
+                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; max-width: 50vw;">
                                                 {{ $data['referrer'] }}
                                             </div>
                                         </td>
@@ -111,7 +111,7 @@
                                 @foreach($referrers->where('is_ref', true) as $data)
                                     <tr class="group">
                                         <td class="text-start">
-                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
+                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; max-width: 50vw;">
                                                 {{ \Illuminate\Support\Str::after($data['referrer'], '?ref=') }}
                                             </div>
                                         </td>
