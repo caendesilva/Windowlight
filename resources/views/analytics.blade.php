@@ -81,7 +81,8 @@
                         </div>
                     </section>
 
-                    <section x-data="{ tab: 'referrers' }" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4 col-span-2">
+                    <section x-data="{ tab: 'referrers', currentPage: 1, pageSize: 15, totalPages: Math.ceil({{ count($referrers->where('is_ref', false)) }} / 15) }"
+                             class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4 col-span-2">
                         <header class="flex justify-between items-center -mt-2 mb-2">
                             <nav class="flex space-x-2">
                                 <button @click="tab = 'referrers'" :class="{ 'opacity-100': tab === 'referrers', 'opacity-50': tab !== 'referrers' }">
@@ -94,7 +95,7 @@
                         </header>
 
                         <div class="overflow-x-auto">
-                            <table class="table-auto w-full" x-data="{ currentPage: 1, pageSize: 15, totalPages: Math.ceil({{ count($referrers->where('is_ref', false)) }} / 15) }">
+                            <table class="table-auto w-full">
                                 <thead class="text-gray-600 dark:text-gray-400">
                                 <tr>
                                     <th class="text-start pb-2 pr-2">
