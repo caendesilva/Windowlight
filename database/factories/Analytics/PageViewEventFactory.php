@@ -142,7 +142,13 @@ class PageViewEventFactory extends Factory
                 $result[$string] = $probabilities[$index];
             }
 
-            $routes = collect($result);
+            $routePool = $result;
+
+            // Spread out the results to repeat the routes based on their probabilities
+            $routes = collect();
+            foreach ($routePool as $route => $probability) {
+                $routes = $routes->merge(array_fill(0, $probability, $route));
+            }
         }
 
         return $routes;
