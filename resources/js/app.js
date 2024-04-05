@@ -117,7 +117,7 @@ if (window.location.pathname === '/') {
 
         lineNumbers.addEventListener('change', function () {
             if (lineNumbersInitialState === false && hasNotifiedAboutLineNumbers === false) {
-                console.log('Please regenerate the image to see the line numbers.');
+                toast('Please regenerate the image to see the line numbers.');
                 hasNotifiedAboutLineNumbers = true;
             }
             codeCard.setAttribute('data-line-numbers', this.checked);
@@ -135,4 +135,25 @@ if (window.location.pathname === '/') {
             }
         });
     });
+
+    // Toast notification
+    function toast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+
+        document.body.appendChild(toast);
+
+        setTimeout(function () {
+            toast.style.opacity = '1';
+        }, 100);
+
+        setTimeout(function () {
+            toast.style.opacity = '0';
+        }, 3000);
+
+        setTimeout(function () {
+            toast.remove();
+        }, 3500);
+    }
 }
