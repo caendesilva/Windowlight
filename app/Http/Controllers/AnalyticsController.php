@@ -109,6 +109,7 @@ class AnalyticsController extends Controller
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
                 'total' => $pageViews->count(),
                 'percentage' => $totalPageViews > 0 ? ($pageViews->count() / $totalPageViews) * 100 : 0,
+                'is_ref' => $referrer !== null && $referrer !== 'Direct / Unknown' && str_starts_with($referrer, '?ref='),
             ];
         })->sortByDesc('total')->values()->toArray();
     }
