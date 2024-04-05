@@ -29,6 +29,7 @@ class PageViewEventFactory extends Factory
     public function getPage(): string
     {
         // Select a random route based on the given probabilities
+
         return url($this->getRoutes()->random());
     }
 
@@ -44,6 +45,8 @@ class PageViewEventFactory extends Factory
 
     public function getAnonymousId(): string
     {
+        // Generate an anonymous identifier
+
         $chanceOfBeingAnonymous = 60;
         $uniqueUsersCount = 10;
 
