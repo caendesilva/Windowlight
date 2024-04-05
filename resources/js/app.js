@@ -135,19 +135,12 @@ if (window.location.pathname === '/') {
             }
         });
     });
-// Toast notification
+
+    // Toast notification
     function toast(message) {
         const toast = document.createElement('div');
         toast.className = 'toast';
         toast.textContent = message;
-
-        // Add a timeout bar
-        const timeout = document.createElement('div');
-        timeout.className = 'timeout';
-        const progressBar = document.createElement('div');
-        progressBar.className = 'progress-bar';
-        timeout.appendChild(progressBar);
-        toast.appendChild(timeout);
 
         document.body.appendChild(toast);
 
@@ -155,28 +148,12 @@ if (window.location.pathname === '/') {
             toast.style.opacity = '1';
         }, 100);
 
-        let currentTime = 0;
-        const totalTime = 3000; // 3 seconds
-        const increment = 10; // Update progress every 10 milliseconds
-        const progressBarWidth = 100; // Width of the progress bar in percentage
+        setTimeout(function () {
+            toast.style.opacity = '0';
+        }, 3000);
 
-        const interval = setInterval(function () {
-            currentTime += increment;
-            const width = (currentTime / totalTime) * progressBarWidth;
-            progressBar.style.width = width + '%';
-            if (currentTime >= totalTime) {
-                clearInterval(interval);
-                setTimeout(function () {
-                    toast.style.opacity = '0';
-                }, 500); // Fade out animation duration
-                setTimeout(function () {
-                    toast.remove();
-                }, 1000); // Total duration including fade out animation
-            }
-        }, increment);
+        setTimeout(function () {
+            toast.remove();
+        }, 3500);
     }
-
-
-    // onload debug toast
-    toast('Welcome to Windowlight! 🎉');
 }
