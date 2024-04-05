@@ -37,7 +37,11 @@ class PageViewEvent extends Model
 
         static::creating(function (self $model): void {
             // We only store the domain of the referrer
-            $model->referrer = $model->referrer ? Str::after(parse_url($model->referrer, PHP_URL_HOST), 'www.') : null;
+            if ($model->referrer) {
+                $model->referrer = Str::after(parse_url($model->referrer, PHP_URL_HOST), 'www.');
+            } else {
+                $model->referrer = null;
+            }
 
             // We don't store user agents for non-bot users
             $crawlerKeywords = ['bot', 'crawl', 'spider', 'slurp', 'search', 'yahoo', 'facebook'];
