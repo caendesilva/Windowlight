@@ -24,7 +24,6 @@ jobs:
         run: npm run build
       - name: Commit build
         run: |
-          git checkout ${{ github.ref }}
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add public
