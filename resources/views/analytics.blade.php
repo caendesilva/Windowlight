@@ -49,20 +49,20 @@
                                 <thead class="text-gray-600 dark:text-gray-400">
                                 <tr>
                                     <th class="text-start pb-2 pr-2">Page</th>
-                                    <th class="text-end pb-2">Visitors</th>
-                                    <th class="text-end pb-2">Views</th>
+                                    <th class="text-end px-2 pb-2">Visitors</th>
+                                    <th class="text-end pl-2 pb-2">Views</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($pages as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
-                                        <td class="text-start pr-2">
+                                        <td class="text-start w-full pr-2">
                                             <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; min-width: 7.5%; max-width: 50vw;">
                                                 {{ $data['page'] }}
                                             </div>
                                         </td>
-                                        <td class="text-end">{{ $data['unique'] }}</td>
-                                        <td class="text-end">{{ $data['total'] }}</td>
+                                        <td class="text-end px-2">{{ $data['unique'] }}</td>
+                                        <td class="text-end pl-2 ">{{ $data['total'] }}</td>
                                     </tr>
                                 @endforeach
                                 @php
@@ -110,37 +110,37 @@
                             <table class="table-auto w-full">
                                 <thead class="text-gray-600 dark:text-gray-400">
                                 <tr>
-                                    <th class="text-start pb-2 pr-2">
+                                    <th class="text-start w-full pb-2 pr-2">
                                         <span x-show="tab === 'referrers'">Referrer</span>
                                         <span x-show="tab === 'refs'" x-cloak>Refs</span>
                                     </th>
-                                    <th class="text-end pb-2">Visitors</th>
-                                    <th class="text-end pb-2">Views</th>
+                                    <th class="text-end px-2 pb-2">Visitors</th>
+                                    <th class="text-end pl-2 pb-2">Views</th>
                                 </tr>
                                 </thead>
                                 <tbody x-show="tab === 'referrers'">
                                 @foreach($referrers as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
-                                        <td class="text-start pr-2">
+                                        <td class="text-start w-full pr-2">
                                             <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; min-width: 7.5%; max-width: 50vw;">
                                                 {{ $data['referrer'] }}
                                             </div>
                                         </td>
-                                        <td class="text-end">{{ $data['unique'] }}</td>
-                                        <td class="text-end">{{ $data['total'] }}</td>
+                                        <td class="text-end px-2">{{ $data['unique'] }}</td>
+                                        <td class="text-end pl-2">{{ $data['total'] }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                                 <tbody x-show="tab === 'refs'" x-cloak>
                                 @foreach($refs as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
-                                        <td class="text-start pr-2">
+                                        <td class="text-start w-full pr-2">
                                             <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; min-width: 7.5%; max-width: 50vw;">
                                                 {{ \Illuminate\Support\Str::after($data['referrer'], '?ref=') }}
                                             </div>
                                         </td>
-                                        <td class="text-end">{{ $data['unique'] }}</td>
-                                        <td class="text-end">{{ $data['total'] }}</td>
+                                        <td class="text-end px-2">{{ $data['unique'] }}</td>
+                                        <td class="text-end pl-2">{{ $data['total'] }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
