@@ -149,6 +149,8 @@ if (window.location.pathname === '/') {
 
         document.body.appendChild(document.createRange().createContextualFragment(template));
 
+        const toast = document.querySelector('.toast');
+
         setTimeout(function () {
             toast.style.opacity = '1';
         }, 100);
