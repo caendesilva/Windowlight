@@ -68,6 +68,36 @@
                         </table>
                     </div>
                 </section>
+
+                <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4">
+                    <header class="flex justify-between items-center -mt-2 mb-2">
+                        <h2 class="text-xl font-bold">Referrers</h2>
+                    </header>
+                    <div class="overflow-x-auto">
+                        <table class="table-auto w-full">
+                            <thead class="text-gray-600 dark:text-gray-400">
+                            <tr>
+                                <th class="text-start pb-2">Referrer</th>
+                                <th class="text-end pb-2 pl-2">Visitors</th>
+                                <th class="text-end pb-2 pl-4">Views</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($referrers as $data)
+                                <tr class="group">
+                                    <td class="text-start">
+                                        <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
+                                            {{ $data['referrer'] }}
+                                        </div>
+                                    </td>
+                                    <td class="text-end pl-2">{{ $data['unique'] }}</td>
+                                    <td class="text-end pl-4">{{ $data['total'] }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
             </main>
 
             <footer class="max-w-3xl mx-auto mt-8 -mb-4">

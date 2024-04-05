@@ -16,12 +16,14 @@ class AnalyticsController extends Controller
         $traffic = $this->getTrafficData();
         $stats = $this->getStatsData($pageViews, $traffic);
         $pages = $this->getPagesData($pageViews);
+        $referrers = $this->getReferrersData($pageViews);
 
         return view('analytics', [
             'pageViews' => $pageViews,
             'stats' => $stats,
             'traffic' => $traffic,
             'pages' => $pages,
+            'referrers' => $referrers,
         ]);
     }
 
@@ -89,6 +91,21 @@ class AnalyticsController extends Controller
         return $pageViews->groupBy('page')->map(function (Collection $pageViews, string $page) use ($domain, $totalPageViews): array {
             return [
                 'page' => rtrim(Str::after($page, $domain), '/') ?: '/',
+                'unique' => $pageViews->groupBy('anonymous_id')->count(),
+                'total' => $pageViews->count(),
+                'percentage' => $totalPageViews > 0 ? ($pageViews->count() / $totalPageViews) * 100 : 0,
+            ];
+        })->sortByDesc('total')->values()->toArray();
+    }
+
+    /** @return array<array{referrer: string, total: int, unique: int, percentage: float}> */
+    protected function getReferrersData(Collection $pageViews): array
+    {
+        $totalPageViews = $pageViews->count();
+
+        return $pageViews->groupBy('referrer')->map(function (Collection $pageViews, string $referrer) use ($totalPageViews): array {
+            return [
+                'referrer' => $referrer,
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
                 'total' => $pageViews->count(),
                 'percentage' => $totalPageViews > 0 ? ($pageViews->count() / $totalPageViews) * 100 : 0,
