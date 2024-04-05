@@ -79,7 +79,7 @@ class AnalyticsController extends Controller
         ];
     }
 
-    /** @return array<array{page: string, total_visits: int, unique_visitors: int}> */
+    /** @return array<array{page: string, total: int, unique: int}> */
     protected function getPagesData(Collection $pageViews): array
     {
         return []; // Todo
