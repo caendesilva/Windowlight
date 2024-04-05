@@ -33,8 +33,14 @@ class PageViewEventFactory extends Factory
         return url($this->getRoutes()->random());
     }
 
-    public function getReferrer(): string
+    public function getReferrer(): ?string
     {
+        $chanceOfBeingUnknown = 60;
+
+        if ($this->faker->boolean($chanceOfBeingUnknown)) {
+            return null;
+        }
+
         return $this->faker->url;
     }
 
