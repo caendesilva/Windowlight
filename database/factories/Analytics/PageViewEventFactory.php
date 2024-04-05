@@ -59,19 +59,21 @@ class PageViewEventFactory extends Factory
         $chanceOfBeingBot = 5;
 
         if ($this->faker->boolean($chanceOfBeingBot)) {
-            return $this->faker->randomElement([
-                'Googlebot/2.1 (+http://www.google.com/bot.html)',
-                'Bingbot/2.0 (+http://www.bing.com/bingbot.htm)',
-                'DuckDuckBot/1.0; (+http://duckduckgo.com/duckduckbot.html)',
-                'Slurp; http://help.yahoo.com/help/us/ysearch/slurp',
+            return $this->faker->randomElement($this->arrayDistribute([
+                // Common shorthand user agents
+                'Googlebot',
+                'Bingbot',
+                'Slurp',
+                'YandexBot',
+                'DuckDuckBot',
+
+                // Most common full user agents
+                'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+                'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)',
+                'Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)',
                 'Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)',
-                'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',
-                'Twitterbot/1.0',
-                'WhatsApp',
-                'Discordbot/2.0',
-                'ZoominfoBot (zoominfobot at zoominfo dot com)',
-                'Slackbot 1.0 (+https://api.slack.com/robots)',
-            ]);
+                'DuckDuckBot/1.0; (+http://duckduckgo.com/duckduckbot.html)',
+            ]));
         }
 
         return $this->faker->userAgent;
@@ -231,5 +233,20 @@ class PageViewEventFactory extends Factory
         }
 
         return $referrers;
+    }
+
+    protected function arrayDistribute(array $array, int $weight = 5): array {
+        $result = [];
+        $count = count($array);
+
+        for ($i = 0; $i < $count; $i++) {
+            $repeat = $weight - $i;
+
+            for ($j = 0; $j < $repeat; $j++) {
+                $result[] = $array[$i];
+            }
+        }
+
+        return array_merge($result, $array);
     }
 }
