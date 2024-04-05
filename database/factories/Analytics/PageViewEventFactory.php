@@ -41,7 +41,14 @@ class PageViewEventFactory extends Factory
             return null;
         }
 
-        return $this->getReferrers()->random();
+        $referrer = $this->getReferrers()->random();
+
+        // Add a chance to prepend a ref query parameter
+        if ($this->faker->boolean(1)) {
+            $referrer = '?ref=' . $referrer;
+        }
+
+        return $referrer;
     }
 
     protected function getUserAgent(): string
