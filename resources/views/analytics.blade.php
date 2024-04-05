@@ -44,11 +44,11 @@
                         <h2 class="text-xl font-bold">Page Views</h2>
                     </header>
                     <table class="table-auto w-full">
-                        <thead>
+                        <thead class="text-gray-600 dark:text-gray-400">
                             <tr>
-                                <th class="text-start">Page</th>
-                                <th class="text-end">Visitors</th>
-                                <th class="text-end">Views</th>
+                                <th class="text-start pb-2">Page</th>
+                                <th class="text-end pb-2">Visitors</th>
+                                <th class="text-end pb-2">Views</th>
                             </tr>
                         </thead>
                         <tbody>
