@@ -26,7 +26,7 @@ class AnalyticsController extends Controller
             'referrers' => $referrers->where('is_ref', false),
             'refs' => $referrers->where('is_ref', true),
             'pageSize' => 15,
-            'time' => sprintf('%.2fms', (microtime(true) - $time) * 1000)
+            'time' => sprintf('%.2fms', (microtime(true) - $time) * 1000),
         ]);
     }
 
@@ -42,7 +42,6 @@ class AnalyticsController extends Controller
         // Unless ?pretty=false is passed, we'll return pretty-printed JSON
         return response()->json(PageViewEvent::all(), options: $request->query('pretty') === 'false' ? 0 : JSON_PRETTY_PRINT);
     }
-
 
     protected function getCachedData(): array
     {
