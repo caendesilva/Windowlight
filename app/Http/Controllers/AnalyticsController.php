@@ -88,8 +88,8 @@ class AnalyticsController extends Controller
 
             return [
                 'page' => rtrim(Str::after($page, $domain), '/') ?: '/',
-                'total' => $pageViews->count(),
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
+                'total' => $pageViews->count(),
             ];
         })->sortByDesc('total')->values()->toArray();
     }

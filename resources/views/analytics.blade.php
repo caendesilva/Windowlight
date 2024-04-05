@@ -43,20 +43,20 @@
                     <header class="flex justify-between items-center -mt-2 mb-2">
                         <h2 class="text-xl font-bold">Page Views</h2>
                     </header>
-                    <table>
+                    <table class="table-auto w-full">
                         <thead>
                             <tr>
-                                <th>Page</th>
-                                <th>Total Visitors</th>
-                                <th>Unique Visitors</th>
+                                <th class="text-start">Page</th>
+                                <th class="text-end">Visitors</th>
+                                <th class="text-end">Views</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($pages as $data)
                                 <tr>
-                                    <td>{{ $data['page'] }}</td>
-                                    <td>{{ $data['total'] }}</td>
-                                    <td>{{ $data['unique'] }}</td>
+                                    <td class="text-start">{{ $data['page'] }}</td>
+                                    <td class="text-end">{{ $data['unique'] }}</td>
+                                    <td class="text-end">{{ $data['total'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
