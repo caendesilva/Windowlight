@@ -36,6 +36,11 @@ class PageViewEvent extends Model
         parent::boot();
 
         static::creating(function (self $model): void {
+            // Normalize the page URL to use HTTPS
+            $model->page = Str::startsWith($model->page, 'http://')
+                ? Str::replaceFirst('http://', 'https://', $model->page)
+                : $model->page;
+
             // We only store the domain of the referrer
             if ($model->referrer) {
                 if (! str_starts_with($model->referrer, '?ref=')) {
