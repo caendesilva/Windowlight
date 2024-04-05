@@ -45,7 +45,7 @@
                             <h2 class="text-xl font-bold">Page Views</h2>
                         </header>
                         <div class="overflow-x-auto">
-                            <table class="table-auto w-full" x-data="{ currentPage: 1, pageSize: 15, totalPages: Math.ceil({{ count($pages) }} / 15) }">
+                            <table class="table-auto w-full" x-data="{ currentPage: 1, pageSize: {{ $pageSize }}, totalPages: Math.ceil({{ count($pages) }} / {{ $pageSize }}) }">
                                 <thead class="text-gray-600 dark:text-gray-400">
                                 <tr>
                                     <th class="text-start pb-2 pr-2">Page</th>
@@ -64,7 +64,7 @@
                                     </tr>
                                 @endforeach
 
-                                <x-analytics.table-padding-row :records="$pages" />
+                                <x-analytics.table-padding-row :records="$pages" :page-size="$pageSize" />
                                 </tbody>
                                 <tfoot>
                                     @include('components.analytics.table-navigation')
@@ -73,13 +73,13 @@
                         </div>
                     </section>
 
-                    <section x-data="{ tab: 'referrers', currentPage: 1, pageSize: 15, totalPages: Math.ceil({{ count($referrers) }} / 15) }" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 pb-4 mt-4 col-span-2">
+                    <section x-data="{ tab: 'referrers', currentPage: 1, pageSize: {{ $pageSize }}, totalPages: Math.ceil({{ count($referrers) }} / {{ $pageSize }}) }" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 pb-4 mt-4 col-span-2">
                         <header class="flex justify-between items-center -mt-2 mb-2">
                             <nav class="flex space-x-2">
-                                <button @click="tab = 'referrers'; currentPage = 1; totalPages = Math.ceil({{ count($referrers) }} / 15)" :class="{ 'opacity-100': tab === 'referrers', 'opacity-50': tab !== 'referrers' }">
+                                <button @click="tab = 'referrers'; currentPage = 1; totalPages = Math.ceil({{ count($referrers) }} / {{ $pageSize }})" :class="{ 'opacity-100': tab === 'referrers', 'opacity-50': tab !== 'referrers' }">
                                     <h2 class="text-xl font-bold">Referrers</h2>
                                 </button>
-                                <button @click="tab = 'refs'; currentPage = 1; totalPages = Math.ceil({{ count($refs) }} / 15)" :class="{ 'opacity-100': tab === 'refs', 'opacity-50': tab !== 'refs' }">
+                                <button @click="tab = 'refs'; currentPage = 1; totalPages = Math.ceil({{ count($refs) }} / {{ $pageSize }})" :class="{ 'opacity-100': tab === 'refs', 'opacity-50': tab !== 'refs' }">
                                     <h2 class="text-xl font-bold">Refs</h2>
                                 </button>
                             </nav>

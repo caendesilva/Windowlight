@@ -1,8 +1,8 @@
-@props(['records'])
+@props(['records', 'pageSize'])
 @php
     // Insert empty padding rows to ensure consistent height
-    $totalRecords = ceil(count($records) / 15);
-    $totalRows = $totalRecords * 15;
+    $totalRecords = ceil(count($records) / $pageSize);
+    $totalRows = $totalRecords * $pageSize;
     $remainingRows = $totalRows - count($records);
 @endphp
 @for ($i = 0; $i < $remainingRows; $i++)

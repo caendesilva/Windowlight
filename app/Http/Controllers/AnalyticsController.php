@@ -26,6 +26,7 @@ class AnalyticsController extends Controller
             'pages' => $pages,
             'referrers' => $referrers->where('is_ref', false),
             'refs' => $referrers->where('is_ref', true),
+            'pageSize' => 15
         ]);
     }
 
