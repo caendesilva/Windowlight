@@ -32,6 +32,8 @@ jobs:
           git push
       - name: Commit build to pull request
         if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh pr checkout ${{ github.event.pull_request.number }}
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
