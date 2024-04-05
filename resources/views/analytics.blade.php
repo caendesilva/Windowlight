@@ -18,7 +18,7 @@
                         @foreach($stats as $label => $value)
                             <li class="px-2 my-2 sm:my-0 text-center">
                                 <dl class="flex flex-col">
-                                    <dt class="text-lg font-bold">{{ $value }}</dt>
+                                    <dt class="text-lg font-bold">{{ number_format($value) }}</dt>
                                     <dd class="text-sm text-gray-600 dark:text-gray-400">{{ $label }}</dd>
                                 </dl>
                             </li>
