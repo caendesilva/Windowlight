@@ -82,6 +82,12 @@ class AnalyticsController extends Controller
     /** @return array<array{page: string, total: int, unique: int}> */
     protected function getPagesData(Collection $pageViews): array
     {
-        return []; // Todo
+        return $pageViews->groupBy('page')->map(function (Collection $pageViews, string $page): array {
+            return [
+                'page' => $page,
+                'total' => $pageViews->count(),
+                'unique' => $pageViews->groupBy('anonymous_id')->count(),
+            ];
+        })->sortByDesc('total')->values()->toArray();
     }
 }
