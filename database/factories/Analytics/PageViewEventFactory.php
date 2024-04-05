@@ -31,6 +31,14 @@ class PageViewEventFactory extends Factory
         // Select a random route based on the given probabilities
         $route = $this->getRoutes()->random();
 
+        // Add a chance to append a ref query parameter
+        if ($this->faker->boolean(10)) {
+            $ref = $this->getReferrer();
+            if ($ref) {
+                $route .= '?ref='.$ref;
+            }
+        }
+
         return url($route);
     }
 
