@@ -22,13 +22,16 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Find branch
+        id: branch
+        run: echo ::set-output name=branch::${GITHUB_REF#refs/heads/}
       - name: Commit build
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add public
           git commit -m "Build assets for production" || exit 0
-          git push origin HEAD:${{ github.ref }}
+          git push origin HEAD:${{ steps.branch.outputs.branch }}
 
   style:
     runs-on: ubuntu-latest
