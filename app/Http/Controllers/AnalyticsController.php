@@ -98,8 +98,8 @@ class AnalyticsController extends Controller
         })->sortByDesc('total')->values()->toArray();
     }
 
-    /** @return array<array{referrer: string, total: int, unique: int, percentage: float}> */
-    protected function getReferrersData(Collection $pageViews): array
+    /** @return \Illuminate\Support\Collection<array{referrer: string, total: int, unique: int, percentage: float}> */
+    protected function getReferrersData(Collection $pageViews): \Illuminate\Support\Collection
     {
         $totalPageViews = $pageViews->count();
 
@@ -111,6 +111,6 @@ class AnalyticsController extends Controller
                 'percentage' => $totalPageViews > 0 ? ($pageViews->count() / $totalPageViews) * 100 : 0,
                 'is_ref' => $referrer !== null && $referrer !== 'Direct / Unknown' && str_starts_with($referrer, '?ref='),
             ];
-        })->sortByDesc('total')->values()->toArray();
+        })->sortByDesc('total')->values();
     }
 }
