@@ -61,3 +61,21 @@ test('user agents are stored for bot users case insensitively', function (string
 
     expect($model->user_agent)->toBeString()->toBe(strtolower($agent));
 })->with('bot_user_agents');
+
+/** @noinspection HttpUrlsUsage */
+test('referrer domain normalization', function ($url) {
+    expect(PageViewEvent::normalizeDomain($url))->toBe('example.com');
+})->with([
+    'https://example.com',
+    'http://example.com',
+    'example.com',
+    'example.com/path',
+    'example.com/path?query=string',
+    'www.example.com',
+    'www.example.com/path',
+    'www.example.com/path?query=string',
+    'http://www.example.com',
+    'https://www.example.com',
+    'http://www.example.com/path',
+    'https://www.example.com/path',
+]);

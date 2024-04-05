@@ -40,13 +40,10 @@ class PageViewEvent extends Model
             if ($model->referrer) {
                 if (! str_starts_with($model->referrer, '?ref=')) {
                     // We only store the domain of the referrer
-                    $model->referrer = Str::after(parse_url($model->referrer, PHP_URL_HOST), 'www.');
+                    $model->referrer = static::normalizeDomain($model->referrer);
                 } else {
                     $domain = Str::after($model->referrer, '?ref=');
-                    if (! Str::startsWith($domain, 'http')) {
-                        $domain = 'https://' . $domain;
-                    }
-                    $domain = Str::after(parse_url($domain, PHP_URL_HOST), 'www.');
+                    $domain = static::normalizeDomain($domain);
 
                     $model->referrer = "?ref=$domain";
                 }
@@ -76,5 +73,14 @@ class PageViewEvent extends Model
             'user_agent' => $request->userAgent(),
             'anonymous_id' => self::anonymizeRequest($request),
         ]);
+    }
+
+    protected static function normalizeDomain(string $url): string
+    {
+        if (! Str::startsWith($url, 'http')) {
+            $url = 'https://' . $url;
+        }
+
+        return Str::after(parse_url($url, PHP_URL_HOST), 'www.');
     }
 }
