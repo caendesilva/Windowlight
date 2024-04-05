@@ -23,4 +23,6 @@ use Illuminate\Database\Eloquent\Model;
 class CodeGenerationEvent extends Model
 {
     use HasFactory;
+
+    public const UPDATED_AT = null;
 }
