@@ -57,7 +57,7 @@
                                 @foreach($pages as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
                                         <td class="text-start pr-2">
-                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; max-width: 50vw;">
+                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; min-width: 7.5%; max-width: 50vw;">
                                                 {{ $data['page'] }}
                                             </div>
                                         </td>
@@ -122,7 +122,7 @@
                                 @foreach($referrers as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
                                         <td class="text-start pr-2">
-                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; max-width: 50vw;">
+                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; min-width: 7.5%; max-width: 50vw;">
                                                 {{ $data['referrer'] }}
                                             </div>
                                         </td>
@@ -135,7 +135,7 @@
                                 @foreach($refs as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
                                         <td class="text-start pr-2">
-                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; max-width: 50vw;">
+                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; min-width: 7.5%; max-width: 50vw;">
                                                 {{ \Illuminate\Support\Str::after($data['referrer'], '?ref=') }}
                                             </div>
                                         </td>
