@@ -10,9 +10,12 @@ class AnalyticsController extends Controller
 {
     public function show(Request $request)
     {
+        $pageViews = PageViewEvent::all();
+        $traffic = $this->getTrafficData();
+
         return view('analytics', [
-            'pageViews' => PageViewEvent::all(),
-            'traffic' => $this->getTrafficData(),
+            'pageViews' => $pageViews,
+            'traffic' => $traffic,
         ]);
     }
 
