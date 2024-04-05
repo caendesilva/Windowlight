@@ -138,20 +138,17 @@ if (window.location.pathname === '/') {
 
     // Toast notification
     function toast(message) {
-        const toast = document.createElement('div');
-        toast.className = 'toast';
-        const span = document.createElement('span');
-        span.textContent = message;
-        toast.appendChild(span);
+        const template = `
+        <div class="toast">
+            <span>${message}</span>
+            <div class="timeout">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+        `;
 
-        // Add a timeout bar
-        const timeout = document.createElement('div');
-        timeout.className = 'timeout';
-        const progressBar = document.createElement('div');
-        progressBar.className = 'progress-bar';
-        timeout.appendChild(progressBar);
-        toast.appendChild(timeout);
-        document.body.appendChild(toast);
+        const fragment = document.createRange().createContextualFragment(template);
+        document.body.appendChild(fragment);
 
         setTimeout(function () {
             toast.style.opacity = '1';
