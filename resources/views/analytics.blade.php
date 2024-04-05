@@ -87,7 +87,7 @@
                                 <tr>
                                     <th class="text-start pb-2">
                                         <span x-show="tab === 'referrers'">Referrer</span>
-                                        <span x-show="tab === 'refs'">Refs</span>
+                                        <span x-show="tab === 'refs'" x-cloak>Refs</span>
                                     </th>
                                     <th class="text-end pb-2 pl-2">Visitors</th>
                                     <th class="text-end pb-2 pl-4">Views</th>
@@ -106,7 +106,7 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                            <tbody x-show="tab === 'refs'">
+                            <tbody x-show="tab === 'refs'" x-cloak>
                                 @foreach($referrers->where('is_ref', true) as $data)
                                     <tr class="group">
                                         <td class="text-start">
