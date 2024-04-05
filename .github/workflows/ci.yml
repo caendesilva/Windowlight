@@ -28,7 +28,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git add public
           git commit -m "Build assets for production" || exit 0
-          git push
+          git push origin HEAD:${{ github.ref }}
 
   style:
     runs-on: ubuntu-latest
