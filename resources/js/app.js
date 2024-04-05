@@ -113,10 +113,12 @@ if (window.location.pathname === '/') {
         const lineNumbers = document.getElementById('lineNumbers');
         const codeCard = document.getElementById('code-card');
         const lineNumbersInitialState = lineNumbers.checked;
+        let hasNotifiedAboutLineNumbers = false;
 
         lineNumbers.addEventListener('change', function () {
-            if (lineNumbersInitialState === false) {
+            if (lineNumbersInitialState === false && hasNotifiedAboutLineNumbers === false) {
                 console.log('Please regenerate the image to see the line numbers.');
+                hasNotifiedAboutLineNumbers = true;
             }
             codeCard.setAttribute('data-line-numbers', this.checked);
         });
