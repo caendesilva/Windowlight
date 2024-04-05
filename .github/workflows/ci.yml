@@ -27,3 +27,11 @@ jobs:
           git add public
           git commit -m "Build assets for production" || exit 0
           git push
+
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Fix PHP code style issues
+        uses: aglipanci/laravel-pint-action@1.0.0
