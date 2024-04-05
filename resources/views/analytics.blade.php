@@ -72,7 +72,7 @@
                                     $remainingRows = $totalRows - count($pages);
                                 @endphp
                                 @for ($i = 0; $i < $remainingRows; $i++)
-                                    <tr role="presentation" x-show="currentPage * pageSize > {{ count($pages) + $i }}" x-cloak>
+                                    <tr class="select-none" role="presentation" x-show="currentPage * pageSize > {{ count($pages) + $i }}" x-cloak>
                                         <td colspan="3">
                                             <div class="px-2 mb-1">&nbsp;</div>
                                         </td>
