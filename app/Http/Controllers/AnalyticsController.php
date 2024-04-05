@@ -83,9 +83,9 @@ class AnalyticsController extends Controller
     /** @return array<array{page: string, total: int, unique: int}> */
     protected function getPagesData(Collection $pageViews): array
     {
-        return $pageViews->groupBy('page')->map(function (Collection $pageViews, string $page): array {
-            $domain = parse_url(url('/'), PHP_URL_HOST);
+        $domain = parse_url(url('/'), PHP_URL_HOST);
 
+        return $pageViews->groupBy('page')->map(function (Collection $pageViews, string $page) use ($domain): array {
             return [
                 'page' => rtrim(Str::after($page, $domain), '/') ?: '/',
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
