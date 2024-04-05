@@ -69,10 +69,10 @@ class AnalyticsController extends Controller
     protected function getStatsData(Collection $pageViews, array $traffic): array
     {
         return [
-            ['label' => 'Records', 'value' => count($pageViews)],
-            ['label' => 'Total Visits', 'value' => array_sum($traffic['total_visitor_counts'])],
-            ['label' => 'Unique Visitors', 'value' => array_sum($traffic['unique_visitor_counts'])],
-            ['label' => 'Days Tracked', 'value' => count($traffic['dates'])],
+            'Records' => count($pageViews),
+            'Total Visits' => array_sum($traffic['total_visitor_counts']),
+            'Unique Visitors' => array_sum($traffic['unique_visitor_counts']),
+            'Days Tracked' => count($traffic['dates']),
         ];
     }
 }
