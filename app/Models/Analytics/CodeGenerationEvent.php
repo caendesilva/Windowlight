@@ -2,6 +2,7 @@
 
 namespace App\Models\Analytics;
 
+use Database\Factories\Analytics\CodeGenerationEventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property bool $hasMenubarText Whether the generated code has a filled in menubar
  * @property string $background The background color of the generated code
  * @property int $lines The number of lines in the generated code
+ *
+ * @method CodeGenerationEventFactory factory($count = null, $state = [])
  */
 class CodeGenerationEvent extends Model
 {
