@@ -107,6 +107,7 @@
                                         <td class="text-end pl-2">{{ $data['total'] }}</td>
                                     </tr>
                                 @endforeach
+                                <x-analytics.table-padding-row :records="$referrers" :page-size="$pageSize" />
                                 </tbody>
                                 <tbody x-show="tab === 'refs'" x-cloak>
                                 @foreach($refs as $data)
@@ -118,6 +119,7 @@
                                         <td class="text-end pl-2">{{ $data['total'] }}</td>
                                     </tr>
                                 @endforeach
+                                <x-analytics.table-padding-row :records="$refs" :page-size="$pageSize" />
                                 </tbody>
                                 <tfoot>
                                 @include('components.analytics.table-navigation')
