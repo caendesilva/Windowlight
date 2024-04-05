@@ -106,7 +106,7 @@ pre code.torchlight .summary-caret {
 .toast .progress-bar {
     width: 0;
     height: 4px;
-    background-color: #ffcc00; /* Change color as needed */
+    background-color: rgb(37 99 235 / 75%);
     border-radius: 2px;
     animation: progress 3s linear forwards;
 }
