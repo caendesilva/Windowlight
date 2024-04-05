@@ -95,3 +95,21 @@ pre code.torchlight .summary-caret {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 9999;
 }
+
+.toast .progress-bar {
+    width: 0;
+    height: 4px;
+    background-color: #ffcc00; /* Change color as needed */
+    border-radius: 2px;
+    animation: progress 3s linear forwards;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes progress {
+    0% { width: 0; }
+    100% { width: 100%; }
+}

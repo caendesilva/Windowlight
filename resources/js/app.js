@@ -142,6 +142,13 @@ if (window.location.pathname === '/') {
         toast.className = 'toast';
         toast.textContent = message;
 
+        // Add a timeout bar
+        const timeout = document.createElement('div');
+        timeout.className = 'timeout';
+        const progressBar = document.createElement('div');
+        progressBar.className = 'progress-bar';
+        timeout.appendChild(progressBar);
+        toast.appendChild(timeout);
         document.body.appendChild(toast);
 
         setTimeout(function () {
