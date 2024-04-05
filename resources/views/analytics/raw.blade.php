@@ -55,5 +55,11 @@
         @include('simple-table', ['data' => $data])
     </section>
 </main>
+<hr>
+<footer>
+    <small>
+        Generated in {{ round((microtime(true) - LARAVEL_START) * 1000, 2) }}ms
+    </small>
+</footer>
 </body>
 </html>
