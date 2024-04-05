@@ -19,9 +19,7 @@ test('anonymous id is sha1 string', function () {
 });
 
 test('referrer uses only the domain', function (string $referrer) {
-    $model = PageViewEvent::factory()->create([
-        'referrer' => $referrer,
-    ]);
+    $model = PageViewEvent::factory()->withReferrer($referrer)->create();
 
     expect($model->referrer)->toBeString()->toBe('example.com');
 })->with([
