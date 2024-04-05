@@ -156,12 +156,7 @@ if (window.location.pathname === '/') {
 
         const toast = document.querySelector('.toast');
 
-        setTimeout(function () {
-            toast.style.opacity = '0';
-        }, 3000);
-
-        setTimeout(function () {
-            toast.remove();
-        }, 3500);
+        setTimeout(() => {toast.style.opacity = '0';}, 3000);
+        setTimeout(() => {toast.remove();}, 3500);
     }
 }
