@@ -60,7 +60,7 @@ Windowlight does not store any of your code, or any of the images generated. We 
 - We do not store any IP addresses or any other personal information.
 - We use a custom hashing algorithm to anonymize request identifiers, solely for the purpose of calculating unique visit counts. These cannot be reversed to identify individual users.
 
-All analytics data is public and can be viewed at [https://windowlight.desilva.se/analytics](https://windowlight.desilva.se/analytics). Here you can also get information about how exactly the data is collected and processed.
+All analytics data is public and can be viewed at [https://windowlight.desilva.se/analytics](https://windowlight.desilva.se/analytics).
 
 As we do not store any personal information, we cannot provide any data deletion requests as there is no way to identify individual users.
 You can verify, and improve, the source code of the anonymization algorithm on [GitHub](https://github.com/caendesilva/Windowlight/blob/main/app/Concerns/AnonymizesRequests.php).

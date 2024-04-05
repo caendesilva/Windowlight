@@ -135,7 +135,7 @@
                         We do not utilize cookies or track any personal information.
                         Requests are anonymized in order to see daily unique visitor counts.
                         <br>
-                        Learn more about the implementations at the bottom of this page.
+                        All analytics data is publicly available and can be viewed by anyone.
                     </small>
                     <small>
                         Request served in {{ $time }}.
