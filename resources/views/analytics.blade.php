@@ -28,7 +28,7 @@
 
                 <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4">
                     <header class="flex justify-between items-center -mt-2 mb-2">
-                        <h2 class="text-xl font-bold">Page Visits</h2>
+                        <h2 class="text-xl font-bold">Site Visits</h2>
                     </header>
 
                     @if(count($traffic['dates']) > 0)
