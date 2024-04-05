@@ -57,7 +57,7 @@
                                 @foreach($pages as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
                                         <td class="text-start w-full pr-2">
-                                            <x-analytics.table-percentage-row :percentage="$data['percentage']" :label="$data['page']" scale="3" />
+                                            <x-analytics.table-percentage-row :percentage="$data['percentage']" :label="$data['page']" scale="2" />
                                         </td>
                                         <td class="text-end px-2">{{ $data['unique'] }}</td>
                                         <td class="text-end pl-2 ">{{ $data['total'] }}</td>
