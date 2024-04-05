@@ -169,10 +169,35 @@ class PageViewEventFactory extends Factory
     {
         static $referrers = null;
 
+        // We use a subset of referrers to simulate real-world data
         if (! $referrers) {
-            // We use a subset of referrers to simulate real-world data
+            // Generate a pool of random referrers
             $count = 10;
             $pool = array_map(fn(): string => $this->faker->url, range(1, $count));
+
+            // And mix in som real-world referrers, weighted by their likelihood
+            $realReferrers = [
+                'https://www.google.com/',
+                'https://www.google.com/',
+                'https://www.google.com/',
+                'https://www.google.com/',
+                'https://www.reddit.com/',
+                'https://www.reddit.com/',
+                'https://www.twitter.com/',
+                'https://www.twitter.com/',
+                'https://www.github.com/',
+                'https://www.github.com/',
+                'https://www.duckduckgo.com/',
+                'https://www.bing.com/',
+                'https://www.yahoo.com/',
+                'https://www.facebook.com/',
+                'https://www.linkedin.com/',
+                'https://www.pinterest.com/',
+                'https://www.instagram.com/',
+                'https://www.tiktok.com/',
+            ];
+
+            $pool = array_merge($pool, $realReferrers, $realReferrers);
 
             $referrers = collect($pool);
         }
