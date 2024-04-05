@@ -2,6 +2,7 @@
 
 namespace App\Models\Analytics;
 
+use App\Concerns\AnalyticsDateFormatting;
 use App\Concerns\AnonymizesRequests;
 use Database\Factories\Analytics\PageViewEventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,8 +21,11 @@ use Illuminate\Support\Str;
  */
 class PageViewEvent extends Model
 {
+    use AnalyticsDateFormatting;
     use AnonymizesRequests;
     use HasFactory;
+
+    public const UPDATED_AT = null;
 
     protected $fillable = [
         'page',
@@ -29,8 +33,6 @@ class PageViewEvent extends Model
         'user_agent',
         'anonymous_id',
     ];
-
-    public const UPDATED_AT = null;
 
     protected static function boot(): void
     {
@@ -89,11 +91,5 @@ class PageViewEvent extends Model
         }
 
         return Str::after(parse_url($url, PHP_URL_HOST), 'www.');
-    }
-
-    public function getCreatedAtAttribute(string $date): Carbon
-    {
-        // Include the timezone when casting the date to a string
-        return Carbon::parse($date)->settings(['toStringFormat' => 'Y-m-d H:i:s T']);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models\Analytics;
 
+use App\Concerns\AnalyticsDateFormatting;
 use Database\Factories\Analytics\CodeGenerationEventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,6 +25,9 @@ use Illuminate\Support\Carbon;
 class CodeGenerationEvent extends Model
 {
     use HasFactory;
+    use AnalyticsDateFormatting;
+
+    public const UPDATED_AT = null;
 
     protected $fillable = [
         'language',
@@ -34,12 +38,4 @@ class CodeGenerationEvent extends Model
         'background',
         'lines',
     ];
-
-    public const UPDATED_AT = null;
-
-    public function getCreatedAtAttribute(string $date): Carbon
-    {
-        // Include the timezone when casting the date to a string
-        return Carbon::parse($date)->settings(['toStringFormat' => 'Y-m-d H:i:s T']);
-    }
 }
