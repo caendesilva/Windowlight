@@ -20,10 +20,6 @@
         td {
             width: fit-content;
         }
-        td span {
-            white-space: normal;
-            word-break: break-all;
-        }
         table {
             border-collapse: collapse;
         }
@@ -69,7 +65,7 @@
                 <td>{{ $entry['id'] }}</td>
                 <td>{{ $entry['page'] }}</td>
                 <td>{{ $entry['referrer'] ?: 'N/A' }}</td>
-                <td><span>{{ $entry['user_agent'] ?: 'N/A' }}</span></td>
+                <td>{{ $entry['user_agent'] ?: 'N/A' }}</td>
                 <td>{{ $entry['anonymous_id'] }}</td>
                 <td>{{ $entry['created_at'] }}</td>
             </tr>
