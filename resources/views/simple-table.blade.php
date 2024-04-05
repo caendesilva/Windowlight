@@ -1,6 +1,6 @@
 @php
 $format = function (mixed $value): string {
-    if (is_bool($value) || (is_int($value) && ($value === 0 || $value === 1))) {
+    if (is_bool($value) || (($value === 0 || $value === 1))) {
         return $value ? 'true' : 'false';
     }
 
