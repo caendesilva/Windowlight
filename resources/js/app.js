@@ -138,6 +138,11 @@ if (window.location.pathname === '/') {
 
     // Toast notification
     function toast(message) {
+        // Remove existing toasts
+        if (document.querySelector('.toast')) {
+            document.querySelector('.toast').remove();
+        }
+
         const template = `
         <div class="toast">
             <span>${message}</span>
@@ -146,11 +151,6 @@ if (window.location.pathname === '/') {
             </div>
         </div>
         `;
-
-        // Remove existing toasts
-        if (document.querySelector('.toast')) {
-            document.querySelector('.toast').remove();
-        }
 
         document.body.appendChild(document.createRange().createContextualFragment(template));
 
