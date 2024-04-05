@@ -114,11 +114,7 @@ if (window.location.pathname === '/') {
         const codeCard = document.getElementById('code-card');
 
         lineNumbers.addEventListener('change', function () {
-            if (this.checked) {
-                codeCard.setAttribute('data-line-numbers', 'true');
-            } else {
-                codeCard.setAttribute('data-line-numbers', 'false');
-            }
+            codeCard.setAttribute('data-line-numbers', this.checked);
         });
 
         // Progressive textarea enhancements
