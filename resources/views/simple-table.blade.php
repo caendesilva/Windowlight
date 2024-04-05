@@ -11,7 +11,7 @@ $format = function (mixed $value): string {
     <thead>
     <tr>
         @foreach (array_keys($data->first()->toArray()) as $header)
-            <th>{{ ucfirst(str_replace('_', ' ', $header)) }}</th>
+            <th>{{ ucfirst(str_replace('_', ' ', Str::snake($header))) }}</th>
         @endforeach
     </tr>
     </thead>
