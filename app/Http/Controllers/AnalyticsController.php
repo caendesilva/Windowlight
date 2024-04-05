@@ -35,7 +35,7 @@ class AnalyticsController extends Controller
     public function raw(): View
     {
         return view('analytics.raw', [
-            'data' => PageViewEvent::all(),
+            'pageViewEvents' => PageViewEvent::all(),
         ]);
     }
 

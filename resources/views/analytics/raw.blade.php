@@ -52,7 +52,7 @@
 <main>
     <section>
         <h2>Table: <code>page_view_events</code></h2>
-        @include('simple-table', ['data' => $data])
+        @include('simple-table', ['data' => $pageViewEvents])
     </section>
 </main>
 <hr>
