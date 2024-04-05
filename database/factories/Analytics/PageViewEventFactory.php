@@ -7,6 +7,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 
 /**
+ * Highly over-engineered factory for generating realistic looking page view analytics events.
+ *
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Analytics\PageViewEvent>
  */
 class PageViewEventFactory extends Factory
