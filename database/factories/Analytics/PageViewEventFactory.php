@@ -26,14 +26,14 @@ class PageViewEventFactory extends Factory
         ];
     }
 
-    public function getPage(): string
+    protected function getPage(): string
     {
         // Select a random route based on the given probabilities
 
         return url($this->getRoutes()->random());
     }
 
-    public function getReferrer(): ?string
+    protected function getReferrer(): ?string
     {
         $chanceOfBeingUnknown = 40;
 
@@ -44,12 +44,12 @@ class PageViewEventFactory extends Factory
         return $this->getReferrers()->random();
     }
 
-    public function getUserAgent(): string
+    protected function getUserAgent(): string
     {
         return $this->faker->userAgent;
     }
 
-    public function getAnonymousId(): string
+    protected function getAnonymousId(): string
     {
         // Generate an anonymous identifier
 
