@@ -66,7 +66,7 @@ class AnalyticsController extends Controller
         ];
     }
 
-    /** @return array<string, scalar> */
+    /** @return array<string, int> */
     protected function getStatsData(Collection $pageViews, array $traffic): array
     {
         return [
