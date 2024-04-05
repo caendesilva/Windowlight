@@ -105,7 +105,7 @@ class AnalyticsController extends Controller
 
         return $pageViews->groupBy('referrer')->map(function (Collection $pageViews, ?string $referrer) use ($totalPageViews): array {
             return [
-                'referrer' => $referrer,
+                'referrer' => $referrer ?: 'Direct / Unknown',
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
                 'total' => $pageViews->count(),
                 'percentage' => $totalPageViews > 0 ? ($pageViews->count() / $totalPageViews) * 100 : 0,
