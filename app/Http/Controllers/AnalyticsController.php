@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Analytics\PageViewEvent;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -12,9 +13,11 @@ class AnalyticsController extends Controller
     {
         $pageViews = PageViewEvent::all();
         $traffic = $this->getTrafficData();
+        $stats = $this->getStatsData($pageViews, $traffic);
 
         return view('analytics', [
             'pageViews' => $pageViews,
+            'stats' => $stats,
             'traffic' => $traffic,
         ]);
     }
@@ -60,6 +63,16 @@ class AnalyticsController extends Controller
             'dates' => array_keys($totalVisitorCounts),
             'total_visitor_counts' => array_values($totalVisitorCounts),
             'unique_visitor_counts' => array_values($uniqueVisitorCounts),
+        ];
+    }
+
+    protected function getStatsData(Collection $pageViews, array $traffic): array
+    {
+        return [
+            ['label' => 'Records', 'value' => count($pageViews)],
+            ['label' => 'Total Visits', 'value' => array_sum($traffic['total_visitor_counts'])],
+            ['label' => 'Unique Visitors', 'value' => array_sum($traffic['unique_visitor_counts'])],
+            ['label' => 'Days Tracked', 'value' => count($traffic['dates'])],
         ];
     }
 }
