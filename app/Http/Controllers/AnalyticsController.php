@@ -7,17 +7,14 @@ use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 class AnalyticsController extends Controller
 {
     public function show(Request $request)
     {
-        $pageViews = PageViewEvent::all();
-        $traffic = $this->getTrafficData();
-        $stats = $this->getStatsData($pageViews, $traffic);
-        $pages = $this->getPagesData($pageViews);
-        $referrers = $this->getReferrersData($pageViews);
+        [$pageViews, $traffic, $stats, $pages, $referrers] = $this->getCachedData();
 
         return view('analytics', [
             'pageViews' => $pageViews,
@@ -41,6 +38,28 @@ class AnalyticsController extends Controller
     {
         // Unless ?pretty=false is passed, we'll return pretty-printed JSON
         return response()->json(PageViewEvent::all(), options: $request->query('pretty') === 'false' ? 0 : JSON_PRETTY_PRINT);
+    }
+
+
+    protected function getCachedData(): array
+    {
+        // With ~5000 records, this takes about ~500ms on an M2 Mac. Caching it reduces it to ~30ms.
+
+        $cacheKey = 'analytics-data';
+        $cacheDuration = now()->addMinutes(5);
+
+        return Cache::remember($cacheKey, $cacheDuration, fn (): array => $this->getData());
+    }
+
+    protected function getData(): array
+    {
+        $pageViews = PageViewEvent::all();
+        $traffic = $this->getTrafficData();
+        $stats = $this->getStatsData($pageViews, $traffic);
+        $pages = $this->getPagesData($pageViews);
+        $referrers = $this->getReferrersData($pageViews);
+
+        return [$pageViews, $traffic, $stats, $pages, $referrers];
     }
 
     protected function getTrafficData(): array
