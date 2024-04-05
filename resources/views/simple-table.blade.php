@@ -1,6 +1,6 @@
 @php
-$format = function (mixed $value): string {
-    if (is_bool($value) || (($value === 0 || $value === 1))) {
+$format = function (string $key, mixed $value): string {
+    if (is_bool($value) || ((str_starts_with($key, 'is') || str_starts_with($key, 'has')) && ($value === 0 || $value === 1))) {
         return $value ? 'true' : 'false';
     }
 
@@ -21,8 +21,8 @@ $format = function (mixed $value): string {
             $entry = $entry->toArray();
         @endphp
         <tr>
-            @foreach ($entry as $value)
-                <td>{{ $format($value) }}</td>
+            @foreach ($entry as $key => $value)
+                <td>{{ $format($key, $value) }}</td>
             @endforeach
         </tr>
     @endforeach
