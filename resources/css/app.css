@@ -72,3 +72,10 @@ pre code.torchlight .line-number,
 pre code.torchlight .summary-caret {
     @apply mr-4;
 }
+
+/*
+ Reactivity control to show/hide line numbers.
+ */
+#code-card[data-line-numbers="false"] .line-number {
+    @apply hidden;
+}

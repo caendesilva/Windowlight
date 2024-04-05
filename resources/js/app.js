@@ -109,6 +109,18 @@ if (window.location.pathname === '/') {
             headerTitle.textContent = this.value;
         });
 
+        // Line numbers change
+        const lineNumbers = document.getElementById('lineNumbers');
+        const codeCard = document.getElementById('code-card');
+
+        lineNumbers.addEventListener('change', function () {
+            if (this.checked) {
+                codeCard.setAttribute('data-line-numbers', 'true');
+            } else {
+                codeCard.setAttribute('data-line-numbers', 'false');
+            }
+        });
+
         // Progressive textarea enhancements
 
         const textarea = document.querySelector('textarea');
