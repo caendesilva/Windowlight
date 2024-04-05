@@ -9,10 +9,11 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class AnalyticsController extends Controller
 {
-    public function show()
+    public function show(): View
     {
         $time = microtime(true);
 
