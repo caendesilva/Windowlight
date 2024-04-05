@@ -173,7 +173,7 @@ class PageViewEventFactory extends Factory
         if (! $referrers) {
             // Generate a pool of random referrers
             $count = 10;
-            $pool = array_map(fn(): string => $this->faker->url, range(1, $count));
+            $pool = array_map(fn (): string => $this->faker->url, range(1, $count));
 
             // And mix in som real-world referrers, weighted by their likelihood
             $realReferrers = [

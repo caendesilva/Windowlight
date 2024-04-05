@@ -65,8 +65,9 @@ class PageViewEvent extends Model
         // Is a ref query parameter present? If so, we'll store it as a referrer
         $ref = $request->query('ref');
         if ($ref) {
-            $ref = '?ref=' . $ref;
+            $ref = '?ref='.$ref;
         }
+
         return static::create([
             'page' => $request->url(),
             'referrer' => $ref ?? $request->header('referer') ?? $request->header('referrer'),
@@ -78,7 +79,7 @@ class PageViewEvent extends Model
     protected static function normalizeDomain(string $url): string
     {
         if (! Str::startsWith($url, 'http')) {
-            $url = 'https://' . $url;
+            $url = 'https://'.$url;
         }
 
         return Str::after(parse_url($url, PHP_URL_HOST), 'www.');
