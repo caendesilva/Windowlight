@@ -48,7 +48,7 @@
                             <thead class="text-gray-600 dark:text-gray-400">
                             <tr>
                                 <th class="text-start pb-2">Page</th>
-                                <th class="text-end pb-2">Visitors</th>
+                                <th class="text-end pb-2 pl-2">Visitors</th>
                                 <th class="text-end pb-2 pl-4">Views</th>
                             </tr>
                             </thead>
@@ -56,11 +56,11 @@
                             @foreach($pages as $data)
                                 <tr>
                                     <td class="text-start">
-                                        <div class="whitespace-nowrap rounded px-2 mb-1" style="background-color: #d9edfc; width: {{ $data['percentage'] * 1 }}rem">
+                                        <div class="whitespace-nowrap rounded px-2 mb-1" style="background-color: #d9edfc; width: {{ $data['percentage'] * 1 }}rem; max-width: 50vw;">
                                             {{ $data['page'] }}
                                         </div>
                                     </td>
-                                    <td class="text-end">{{ $data['unique'] }}</td>
+                                    <td class="text-end pl-2">{{ $data['unique'] }}</td>
                                     <td class="text-end pl-4">{{ $data['total'] }}</td>
                                 </tr>
                             @endforeach
