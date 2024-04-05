@@ -13,17 +13,48 @@
             </header>
 
             <main class="dark:text-gray-200 text-gray-800">
-                <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-8">
-                    <header class="flex justify-between items-center -mt-2 mb-2 pb-2 border-b dark:border-gray-700 border-gray-200">
-                        <h2 class="text-xl font-bold">
-                            Page Visits
-                            <small class="text-gray-600 dark:text-gray-400">({{ count($pageViews) }} records)</small>
-                        </h2>
-                        <p class="text-sm text-gray-600 dark:text-gray-400">
-                            {{ array_sum($traffic['total_visitor_counts']) }} total visits
-                            and {{ array_sum($traffic['unique_visitor_counts']) }} unique visitors
-                            over the last {{ count($traffic['dates']) }} days
-                        </p>
+                <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4 mt-4">
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    {{ count($pageViews) }}
+                                </dt>
+                                <dd>
+                                    Records
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>
+                                    {{ array_sum($traffic['total_visitor_counts']) }}
+                                </dt>
+                                <dd>
+                                    Total Visits
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>
+                                    {{ array_sum($traffic['unique_visitor_counts']) }}
+                                </dt>
+                                <dd>
+                                    Unique Visitors
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>
+                                    {{ count($traffic['dates']) }}
+                                </dt>
+                                <dd>
+                                    Days Tracked
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4">
+                    <header class="flex justify-between items-center -mt-2 mb-2">
+                        <h2 class="text-xl font-bold">Page Visits</h2>
                     </header>
 
                     @if(count($traffic['dates']) > 0)
