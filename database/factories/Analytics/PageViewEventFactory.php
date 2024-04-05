@@ -115,17 +115,17 @@ class PageViewEventFactory extends Factory
                 return $route->uri() !== '' && in_array('web', $route->middleware()) && !str_contains($route->uri(), '{')  && !str_starts_with($route->uri(), 'sanctum');
             });
 
-            $routes = $routes->pluck('uri')->unique()->reverse()->values();
+            $routes = $routes->pluck('uri')->unique()->values();
 
             // Add dynamic probability distribution to make earlier routes more likely to be selected
-            // Each route is twice as likely to be selected as the next one
+            // Each route's likelihood decreases logarithmically
             $count = count($routes);
             $total_probability = 0;
             $probabilities = [];
 
             // Calculate probabilities based on the given distribution
             for ($i = 0; $i < $count; $i++) {
-                $probability = pow(2, $i);
+                $probability = 1 / (0.25 + log($i/0.75 + 1));
                 $total_probability += $probability;
                 $probabilities[] = $probability;
             }
@@ -141,8 +141,6 @@ class PageViewEventFactory extends Factory
             foreach ($routes as $index => $string) {
                 $result[$string] = $probabilities[$index];
             }
-            $result = array_reverse($result, true);
-
             $routes = collect($result);
         }
         return $routes;
