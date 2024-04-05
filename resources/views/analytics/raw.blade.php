@@ -12,9 +12,16 @@
         th {
             border: 1px solid black;
             padding: 2px 4px;
+            white-space: nowrap;
         }
         th {
             text-transform: uppercase;
+        }
+        td {
+            max-width: 25vw;
+        }
+        td div {
+            overflow-x: auto;
         }
         table {
             border-collapse: collapse;
@@ -58,12 +65,12 @@
         <tbody>
         @foreach ($data as $entry)
             <tr>
-                <td>{{ $entry['id'] }}</td>
-                <td>{{ $entry['page'] }}</td>
-                <td>{{ $entry['referrer'] ?: 'N/A' }}</td>
-                <td>{{ $entry['user_agent'] ?: 'N/A' }}</td>
-                <td>{{ $entry['anonymous_id'] }}</td>
-                <td>{{ $entry['created_at'] }}</td>
+                <td><div>{{ $entry['id'] }}</div></td>
+                <td><div>{{ $entry['page'] }}</div></td>
+                <td><div>{{ $entry['referrer'] ?: 'N/A' }}</div></td>
+                <td><div>{{ $entry['user_agent'] ?: 'N/A' }}</div></td>
+                <td><div>{{ $entry['anonymous_id'] }}</div></td>
+                <td><div>{{ $entry['created_at'] }}</div></td>
             </tr>
         @endforeach
         </tbody>
