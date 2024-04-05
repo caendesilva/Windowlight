@@ -41,7 +41,7 @@ class PageViewEventFactory extends Factory
             return null;
         }
 
-        return $this->faker->url;
+        return $this->getReferrers()->random();
     }
 
     public function getUserAgent(): string
@@ -162,5 +162,21 @@ class PageViewEventFactory extends Factory
         }
 
         return $routes;
+    }
+
+    /** @return \Illuminate\Support\Collection<string> */
+    protected function getReferrers(): Collection
+    {
+        static $referrers = null;
+
+        if (! $referrers) {
+            // We use a subset of referrers to simulate real-world data
+            $count = 10;
+            $pool = array_map(fn(): string => $this->faker->url, range(1, $count));
+
+            $referrers = collect($pool);
+        }
+
+        return $referrers;
     }
 }
