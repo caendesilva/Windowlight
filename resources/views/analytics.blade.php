@@ -71,7 +71,14 @@
 
                 <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4">
                     <header class="flex justify-between items-center -mt-2 mb-2">
-                        <h2 class="text-xl font-bold">Referrers</h2>
+                        <nav>
+                            <button>
+                                <h2 class="text-xl font-bold">Referrers</h2>
+                            </button>
+                            <button>
+                                <h2 class="text-xl font-bold">Refs</h2>
+                            </button>
+                        </nav>
                     </header>
                     <div class="overflow-x-auto">
                         <table class="table-auto w-full">
