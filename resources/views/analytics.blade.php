@@ -39,51 +39,52 @@
                     @endif
                 </section>
 
-                <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4">
-                    <header class="flex justify-between items-center -mt-2 mb-2">
-                        <h2 class="text-xl font-bold">Page Views</h2>
-                    </header>
-                    <div class="overflow-x-auto">
-                        <table class="table-auto w-full">
-                            <thead class="text-gray-600 dark:text-gray-400">
-                            <tr>
-                                <th class="text-start pb-2">Page</th>
-                                <th class="text-end pb-2 pl-2">Visitors</th>
-                                <th class="text-end pb-2 pl-4">Views</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($pages as $data)
-                                <tr class="group">
-                                    <td class="text-start">
-                                        <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
-                                            {{ $data['page'] }}
-                                        </div>
-                                    </td>
-                                    <td class="text-end pl-2">{{ $data['unique'] }}</td>
-                                    <td class="text-end pl-4">{{ $data['total'] }}</td>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                    <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4">
+                        <header class="flex justify-between items-center -mt-2 mb-2">
+                            <h2 class="text-xl font-bold">Page Views</h2>
+                        </header>
+                        <div class="overflow-x-auto">
+                            <table class="table-auto w-full">
+                                <thead class="text-gray-600 dark:text-gray-400">
+                                <tr>
+                                    <th class="text-start pb-2">Page</th>
+                                    <th class="text-end pb-2 pl-2">Visitors</th>
+                                    <th class="text-end pb-2 pl-4">Views</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+                                </thead>
+                                <tbody>
+                                @foreach($pages as $data)
+                                    <tr class="group">
+                                        <td class="text-start">
+                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
+                                                {{ $data['page'] }}
+                                            </div>
+                                        </td>
+                                        <td class="text-end pl-2">{{ $data['unique'] }}</td>
+                                        <td class="text-end pl-4">{{ $data['total'] }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
 
-                <section x-data="{ tab: 'referrers' }" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4">
-                    <header class="flex justify-between items-center -mt-2 mb-2">
-                        <nav class="flex space-x-2">
-                            <button @click="tab = 'referrers'" :class="{ 'opacity-100': tab === 'referrers', 'opacity-50': tab !== 'referrers' }">
-                                <h2 class="text-xl font-bold">Referrers</h2>
-                            </button>
-                            <button @click="tab = 'refs'" :class="{ 'opacity-100': tab === 'refs', 'opacity-50': tab !== 'refs' }">
-                                <h2 class="text-xl font-bold">Refs</h2>
-                            </button>
-                        </nav>
-                    </header>
+                    <section x-data="{ tab: 'referrers' }" class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4">
+                        <header class="flex justify-between items-center -mt-2 mb-2">
+                            <nav class="flex space-x-2">
+                                <button @click="tab = 'referrers'" :class="{ 'opacity-100': tab === 'referrers', 'opacity-50': tab !== 'referrers' }">
+                                    <h2 class="text-xl font-bold">Referrers</h2>
+                                </button>
+                                <button @click="tab = 'refs'" :class="{ 'opacity-100': tab === 'refs', 'opacity-50': tab !== 'refs' }">
+                                    <h2 class="text-xl font-bold">Refs</h2>
+                                </button>
+                            </nav>
+                        </header>
 
-                    <div class="overflow-x-auto">
-                        <table class="table-auto w-full">
-                            <thead class="text-gray-600 dark:text-gray-400">
+                        <div class="overflow-x-auto">
+                            <table class="table-auto w-full">
+                                <thead class="text-gray-600 dark:text-gray-400">
                                 <tr>
                                     <th class="text-start pb-2">
                                         <span x-show="tab === 'referrers'">Referrer</span>
@@ -92,8 +93,8 @@
                                     <th class="text-end pb-2 pl-2">Visitors</th>
                                     <th class="text-end pb-2 pl-4">Views</th>
                                 </tr>
-                            </thead>
-                            <tbody x-show="tab === 'referrers'">
+                                </thead>
+                                <tbody x-show="tab === 'referrers'">
                                 @foreach($referrers->where('is_ref', false) as $data)
                                     <tr class="group">
                                         <td class="text-start">
@@ -105,8 +106,8 @@
                                         <td class="text-end pl-4">{{ $data['total'] }}</td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                            <tbody x-show="tab === 'refs'" x-cloak>
+                                </tbody>
+                                <tbody x-show="tab === 'refs'" x-cloak>
                                 @foreach($referrers->where('is_ref', true) as $data)
                                     <tr class="group">
                                         <td class="text-start">
@@ -118,10 +119,11 @@
                                         <td class="text-end pl-4">{{ $data['total'] }}</td>
                                     </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
             </main>
 
             <footer class="max-w-3xl mx-auto mt-8 -mb-4">
