@@ -83,7 +83,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($referrers as $data)
+                            @foreach($referrers->where('is_ref', false) as $data)
                                 <tr class="group">
                                     <td class="text-start">
                                         <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
