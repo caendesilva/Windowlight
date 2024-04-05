@@ -57,9 +57,7 @@
                                 @foreach($pages as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
                                         <td class="text-start w-full pr-2">
-                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 4) }}%; min-width: 7.5%; max-width: 50vw;">
-                                                {{ $data['page'] }}
-                                            </div>
+                                            <x-analytics.table-percentage-row :percentage="$data['percentage']" :label="$data['page']" scale="3" />
                                         </td>
                                         <td class="text-end px-2">{{ $data['unique'] }}</td>
                                         <td class="text-end pl-2 ">{{ $data['total'] }}</td>
@@ -114,9 +112,7 @@
                                 @foreach($referrers as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
                                         <td class="text-start w-full pr-2">
-                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; min-width: 7.5%; max-width: 50vw;">
-                                                {{ $data['referrer'] }}
-                                            </div>
+                                            <x-analytics.table-percentage-row :percentage="$data['percentage']" :label="$data['referrer']" />
                                         </td>
                                         <td class="text-end px-2">{{ $data['unique'] }}</td>
                                         <td class="text-end pl-2">{{ $data['total'] }}</td>
@@ -127,9 +123,7 @@
                                 @foreach($refs as $data)
                                     <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
                                         <td class="text-start w-full pr-2">
-                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; min-width: 7.5%; max-width: 50vw;">
-                                                {{ \Illuminate\Support\Str::after($data['referrer'], '?ref=') }}
-                                            </div>
+                                            <x-analytics.table-percentage-row :percentage="$data['percentage']" :label="\Illuminate\Support\Str::after($data['referrer'], '?ref=')" />
                                         </td>
                                         <td class="text-end px-2">{{ $data['unique'] }}</td>
                                         <td class="text-end pl-2">{{ $data['total'] }}</td>
