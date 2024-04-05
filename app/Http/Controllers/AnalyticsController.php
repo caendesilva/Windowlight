@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 
 class AnalyticsController extends Controller
 {
-    public function show(Request $request)
+    public function show()
     {
         $time = microtime(true);
 
