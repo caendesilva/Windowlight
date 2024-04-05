@@ -54,9 +54,14 @@ class PageViewEvent extends Model
 
     public static function dispatch(Request $request): static
     {
+        // Is a ref query parameter present? If so, we'll store it as a referrer
+        $ref = $request->query('ref');
+        if ($ref) {
+            $ref = '?ref=' . $ref;
+        }
         return static::create([
             'page' => $request->url(),
-            'referrer' => $request->header('referer') ?? $request->header('referrer'),
+            'referrer' => $ref ?? $request->header('referer') ?? $request->header('referrer'),
             'user_agent' => $request->userAgent(),
             'anonymous_id' => self::anonymizeRequest($request),
         ]);
