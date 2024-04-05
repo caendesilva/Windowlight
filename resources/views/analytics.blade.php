@@ -84,40 +84,40 @@
                     <div class="overflow-x-auto">
                         <table class="table-auto w-full">
                             <thead class="text-gray-600 dark:text-gray-400">
-                            <tr>
-                                <th class="text-start pb-2">
-                                    <span x-show="tab === 'referrers'">Referrer</span>
-                                    <span x-show="tab === 'refs'">Refs</span>
-                                </th>
-                                <th class="text-end pb-2 pl-2">Visitors</th>
-                                <th class="text-end pb-2 pl-4">Views</th>
-                            </tr>
+                                <tr>
+                                    <th class="text-start pb-2">
+                                        <span x-show="tab === 'referrers'">Referrer</span>
+                                        <span x-show="tab === 'refs'">Refs</span>
+                                    </th>
+                                    <th class="text-end pb-2 pl-2">Visitors</th>
+                                    <th class="text-end pb-2 pl-4">Views</th>
+                                </tr>
                             </thead>
                             <tbody x-show="tab === 'referrers'">
-                            @foreach($referrers->where('is_ref', false) as $data)
-                                <tr class="group">
-                                    <td class="text-start">
-                                        <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
-                                            {{ $data['referrer'] }}
-                                        </div>
-                                    </td>
-                                    <td class="text-end pl-2">{{ $data['unique'] }}</td>
-                                    <td class="text-end pl-4">{{ $data['total'] }}</td>
-                                </tr>
-                            @endforeach
+                                @foreach($referrers->where('is_ref', false) as $data)
+                                    <tr class="group">
+                                        <td class="text-start">
+                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
+                                                {{ $data['referrer'] }}
+                                            </div>
+                                        </td>
+                                        <td class="text-end pl-2">{{ $data['unique'] }}</td>
+                                        <td class="text-end pl-4">{{ $data['total'] }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                             <tbody x-show="tab === 'refs'">
-                            @foreach($referrers->where('is_ref', true) as $data)
-                                <tr class="group">
-                                    <td class="text-start">
-                                        <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
-                                            {{ \Illuminate\Support\Str::after($data['referrer'], '?ref=') }}
-                                        </div>
-                                    </td>
-                                    <td class="text-end pl-2">{{ $data['unique'] }}</td>
-                                    <td class="text-end pl-4">{{ $data['total'] }}</td>
-                                </tr>
-                            @endforeach
+                                @foreach($referrers->where('is_ref', true) as $data)
+                                    <tr class="group">
+                                        <td class="text-start">
+                                            <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 1.75) }}vw; max-width: 50vw;">
+                                                {{ \Illuminate\Support\Str::after($data['referrer'], '?ref=') }}
+                                            </div>
+                                        </td>
+                                        <td class="text-end pl-2">{{ $data['unique'] }}</td>
+                                        <td class="text-end pl-4">{{ $data['total'] }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
