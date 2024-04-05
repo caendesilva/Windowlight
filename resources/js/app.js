@@ -144,7 +144,7 @@ if (window.location.pathname === '/') {
         }
 
         const template = `
-        <div class="toast">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <span>${message}</span>
             <div class="timeout">
                 <div class="progress-bar"></div>
