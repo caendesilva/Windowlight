@@ -19,6 +19,8 @@
         }
         td {
             width: fit-content;
+            max-width: 50ch;
+            overflow-x: auto;
         }
         table {
             border-collapse: collapse;
