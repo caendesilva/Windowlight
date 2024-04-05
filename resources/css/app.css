@@ -89,7 +89,7 @@ pre code.torchlight .summary-caret {
     bottom: 20px;
     right: 20px;
     padding-top: 8px;
-    background-color: #333;
+    background-color: rgb(55 65 81);
     color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
