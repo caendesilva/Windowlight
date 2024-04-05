@@ -54,6 +54,10 @@
         <h2>Table: <code>page_view_events</code></h2>
         @include('simple-table', ['data' => $pageViewEvents])
     </section>
+    <section>
+        <h2>Table: <code>code_generation_events</code></h2>
+        @include('simple-table', ['data' => $codeGenerationEvents])
+    </section>
 </main>
 <hr>
 <footer>

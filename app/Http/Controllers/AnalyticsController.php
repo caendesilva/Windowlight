@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Analytics\CodeGenerationEvent;
 use App\Models\Analytics\PageViewEvent;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Http\JsonResponse;
@@ -36,6 +37,7 @@ class AnalyticsController extends Controller
     {
         return view('analytics.raw', [
             'pageViewEvents' => PageViewEvent::all(),
+            'codeGenerationEvents' => CodeGenerationEvent::all(),
         ]);
     }
 
