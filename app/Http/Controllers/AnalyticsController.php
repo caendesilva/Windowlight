@@ -48,6 +48,9 @@ class AnalyticsController extends Controller
 
     protected function getCachedData(): array
     {
+        // Temporarily disable cache as we don't yet have that many records
+        return $this->getData();
+
         // With ~5000 records, this takes about ~500ms on an M2 Mac. Caching it reduces it to ~30ms.
 
         $cacheKey = 'analytics-data-'.sha1_file(__FILE__); // Invalidate cache if this file changes
