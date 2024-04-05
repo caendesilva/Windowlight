@@ -55,6 +55,25 @@ class PageViewEventFactory extends Factory
 
     protected function getUserAgent(): string
     {
+        // Chance of being a bot
+        $chanceOfBeingBot = 5;
+
+        if ($this->faker->boolean($chanceOfBeingBot)) {
+            return $this->faker->randomElement([
+                'Googlebot/2.1 (+http://www.google.com/bot.html)',
+                'Bingbot/2.0 (+http://www.bing.com/bingbot.htm)',
+                'DuckDuckBot/1.0; (+http://duckduckgo.com/duckduckbot.html)',
+                'Slurp; http://help.yahoo.com/help/us/ysearch/slurp',
+                'Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)',
+                'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',
+                'Twitterbot/1.0',
+                'WhatsApp',
+                'Discordbot/2.0',
+                'ZoominfoBot (zoominfobot at zoominfo dot com)',
+                'Slackbot 1.0 (+https://api.slack.com/robots)',
+            ]);
+        }
+
         return $this->faker->userAgent;
     }
 
