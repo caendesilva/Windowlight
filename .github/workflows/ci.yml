@@ -22,12 +22,24 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Commit build
+      - name: Commit build to main
+        if: github.event_name == 'push'
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add public
           git commit -m "Build assets for production" || exit 0
+          git push
+      - name: Commit build to pull request
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr checkout ${{ github.event.pull_request.number }}
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add public
+          git commit -m "Build assets for prouction" || exit 0
           git push
 
   style:

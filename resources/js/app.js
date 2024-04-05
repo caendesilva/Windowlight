@@ -109,6 +109,20 @@ if (window.location.pathname === '/') {
             headerTitle.textContent = this.value;
         });
 
+        // Line numbers change
+        const lineNumbers = document.getElementById('lineNumbers');
+        const codeCard = document.getElementById('code-card');
+        const lineNumbersInitialState = lineNumbers.checked;
+        let hasNotifiedAboutLineNumbers = false;
+
+        lineNumbers.addEventListener('change', function () {
+            if (lineNumbersInitialState === false && hasNotifiedAboutLineNumbers === false) {
+                toast('Please regenerate the image to see the line numbers.');
+                hasNotifiedAboutLineNumbers = true;
+            }
+            codeCard.setAttribute('data-line-numbers', this.checked);
+        });
+
         // Progressive textarea enhancements
 
         const textarea = document.querySelector('textarea');
@@ -121,4 +135,28 @@ if (window.location.pathname === '/') {
             }
         });
     });
+
+    // Toast notification
+    function toast(message) {
+        // Remove existing toasts
+        if (document.querySelector('.toast')) {
+            document.querySelector('.toast').remove();
+        }
+
+        const template = `
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <span>${message}</span>
+            <div class="timeout">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+        `;
+
+        document.body.appendChild(document.createRange().createContextualFragment(template));
+
+        const toast = document.querySelector('.toast');
+
+        setTimeout(() => {toast.style.opacity = '0';}, 3000);
+        setTimeout(() => {toast.remove();}, 3500);
+    }
 }

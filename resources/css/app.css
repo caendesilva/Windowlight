@@ -72,3 +72,57 @@ pre code.torchlight .line-number,
 pre code.torchlight .summary-caret {
     @apply mr-4;
 }
+
+/*
+ Reactivity control to show/hide line numbers.
+ */
+#code-card[data-line-numbers="false"] .line-number {
+    @apply hidden;
+}
+
+/*
+ General helper classes
+ */
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding-top: 8px;
+    background-color: rgb(55 65 81);
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    animation: fadeIn 0.2s, fadeOut 0.5s 2.5s;
+}
+
+.toast span {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 4px;
+    display: inline-block;
+}
+
+.toast .progress-bar {
+    width: 0;
+    height: 4px;
+    background-color: rgb(37 99 235 / 75%);
+    border-radius: 2px;
+    animation: progress 3s linear forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes progress {
+    0% { width: 100%; }
+    100% { width: 0; }
+}
