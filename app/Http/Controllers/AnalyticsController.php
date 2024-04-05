@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Analytics\PageViewEvent;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class AnalyticsController extends Controller
@@ -72,7 +73,7 @@ class AnalyticsController extends Controller
     }
 
     /** @return array<string, int> */
-    protected function getStatsData(Collection $pageViews, array $traffic): array
+    protected function getStatsData(EloquentCollection $pageViews, array $traffic): array
     {
         return [
             'DB Records' => count($pageViews),
@@ -83,12 +84,12 @@ class AnalyticsController extends Controller
     }
 
     /** @return array<array{page: string, total: int, unique: int, percentage: float}> */
-    protected function getPagesData(Collection $pageViews): array
+    protected function getPagesData(EloquentCollection $pageViews): array
     {
         $domain = parse_url(url('/'), PHP_URL_HOST);
         $totalPageViews = $pageViews->count();
 
-        return $pageViews->groupBy('page')->map(function (Collection $pageViews, string $page) use ($domain, $totalPageViews): array {
+        return $pageViews->groupBy('page')->map(function (EloquentCollection $pageViews, string $page) use ($domain, $totalPageViews): array {
             return [
                 'page' => rtrim(Str::after($page, $domain), '/') ?: '/',
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
@@ -99,11 +100,11 @@ class AnalyticsController extends Controller
     }
 
     /** @return \Illuminate\Support\Collection<array{referrer: string, total: int, unique: int, percentage: float}> */
-    protected function getReferrersData(Collection $pageViews): \Illuminate\Support\Collection
+    protected function getReferrersData(EloquentCollection $pageViews): Collection
     {
         $totalPageViews = $pageViews->count();
 
-        return $pageViews->groupBy('referrer')->map(function (Collection $pageViews, ?string $referrer) use ($totalPageViews): array {
+        return $pageViews->groupBy('referrer')->map(function (EloquentCollection $pageViews, ?string $referrer) use ($totalPageViews): array {
             return [
                 'referrer' => $referrer ?: 'Direct / Unknown',
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
