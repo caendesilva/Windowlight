@@ -14,9 +14,11 @@ class AnalyticsController extends Controller
 {
     public function show(Request $request)
     {
+        $time = microtime(true);
+
         [$pageViews, $traffic, $stats, $pages, $referrers] = $this->getCachedData();
 
-        return view('analytics', [
+        $view = view('analytics', [
             'pageViews' => $pageViews,
             'stats' => $stats,
             'traffic' => $traffic,
@@ -24,7 +26,9 @@ class AnalyticsController extends Controller
             'referrers' => $referrers->where('is_ref', false),
             'refs' => $referrers->where('is_ref', true),
             'pageSize' => 15
-        ]);
+        ])->render();
+
+        return str_replace('__EXECUTION_TIME__', sprintf('%.2fms', (microtime(true) - $time) * 1000), $view);
     }
 
     public function raw(Request $request)

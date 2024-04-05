@@ -136,6 +136,9 @@
                         <br>
                         Learn more about the implementations at the bottom of this page.
                     </small>
+                    <small>
+                        Request served in __EXECUTION_TIME__.
+                    </small>
                 </p>
             </footer>
         </div>
