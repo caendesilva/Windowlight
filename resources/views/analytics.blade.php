@@ -43,15 +43,16 @@
                     <header class="flex justify-between items-center -mt-2 mb-2">
                         <h2 class="text-xl font-bold">Page Views</h2>
                     </header>
-                    <table class="table-auto w-full">
-                        <thead class="text-gray-600 dark:text-gray-400">
+                    <div class="overflow-x-auto">
+                        <table class="table-auto w-full">
+                            <thead class="text-gray-600 dark:text-gray-400">
                             <tr>
                                 <th class="text-start pb-2">Page</th>
                                 <th class="text-end pb-2">Visitors</th>
                                 <th class="text-end pb-2 pl-4">Views</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             @foreach($pages as $data)
                                 <tr>
                                     <td class="text-start">
@@ -63,8 +64,9 @@
                                     <td class="text-end pl-4">{{ $data['total'] }}</td>
                                 </tr>
                             @endforeach
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </section>
             </main>
 
