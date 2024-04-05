@@ -95,3 +95,9 @@ pre code.torchlight .summary-caret {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 9999;
 }
+.progress-bar {
+    width: 0;
+    height: 4px;
+    background-color: #ffcc00; /* Change color as needed */
+    border-radius: 2px;
+}
