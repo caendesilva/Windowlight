@@ -39,7 +39,7 @@
                     @endif
                 </section>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                     <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4 col-span-2">
                         <header class="flex justify-between items-center -mt-2 mb-2">
                             <h2 class="text-xl font-bold">Page Views</h2>
