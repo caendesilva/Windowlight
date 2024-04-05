@@ -14,17 +14,17 @@
 
             <main class="dark:text-gray-200 text-gray-800">
                 <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4 mt-4">
-                    <ul>
+                    <ul class="flex flex-row flex-wrap justify-center sm:justify-between items-center">
                         @foreach([
                             ['label' => 'Records', 'value' => count($pageViews)],
                             ['label' => 'Total Visits', 'value' => array_sum($traffic['total_visitor_counts'])],
                             ['label' => 'Unique Visitors', 'value' => array_sum($traffic['unique_visitor_counts'])],
                             ['label' => 'Days Tracked', 'value' => count($traffic['dates'])],
                         ] as $item)
-                            <li>
-                                <dl>
-                                    <dt>{{ $item['value'] }}</dt>
-                                    <dd>{{ $item['label'] }}</dd>
+                            <li class="px-2 my-2 sm:my-0 text-center">
+                                <dl class="flex flex-col">
+                                    <dt class="text-lg font-bold">{{ $item['value'] }}</dt>
+                                    <dd class="text-sm text-gray-600 dark:text-gray-400">{{ $item['label'] }}</dd>
                                 </dl>
                             </li>
                         @endforeach
