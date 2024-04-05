@@ -43,6 +43,24 @@
                     <header class="flex justify-between items-center -mt-2 mb-2">
                         <h2 class="text-xl font-bold">Page Views</h2>
                     </header>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Page</th>
+                                <th>Total Visitors</th>
+                                <th>Unique Visitors</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($pages as $data)
+                                <tr>
+                                    <td>{{ $data['page'] }}</td>
+                                    <td>{{ $data['total'] }}</td>
+                                    <td>{{ $data['unique'] }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </section>
             </main>
 
