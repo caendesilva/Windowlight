@@ -17,11 +17,26 @@ class PageViewEventFactory extends Factory
     public function definition(): array
     {
         return [
-            'page' => $this->faker->url,
-            'referrer' => $this->faker->url,
-            'user_agent' => $this->faker->userAgent,
+            'page' => $this->getPage(),
+            'referrer' => $this->getReferrer(),
+            'user_agent' => $this->getUserAgent(),
             'anonymous_id' => $this->getAnonymousId(),
         ];
+    }
+
+    public function getPage(): string
+    {
+        return $this->faker->url;
+    }
+
+    public function getReferrer(): string
+    {
+        return $this->faker->url;
+    }
+
+    public function getUserAgent(): string
+    {
+        return $this->faker->userAgent;
     }
 
     public function thisYear(): static
