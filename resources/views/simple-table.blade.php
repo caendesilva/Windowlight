@@ -1,23 +1,20 @@
 <table class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Page</th>
-        <th>Referrer</th>
-        <th>User Agent</th>
-        <th>Anonymous ID</th>
-        <th>Created At</th>
+        @foreach (array_keys($data->first()->toArray()) as $header)
+            <th>{{ ucfirst(str_replace('_', ' ', $header)) }}</th>
+        @endforeach
     </tr>
     </thead>
     <tbody>
     @foreach ($data as $entry)
+        @php
+            $entry = $entry->toArray();
+        @endphp
         <tr>
-            <td>{{ $entry['id'] }}</td>
-            <td>{{ $entry['page'] }}</td>
-            <td>{{ $entry['referrer'] ?: 'N/A' }}</td>
-            <td>{{ $entry['user_agent'] ?: 'N/A' }}</td>
-            <td>{{ $entry['anonymous_id'] }}</td>
-            <td>{{ $entry['created_at'] }}</td>
+            @foreach ($entry as $value)
+                <td>{{ $value ?: 'N/A' }}</td>
+            @endforeach
         </tr>
     @endforeach
     </tbody>
