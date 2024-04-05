@@ -7,6 +7,7 @@ use Database\Factories\Analytics\PageViewEventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 /**
@@ -88,5 +89,11 @@ class PageViewEvent extends Model
         }
 
         return Str::after(parse_url($url, PHP_URL_HOST), 'www.');
+    }
+
+    public function getCreatedAtAttribute(string $date): Carbon
+    {
+        // Include the timezone when casting the date to a string
+        return Carbon::parse($date)->settings(['toStringFormat' => 'Y-m-d H:i:s T']);
     }
 }
