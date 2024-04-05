@@ -85,10 +85,10 @@
                              class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4 col-span-2">
                         <header class="flex justify-between items-center -mt-2 mb-2">
                             <nav class="flex space-x-2">
-                                <button @click="tab = 'referrers'" :class="{ 'opacity-100': tab === 'referrers', 'opacity-50': tab !== 'referrers' }">
+                                <button @click="tab = 'referrers'; currentPage = 1; totalPages = Math.ceil({{ count($referrers->where('is_ref', false)) }} / 15)" :class="{ 'opacity-100': tab === 'referrers', 'opacity-50': tab !== 'referrers' }">
                                     <h2 class="text-xl font-bold">Referrers</h2>
                                 </button>
-                                <button @click="tab = 'refs'" :class="{ 'opacity-100': tab === 'refs', 'opacity-50': tab !== 'refs' }">
+                                <button @click="tab = 'refs'; currentPage = 1; totalPages = Math.ceil({{ count($referrers->where('is_ref', true)) }} / 15)" :class="{ 'opacity-100': tab === 'refs', 'opacity-50': tab !== 'refs' }">
                                     <h2 class="text-xl font-bold">Refs</h2>
                                 </button>
                             </nav>
