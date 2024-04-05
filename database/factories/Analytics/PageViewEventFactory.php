@@ -15,8 +15,6 @@ use Illuminate\Support\Str;
  */
 class PageViewEventFactory extends Factory
 {
-    protected bool $hasCustomReferrer = false;
-
     /**
      * Define the model's default state.
      *
@@ -103,13 +101,6 @@ class PageViewEventFactory extends Factory
 
     public function configure(): static
     {
-        // If a referrer was manually added to the create method, set user agent to null
-        if ($this->hasCustomReferrer) {
-            return $this->afterMaking(function (PageViewEvent $model) {
-                $model->user_agent = null;
-            });
-        }
-
         return $this->afterMaking(function (PageViewEvent $model) {
             // If the user agent is a bot, we'll set the referrer to null
             if (Str::contains($model->user_agent, ['bot', 'crawl', 'spider', 'slurp', 'search', 'yahoo', 'facebook'], true)) {
@@ -120,9 +111,7 @@ class PageViewEventFactory extends Factory
 
     public function withReferrer(string $referrer): static
     {
-        $this->hasCustomReferrer = true;
-
-        return $this->state(['referrer' => $referrer]);
+        return $this->state(['referrer' => $referrer, 'user_agent' => null]);
     }
 
     public function thisYear(): static
