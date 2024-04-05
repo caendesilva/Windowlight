@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Analytics\PageViewEvent;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -38,7 +39,7 @@ class AnalyticsController extends Controller
         ]);
     }
 
-    public function json(Request $request)
+    public function json(Request $request): JsonResponse
     {
         // Unless ?pretty=false is passed, we'll return pretty-printed JSON
         return response()->json(PageViewEvent::all(), options: $request->query('pretty') === 'false' ? 0 : JSON_PRETTY_PRINT);
