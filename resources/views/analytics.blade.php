@@ -66,7 +66,7 @@
                                 @include('components.analytics.table-padding-row', ['records' => $pages, 'pageSize' => $pageSize])
                                 </tbody>
                                 <tfoot>
-                                    @include('components.analytics.table-navigation')
+                                @include('components.analytics.table-navigation')
                                 </tfoot>
                             </table>
                         </div>
