@@ -112,7 +112,7 @@ class PageViewEventFactory extends Factory
 
             // Filter out only routes with a URL (excluding routes with parameters)
             $routes = collect($routes)->filter(function (\Illuminate\Routing\Route $route): bool {
-                return $route->uri() !== '' && in_array('web', $route->middleware()) && !str_contains($route->uri(), '{')  && !str_starts_with($route->uri(), 'sanctum');
+                return $route->uri() !== '' && in_array('web', $route->middleware()) && ! str_contains($route->uri(), '{') && ! str_starts_with($route->uri(), 'sanctum');
             });
 
             $routes = $routes->pluck('uri')->unique()->values();
@@ -125,14 +125,14 @@ class PageViewEventFactory extends Factory
 
             // Calculate probabilities based on the given distribution
             for ($i = 0; $i < $count; $i++) {
-                $probability = 1 / (0.25 + log($i/0.75 + 1));
+                $probability = 1 / (0.25 + log($i / 0.75 + 1));
                 $total_probability += $probability;
                 $probabilities[] = $probability;
             }
 
             // Normalize probabilities so their sum equals 100
             $scaling_factor = 100 / $total_probability;
-            $probabilities = array_map(function($prob) use ($scaling_factor) {
+            $probabilities = array_map(function ($prob) use ($scaling_factor) {
                 return $prob * $scaling_factor;
             }, $probabilities);
 
@@ -141,8 +141,10 @@ class PageViewEventFactory extends Factory
             foreach ($routes as $index => $string) {
                 $result[$string] = $probabilities[$index];
             }
+
             $routes = collect($result);
         }
+
         return $routes;
     }
 }
