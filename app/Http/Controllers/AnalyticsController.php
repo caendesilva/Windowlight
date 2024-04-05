@@ -18,17 +18,16 @@ class AnalyticsController extends Controller
 
         [$pageViews, $traffic, $stats, $pages, $referrers] = $this->getCachedData();
 
-        $view = view('analytics', [
+        return view('analytics', [
             'pageViews' => $pageViews,
             'stats' => $stats,
             'traffic' => $traffic,
             'pages' => $pages,
             'referrers' => $referrers->where('is_ref', false),
             'refs' => $referrers->where('is_ref', true),
-            'pageSize' => 15
-        ])->render();
-
-        return str_replace('__EXECUTION_TIME__', sprintf('%.2fms', (microtime(true) - $time) * 1000), $view);
+            'pageSize' => 15,
+            'time' => sprintf('%.2fms', (microtime(true) - $time) * 1000)
+        ]);
     }
 
     public function raw(Request $request)
