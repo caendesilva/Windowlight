@@ -48,7 +48,7 @@
                             <tr>
                                 <th class="text-start pb-2">Page</th>
                                 <th class="text-end pb-2">Visitors</th>
-                                <th class="text-end pb-2">Views</th>
+                                <th class="text-end pb-2 pl-4">Views</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,7 +60,7 @@
                                         </div>
                                     </td>
                                     <td class="text-end">{{ $data['unique'] }}</td>
-                                    <td class="text-end">{{ $data['total'] }}</td>
+                                    <td class="text-end pl-4">{{ $data['total'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
