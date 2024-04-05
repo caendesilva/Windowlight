@@ -140,7 +140,9 @@ if (window.location.pathname === '/') {
     function toast(message) {
         const toast = document.createElement('div');
         toast.className = 'toast';
-        toast.textContent = message;
+        const span = document.createElement('span');
+        span.textContent = message;
+        toast.appendChild(span);
 
         // Add a timeout bar
         const timeout = document.createElement('div');
