@@ -5,6 +5,7 @@ namespace App\Models\Analytics;
 use Database\Factories\Analytics\CodeGenerationEventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * To get insights on how often code generation is used, we collect anonymous usage statistics.
@@ -35,4 +36,10 @@ class CodeGenerationEvent extends Model
     ];
 
     public const UPDATED_AT = null;
+
+    public function getCreatedAtAttribute(string $date): Carbon
+    {
+        // Include the timezone when casting the date to a string
+        return Carbon::parse($date)->settings(['toStringFormat' => 'Y-m-d H:i:s T']);
+    }
 }
