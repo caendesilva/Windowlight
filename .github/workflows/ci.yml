@@ -24,7 +24,13 @@ jobs:
         run: npm run build
       - name: Find branch
         id: branch
-        run: echo ::set-output name=branch::${GITHUB_REF#refs/heads/}
+        run: |
+          if [ -z "${{ github.event.pull_request.base.ref }}" ]; then
+              echo ::set-output name=branch::${{ github.event.pull_request.base.ref }}
+          else
+              echo ::set-output name=branch::main
+          fi
+
       - name: Commit build
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
