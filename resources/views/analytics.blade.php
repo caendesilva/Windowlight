@@ -53,49 +53,51 @@
         </div>
     </div>
 
-    <!-- Include Chart.js library -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @push('scripts')
+        <!-- Include Chart.js library -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Get the data from PHP
-            const dates = @json($traffic['dates']);
-            const totalVisitorCounts = @json($traffic['total_visitor_counts']);
-            const uniqueVisitorCounts = @json($traffic['unique_visitor_counts']);
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Get the data from PHP
+                const dates = @json($traffic['dates']);
+                const totalVisitorCounts = @json($traffic['total_visitor_counts']);
+                const uniqueVisitorCounts = @json($traffic['unique_visitor_counts']);
 
-            // Create the chart
-            const ctx = document.getElementById('pageViewsChart').getContext('2d');
-            const pageViewsChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: dates,
-                    datasets: [{
-                        label: 'Total Visitors',
-                        data: totalVisitorCounts,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1,
-                    }, {
-                        label: 'Unique Visitors',
-                        data: uniqueVisitorCounts,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1,
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
+                // Create the chart
+                const ctx = document.getElementById('pageViewsChart').getContext('2d');
+                const pageViewsChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: dates,
+                        datasets: [{
+                            label: 'Total Visitors',
+                            data: totalVisitorCounts,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1,
+                        }, {
+                            label: 'Unique Visitors',
+                            data: uniqueVisitorCounts,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1,
+                        }]
                     },
-                    interaction: {
-                        intersect: false,
-                        mode: 'index',
-                    },
-                    pointStyle: false
-                }
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        },
+                        interaction: {
+                            intersect: false,
+                            mode: 'index',
+                        },
+                        pointStyle: false
+                    }
+                });
             });
-        });
-    </script>
+        </script>
+    @endpush
 </x-app-layout>
