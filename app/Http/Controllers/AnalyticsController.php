@@ -103,6 +103,7 @@ class AnalyticsController extends Controller
             'Total Visits' => array_sum($traffic['total_visitor_counts']),
             'Unique Visitors' => array_sum($traffic['unique_visitor_counts']),
             'Days Tracked' => count($traffic['dates']),
+            'Referrers' => $pageViews->groupBy('referrer')->count(),
         ];
     }
 
