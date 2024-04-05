@@ -142,7 +142,7 @@ class PageViewEventFactory extends Factory
 
             // Calculate probabilities based on the given distribution
             for ($i = 0; $i < $count; $i++) {
-                $probability = 1 / (0.25 + log($i / 0.75 + 1) + (log(max(($i ?: 1) * 2.5, 5), 2) / 2) / 2);
+                $probability = 1 / (0.5 + log(($i ?: .5) *1.25) + (log(max(($i ?: 1) * 15, 3), 2) / 2) / 2) - ($i *0.01);
                 $total_probability += $probability;
                 $probabilities[] = $probability;
             }
