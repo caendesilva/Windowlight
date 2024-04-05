@@ -54,7 +54,11 @@
                         <tbody>
                             @foreach($pages as $data)
                                 <tr>
-                                    <td class="text-start">{{ $data['page'] }}</td>
+                                    <td class="text-start">
+                                        <div class="whitespace-nowrap rounded px-2 mb-1" style="background-color: #d9edfc; width: {{ $data['percentage'] * 1 }}rem">
+                                            {{ $data['page'] }}
+                                        </div>
+                                    </td>
                                     <td class="text-end">{{ $data['unique'] }}</td>
                                     <td class="text-end">{{ $data['total'] }}</td>
                                 </tr>

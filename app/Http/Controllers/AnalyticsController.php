@@ -80,16 +80,18 @@ class AnalyticsController extends Controller
         ];
     }
 
-    /** @return array<array{page: string, total: int, unique: int}> */
+    /** @return array<array{page: string, total: int, unique: int, percentage: float}> */
     protected function getPagesData(Collection $pageViews): array
     {
         $domain = parse_url(url('/'), PHP_URL_HOST);
+        $totalPageViews = $pageViews->count();
 
-        return $pageViews->groupBy('page')->map(function (Collection $pageViews, string $page) use ($domain): array {
+        return $pageViews->groupBy('page')->map(function (Collection $pageViews, string $page) use ($domain, $totalPageViews): array {
             return [
                 'page' => rtrim(Str::after($page, $domain), '/') ?: '/',
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
                 'total' => $pageViews->count(),
+                'percentage' => $totalPageViews > 0 ? ($pageViews->count() / $totalPageViews) * 100 : 0,
             ];
         })->sortByDesc('total')->values()->toArray();
     }
