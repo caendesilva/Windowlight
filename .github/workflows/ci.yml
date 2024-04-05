@@ -22,22 +22,22 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Find branch
-        id: branch
-        run: |
-          if [ -z "${{ github.event.pull_request.base.ref }}" ]; then
-              echo ::set-output name=branch::${{ github.event.pull_request.base.ref }}
-          else
-              echo ::set-output name=branch::main
-          fi
-
-      - name: Commit build
+      - name: Commit build to main
+        if: github.event_name == 'push'
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add public
           git commit -m "Build assets for production" || exit 0
-          git push origin HEAD:${{ steps.branch.outputs.branch }}
+          git push
+      - name: Commit build to pull request
+        if: github.event_name == 'pull_request'
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add public
+          git commit -m "Build assets for pull request" || exit 0
+          git push origin HEAD:refs/heads/$GITHUB_HEAD_REF
 
   style:
     runs-on: ubuntu-latest
