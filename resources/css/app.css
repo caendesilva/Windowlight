@@ -94,6 +94,7 @@ pre code.torchlight .summary-caret {
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     z-index: 9999;
+    animation: fadeIn 0.2s, fadeOut 0.5s 2.5s;
 }
 
 .toast span {
@@ -109,6 +110,16 @@ pre code.torchlight .summary-caret {
     background-color: rgb(37 99 235 / 75%);
     border-radius: 2px;
     animation: progress 3s linear forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 @keyframes progress {
