@@ -24,5 +24,15 @@ class CodeGenerationEvent extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'language',
+        'hasMenubar',
+        'hasLineNumbers',
+        'hasMenuButtons',
+        'hasMenubarText',
+        'background',
+        'lines',
+    ];
+
     public const UPDATED_AT = null;
 }
