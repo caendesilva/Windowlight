@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('code_generation_events', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('language');
+            $table->boolean('hasMenubar');
+            $table->boolean('hasLineNumbers');
+            $table->boolean('hasMenuButtons');
+            $table->boolean('hasMenubarText');
+            $table->string('background');
+            $table->integer('lines');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
