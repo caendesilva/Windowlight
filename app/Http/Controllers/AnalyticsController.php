@@ -14,11 +14,13 @@ class AnalyticsController extends Controller
         $pageViews = PageViewEvent::all();
         $traffic = $this->getTrafficData();
         $stats = $this->getStatsData($pageViews, $traffic);
+        $pages = $this->getPagesData($pageViews);
 
         return view('analytics', [
             'pageViews' => $pageViews,
             'stats' => $stats,
             'traffic' => $traffic,
+            'pages' => $pages,
         ]);
     }
 
@@ -75,5 +77,11 @@ class AnalyticsController extends Controller
             'Unique Visitors' => array_sum($traffic['unique_visitor_counts']),
             'Days Tracked' => count($traffic['dates']),
         ];
+    }
+
+    /** @return array<array{page: string, total_visits: int, unique_visitors: int}> */
+    protected function getPagesData(Collection $pageViews): array
+    {
+        return []; // Todo
     }
 }
