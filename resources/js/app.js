@@ -147,6 +147,11 @@ if (window.location.pathname === '/') {
         </div>
         `;
 
+        // Remove existing toasts
+        if (document.querySelector('.toast')) {
+            document.querySelector('.toast').remove();
+        }
+
         document.body.appendChild(document.createRange().createContextualFragment(template));
 
         const toast = document.querySelector('.toast');
