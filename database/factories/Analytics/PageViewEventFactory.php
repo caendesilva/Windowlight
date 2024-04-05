@@ -45,7 +45,7 @@ class PageViewEventFactory extends Factory
 
         // Add a chance to prepend a ref query parameter
         if ($this->faker->boolean(1)) {
-            $referrer = '?ref=' . $referrer;
+            $referrer = '?ref='.$referrer;
         }
 
         return $referrer;
