@@ -29,8 +29,9 @@ class PageViewEventFactory extends Factory
     protected function getPage(): string
     {
         // Select a random route based on the given probabilities
+        $route = $this->getRoutes()->random();
 
-        return url($this->getRoutes()->random());
+        return url($route);
     }
 
     protected function getReferrer(): ?string
