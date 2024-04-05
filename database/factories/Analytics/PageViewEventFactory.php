@@ -35,7 +35,7 @@ class PageViewEventFactory extends Factory
 
     public function getReferrer(): ?string
     {
-        $chanceOfBeingUnknown = 50;
+        $chanceOfBeingUnknown = 40;
 
         if ($this->faker->boolean($chanceOfBeingUnknown)) {
             return null;
