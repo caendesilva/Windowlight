@@ -42,6 +42,7 @@ class AnalyticsController extends Controller
     public function json(Request $request): JsonResponse
     {
         // Unless ?pretty=false is passed, we'll return pretty-printed JSON
+
         return response()->json(PageViewEvent::all(), options: $request->query('pretty') === 'false' ? 0 : JSON_PRETTY_PRINT);
     }
 
