@@ -1,3 +1,12 @@
+@php
+$format = function (mixed $value): string {
+    if (is_bool($value) || (is_int($value) && ($value === 0 || $value === 1))) {
+        return $value ? 'true' : 'false';
+    }
+
+    return (string) $value ?: 'N/A';
+};
+@endphp
 <table class="table">
     <thead>
     <tr>
@@ -13,7 +22,7 @@
         @endphp
         <tr>
             @foreach ($entry as $value)
-                <td>{{ $value ?: 'N/A' }}</td>
+                <td>{{ $format($value) }}</td>
             @endforeach
         </tr>
     @endforeach
