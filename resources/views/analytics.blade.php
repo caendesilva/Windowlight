@@ -94,7 +94,7 @@
                         </header>
 
                         <div class="overflow-x-auto">
-                            <table class="table-auto w-full">
+                            <table class="table-auto w-full" x-data="{ currentPage: 1, pageSize: 15, totalPages: Math.ceil({{ count($referrers->where('is_ref', false)) }} / 15) }">
                                 <thead class="text-gray-600 dark:text-gray-400">
                                 <tr>
                                     <th class="text-start pb-2 pr-2">
@@ -107,7 +107,7 @@
                                 </thead>
                                 <tbody x-show="tab === 'referrers'">
                                     @foreach($referrers->where('is_ref', false) as $data)
-                                        <tr class="group">
+                                        <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
                                             <td class="text-start pr-2">
                                                 <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; max-width: 50vw;">
                                                     {{ $data['referrer'] }}
@@ -120,7 +120,7 @@
                                 </tbody>
                                 <tbody x-show="tab === 'refs'" x-cloak>
                                     @foreach($referrers->where('is_ref', true) as $data)
-                                        <tr class="group">
+                                        <tr class="group" x-show="currentPage * pageSize > {{ $loop->index }} && {{ $loop->index }} >= (currentPage - 1) * pageSize" {{ $loop->index >= $loop->count - 2 ? 'x-cloak' : '' }}>
                                             <td class="text-start pr-2">
                                                 <div class="whitespace-nowrap rounded px-2 mb-1 bg-[#D9EDFC] group-hover:bg-[#B9DEF9]" style="width: {{ round($data['percentage'] * 2) }}%; max-width: 50vw;">
                                                     {{ \Illuminate\Support\Str::after($data['referrer'], '?ref=') }}
@@ -131,6 +131,17 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                <tr x-show="totalPages > 1" x-cloak="">
+                                    <td colspan="3" class="text-sm pt-3">
+                                        <div class="flex justify-between">
+                                            <button @click="currentPage = currentPage > 1 ? currentPage - 1 : 1">Previous</button>
+                                            <span class="mx-2">Page <span x-text="currentPage"></span> of <span x-text="totalPages"></span></span>
+                                            <button @click="currentPage = currentPage < totalPages ? currentPage + 1 : totalPages">Next</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </section>
