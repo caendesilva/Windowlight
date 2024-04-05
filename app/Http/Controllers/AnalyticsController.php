@@ -6,6 +6,7 @@ use App\Models\Analytics\PageViewEvent;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class AnalyticsController extends Controller
 {
@@ -83,8 +84,10 @@ class AnalyticsController extends Controller
     protected function getPagesData(Collection $pageViews): array
     {
         return $pageViews->groupBy('page')->map(function (Collection $pageViews, string $page): array {
+            $domain = parse_url(url('/'), PHP_URL_HOST);
+
             return [
-                'page' => $page,
+                'page' => rtrim(Str::after($page, $domain), '/') ?: '/',
                 'total' => $pageViews->count(),
                 'unique' => $pageViews->groupBy('anonymous_id')->count(),
             ];
