@@ -22,11 +22,11 @@
                             <fieldset class="w-full lg:w-1/2 xl:w-2/3 px-4">
                                 <legend class="mb-2">
                                     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                                        Code
+                                        Code input
                                     </h2>
                                 </legend>
                                 <div class="mb-4">
-                                    <x-input-label for="code" value="Code input" />
+                                    <x-input-label for="code" value="Enter your code here" />
                                     <x-textarea class="block w-full" id="code" name="code" rows="8" required>{{ $input }}</x-textarea>
                                     <x-input-error :messages="$errors->get('code')" class="mt-2" />
                                 </div>
