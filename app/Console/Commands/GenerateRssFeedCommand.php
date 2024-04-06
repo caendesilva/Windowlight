@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Providers\HydeServiceProvider;
+use Hyde\Framework\Actions\PostBuildTasks\GenerateRssFeed;
 use Illuminate\Console\Command;
 
 /**
@@ -17,8 +19,8 @@ class GenerateRssFeedCommand extends Command
 
     public function handle(): int
     {
-        //
+        app()->register(HydeServiceProvider::class);
 
-        return Command::SUCCESS;
+        return (new GenerateRssFeed())->run($this->output);
     }
 }
