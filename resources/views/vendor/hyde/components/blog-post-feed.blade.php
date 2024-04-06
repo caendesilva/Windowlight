@@ -1,3 +1,3 @@
-@foreach($posts ?? MarkdownPost::getLatestPosts() as $post)
+@foreach($posts as $post)
     @include('hyde::components.article-excerpt')
 @endforeach
