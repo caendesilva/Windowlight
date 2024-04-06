@@ -12,7 +12,7 @@ use Illuminate\View\View;
  * The controller for the Windowlight code snippet generator.
  *
  * Improvement ideas: (PRs welcome!)
- * 
+ *
  * Todo: Support multiple background shadow sizes
  * Todo: Support multiple padding sizes
  * Todo: Support background gradients
