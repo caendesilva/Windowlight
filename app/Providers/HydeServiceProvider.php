@@ -23,9 +23,7 @@ class HydeServiceProvider extends ServiceProvider
 
         // Register facade aliases to use in the views
         $loader = AliasLoader::getInstance();
-        $aliases = $this->getAliases();
-
-        foreach ($aliases as $alias => $class) {
+        foreach ($this->getAliases() as $alias => $class) {
             $loader->alias($alias, $class);
         }
 
