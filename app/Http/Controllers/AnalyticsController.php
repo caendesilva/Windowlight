@@ -118,6 +118,8 @@ class AnalyticsController extends Controller
             'Days Tracked' => count($traffic['dates']),
             'Referrers' => $pageViews->groupBy('referrer')->count(),
             'Generated Images' => $generatedImages->count(),
+            'Lines Rendered' => $generatedImages->sum('lines'),
+            'Code Languages' => count($this->getPopularLanguages($generatedImages, PHP_INT_MAX)),
         ];
     }
 
@@ -154,10 +156,10 @@ class AnalyticsController extends Controller
     }
 
     /** @return array<string, int> */
-    protected function getPopularLanguages(EloquentCollection $generatedImages): array
+    protected function getPopularLanguages(EloquentCollection $generatedImages, int $limit = 10): array
     {
         return $generatedImages->groupBy('language')->mapWithKeys(fn(EloquentCollection $events, string $language): array => [
             $language => $events->count(),
-        ])->sort()->take(-10)->all();
+        ])->sort()->take(-$limit)->all();
     }
 }
