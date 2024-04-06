@@ -215,13 +215,13 @@
         function render() {
             const codeCard = document.getElementById('code-card-wrapper');
 
-            html2canvas(codeCard, {
-                scale: 4, // Increase DPI (Resolution)
+            htmlToImage.toPng(codeCard, {
+                pixelRatio: 4, // Increase DPI (Resolution)
                 @if($background === 'transparent')
                 backgroundColor: null, // Transparent background fix
                 @endif
-            }).then(canvas => {
-                downloadImage(canvas.toDataURL());
+            }).then(function (dataUrl) {
+                downloadImage(dataUrl);
             });
         }
 
@@ -234,5 +234,5 @@
         }
     </script>
 
-    <script defer src="{{ asset('vendor/html2canvas.min.js') }}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
 </x-app-layout>
