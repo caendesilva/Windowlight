@@ -43,6 +43,9 @@ class BlogPostReads
         $data = PageViewEvent::all()
             ->groupBy('page')
             ->map(fn (Collection $views): int => $views->count())
+            ->reject(function (int $count, string $page): bool {
+                return ! str_contains($page, 'posts/');
+            })
             ->toArray();
 
         static::$reads = $data;
