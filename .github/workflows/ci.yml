@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        # We need the Composer dependencies to generate Tailwind for vendor classes
+        # It would be great if we could cache all of this as the PHP setup is so slow.
+        # We don't actually need to execute any PHP code once we have the vendor files.
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
