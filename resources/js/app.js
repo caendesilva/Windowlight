@@ -123,6 +123,17 @@ if (window.location.pathname === '/') {
             codeCard.setAttribute('data-line-numbers', this.checked);
         });
 
+        // Shadow change
+        const useShadow = document.getElementById('useShadow');
+
+        useShadow.addEventListener('change', function () {
+            if (this.checked) {
+                codeCard.classList.add('shadow-lg');
+            } else {
+                codeCard.classList.remove('shadow-lg');
+            }
+        });
+
         // Progressive textarea enhancements
 
         const textarea = document.querySelector('textarea');

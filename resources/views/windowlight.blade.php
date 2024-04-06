@@ -129,6 +129,14 @@
                                                     </label>
                                                     <x-input-error :messages="$errors->get('headerButtons')" class="mt-2" />
                                                 </li>
+                                                <li class="mb-2">
+                                                    <label class="font-medium text-base text-gray-700 dark:text-gray-300 mb-1 inline-flex items-center cursor-pointer">
+                                                        <span class="me-3 ">Background shadow</span>
+                                                        <input type="checkbox" value="on" {{ $useShadow ? 'checked' : '' }} name="useShadow" id="useShadow" class="sr-only peer">
+                                                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                                    </label>
+                                                    <x-input-error :messages="$errors->get('useShadow')" class="mt-2" />
+                                                </li>
                                             </ul>
                                         </fieldset>
                                     </div>
@@ -155,7 +163,7 @@
                         </h2>
                         <x-primary-button id="download">Download</x-primary-button>
                     </header>
-                    <div class="flex justify-center">
+                    <div class="flex justify-center my-4">
                         @include('windowlight.result')
                     </div>
                 </section>
@@ -207,13 +215,13 @@
         function render() {
             const codeCard = document.getElementById('code-card-wrapper');
 
-            html2canvas(codeCard, {
-                scale: 4, // Increase DPI (Resolution)
+            htmlToImage.toPng(codeCard, {
+                pixelRatio: 4, // Increase DPI (Resolution)
                 @if($background === 'transparent')
                 backgroundColor: null, // Transparent background fix
                 @endif
-            }).then(canvas => {
-                downloadImage(canvas.toDataURL());
+            }).then(function (dataUrl) {
+                downloadImage(dataUrl);
             });
         }
 
@@ -226,5 +234,5 @@
         }
     </script>
 
-    <script defer src="{{ asset('vendor/html2canvas.min.js') }}"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
 </x-app-layout>
