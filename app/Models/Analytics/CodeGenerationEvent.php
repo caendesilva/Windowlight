@@ -3,6 +3,7 @@
 namespace App\Models\Analytics;
 
 use App\Concerns\AnalyticsDateFormatting;
+use App\Contracts\Torchlight;
 use Database\Factories\Analytics\CodeGenerationEventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -37,4 +38,16 @@ class CodeGenerationEvent extends Model
         'background',
         'lines',
     ];
+
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function (self $model): void {
+            // If the language is invalid, set it to plain text
+            if (! in_array($model->language, Torchlight::LANGUAGES)) {
+                $model->language = 'plaintext';
+            }
+        });
+    }
 }
