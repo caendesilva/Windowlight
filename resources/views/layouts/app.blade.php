@@ -8,7 +8,7 @@
 
         <link rel="canonical" href="{{ $canonical }}" />
         <meta name="description" content="Windowlight is a simple wrapper for Torchlight, helping you to create beautiful code screenshots. Because your code screenshots deserve the same love as your documentation." />
-        <meta name="author" content="Caen De Silva" />
+        <meta name="author" content="https://twitter.com/CodeWithCaen" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="Torchlight, Laravel, TailwindCSS, JavaScript, Code, Syntax Highlighting, Code Screenshot, Windowlight" />
         <meta name="twitter:card" content="summary_large_image" />
