@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Providers\HydeServiceProvider;
-use Hyde\Foundation\Facades\Routes;
 use App\Console\Commands\BuildTasks\GenerateSitemap;
 use App\Helpers\Hyde\LaravelPage;
+use Hyde\Foundation\Facades\Routes;
 use Hyde\Support\Models\Route;
 use Illuminate\Console\Command;
 
