@@ -38,6 +38,7 @@ You can send feedback using the Twitter/X <a href="https://twitter.com/search?q=
 
 If you need to report a security issue, please contact me directly at caen@desilva.se, with details at <a href="https://git.desilva.se/security/" rel="nofollow">git.desilva.se/security</a>.
 
+<a id="terms-of-service"></a>
 ## Terms and Conditions
 
 ### General Terms
@@ -50,6 +51,7 @@ I'm acting in good faith and ask that you do as well.
 
 To prevent abuse and excessive load on both my server and the Torchlight API, there are some very generous rate limits of **30 requests per minute** or **1000 requests per day**, whichever comes first.
 
+<a name="privacy-policy"></a>
 ### Privacy Policy
 
 Windowlight does not store any of your code, or any of the images generated. We do store some basic analytics that are designed with privacy in mind.

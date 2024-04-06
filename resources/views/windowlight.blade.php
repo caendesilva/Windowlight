@@ -12,7 +12,7 @@
             @include('header')
         </div>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">
+        <main class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">
             <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <div class="text-gray-900 dark:text-gray-100">
                     <form method="POST" action="{{ route('windowlight.store') }}">
@@ -144,7 +144,7 @@
                     </form>
                 </div>
             </section>
-        </div>
+        </main>
 
         @if($result)
             <div id="result-section" class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-8">

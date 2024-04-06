@@ -1,10 +1,12 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './vendor/hyde/framework/resources/views/components/post/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
@@ -14,8 +16,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        maxWidth: '80ch',
+                    },
+                },
+            },
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, typography],
 };

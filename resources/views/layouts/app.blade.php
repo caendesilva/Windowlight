@@ -44,7 +44,7 @@
         <style>[x-cloak] { display: none !important; }</style>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -57,9 +57,9 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <div {{ $attributes }}>
                 {{ $slot }}
-            </main>
+            </div>
         </div>
     </body>
 
