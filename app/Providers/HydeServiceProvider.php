@@ -29,7 +29,9 @@ class HydeServiceProvider extends ServiceProvider
         $this->loadViewsFrom(base_path('vendor/hyde/framework/resources/views'), 'hyde');
 
         // Merge Hyde configuration settings
-        $this->app->make('config')->set('hyde', $this->getHydeConfig());
+        foreach ($this->getHydeConfig() as $config => $data) {
+            $this->app->make('config')->set($config, $data);
+        }
     }
 
     /**
@@ -54,11 +56,13 @@ class HydeServiceProvider extends ServiceProvider
         ];
     }
 
-    /** @return array<string, mixed> */
+    /** @return array<string, array<string, mixed>> */
     protected function getHydeConfig(): array
     {
         return [
-            'pretty_urls' => true,
+            'hyde' => [
+                'pretty_urls' => true,
+            ]
         ];
     }
 }
