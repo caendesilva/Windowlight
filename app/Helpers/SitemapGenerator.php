@@ -22,4 +22,25 @@ class SitemapGenerator extends HydeSitemapGenerator
 
         return $this;
     }
+
+    protected function getPriority(string $pageClass, string $slug): string
+    {
+        if ($slug === '/') {
+            return '1.0';
+        }
+
+        if ($slug === 'about') {
+            return '0.9';
+        }
+
+        if ($slug === 'examples') {
+            return '0.75';
+        }
+
+        if ($slug === 'analytics') {
+            return '0.6';
+        }
+
+        return parent::getPriority($pageClass, $slug);
+    }
 }
