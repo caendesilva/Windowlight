@@ -1,5 +1,5 @@
-<x-app-layout :title="$title">
-    <div class="py-12">
+<x-app-layout :title="$title" class="flex flex-col h-full flex-grow">
+    <div class="py-12 flex-grow">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             {{ $slot }}
         </div>
