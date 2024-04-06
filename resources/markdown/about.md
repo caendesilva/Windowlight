@@ -61,6 +61,7 @@ Windowlight does not store any of your code, or any of the images generated. We 
 - If the request is made by a bot, we will also store the user agent string.
 - We do not store any IP addresses or any other personal information.
 - We use a custom hashing algorithm to anonymize request identifiers, solely for the purpose of calculating unique visit counts. These cannot be reversed to identify individual users.
+- We also store statistics about the generated images, such as the language used, the number of lines, and the options selected. This is so we can improve the service by knowing what features are most used.
 
 All analytics data is public and can be viewed at [https://windowlight.desilva.se/analytics](https://windowlight.desilva.se/analytics).
 
