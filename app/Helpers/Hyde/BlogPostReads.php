@@ -47,6 +47,7 @@ class BlogPostReads
             })
             ->mapWithKeys(function (int $count, string $page): array {
                 $page = Str::after($page, 'posts/');
+
                 return [$page => $count];
             })
             ->toArray();

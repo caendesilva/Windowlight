@@ -6,7 +6,6 @@ use App\Concerns\AnalyticsDateFormatting;
 use Database\Factories\Analytics\CodeGenerationEventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 
 /**
  * To get insights on how often code generation is used, we collect anonymous usage statistics.
@@ -24,8 +23,8 @@ use Illuminate\Support\Carbon;
  */
 class CodeGenerationEvent extends Model
 {
-    use HasFactory;
     use AnalyticsDateFormatting;
+    use HasFactory;
 
     public const UPDATED_AT = null;
 

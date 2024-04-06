@@ -8,7 +8,6 @@ use Database\Factories\Analytics\PageViewEventFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
 
 /**

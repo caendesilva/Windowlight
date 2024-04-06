@@ -158,7 +158,7 @@ class AnalyticsController extends Controller
     /** @return array<string, int> */
     protected function getPopularLanguages(EloquentCollection $generatedImages, int $limit = 10): array
     {
-        return $generatedImages->groupBy('language')->mapWithKeys(fn(EloquentCollection $events, string $language): array => [
+        return $generatedImages->groupBy('language')->mapWithKeys(fn (EloquentCollection $events, string $language): array => [
             $language => $events->count(),
         ])->sort()->take(-$limit)->all();
     }

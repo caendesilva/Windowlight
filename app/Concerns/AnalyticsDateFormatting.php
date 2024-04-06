@@ -2,9 +2,7 @@
 
 namespace App\Concerns;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
 
 trait AnalyticsDateFormatting
 {
