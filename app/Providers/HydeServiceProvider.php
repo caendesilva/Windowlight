@@ -19,6 +19,9 @@ class HydeServiceProvider extends ServiceProvider
 
             return $kernel;
         });
+
+        // Define the view hint path for the Hyde package
+        $this->loadViewsFrom(base_path('vendor/hyde/framework/resources/views'), 'hyde');
     }
 
     /**
