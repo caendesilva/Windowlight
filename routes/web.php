@@ -4,6 +4,7 @@ use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\MarkdownViewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WindowlightController;
+use App\Http\Controllers\HydeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +35,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('hyde')->group(function () {
-    //
+    Route::get('/posts', [HydeController::class, 'posts'])->name('posts');
 });
 
 require __DIR__.'/auth.php';
