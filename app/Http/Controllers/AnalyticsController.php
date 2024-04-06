@@ -68,7 +68,7 @@ class AnalyticsController extends Controller
         $generatedCodes = CodeGenerationEvent::all();
 
         $traffic = $this->getTrafficData();
-        $stats = $this->getStatsData($pageViews, $traffic);
+        $stats = $this->getStatsData($pageViews, $generatedCodes, $traffic);
         $pages = $this->getPagesData($pageViews);
         $referrers = $this->getReferrersData($pageViews);
 
@@ -111,7 +111,7 @@ class AnalyticsController extends Controller
     }
 
     /** @return array<string, int> */
-    protected function getStatsData(EloquentCollection $pageViews, array $traffic): array
+    protected function getStatsData(EloquentCollection $pageViews, EloquentCollection $generatedCodes, array $traffic): array
     {
         return [
             'DB Records' => count($pageViews),
@@ -119,6 +119,7 @@ class AnalyticsController extends Controller
             'Unique Visitors' => array_sum($traffic['unique_visitor_counts']),
             'Days Tracked' => count($traffic['dates']),
             'Referrers' => $pageViews->groupBy('referrer')->count(),
+            'Generated Images' => $generatedCodes->count(),
         ];
     }
 
