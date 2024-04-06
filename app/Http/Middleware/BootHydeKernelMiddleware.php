@@ -6,6 +6,9 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * This middleware boots the Hyde kernel for routes that require it.
+ */
 class BootHydeKernelMiddleware
 {
     /**
