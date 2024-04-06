@@ -65,14 +65,14 @@ class AnalyticsController extends Controller
     protected function getData(): array
     {
         $pageViews = PageViewEvent::all();
-        $generatedCodes = CodeGenerationEvent::all();
+        $generatedImages = CodeGenerationEvent::all();
 
         $traffic = $this->getTrafficData();
-        $stats = $this->getStatsData($pageViews, $generatedCodes, $traffic);
+        $stats = $this->getStatsData($pageViews, $generatedImages, $traffic);
         $pages = $this->getPagesData($pageViews);
         $referrers = $this->getReferrersData($pageViews);
 
-        $languages = $generatedCodes->groupBy('language')->mapWithKeys(fn (EloquentCollection $events, string $language): array => [
+        $languages = $generatedImages->groupBy('language')->mapWithKeys(fn (EloquentCollection $events, string $language): array => [
             $language => $events->count(),
         ])->sort()->all();
 
@@ -111,7 +111,7 @@ class AnalyticsController extends Controller
     }
 
     /** @return array<string, int> */
-    protected function getStatsData(EloquentCollection $pageViews, EloquentCollection $generatedCodes, array $traffic): array
+    protected function getStatsData(EloquentCollection $pageViews, EloquentCollection $generatedImages, array $traffic): array
     {
         return [
             'DB Records' => count($pageViews),
@@ -119,7 +119,7 @@ class AnalyticsController extends Controller
             'Unique Visitors' => array_sum($traffic['unique_visitor_counts']),
             'Days Tracked' => count($traffic['dates']),
             'Referrers' => $pageViews->groupBy('referrer')->count(),
-            'Generated Images' => $generatedCodes->count(),
+            'Generated Images' => $generatedImages->count(),
         ];
     }
 
