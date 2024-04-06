@@ -114,7 +114,7 @@ class AnalyticsController extends Controller
     protected function getStatsData(EloquentCollection $pageViews, EloquentCollection $generatedImages, array $traffic): array
     {
         return [
-            'DB Records' => count($pageViews),
+            'DB Records' => count($pageViews) + count($generatedImages),
             'Total Visits' => array_sum($traffic['total_visitor_counts']),
             'Unique Visitors' => array_sum($traffic['unique_visitor_counts']),
             'Days Tracked' => count($traffic['dates']),
