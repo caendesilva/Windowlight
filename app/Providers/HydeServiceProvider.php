@@ -62,7 +62,7 @@ class HydeServiceProvider extends ServiceProvider
         return [
             'hyde' => [
                 'pretty_urls' => true,
-            ]
+            ],
         ];
     }
 }
