@@ -25,7 +25,19 @@ class GenerateSitemapCommand extends Command
         app()->register(HydeServiceProvider::class);
 
         // Mix in the Laravel routes into the Hyde routes
-        $routes = [
+        foreach ($this->getRoutes() as $name) {
+            $route = app('router')->getRoutes()->getByName($name);
+            $hydeRoute = new Route(new LaravelPage($route));
+            Routes::addRoute($hydeRoute);
+        }
+
+        return (new GenerateSitemap())->run($this->output);
+    }
+
+    /** @return string[] */
+    protected function getRoutes(): array
+    {
+        return [
             'home',
             'about',
             'examples',
@@ -33,13 +45,5 @@ class GenerateSitemapCommand extends Command
             'analytics.raw',
             'analytics.json',
         ];
-
-        foreach ($routes as $name) {
-            $route = app('router')->getRoutes()->getByName($name);
-            $hydeRoute = new Route(new LaravelPage($route));
-            Routes::addRoute($hydeRoute);
-        }
-
-        return (new GenerateSitemap())->run($this->output);
     }
 }
