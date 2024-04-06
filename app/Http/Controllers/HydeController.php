@@ -11,7 +11,7 @@ class HydeController extends Controller
     public function posts(): View
     {
         return view('hyde::components.blog-post-feed', [
-           'posts' => MarkdownPost::getLatestPosts(),
+            'posts' => MarkdownPost::getLatestPosts(),
         ]);
     }
 }
