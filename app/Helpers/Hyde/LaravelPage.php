@@ -18,6 +18,6 @@ class LaravelPage extends InMemoryPage
 
     public function getSourcePath(): string
     {
-        //
+        return $this->route->getAction('uses');
     }
 }
