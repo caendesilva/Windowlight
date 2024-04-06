@@ -4,6 +4,8 @@ namespace App\Helpers\Hyde;
 
 use Hyde\Pages\InMemoryPage;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Str;
+use ReflectionClass;
 
 class LaravelPage extends InMemoryPage
 {
@@ -18,6 +20,10 @@ class LaravelPage extends InMemoryPage
 
     public function getSourcePath(): string
     {
-        return $this->route->getAction('uses');
+        $class = Str::before($this->route->getAction('uses'), '@');
+        if (class_exists($class)) {
+            return (new ReflectionClass($class))->getFileName();
+        }
+        return '';
     }
 }
