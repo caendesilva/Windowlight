@@ -11,8 +11,8 @@ class LaravelPage extends InMemoryPage
 
     public function __construct(Route $route)
     {
-        parent::__construct($route->uri);
-
         $this->route = $route;
+
+        parent::__construct($route->uri);
     }
 }
