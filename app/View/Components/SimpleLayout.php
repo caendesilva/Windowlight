@@ -15,8 +15,8 @@ class SimpleLayout extends Component
         $this->footer = [
             'about' => 'About',
             'posts' => 'Blog',
-            'privacy-policy' => 'Privacy Policy',
             'terms-of-service' => 'Terms of Service',
+            'privacy-policy' => 'Privacy Policy',
         ];
     }
 
