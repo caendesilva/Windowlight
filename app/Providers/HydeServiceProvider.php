@@ -47,6 +47,7 @@ class HydeServiceProvider extends ServiceProvider
             'Hyde' => \Hyde\Hyde::class,
             'Site' => \Hyde\Facades\Site::class,
             'Asset' => \Hyde\Facades\Asset::class,
+            'Features' => \Hyde\Facades\Features::class,
             'Routes' => \Hyde\Foundation\Facades\Routes::class,
             'Includes' => \Hyde\Support\Includes::class,
             'MarkdownPost' => \Hyde\Pages\MarkdownPost::class,
