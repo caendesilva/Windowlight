@@ -24,7 +24,7 @@ class CodeGenerationEventFactory extends Factory
             'hasMenuButtons' => $this->faker->boolean(),
             'hasMenubarText' => $this->faker->boolean(),
             'background' => $this->faker->hexColor(),
-            'lines' => $this->faker->numberBetween(1, 100),
+            'lines' => $this->faker->numberBetween(1, 150),
         ];
     }
 
