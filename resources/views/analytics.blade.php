@@ -151,6 +151,8 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
+                // Visitor chart
+
                 // Get the data from PHP
                 const dates = @json($traffic['dates']);
                 const totalVisitorCounts = @json($traffic['total_visitor_counts']);
