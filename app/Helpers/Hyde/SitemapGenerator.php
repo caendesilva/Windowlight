@@ -42,6 +42,10 @@ class SitemapGenerator extends HydeSitemapGenerator
             return '0.6';
         }
 
+        if ($slug === 'analytics/raw' || $slug === 'analytics/json') {
+            return '0.3';
+        }
+
         return parent::getPriority($pageClass, $slug);
     }
 
