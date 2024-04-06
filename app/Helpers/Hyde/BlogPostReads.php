@@ -21,6 +21,8 @@ class BlogPostReads
     {
         static::loadIfEmpty();
 
+        $identifier = "posts/$identifier";
+
         return static::$reads[$identifier] ?? 0;
     }
 
