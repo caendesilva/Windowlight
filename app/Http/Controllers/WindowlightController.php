@@ -32,6 +32,7 @@ class WindowlightController extends Controller
         $request->session()->put('options.lineNumbers', $validated['lineNumbers'] ?? true);
         $request->session()->put('options.background', $validated['background'] ?? 'transparent');
         $request->session()->put('options.useHeader', $validated['useHeader'] ?? true);
+        $request->session()->put('options.useShadow', $validated['useShadow'] ?? false);
         $request->session()->put('options.headerButtons', $validated['headerButtons'] ?? true);
         $request->session()->put('options.headerText', $validated['headerText'] ?? '');
 
@@ -74,6 +75,7 @@ class WindowlightController extends Controller
             'lineNumbers' => old('lineNumbers') ?? session('options.lineNumbers') ?? true,
             'background' => old('background') ?? session('options.background') ?? 'transparent',
             'useHeader' => old('useHeader') ?? session('options.useHeader') ?? true,
+            'useShadow' => old('useShadow') ?? session('options.useShadow') ?? false,
             'headerButtons' => old('headerButtons') ?? session('options.headerButtons') ?? true,
             'headerText' => old('headerText') ?? session('options.headerText') ?? '',
             'generated' => session('generated') ?? false,

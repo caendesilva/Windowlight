@@ -26,6 +26,7 @@ class GenerateRequest extends FormRequest
             'lineNumbers' => $this->input('lineNumbers') === 'on',
             'useHeader' => $this->input('useHeader') === 'on',
             'headerButtons' => $this->input('headerButtons') === 'on',
+            'useShadow' => $this->input('useShadow') === 'on',
 
             // Ensure the background color is a valid hex color
             'background' => $this->normalizeColor($this->input('background') ?: 'transparent'),
@@ -44,6 +45,7 @@ class GenerateRequest extends FormRequest
             'language' => 'nullable|string',
             'lineNumbers' => 'nullable|boolean',
             'useHeader' => 'nullable|boolean',
+            'useShadow' => 'nullable|boolean',
             'headerButtons' => 'nullable|boolean',
             'headerText' => 'nullable|string',
             'background' => 'nullable|string|regex:/^#[a-f0-9]{6}$/i',

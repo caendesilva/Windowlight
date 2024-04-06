@@ -113,7 +113,7 @@ $width = $width ?? 64; // Ch
 </style>
 
 <div id="code-card-wrapper">
-    <div id="code-card">
+    <div id="code-card" @class(['shadow-lg' => $useShadow])>
         @if($useHeader)
             <div id="code-card-header">
                 @if($headerButtons)
