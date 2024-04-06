@@ -10,10 +10,10 @@
                 <p class="text-sm text-gray-600 dark:text-gray-400">
                     &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
                 </p>
-                <ul class="flex text-sm text-gray-600 dark:text-gray-400">
+                <ul class="flex text-sm text-gray-500">
                     @foreach($footer as $route => $label)
                         <li class="px-1">
-                            <a href="{{ route($route) }}" class="hover:text-gray-900 dark:hover:text-gray-100">{{ $label }}</a>
+                            <a href="{{ route($route) }}" class="hover:text-gray-800 dark:hover:text-gray-200">{{ $label }}</a>
                         </li>
                     @endforeach
                 </ul>
