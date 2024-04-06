@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Helpers\Hyde;
 
 use Hyde\Foundation\Facades\Routes;
 use Hyde\Framework\Features\XmlGenerators\SitemapGenerator as HydeSitemapGenerator;

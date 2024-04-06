@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\BuildTasks;
 
-use App\Helpers\SitemapGenerator;
+use App\Helpers\Hyde\SitemapGenerator;
 use Hyde\Framework\Actions\PostBuildTasks\GenerateSitemap as HydeGenerateSitemap;
 use Hyde\Hyde;
 
