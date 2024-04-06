@@ -28,7 +28,6 @@ $width = $width ?? 64; // Ch
         @endif
 
         /* Static styles */
-        margin: 1rem 0;
         resize: horizontal;
         overflow: hidden;
         max-width: 100%;

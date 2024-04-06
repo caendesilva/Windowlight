@@ -163,7 +163,7 @@
                         </h2>
                         <x-primary-button id="download">Download</x-primary-button>
                     </header>
-                    <div class="flex justify-center">
+                    <div class="flex justify-center my-4">
                         @include('windowlight.result')
                     </div>
                 </section>
