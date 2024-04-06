@@ -22,9 +22,8 @@ class HydeServiceProvider extends ServiceProvider
         });
 
         // Register facade aliases to use in the views
-        $loader = AliasLoader::getInstance();
         foreach ($this->getAliases() as $alias => $class) {
-            $loader->alias($alias, $class);
+            AliasLoader::getInstance()->alias($alias, $class);
         }
 
         // Define the view hint path for the Hyde package
