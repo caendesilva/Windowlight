@@ -15,6 +15,9 @@ class BootHydeKernelMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // Register the Hyde service provider
+        app()->register(\App\Providers\HydeServiceProvider::class);
+
         return $next($request);
     }
 }
