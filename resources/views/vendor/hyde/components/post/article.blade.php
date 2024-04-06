@@ -12,6 +12,10 @@
             @includeWhen(isset($page->date), 'hyde::components.post.date')
             @includeWhen(isset($page->author), 'hyde::components.post.author')
             @includeWhen(isset($page->category), 'hyde::components.post.category')
+            <span>
+                <span class="opacity-75 select-none">-</span>
+                {{ \Illuminate\Support\Number::format(\App\Helpers\Hyde\BlogPostReads::get($page->getIdentifier())) }} reads
+            </span>
         </div>
     </header>
     @includeWhen(isset($page->image), 'hyde::components.post.image')
