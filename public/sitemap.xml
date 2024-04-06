@@ -1,23 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" generator="HydePHP 1.5.0" generated_at="2024-04-06T09:34:37+00:00" processing_time_ms="1.1320114135742">
   <url>
-    <loc>https://windowlight.desilva.se/</loc>
-    <lastmod>2024-03-30T16:16:14+00:00</lastmod>
-    <priority>1.00</priority>
+    <loc>http://windowlight.test</loc>
+    <lastmod>2024-04-06T09:22:44+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://windowlight.desilva.se/about</loc>
-    <lastmod>2024-03-30T16:16:14+00:00</lastmod>
-    <priority>0.80</priority>
+    <loc>http://windowlight.test/about</loc>
+    <lastmod>2024-03-30T15:40:17+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://windowlight.desilva.se/examples</loc>
-    <lastmod>2024-04-05T17:55:00+00:00</lastmod>
-    <priority>0.80</priority>
+    <loc>http://windowlight.test/examples</loc>
+    <lastmod>2024-03-30T15:40:17+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://windowlight.desilva.se/analytics</loc>
-    <lastmod>2024-04-05T17:55:00+00:00</lastmod>
-    <priority>0.60</priority>
+    <loc>http://windowlight.test/analytics</loc>
+    <lastmod>2024-04-06T07:14:14+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://windowlight.test/analytics/raw</loc>
+    <lastmod>2024-04-06T07:14:14+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>http://windowlight.test/analytics/json</loc>
+    <lastmod>2024-04-06T07:14:14+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>http://windowlight.test/posts/hello-world</loc>
+    <lastmod>2024-04-06T08:24:03+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.75</priority>
   </url>
 </urlset>

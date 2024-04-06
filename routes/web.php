@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnalyticsController;
+use App\Http\Controllers\HydeController;
 use App\Http\Controllers\MarkdownViewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WindowlightController;
@@ -32,5 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::middleware('hyde')->group(function () {
+    Route::get('/posts', [HydeController::class, 'posts'])->name('posts');
+    Route::get('/posts/{identifier}', [HydeController::class, 'post'])->name('post');
+});
+
+Route::redirect('/terms-of-service', '/about#terms-of-service', 301)->name('terms-of-service');
+Route::redirect('/privacy-policy', '/about#privacy-policy', 301)->name('privacy-policy');
 
 require __DIR__.'/auth.php';
