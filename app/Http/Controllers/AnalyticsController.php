@@ -72,9 +72,7 @@ class AnalyticsController extends Controller
         $pages = $this->getPagesData($pageViews);
         $referrers = $this->getReferrersData($pageViews);
 
-        $languages = $generatedImages->groupBy('language')->mapWithKeys(fn (EloquentCollection $events, string $language): array => [
-            $language => $events->count(),
-        ])->sort()->all();
+        $languages = $this->getPopularLanguages($generatedImages);
 
         return [$pageViews, $traffic, $stats, $pages, $referrers, $languages];
     }
@@ -153,5 +151,13 @@ class AnalyticsController extends Controller
                 'is_ref' => $referrer !== null && $referrer !== 'Direct / Unknown' && str_starts_with($referrer, '?ref='),
             ];
         })->sortByDesc('total')->values();
+    }
+
+    /** @return array<string, int> */
+    protected function getPopularLanguages(EloquentCollection $generatedImages): array
+    {
+        return $generatedImages->groupBy('language')->mapWithKeys(fn(EloquentCollection $events, string $language): array => [
+            $language => $events->count(),
+        ])->sort()->all();
     }
 }
