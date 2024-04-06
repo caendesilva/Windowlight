@@ -126,3 +126,8 @@ pre code.torchlight .summary-caret {
     0% { width: 100%; }
     100% { width: 0; }
 }
+
+/* Make the first H2 in a prose container have smaller top margin */
+.prose h2:first-of-type {
+    margin-top: 1.5rem;
+}
