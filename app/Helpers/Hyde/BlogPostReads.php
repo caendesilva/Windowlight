@@ -37,6 +37,9 @@ class BlogPostReads
     {
         // We use the analytics feature to get the reads
 
+        // With over 5000 records, this takes about 30ms to run. With 500 records, it takes about 5ms.
+        // So for now we don't need to worry about caching it to disk. But we can do that later if needed.
+
         $data = PageViewEvent::all()
             ->groupBy('page')
             ->map(fn (Collection $views): int => $views->count())
