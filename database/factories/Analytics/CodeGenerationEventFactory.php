@@ -17,7 +17,7 @@ class CodeGenerationEventFactory extends Factory
     public function definition(): array
     {
         return [
-            'language' => $this->faker->randomElement(['php', 'javascript', 'typescript', 'python', 'ruby']),
+            'language' => $this->faker->randomElement($this->getLanguages()),
             'hasMenubar' => $this->faker->boolean(),
             'hasLineNumbers' => $this->faker->boolean(),
             'hasMenuButtons' => $this->faker->boolean(),
@@ -25,5 +25,13 @@ class CodeGenerationEventFactory extends Factory
             'background' => $this->faker->hexColor(),
             'lines' => $this->faker->numberBetween(1, 100),
         ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getLanguages(): array
+    {
+        return ['php', 'javascript', 'typescript', 'python', 'ruby'];
     }
 }
