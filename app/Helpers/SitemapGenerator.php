@@ -10,7 +10,9 @@ class SitemapGenerator extends HydeSitemapGenerator
 {
     public function generate(): static
     {
-        Routes::all()->each(function (Route $route): void {
+        $routes = Routes::all();
+
+        $routes->each(function (Route $route): void {
             $this->addRoute($route);
         });
 
