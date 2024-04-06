@@ -37,5 +37,10 @@ class DatabaseSeeder extends Seeder
         echo '.';
         PageViewEvent::factory(10 * $factor)->today()->create();
         echo ".\n";
+
+        // Seed code generation events
+        echo '  Seeding code generation events';
+        \App\Models\Analytics\CodeGenerationEvent::factory(rand(350, 500))->create();
+        echo ".\n";
     }
 }

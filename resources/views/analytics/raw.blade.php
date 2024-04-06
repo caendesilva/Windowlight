@@ -19,10 +19,8 @@
         }
         td {
             width: fit-content;
-        }
-        td span {
-            white-space: normal;
-            word-break: break-all;
+            max-width: 50ch;
+            overflow-x: auto;
         }
         table {
             border-collapse: collapse;
@@ -50,32 +48,35 @@
             <a href="{{ route('analytics.json') }}">View Raw JSON</a>
         </li>
     </menu>
+    <nav>
+        <strong>
+            Jump to:
+        </strong>
+        <ul>
+            <li>
+                <a href="#page-view-events">Page View Events</a>
+            </li>
+            <li>
+                <a href="#code-generation-events">Code Generation Events</a>
+            </li>
+        </ul>
+    </nav>
 </header>
 <main>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Page</th>
-            <th>Referrer</th>
-            <th>User Agent</th>
-            <th>Anonymous ID</th>
-            <th>Created At</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($data as $entry)
-            <tr>
-                <td>{{ $entry['id'] }}</td>
-                <td>{{ $entry['page'] }}</td>
-                <td>{{ $entry['referrer'] ?: 'N/A' }}</td>
-                <td><span>{{ $entry['user_agent'] ?: 'N/A' }}</span></td>
-                <td>{{ $entry['anonymous_id'] }}</td>
-                <td>{{ $entry['created_at'] }}</td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <section id="page-view-events">
+        <h2>Table: <code>page_view_events</code></h2>
+        @include('simple-table', ['data' => $pageViewEvents])
+    </section>
+    <section id="code-generation-events">
+        <h2>Table: <code>code_generation_events</code></h2>
+        @include('simple-table', ['data' => $codeGenerationEvents])
+    </section>
 </main>
+<hr>
+<footer>
+    <small>
+        Generated in {{ round((microtime(true) - LARAVEL_START) * 1000, 2) }}ms
+    </small>
+</footer>
 </body>
 </html>

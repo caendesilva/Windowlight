@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Analytics\CodeGenerationEvent;
 use App\Models\Analytics\PageViewEvent;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Http\JsonResponse;
@@ -18,7 +19,7 @@ class AnalyticsController extends Controller
     {
         $time = microtime(true);
 
-        [$pageViews, $traffic, $stats, $pages, $referrers] = $this->getCachedData();
+        [$pageViews, $traffic, $stats, $pages, $referrers, $languages] = $this->getCachedData();
 
         return view('analytics', [
             'pageViews' => $pageViews,
@@ -29,13 +30,15 @@ class AnalyticsController extends Controller
             'refs' => $referrers->where('is_ref', true),
             'pageSize' => 15,
             'time' => sprintf('%.2fms', (microtime(true) - $time) * 1000),
+            'languages' => $languages,
         ]);
     }
 
     public function raw(): View
     {
         return view('analytics.raw', [
-            'data' => PageViewEvent::all(),
+            'pageViewEvents' => PageViewEvent::all(),
+            'codeGenerationEvents' => CodeGenerationEvent::all(),
         ]);
     }
 
@@ -62,12 +65,16 @@ class AnalyticsController extends Controller
     protected function getData(): array
     {
         $pageViews = PageViewEvent::all();
+        $generatedImages = CodeGenerationEvent::all();
+
         $traffic = $this->getTrafficData();
-        $stats = $this->getStatsData($pageViews, $traffic);
+        $stats = $this->getStatsData($pageViews, $generatedImages, $traffic);
         $pages = $this->getPagesData($pageViews);
         $referrers = $this->getReferrersData($pageViews);
 
-        return [$pageViews, $traffic, $stats, $pages, $referrers];
+        $languages = $this->getPopularLanguages($generatedImages);
+
+        return [$pageViews, $traffic, $stats, $pages, $referrers, $languages];
     }
 
     protected function getTrafficData(): array
@@ -102,14 +109,18 @@ class AnalyticsController extends Controller
     }
 
     /** @return array<string, int> */
-    protected function getStatsData(EloquentCollection $pageViews, array $traffic): array
+    protected function getStatsData(EloquentCollection $pageViews, EloquentCollection $generatedImages, array $traffic): array
     {
         return [
-            'DB Records' => count($pageViews),
+            'DB Records' => count($pageViews) + count($generatedImages),
             'Total Visits' => array_sum($traffic['total_visitor_counts']),
             'Unique Visitors' => array_sum($traffic['unique_visitor_counts']),
             'Days Tracked' => count($traffic['dates']),
             'Referrers' => $pageViews->groupBy('referrer')->count(),
+            'Generated Images' => $generatedImages->count(),
+            'Lines Rendered' => $generatedImages->sum('lines'),
+            'Average Lines' => $generatedImages->avg('lines'), // Average lines per code snippet
+            'Code Languages' => count($this->getPopularLanguages($generatedImages, PHP_INT_MAX)),
         ];
     }
 
@@ -143,5 +154,13 @@ class AnalyticsController extends Controller
                 'is_ref' => $referrer !== null && $referrer !== 'Direct / Unknown' && str_starts_with($referrer, '?ref='),
             ];
         })->sortByDesc('total')->values();
+    }
+
+    /** @return array<string, int> */
+    protected function getPopularLanguages(EloquentCollection $generatedImages, int $limit = 10): array
+    {
+        return $generatedImages->groupBy('language')->mapWithKeys(fn (EloquentCollection $events, string $language): array => [
+            $language => $events->count(),
+        ])->sort()->take(-$limit)->all();
     }
 }
