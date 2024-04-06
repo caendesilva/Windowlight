@@ -2,6 +2,9 @@
 
 namespace App\Helpers\Hyde;
 
+use App\Models\Analytics\PageViewEvent;
+use Illuminate\Support\Collection;
+
 class BlogPostReads
 {
     /** @var array<string, int> */
@@ -26,5 +29,17 @@ class BlogPostReads
         if (empty(static::$reads)) {
             static::load();
         }
+    }
+
+    protected static function load(): void
+    {
+        // We use the analytics feature to get the reads
+
+        $data = PageViewEvent::all()
+            ->groupBy('page')
+            ->map(fn (Collection $views): int => $views->count())
+            ->toArray();
+
+        static::$reads = $data;
     }
 }
