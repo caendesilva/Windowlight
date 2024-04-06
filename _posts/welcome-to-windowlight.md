@@ -8,6 +8,16 @@ date: '2024-04-06 07:15'
 
 **[Windowlight](https://windowlight.desilva.se)** is a code screenshot generator that uses [Torchlight](https://torchlight.dev) for syntax highlighting.
 
+With Windowlight, you can generate **beautiful code screenshots**, with the **best syntax highlighting available**.
+Simply paste your code, choose your settings, and download your high quality PNG image. All for free!
+
+### What does it look like?
+
+Here's an example of an image generated with Windowlight:
+
+![Code screenshot of a Hello World route](https://windowlight.desilva.se/og-image.png)
+
+
 ## How does it work?
 
 Windowlight wraps the Torchlight API, providing a user-friendly interface to generate beautiful code screenshots, fully online - right from your browser.
