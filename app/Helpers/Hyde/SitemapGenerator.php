@@ -2,6 +2,7 @@
 
 namespace App\Helpers\Hyde;
 
+use DOMDocument;
 use Hyde\Foundation\Facades\Routes;
 use Hyde\Framework\Features\XmlGenerators\SitemapGenerator as HydeSitemapGenerator;
 use Hyde\Pages\MarkdownPost;
@@ -48,6 +49,16 @@ class SitemapGenerator extends HydeSitemapGenerator
     {
         $this->xmlElement->addAttribute('generated_at', date('c', time()));
 
-        return parent::getXml();
+        return static::formatXmlString(parent::getXml());
+    }
+
+    protected static function formatXmlString(string $xml): string
+    {
+        $dom = new DOMDocument('1.0');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($xml);
+
+        return $dom->saveXML();
     }
 }
