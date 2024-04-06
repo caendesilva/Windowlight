@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Providers\HydeServiceProvider;
 use Hyde\Foundation\Facades\Routes;
 use App\Console\Commands\BuildTasks\GenerateSitemap;
-use Hyde\Pages\InMemoryPage;
+use App\Helpers\Hyde\LaravelPage;
 use Hyde\Support\Models\Route;
 use Illuminate\Console\Command;
 
@@ -36,7 +36,7 @@ class GenerateSitemapCommand extends Command
 
         foreach ($routes as $name) {
             $route = app('router')->getRoutes()->getByName($name);
-            $hydeRoute = new Route(new InMemoryPage($route->uri));
+            $hydeRoute = new Route(new LaravelPage($route->uri));
             Routes::addRoute($hydeRoute);
         }
 
