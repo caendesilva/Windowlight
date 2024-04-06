@@ -217,6 +217,9 @@
 
             htmlToImage.toPng(codeCard, {
                 pixelRatio: 4, // Increase DPI (Resolution)
+                style: {
+                    resize: 'none', // Disable resize icon in the screenshot
+                },
                 @if($background === 'transparent')
                 backgroundColor: null, // Transparent background fix
                 @endif
