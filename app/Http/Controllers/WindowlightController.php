@@ -59,10 +59,10 @@ class WindowlightController extends Controller
 
         CodeGenerationEvent::create([
             'language' => $validated['language'] ?? '',
-            'hasMenubar' => $validated['useHeader'] ?? true,
-            'hasLineNumbers' => $validated['lineNumbers'] ?? true,
-            'hasMenuButtons' => $validated['headerButtons'] ?? true,
-            'hasMenubarText' => $validated['headerText'] ?? '',
+            'hasMenubar' => (bool) ($validated['useHeader'] ?? true),
+            'hasLineNumbers' => (bool) ($validated['lineNumbers'] ?? true),
+            'hasMenuButtons' => (bool) ($validated['headerButtons'] ?? true),
+            'hasMenubarText' => (bool) ($validated['headerText'] ?? ''),
             'background' => $validated['background'] ?? 'transparent',
             'lines' => substr_count($validated['code'], "\n") + 1,
         ]);
