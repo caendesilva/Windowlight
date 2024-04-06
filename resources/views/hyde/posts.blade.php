@@ -9,7 +9,7 @@
             </p>
         </header>
 
-        <div id="post-feed" class="max-w-3xl mx-auto">
+        <div id="post-feed" class="max-w-3xl mx-auto text-gray-700 dark:text-gray-200">
             @include('hyde::components.blog-post-feed')
         </div>
     </main>
