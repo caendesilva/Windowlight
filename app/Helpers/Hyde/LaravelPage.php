@@ -24,6 +24,7 @@ class LaravelPage extends InMemoryPage
         if (class_exists($class)) {
             return (new ReflectionClass($class))->getFileName();
         }
+
         return '';
     }
 }

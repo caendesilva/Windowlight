@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\View\View;
-use Hyde\Pages\MarkdownPost;
 use Hyde\Pages\InMemoryPage;
+use Hyde\Pages\MarkdownPost;
+use Illuminate\View\View;
 
 class HydeController extends Controller
 {

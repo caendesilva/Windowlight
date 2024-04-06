@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\AnalyticsController;
+use App\Http\Controllers\HydeController;
 use App\Http\Controllers\MarkdownViewController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WindowlightController;
-use App\Http\Controllers\HydeController;
 use Illuminate\Support\Facades\Route;
 
 /*
