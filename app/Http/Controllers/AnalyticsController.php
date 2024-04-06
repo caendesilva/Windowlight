@@ -158,6 +158,6 @@ class AnalyticsController extends Controller
     {
         return $generatedImages->groupBy('language')->mapWithKeys(fn(EloquentCollection $events, string $language): array => [
             $language => $events->count(),
-        ])->sort()->all();
+        ])->sort()->take(-10)->all();
     }
 }
