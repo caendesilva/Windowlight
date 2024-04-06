@@ -17,14 +17,8 @@ class CodeGenerationEventFactory extends Factory
      */
     public function definition(): array
     {
-        if ($this->faker->boolean()) {
-            $slice = 1000;
-        } else {
-            $slice = rand(0, rand(25, rand(50, 100)));
-        }
-
         return [
-            'language' => $this->faker->randomElement(array_slice($this->getLanguages(), min($slice, count($this->getLanguages()) -1))),
+            'language' => $this->faker->randomElement($this->getLanguages()),
             'hasMenubar' => $this->faker->boolean(),
             'hasLineNumbers' => $this->faker->boolean(),
             'hasMenuButtons' => $this->faker->boolean(),
