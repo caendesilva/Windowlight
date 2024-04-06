@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\GenerateRequest;
+use App\Models\Analytics\CodeGenerationEvent;
 use App\TorchlightSnippetGenerator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -44,6 +45,16 @@ class WindowlightController extends Controller
 
         $request->session()->put('result', $result);
         $request->session()->flash('generated');
+
+        CodeGenerationEvent::create([
+            'language' => $validated['language'] ?? '',
+            'hasMenubar' => $validated['useHeader'] ?? true,
+            'hasLineNumbers' => $validated['lineNumbers'] ?? true,
+            'hasMenuButtons' => $validated['headerButtons'] ?? true,
+            'hasMenubarText' => $validated['headerText'] ?? '',
+            'background' => $validated['background'] ?? 'transparent',
+            'lines' => substr_count($validated['code'], "\n") + 1,
+        ]);
 
         return redirect()->route('home');
     }
