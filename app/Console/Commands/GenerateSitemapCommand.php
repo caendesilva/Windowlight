@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Providers\HydeServiceProvider;
 use Hyde\Foundation\Facades\Routes;
 use Hyde\Framework\Actions\PostBuildTasks\GenerateRssFeed;
-use Hyde\Framework\Actions\PostBuildTasks\GenerateSitemap;
+use App\Console\Commands\BuildTasks\GenerateSitemap;
 use Hyde\Pages\InMemoryPage;
 use Hyde\Support\Models\Route as HydeRoute;
 use Illuminate\Console\Command;
