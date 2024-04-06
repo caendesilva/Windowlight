@@ -24,6 +24,10 @@ class HydeServiceProvider extends ServiceProvider
         // Register facade aliases to use in the views
         $loader = AliasLoader::getInstance();
         $loader->alias('Hyde', \Hyde\Hyde::class);
+        $loader->alias('Site', \Hyde\Facades\Site::class);
+        $loader->alias('Asset', \Hyde\Facades\Asset::class);
+        $loader->alias('Routes', \Hyde\Foundation\Facades\Routes::class);
+        $loader->alias('Includes', \Hyde\Support\Includes::class);
         $loader->alias('MarkdownPost', \Hyde\Pages\MarkdownPost::class);
 
         // Define the view hint path for the Hyde package
