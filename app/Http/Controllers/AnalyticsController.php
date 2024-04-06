@@ -119,6 +119,7 @@ class AnalyticsController extends Controller
             'Referrers' => $pageViews->groupBy('referrer')->count(),
             'Generated Images' => $generatedImages->count(),
             'Lines Rendered' => $generatedImages->sum('lines'),
+            'Average Lines' => $generatedImages->avg('lines'), // Average lines per code snippet
             'Code Languages' => count($this->getPopularLanguages($generatedImages, PHP_INT_MAX)),
         ];
     }
