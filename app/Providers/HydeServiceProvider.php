@@ -27,6 +27,9 @@ class HydeServiceProvider extends ServiceProvider
 
         // Define the view hint path for the Hyde package
         $this->loadViewsFrom(base_path('vendor/hyde/framework/resources/views'), 'hyde');
+
+        // Merge Hyde configuration settings
+        $this->app->make('config')->set('hyde', $this->getHydeConfig());
     }
 
     /**
@@ -48,5 +51,10 @@ class HydeServiceProvider extends ServiceProvider
             'Includes' => \Hyde\Support\Includes::class,
             'MarkdownPost' => \Hyde\Pages\MarkdownPost::class,
         ];
+    }
+
+    protected function getHydeConfig(): array
+    {
+        return []; // Todo: Add configuration settings
     }
 }
