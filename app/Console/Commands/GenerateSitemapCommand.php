@@ -42,6 +42,27 @@ class GenerateSitemapCommand extends Command
             Routes::addRoute($hydeRoute);
         }
 
-        return (new GenerateSitemap())->run($this->output);
+        (new GenerateSitemap())->run($this->output);
+
+        $this->postProcess();
+
+        return Command::SUCCESS;
+    }
+
+    protected function postProcess(): void
+    {
+        // Decode the sitemap.xml file
+        $sitemap = simplexml_load_file(base_path('public/sitemap.xml'));
+
+        // Put any urls with posts/ last in the sitemap
+        $posts = $sitemap->xpath('//url[contains(loc, "posts/")]');
+        foreach ($posts as $post) {
+            $url = $post->loc;
+            unset($post->loc);
+            $post->addChild('loc', $url);
+        }
+
+        // Save the sitemap.xml file
+        $sitemap->asXML(base_path('public/sitemap.xml'));
     }
 }
