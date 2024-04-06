@@ -65,12 +65,13 @@ class AnalyticsController extends Controller
     protected function getData(): array
     {
         $pageViews = PageViewEvent::all();
+        $generatedCodes = CodeGenerationEvent::all();
+
         $traffic = $this->getTrafficData();
         $stats = $this->getStatsData($pageViews, $traffic);
         $pages = $this->getPagesData($pageViews);
         $referrers = $this->getReferrersData($pageViews);
 
-        $generatedCodes = CodeGenerationEvent::all();
         $languages = $generatedCodes->groupBy('language')->mapWithKeys(fn (EloquentCollection $events, string $language): array => [
             $language => $events->count(),
         ])->sort()->all();
