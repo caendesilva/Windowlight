@@ -43,4 +43,11 @@ class SitemapGenerator extends HydeSitemapGenerator
 
         return parent::getPriority($pageClass, $slug);
     }
+
+    public function getXml(): string
+    {
+        $this->xmlElement->addAttribute('generated_at', date('c', time()));
+
+        return parent::getXml();
+    }
 }
