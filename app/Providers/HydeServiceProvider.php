@@ -25,13 +25,13 @@ class HydeServiceProvider extends ServiceProvider
             AliasLoader::getInstance()->alias($alias, $class);
         }
 
-        // Define the view hint path for the Hyde package
-        $this->loadViewsFrom(base_path('vendor/hyde/framework/resources/views'), 'hyde');
-
         // Merge Hyde configuration settings
         foreach ($this->getHydeConfig() as $config => $data) {
             $this->app->make('config')->set($config, $data);
         }
+
+        // Define the view hint path for the Hyde package
+        $this->loadViewsFrom(base_path('vendor/hyde/framework/resources/views'), 'hyde');
     }
 
     /**
