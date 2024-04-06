@@ -15,4 +15,9 @@ class LaravelPage extends InMemoryPage
 
         parent::__construct($route->uri);
     }
+
+    public function getSourcePath(): string
+    {
+        //
+    }
 }
