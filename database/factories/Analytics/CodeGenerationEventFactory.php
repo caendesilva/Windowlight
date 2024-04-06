@@ -32,6 +32,11 @@ class CodeGenerationEventFactory extends Factory
      */
     protected function getLanguages(): array
     {
-        return ['php', 'javascript', 'typescript', 'python', 'ruby'];
+        return array_merge($this->arrayRepeat(['php', 'javascript', 'typescript', 'python', 'ruby'], 5));
+    }
+
+    protected function arrayRepeat(array $array, int $times): array
+    {
+        return array_merge(...array_fill(0, $times, $array));
     }
 }
