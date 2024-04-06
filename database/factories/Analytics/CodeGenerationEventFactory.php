@@ -34,8 +34,10 @@ class CodeGenerationEventFactory extends Factory
     protected function getLanguages(): array
     {
         return array_merge(
-            $this->arrayRepeat(['php', 'javascript', 'typescript'], 5),
-            $this->arrayRepeat(['php', 'javascript', 'typescript', 'python', 'ruby'], 5),
+            $this->arrayRepeat(['php'], 25),
+            $this->arrayRepeat(['javascript', 'typescript'], 12),
+            $this->arrayRepeat(['php', 'javascript', 'typescript', 'blade'], 10),
+            $this->arrayRepeat(['php', 'javascript', 'typescript', 'python', 'ruby'], 7),
             Torchlight::LANGUAGES
         );
     }
