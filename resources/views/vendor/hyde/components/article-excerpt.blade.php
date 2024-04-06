@@ -28,6 +28,10 @@
                 </span>
             </span>
         @endisset
+        <span class="opacity-75">
+            <small class="opacity-75 select-none align-text-top">|</small>
+            {{ \Illuminate\Support\Number::format(\App\Helpers\Hyde\BlogPostReads::get($post->getIdentifier())) }} reads
+        </span>
     </footer>
 
     @if($post->data('description') !== null)
