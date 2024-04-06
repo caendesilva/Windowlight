@@ -6,7 +6,7 @@ use App\Providers\HydeServiceProvider;
 use Hyde\Foundation\Facades\Routes;
 use App\Console\Commands\BuildTasks\GenerateSitemap;
 use Hyde\Pages\InMemoryPage;
-use Hyde\Support\Models\Route as HydeRoute;
+use Hyde\Support\Models\Route;
 use Illuminate\Console\Command;
 
 /**
@@ -36,7 +36,7 @@ class GenerateSitemapCommand extends Command
 
         foreach ($routes as $name) {
             $route = app('router')->getRoutes()->getByName($name);
-            $hydeRoute = new HydeRoute(new InMemoryPage($route->uri));
+            $hydeRoute = new Route(new InMemoryPage($route->uri));
             Routes::addRoute($hydeRoute);
         }
 
