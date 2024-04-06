@@ -16,6 +16,7 @@ class HydeServiceProvider extends ServiceProvider
         // Register the Hyde kernel as a singleton
         $this->app->singleton('hyde', function (): HydeKernel {
             return tap(new HydeKernel(base_path()), function (HydeKernel $kernel): void {
+                $kernel->setOutputDirectory('public');
                 HydeKernel::setInstance($kernel);
             });
         });
