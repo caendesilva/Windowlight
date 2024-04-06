@@ -12,8 +12,8 @@
                 </p>
                 <ul class="flex text-sm text-gray-500">
                     @foreach($footer as $route => $label)
-                        @if (! $loop->first)
-                            <small class="select-none opacity-75" role="presentation">{!! $route === 'terms-of-service' ? '&nbsp;' :  '|' !!}</small>
+                        @if ($route === 'terms-of-service')
+                            <small class="select-none opacity-75" role="presentation">|</small>
                         @endif
                         <li class="px-1">
                             <a href="{{ route($route) }}" class="hover:text-gray-800 dark:hover:text-gray-200">{{ $label }}</a>
