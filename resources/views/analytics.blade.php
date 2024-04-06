@@ -127,6 +127,14 @@
                         </div>
                     </section>
                 </div>
+
+                <section class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6 mt-4">
+                    <header class="flex justify-between items-center -mt-2 mb-2">
+                        <h2 class="text-xl font-bold">Popular Languages</h2>
+                    </header>
+
+                    <canvas id="languageChart" width="800" height="400"></canvas>
+                </section>
             </main>
 
             <footer class="max-w-3xl mx-auto mt-8 -mb-4">
@@ -189,6 +197,36 @@
                             mode: 'index',
                         },
                         pointStyle: false
+                    }
+                });
+
+                // Language chart
+                // Get the data from PHP
+                const languages = @json(array_keys($languages));
+                const counts = @json(array_values($languages));
+
+                // Create the chart
+                const ctx2 = document.getElementById('languageChart').getContext('2d');
+                const languageChart = new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels: languages,
+                        datasets: [{
+                            label: 'Language Frequency',
+                            data: counts,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            xAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
                     }
                 });
             });

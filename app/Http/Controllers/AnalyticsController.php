@@ -19,7 +19,7 @@ class AnalyticsController extends Controller
     {
         $time = microtime(true);
 
-        [$pageViews, $traffic, $stats, $pages, $referrers] = $this->getCachedData();
+        [$pageViews, $traffic, $stats, $pages, $referrers, $languages] = $this->getCachedData();
 
         return view('analytics', [
             'pageViews' => $pageViews,
@@ -30,6 +30,7 @@ class AnalyticsController extends Controller
             'refs' => $referrers->where('is_ref', true),
             'pageSize' => 15,
             'time' => sprintf('%.2fms', (microtime(true) - $time) * 1000),
+            'languages' => $languages,
         ]);
     }
 
@@ -69,7 +70,12 @@ class AnalyticsController extends Controller
         $pages = $this->getPagesData($pageViews);
         $referrers = $this->getReferrersData($pageViews);
 
-        return [$pageViews, $traffic, $stats, $pages, $referrers];
+        $generatedCodes = CodeGenerationEvent::all();
+        $languages = $generatedCodes->groupBy('language')->mapWithKeys(fn (EloquentCollection $events, string $language): array => [
+            $language => $events->count(),
+        ])->sort()->all();
+
+        return [$pageViews, $traffic, $stats, $pages, $referrers, $languages];
     }
 
     protected function getTrafficData(): array
