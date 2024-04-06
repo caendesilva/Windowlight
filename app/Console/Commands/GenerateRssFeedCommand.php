@@ -4,27 +4,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+/**
+ * @see \Hyde\Console\Commands\BuildRssFeedCommand
+ */
 class GenerateRssFeedCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'app:generate-rss-feed-command';
+    /** @var string */
+    protected $signature = 'build:rss';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
+    /** @var string */
+    protected $description = 'Generate the RSS feed';
 
-    /**
-     * Execute the console command.
-     */
-    public function handle()
+    public function handle(): int
     {
         //
+
+        return Command::SUCCESS;
     }
 }
