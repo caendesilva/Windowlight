@@ -13,7 +13,10 @@ class HydeServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton('hyde', function (): HydeKernel {
-            return new HydeKernel(base_path());
+            $kernel = new HydeKernel(base_path());
+            HydeKernel::setInstance($kernel);
+
+            return $kernel;
         });
     }
 
