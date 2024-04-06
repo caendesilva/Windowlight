@@ -57,7 +57,7 @@
             @endif
 
             <!-- Page Content -->
-            <div>
+            <div {{ $attributes }}>
                 {{ $slot }}
             </div>
         </div>
