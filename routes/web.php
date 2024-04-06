@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('hyde')->group(function () {
     Route::get('/posts', [HydeController::class, 'posts'])->name('posts');
+    Route::get('/posts/{identifier}', [HydeController::class, 'post'])->name('post');
 });
 
 require __DIR__.'/auth.php';

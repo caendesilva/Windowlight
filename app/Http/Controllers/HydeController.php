@@ -16,4 +16,18 @@ class HydeController extends Controller
             'posts' => MarkdownPost::getLatestPosts(),
         ]);
     }
+
+    public function post(string $identifier): View
+    {
+        $post = MarkdownPost::all()->firstWhere('identifier', $identifier);
+
+        if (! $post) {
+            abort(404);
+        }
+
+        return view('hyde.post', [
+            'page' => $post,
+            'content' => $post->markdown->toHtml(MarkdownPost::class),
+        ]);
+    }
 }
