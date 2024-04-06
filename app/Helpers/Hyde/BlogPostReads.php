@@ -4,6 +4,7 @@ namespace App\Helpers\Hyde;
 
 use App\Models\Analytics\PageViewEvent;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class BlogPostReads
 {
@@ -20,8 +21,6 @@ class BlogPostReads
     public static function get(string $identifier): int
     {
         static::loadIfEmpty();
-
-        $identifier = "posts/$identifier";
 
         return static::$reads[$identifier] ?? 0;
     }
@@ -45,6 +44,10 @@ class BlogPostReads
             ->map(fn (Collection $views): int => $views->count())
             ->reject(function (int $count, string $page): bool {
                 return ! str_contains($page, 'posts/');
+            })
+            ->mapWithKeys(function (int $count, string $page): array {
+                $page = Str::after($page, 'posts/');
+                return [$page => $count];
             })
             ->toArray();
 
