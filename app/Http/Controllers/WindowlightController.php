@@ -8,6 +8,16 @@ use App\TorchlightSnippetGenerator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
+/**
+ * The controller for the Windowlight code snippet generator.
+ *
+ * Improvement ideas: (PRs welcome!)
+ * 
+ * Todo: Support multiple background shadow sizes
+ * Todo: Support multiple padding sizes
+ * Todo: Support background gradients
+ * Todo: Support background images
+ */
 class WindowlightController extends Controller
 {
     public function show(): View
