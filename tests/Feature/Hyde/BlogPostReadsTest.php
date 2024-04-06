@@ -9,9 +9,9 @@ test('can get reads', function () {
     PageViewEvent::factory()->count(1)->create(['page' => 'posts/baz']);
 
     expect(BlogPostReads::all())->toBe([
-        'posts/foo' => 5,
-        'posts/bar' => 3,
-        'posts/baz' => 1,
+        'foo' => 5,
+        'bar' => 3,
+        'baz' => 1,
     ]);
 });
 
