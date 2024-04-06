@@ -64,7 +64,7 @@ class HydeServiceProvider extends ServiceProvider
                 'pretty_urls' => true,
                 'url' => config('app.url'),
                 'name' => config('app.name'),
-                'language' => config('app.language'),
+                'language' => config('app.locale'),
             ],
         ];
     }
