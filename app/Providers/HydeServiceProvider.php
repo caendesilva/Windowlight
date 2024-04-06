@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Hyde\Foundation\HydeKernel;
 use Illuminate\Support\ServiceProvider;
 
 class HydeServiceProvider extends ServiceProvider
@@ -11,7 +12,9 @@ class HydeServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton('hyde', function (): HydeKernel {
+            return new HydeKernel(base_path());
+        });
     }
 
     /**
