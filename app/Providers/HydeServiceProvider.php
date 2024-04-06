@@ -23,14 +23,7 @@ class HydeServiceProvider extends ServiceProvider
 
         // Register facade aliases to use in the views
         $loader = AliasLoader::getInstance();
-        $aliases = [
-            'Hyde' => \Hyde\Hyde::class,
-            'Site' => \Hyde\Facades\Site::class,
-            'Asset' => \Hyde\Facades\Asset::class,
-            'Routes' => \Hyde\Foundation\Facades\Routes::class,
-            'Includes' => \Hyde\Support\Includes::class,
-            'MarkdownPost' => \Hyde\Pages\MarkdownPost::class,
-        ];
+        $aliases = $this->getAliases();
 
         foreach ($aliases as $alias => $class) {
             $loader->alias($alias, $class);
@@ -46,5 +39,18 @@ class HydeServiceProvider extends ServiceProvider
     public function boot(): void
     {
         app('hyde')->boot();
+    }
+
+    /** @return string[] */
+    protected function getAliases(): array
+    {
+        return [
+            'Hyde' => \Hyde\Hyde::class,
+            'Site' => \Hyde\Facades\Site::class,
+            'Asset' => \Hyde\Facades\Asset::class,
+            'Routes' => \Hyde\Foundation\Facades\Routes::class,
+            'Includes' => \Hyde\Support\Includes::class,
+            'MarkdownPost' => \Hyde\Pages\MarkdownPost::class,
+        ];
     }
 }
