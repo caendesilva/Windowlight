@@ -36,7 +36,7 @@ class GenerateSitemapCommand extends Command
 
         foreach ($routes as $name) {
             $route = app('router')->getRoutes()->getByName($name);
-            $hydeRoute = new Route(new LaravelPage($route->uri));
+            $hydeRoute = new Route(new LaravelPage($route));
             Routes::addRoute($hydeRoute);
         }
 
