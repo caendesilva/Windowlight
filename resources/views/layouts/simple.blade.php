@@ -15,7 +15,7 @@
                         @if ($route === 'terms-of-service')
                             <small class="select-none opacity-75 px-1" role="presentation">|</small>
                         @endif
-                        <li class="px-1 mx-0.5">
+                        <li class="px-1">
                             <a href="{{ route($route) }}" class="hover:text-gray-800 dark:hover:text-gray-200">{{ $label }}</a>
                         </li>
                     @endforeach
