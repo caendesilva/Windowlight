@@ -53,6 +53,7 @@ class HydeServiceProvider extends ServiceProvider
         ];
     }
 
+    /** @return array<string, mixed> */
     protected function getHydeConfig(): array
     {
         return []; // Todo: Add configuration settings
