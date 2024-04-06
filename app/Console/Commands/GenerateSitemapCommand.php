@@ -4,8 +4,10 @@ namespace App\Console\Commands;
 
 use App\Providers\HydeServiceProvider;
 use Hyde\Foundation\Facades\Routes;
+use Hyde\Foundation\HydeKernel;
 use Hyde\Framework\Actions\PostBuildTasks\GenerateRssFeed;
 use Hyde\Framework\Actions\PostBuildTasks\GenerateSitemap;
+use Hyde\Hyde;
 use Hyde\Pages\InMemoryPage;
 use Hyde\Support\Models\Route as HydeRoute;
 use Illuminate\Console\Command;
@@ -25,6 +27,14 @@ class GenerateSitemapCommand extends Command
     public function handle(): int
     {
         app()->register(HydeServiceProvider::class);
+
+        $automaticallyAddedRoutes = Hyde::routes()->all();
+
+        // Add a fresh kernel so that we can put the post routes last
+        $hyde = new HydeKernel(base_path());
+        $hyde->setSourceRoot('/dev/null');
+        $hyde->setOutputDirectory('public');
+        HydeKernel::setInstance($hyde);
 
         // Mix in the Laravel routes into the Hyde routes
         $routes = [
