@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Analytics;
 
+use App\Contracts\Torchlight;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -32,7 +33,11 @@ class CodeGenerationEventFactory extends Factory
      */
     protected function getLanguages(): array
     {
-        return array_merge($this->arrayRepeat(['php', 'javascript', 'typescript', 'python', 'ruby'], 5));
+        return array_merge(
+            $this->arrayRepeat(['php', 'javascript', 'typescript'], 5),
+            $this->arrayRepeat(['php', 'javascript', 'typescript', 'python', 'ruby'], 5),
+            Torchlight::LANGUAGES
+        );
     }
 
     protected function arrayRepeat(array $array, int $times): array
