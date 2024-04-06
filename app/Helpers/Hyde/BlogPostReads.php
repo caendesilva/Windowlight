@@ -21,7 +21,7 @@ class BlogPostReads
     {
         static::loadIfEmpty();
 
-        return static::$reads[$identifier];
+        return static::$reads[$identifier] ?? 0;
     }
 
     protected static function loadIfEmpty(): void
