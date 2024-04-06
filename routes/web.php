@@ -39,4 +39,7 @@ Route::middleware('hyde')->group(function () {
     Route::get('/posts/{identifier}', [HydeController::class, 'post'])->name('post');
 });
 
+Route::redirect('/terms-of-service', '/about#terms-of-service', 301)->name('terms-of-service');
+Route::redirect('/privacy-policy', '/about#privacy-policy', 301)->name('privacy-policy');
+
 require __DIR__.'/auth.php';
