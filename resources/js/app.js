@@ -145,6 +145,46 @@ if (window.location.pathname === '/') {
                 this.form.submit();
             }
         });
+
+        // New feature: Indentation with TAB and SHIFT+TAB
+        const TAB_SIZE = 4;
+
+        function handleIndentation(e) {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+
+                // Get selected text
+                const selectedText = this.value.slice(start, end);
+
+                // Create tab string based on TAB_SIZE
+                const tabString = ' '.repeat(TAB_SIZE);
+
+                // If there's a selection
+                if (start !== end) {
+                    const lines = selectedText.split('\n');
+                    const indentedLines = lines.map(line =>
+                        e.shiftKey ? line.replace(new RegExp(`^(${tabString}|\t)`, 'g'), '') : tabString + line
+                    );
+
+                    // Replace the selection with indented/deindented text
+                    this.value = this.value.slice(0, start) + indentedLines.join('\n') + this.value.slice(end);
+
+                    // Restore selection
+                    this.selectionStart = start;
+                    this.selectionEnd = start + indentedLines.join('\n').length;
+                } else {
+                    // If no selection, just insert spaces at cursor position
+                    this.value = this.value.slice(0, start) + tabString + this.value.slice(end);
+                    this.selectionStart = this.selectionEnd = start + TAB_SIZE;
+                }
+            }
+        }
+
+        // Add the indentation event listener to the textarea
+        textarea.addEventListener('keydown', handleIndentation);
     });
 
     // Toast notification
