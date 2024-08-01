@@ -72,8 +72,9 @@ if (window.location.pathname === '/') {
 
         // New color preset functionality
         colorPresets.addEventListener('click', function(e) {
-            if (e.target.tagName === 'BUTTON') {
-                const color = e.target.dataset.color;
+            const button = e.target.closest('button');
+            if (button) {
+                const color = button.dataset.color;
                 if (color === 'gradient') {
                     wrapper.style.backgroundImage = 'linear-gradient(to right, #EC4899, #EF4444, #F59E0B)';
                     wrapper.style.backgroundColor = 'transparent';
@@ -85,8 +86,21 @@ if (window.location.pathname === '/') {
                 }
                 backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
                 reactToColorInputChange();
+
+                // Remove 'selected' class from all buttons
+                colorPresets.querySelectorAll('button').forEach(btn => btn.classList.remove('ring-2', 'ring-blue-500'));
+                // Add 'selected' class to clicked button
+                button.classList.add('ring-2', 'ring-blue-500');
             }
         });
+
+        // Initialize selected state
+        const initialColor = backgroundInput.value;
+        const initialButton = colorPresets.querySelector(`button[data-color="${initialColor}"]`);
+        if (initialButton) {
+            initialButton.classList.add('ring-2', 'ring-blue-500');
+        }
+
         // Selection dropdown reactivity
 
         // On show menu bar change
@@ -203,6 +217,64 @@ if (window.location.pathname === '/') {
 
         // Add the indentation event listener to the textarea
         textarea.addEventListener('keydown', handleIndentation);
+
+
+        function addTooltips() {
+            const buttons = colorPresets.querySelectorAll('button');
+            buttons.forEach(button => {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = button.title;
+                tooltip.style.cssText = `
+                    visibility: hidden;
+                    position: absolute;
+                    bottom: 125%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: #333;
+                    color: white;
+                    text-align: center;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    opacity: 0;
+                    transition: opacity 0.1s;
+                    pointer-events: none;
+                    z-index: 10;
+                `;
+
+                const arrow = document.createElement('div');
+                arrow.style.cssText = `
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: #333 transparent transparent transparent;
+                `;
+
+                tooltip.appendChild(arrow);
+
+                button.style.position = 'relative';
+                button.appendChild(tooltip);
+
+                button.addEventListener('mouseenter', () => {
+                    tooltip.style.visibility = 'visible';
+                    tooltip.style.opacity = '1';
+                });
+
+                button.addEventListener('mouseleave', () => {
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.opacity = '0';
+                });
+            });
+        }
+
+        // Call the function to add tooltips
+        addTooltips();
     });
 
     // Toast notification
