@@ -228,7 +228,7 @@ if (window.location.pathname === '/') {
                 tooltip.style.cssText = `
                     visibility: hidden;
                     position: absolute;
-                    bottom: 125%;
+                    bottom: 140%;
                     left: 50%;
                     transform: translateX(-50%);
                     background-color: #333;
