@@ -8,6 +8,8 @@ Alpine.start();
 
 // If on the homepage, we need to initialize the scripts
 if (window.location.pathname === '/') {
+    // Todo: Add feature to send an API request to save state changes in the background? (Or we refactor to use LocalStorage instead of sessions)
+
     document.addEventListener('DOMContentLoaded', function() {
         // Color picker interactivity
 
