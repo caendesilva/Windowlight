@@ -86,11 +86,22 @@
                                                 <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2" />
                                             </div>
                                             <div id="color-presets" class="flex space-x-2 mt-2">
-                                                <button type="button" class="w-6 h-6 rounded-full border border-gray-300" style="background-color: #FFFFFF;" title="White" data-color="#FFFFFF"></button>
-                                                <button type="button" class="w-6 h-6 rounded-full border border-gray-300" style="background-color: #F3F4F6;" title="Light Gray" data-color="#F3F4F6"></button>
-                                                <button type="button" class="w-6 h-6 rounded-full border border-gray-300" style="background-color: #1F2937;" title="Dark Gray" data-color="#1F2937"></button>
-                                                <button type="button" class="w-6 h-6 rounded-full border border-gray-300" style="background-color: #111827;" title="Almost Black" data-color="#111827"></button>
-
+                                                @php
+                                                    $colorPresets = [
+                                                        'White' => '#FFFFFF',
+                                                        'Light Gray' => '#F3F4F6',
+                                                        'Dark Gray' => '#1F2937',
+                                                        'Almost Black' => '#111827',
+                                                    ];
+                                                @endphp
+                                                
+                                                @foreach($colorPresets as $label => $hex)
+                                                    <button type="button" class="w-6 h-6 rounded-full border border-gray-300"
+                                                            style="background-color: {{ $hex }};"
+                                                            title="{{ $label }}"
+                                                            data-color="{{ $hex }}">
+                                                    </button>
+                                                @endforeach
                                                 <!-- <button type="button" class="w-6 h-6 rounded-full border border-gray-300 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" title="Gradient" data-color="gradient"></button> -->
                                                 <button type="button" class="w-6 h-6 rounded-full border border-gray-300 relative" style="background-color: transparent;" title="Transparent" data-color="transparent">
                                                     <svg class="w-full h-full text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
