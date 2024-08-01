@@ -90,7 +90,8 @@
                                                 <button type="button" class="w-6 h-6 rounded-full border border-gray-300" style="background-color: #F3F4F6;" title="Light Gray" data-color="#F3F4F6"></button>
                                                 <button type="button" class="w-6 h-6 rounded-full border border-gray-300" style="background-color: #1F2937;" title="Dark Gray" data-color="#1F2937"></button>
                                                 <button type="button" class="w-6 h-6 rounded-full border border-gray-300" style="background-color: #111827;" title="Almost Black" data-color="#111827"></button>
-                                                <button type="button" class="w-6 h-6 rounded-full border border-gray-300 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" title="Gradient" data-color="gradient"></button>
+
+                                                <!-- <button type="button" class="w-6 h-6 rounded-full border border-gray-300 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" title="Gradient" data-color="gradient"></button> -->
                                                 <button type="button" class="w-6 h-6 rounded-full border border-gray-300" style="background-color: transparent;" title="Transparent" data-color="transparent">
                                                     <svg class="w-full h-full text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>

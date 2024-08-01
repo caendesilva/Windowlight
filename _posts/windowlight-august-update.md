@@ -25,7 +25,7 @@ This feature allows for quick and easy code formatting, ensuring your screenshot
 We've revamped our color picker to make it even more user-friendly:
 
 - **Quick-select color presets**: Choose from a range of predefined background colors with a single click.
-- **Gradient option**: Add a stylish gradient background to your code screenshots.
+[//]: # (- **Gradient option**: Add a stylish gradient background to your code screenshots.)
 - **Improved transparency support**: Easily toggle between solid colors and transparency.
 
 This update streamlines the process of customizing your code screenshots, allowing you to create visually striking images in seconds.
@@ -38,7 +38,7 @@ These new features are designed to make Windowlight even more powerful and user-
 
 [//]: # (- **Enhanced Customization**: With configurable tab sizes, you can match your preferred coding style.)
 [//]: # (- **Greater Flexibility**: [Brief mention of how other new features enhance flexibility])
-- **Greater Flexibility**: The new color presets and gradient option open up more creative possibilities for your code screenshots.
+- **Greater Flexibility**: The new color presets option open up more creative possibilities for your code screenshots.
 
 ### The Windowlight Advantage
 
