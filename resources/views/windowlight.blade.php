@@ -54,8 +54,13 @@
                                             <x-input-error :messages="$errors->get('headerText')" class="mt-2" />
                                         </div>
                                         <div class="mb-4">
-                                            <x-input-label for="background" value="Background color" />
-                                            <label for="backgroundPicker" class="sr-only">Or enter color through your browser's color picker</label>
+                                            <div class="flex justify-between items-center mb-2">
+                                                <x-input-label for="background" value="Background color" />
+                                                <label for="backgroundPicker" class="sr-only">Or enter color through your browser's color picker</label>
+                                                <button type="button" id="colorPresetsToggle" class="text-sm text-blue-600 hover:text-blue-800">
+                                                    Choose preset
+                                                </button>
+                                            </div>
                                             <div class="flex flex-row justify-between w-48" id="backgroundColorContainer">
                                                 <style>
                                                     #backgroundColorContainer {
@@ -85,30 +90,6 @@
                                                 <x-text-input type="text" id="backgroundInput" name="background" value="{{ $background }}" list="colors" title="Enter a valid hexadecimal color code, or leave blank to use a transparent background" placeholder="#FFFFFF" class="w-48" />
                                                 <input type="color" name="backgroundPicker" id="backgroundPicker" value="{{ $background === 'transparent' ? '#ffffff' : $background }}" class="h-auto bg-transparent cursor-pointer ml-2" />
                                             </div>
-                                            <div id="color-presets" class="flex space-x-2 mt-2">
-                                                @php
-                                                    $colorPresets = [
-                                                        'White' => '#FFFFFF',
-                                                        'Light Gray' => '#F3F4F6',
-                                                        'Dark Gray' => '#1F2937',
-                                                        'Almost Black' => '#111827',
-                                                    ];
-                                                @endphp
-                                                
-                                                @foreach($colorPresets as $label => $hex)
-                                                    <button type="button" class="w-6 h-6 rounded-full border border-gray-300"
-                                                            style="background-color: {{ $hex }};"
-                                                            title="{{ $label }}"
-                                                            data-color="{{ $hex }}">
-                                                    </button>
-                                                @endforeach
-                                                <!-- <button type="button" class="w-6 h-6 rounded-full border border-gray-300 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500" title="Gradient" data-color="gradient"></button> -->
-                                                <button type="button" class="w-6 h-6 rounded-full border border-gray-300 relative" style="background-color: transparent;" title="Transparent" data-color="transparent">
-                                                    <svg class="w-full h-full text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                                    </svg>
-                                                </button>
-                                            </div>
                                             <x-input-error :messages="$errors->get('background')" class="mt-2" />
 
                                             <datalist id="colors">
@@ -118,6 +99,17 @@
                                                 <option value="#000000">Black</option>
                                                 <option value="#f3f4f6">Gray</option>
                                             </datalist>
+
+                                            <!-- Color Presets Modal -->
+                                            <div id="colorPresetsModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center">
+                                                <div class="bg-white p-4 rounded-lg shadow-lg">
+                                                    <h3 class="text-lg font-semibold mb-2">Color Presets</h3>
+                                                    <div id="colorPresets" class="grid grid-cols-5 gap-2">
+                                                        <!-- Color preset buttons will be dynamically added here -->
+                                                    </div>
+                                                    <button id="closeColorPresetsModal" class="mt-4 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">Close</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 

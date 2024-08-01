@@ -14,7 +14,10 @@ if (window.location.pathname === '/') {
         const backgroundPicker = document.getElementById('backgroundPicker');
         const backgroundInput = document.getElementById('backgroundInput');
         const wrapper = document.getElementById('code-card-wrapper');
-        const colorPresets = document.getElementById('color-presets');
+        const colorPresets = document.getElementById('colorPresets');
+        const colorPresetsToggle = document.getElementById('colorPresetsToggle');
+        const colorPresetsModal = document.getElementById('colorPresetsModal');
+        const closeColorPresetsModal = document.getElementById('closeColorPresetsModal');
 
         backgroundPicker.addEventListener('input', function () {
             backgroundInput.value = this.value;
@@ -25,7 +28,70 @@ if (window.location.pathname === '/') {
         backgroundInput.addEventListener('input', function () {
             reactToColorInputChange();
         });
+        // Color presets
+        const presetColors = [
+            { name: 'White', color: '#FFFFFF' },
+            { name: 'Light Gray', color: '#F3F4F6' },
+            { name: 'Dark Gray', color: '#1F2937' },
+            { name: 'Almost Black', color: '#111827' },
+            { name: 'Blue', color: '#3B82F6' },
+            { name: 'Green', color: '#10B981' },
+            { name: 'Red', color: '#EF4444' },
+            { name: 'Yellow', color: '#F59E0B' },
+            { name: 'Purple', color: '#8B5CF6' },
+            { name: 'Transparent', color: 'transparent' }
+        ];
 
+        // Function to create color preset buttons
+        function createColorPresetButtons() {
+            colorPresets.innerHTML = ''; // Clear existing buttons
+            presetColors.forEach(preset => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'w-8 h-8 rounded-full border border-gray-300';
+                button.style.backgroundColor = preset.color;
+                button.dataset.color = preset.color;
+                button.title = preset.name;
+
+                if (preset.color === 'transparent') {
+                    button.innerHTML = `
+                        <svg class="w-full h-full text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    `;
+                }
+
+                colorPresets.appendChild(button);
+            });
+        }
+
+        // Create color preset buttons
+        createColorPresetButtons();
+
+        // Toggle color presets modal
+        colorPresetsToggle.addEventListener('click', () => {
+            colorPresetsModal.classList.toggle('hidden');
+            colorPresetsModal.classList.toggle('flex');
+        });
+
+        // Close color presets modal
+        closeColorPresetsModal.addEventListener('click', () => {
+            colorPresetsModal.classList.add('hidden');
+            colorPresetsModal.classList.remove('flex');
+        });
+
+        // Color preset selection
+        colorPresets.addEventListener('click', function(e) {
+            const button = e.target.closest('button');
+            if (button) {
+                const color = button.dataset.color;
+                updateBackgroundColor(color);
+                backgroundInput.value = color;
+                backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
+                colorPresetsModal.classList.add('hidden');
+                colorPresetsModal.classList.remove('flex');
+            }
+        });
         function updateBackgroundColor(color) {
             // Reactive background color state change
 
