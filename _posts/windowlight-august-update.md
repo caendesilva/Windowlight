@@ -20,13 +20,15 @@ One of the standout features in this update is the new **smart code indentation*
 
 This feature allows for quick and easy code formatting, ensuring your screenshots always look polished and professional. Perfect for when you paste in an indented function or snippet that you want to align with the window.
 
-#### 2. [Placeholder for additional feature]
+#### 2. Enhanced Color Picker with Presets
 
-[Brief description of another new feature]
+We've revamped our color picker to make it even more user-friendly:
 
-#### 3. [Placeholder for additional feature]
+- **Quick-select color presets**: Choose from a range of predefined background colors with a single click.
+- **Gradient option**: Add a stylish gradient background to your code screenshots.
+- **Improved transparency support**: Easily toggle between solid colors and transparency.
 
-[Brief description of another new feature]
+This update streamlines the process of customizing your code screenshots, allowing you to create visually striking images in seconds.
 
 ### Why These Updates Matter
 
@@ -36,6 +38,7 @@ These new features are designed to make Windowlight even more powerful and user-
 
 [//]: # (- **Enhanced Customization**: With configurable tab sizes, you can match your preferred coding style.)
 [//]: # (- **Greater Flexibility**: [Brief mention of how other new features enhance flexibility])
+- **Greater Flexibility**: The new color presets and gradient option open up more creative possibilities for your code screenshots.
 
 ### The Windowlight Advantage
 
