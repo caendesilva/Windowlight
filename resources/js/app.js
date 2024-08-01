@@ -14,6 +14,7 @@ if (window.location.pathname === '/') {
         const backgroundPicker = document.getElementById('backgroundPicker');
         const backgroundInput = document.getElementById('backgroundInput');
         const wrapper = document.getElementById('code-card-wrapper');
+        const colorPresets = document.getElementById('color-presets');
 
         backgroundPicker.addEventListener('input', function () {
             backgroundInput.value = this.value;
@@ -69,6 +70,23 @@ if (window.location.pathname === '/') {
 
         reactToColorInputChange();
 
+        // New color preset functionality
+        colorPresets.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON') {
+                const color = e.target.dataset.color;
+                if (color === 'gradient') {
+                    wrapper.style.backgroundImage = 'linear-gradient(to right, #EC4899, #EF4444, #F59E0B)';
+                    wrapper.style.backgroundColor = 'transparent';
+                    backgroundInput.value = 'gradient';
+                } else {
+                    wrapper.style.backgroundImage = 'none';
+                    updateBackgroundColor(color);
+                    backgroundInput.value = color;
+                }
+                backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
+                reactToColorInputChange();
+            }
+        });
         // Selection dropdown reactivity
 
         // On show menu bar change
