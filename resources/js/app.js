@@ -1,7 +1,9 @@
 import './bootstrap';
+
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
+
 Alpine.start();
 
 // If on the homepage, we need to initialize the scripts
@@ -10,6 +12,7 @@ if (window.location.pathname === '/') {
 
     document.addEventListener('DOMContentLoaded', function() {
         // Color picker interactivity
+
         const backgroundPicker = document.getElementById('backgroundPicker');
         const backgroundInput = document.getElementById('backgroundInput');
         const wrapper = document.getElementById('code-card-wrapper');
@@ -53,10 +56,10 @@ if (window.location.pathname === '/') {
 
                 if (preset.color === 'transparent') {
                     button.innerHTML = `
-                        <svg class="w-full h-full text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    `;
+            <svg class="w-full h-full text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          `;
                 }
 
                 colorPresets.appendChild(button);
@@ -79,6 +82,7 @@ if (window.location.pathname === '/') {
 
         function updateBackgroundColor(color) {
             // Reactive background color state change
+
             if (color === 'transparent' || color === 'none') {
                 // Low priority known bug: When setting to transparent, the html2canvas options
                 // need to be reinitialized if the page was not loaded with a transparent background
@@ -91,6 +95,7 @@ if (window.location.pathname === '/') {
         function reactToColorInputChange() {
             // Adds some UX normalization and reactivity to the color input
             // Obviously, we do a similar validation on the backend too.
+
             let value = backgroundInput.value;
 
             if (!value.startsWith('#') && (value.length === 6 || value.length === 3)) {
@@ -137,35 +142,35 @@ if (window.location.pathname === '/') {
             tooltip.className = 'tooltip';
             tooltip.textContent = 'Choose preset color';
             tooltip.style.cssText = `
-                visibility: hidden;
-                position: absolute;
-                bottom: 140%;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: #333;
-                color: white;
-                text-align: center;
-                padding: 4px 8px;
-                border-radius: 4px;
-                font-size: 12px;
-                white-space: nowrap;
-                opacity: 0;
-                transition: opacity 0.1s;
-                pointer-events: none;
-                z-index: 10;
-            `;
+        visibility: hidden;
+        position: absolute;
+        bottom: 140%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.1s;
+        pointer-events: none;
+        z-index: 10;
+      `;
 
             const arrow = document.createElement('div');
             arrow.style.cssText = `
-                content: "";
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                margin-left: -5px;
-                border-width: 5px;
-                border-style: solid;
-                border-color: #333 transparent transparent transparent;
-            `;
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+      `;
 
             tooltip.appendChild(arrow);
 
@@ -222,10 +227,12 @@ if (window.location.pathname === '/') {
         useHeader.addEventListener('change', function() {
             // Low priority known issue: When setting to this to false, the Torchlight
             // <pre> element should regain its top border radius, and vice versa
+
             if (this.checked) {
                 codeCardHeader.style.display = 'flex';
             } else {
                 codeCardHeader.style.display = 'none';
+
                 headerButtons.checked = false;
                 headerButtons.dispatchEvent(new Event('change'));
             }
@@ -234,6 +241,7 @@ if (window.location.pathname === '/') {
         headerButtons.addEventListener('change', function() {
             if (this.checked) {
                 codeCardHeader.querySelector('#header-buttons').style.display = 'revert';
+
                 useHeader.checked = true;
                 useHeader.dispatchEvent(new Event('change'));
             } else {
@@ -275,6 +283,7 @@ if (window.location.pathname === '/') {
         });
 
         // Progressive textarea enhancements
+
         const textarea = document.querySelector('textarea');
 
         // When inside the form and using CMD/CTRL + Enter, submit the form
@@ -332,35 +341,35 @@ if (window.location.pathname === '/') {
                 tooltip.className = 'tooltip';
                 tooltip.textContent = button.title;
                 tooltip.style.cssText = `
-                    visibility: hidden;
-                    position: absolute;
-                    bottom: 140%;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    background-color: #333;
-                    color: white;
-                    text-align: center;
-                    padding: 4px 8px;
-                    border-radius: 4px;
-                    font-size: 12px;
-                    white-space: nowrap;
-                    opacity: 0;
-                    transition: opacity 0.1s;
-                    pointer-events: none;
-                    z-index: 10;
-                `;
+          visibility: hidden;
+          position: absolute;
+          bottom: 140%;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: #333;
+          color: white;
+          text-align: center;
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          white-space: nowrap;
+          opacity: 0;
+          transition: opacity 0.1s;
+          pointer-events: none;
+          z-index: 10;
+        `;
 
                 const arrow = document.createElement('div');
                 arrow.style.cssText = `
-                    content: "";
-                    position: absolute;
-                    top: 100%;
-                    left: 50%;
-                    margin-left: -5px;
-                    border-width: 5px;
-                    border-style: solid;
-                    border-color: #333 transparent transparent transparent;
-                `;
+          content: "";
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          margin-left: -5px;
+          border-width: 5px;
+          border-style: solid;
+          border-color: #333 transparent transparent transparent;
+        `;
 
                 tooltip.appendChild(arrow);
 
@@ -391,19 +400,19 @@ if (window.location.pathname === '/') {
         }
 
         const template = `
-            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <span>${message}</span>
-                <div class="timeout">
-                    <div class="progress-bar"></div>
-                </div>
-            </div>
-        `;
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <span>${message}</span>
+        <div class="timeout">
+          <div class="progress-bar"></div>
+        </div>
+      </div>
+    `;
 
         document.body.appendChild(document.createRange().createContextualFragment(template));
 
         const toast = document.querySelector('.toast');
 
-        setTimeout(() => { toast.style.opacity = '0'; }, 3000);
-        setTimeout(() => { toast.remove(); }, 3500);
+        setTimeout(() => {toast.style.opacity = '0';}, 3000);
+        setTimeout(() => {toast.remove();}, 3500);
     }
 }
