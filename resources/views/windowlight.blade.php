@@ -56,9 +56,11 @@
                                         <div class="mb-4">
                                             <div class="flex justify-between items-center mb-2">
                                                 <x-input-label for="background" value="Background color" />
-                                                <label for="backgroundPicker" class="sr-only">Or enter color through your browser's color picker</label>
-                                                <button type="button" id="colorPresetsToggle" class="text-sm text-blue-600 hover:text-blue-800">
-                                                    Choose preset
+                                                <button type="button" id="colorPresetsToggle" class="text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 relative" title="Choose preset color">
+                                                    <span class="sr-only">Choose preset color</span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M4 2a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2H4zm1 2h10a1 1 0 011 1v10a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1zm7 3a1 1 0 11-2 0 1 1 0 012 0zm-3 1a1 1 0 100 2 1 1 0 000-2zm-3 3a1 1 0 110 2 1 1 0 010-2zm7-4a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd" />
+                                                    </svg>
                                                 </button>
                                             </div>
                                             <div class="flex flex-row justify-between w-48" id="backgroundColorContainer">
@@ -100,14 +102,11 @@
                                                 <option value="#f3f4f6">Gray</option>
                                             </datalist>
 
-                                            <!-- Color Presets Modal -->
-                                            <div id="colorPresetsModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden items-center justify-center">
-                                                <div class="bg-white p-4 rounded-lg shadow-lg">
-                                                    <h3 class="text-lg font-semibold mb-2">Color Presets</h3>
-                                                    <div id="colorPresets" class="grid grid-cols-5 gap-2">
-                                                        <!-- Color preset buttons will be dynamically added here -->
-                                                    </div>
-                                                    <button id="closeColorPresetsModal" class="mt-4 px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300">Close</button>
+                                            <!-- Color Presets Popover -->
+                                            <div id="colorPresetsPopover" class="hidden absolute bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg z-10">
+                                                <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">Color Presets</h3>
+                                                <div id="colorPresets" class="grid grid-cols-5 gap-2">
+                                                    <!-- Color preset buttons will be dynamically added here -->
                                                 </div>
                                             </div>
                                         </div>

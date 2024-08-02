@@ -16,8 +16,7 @@ if (window.location.pathname === '/') {
         const wrapper = document.getElementById('code-card-wrapper');
         const colorPresets = document.getElementById('colorPresets');
         const colorPresetsToggle = document.getElementById('colorPresetsToggle');
-        const colorPresetsModal = document.getElementById('colorPresetsModal');
-        const closeColorPresetsModal = document.getElementById('closeColorPresetsModal');
+        const colorPresetsPopover = document.getElementById('colorPresetsPopover');
 
         backgroundPicker.addEventListener('input', function () {
             backgroundInput.value = this.value;
@@ -28,6 +27,7 @@ if (window.location.pathname === '/') {
         backgroundInput.addEventListener('input', function () {
             reactToColorInputChange();
         });
+
         // Color presets
         const presetColors = [
             { name: 'White', color: '#FFFFFF' },
@@ -48,14 +48,14 @@ if (window.location.pathname === '/') {
             presetColors.forEach(preset => {
                 const button = document.createElement('button');
                 button.type = 'button';
-                button.className = 'w-8 h-8 rounded-full border border-gray-300';
+                button.className = 'w-8 h-8 rounded-full border border-gray-300 dark:border-gray-600';
                 button.style.backgroundColor = preset.color;
                 button.dataset.color = preset.color;
                 button.title = preset.name;
 
                 if (preset.color === 'transparent') {
                     button.innerHTML = `
-                        <svg class="w-full h-full text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-full h-full text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     `;
@@ -68,18 +68,6 @@ if (window.location.pathname === '/') {
         // Create color preset buttons
         createColorPresetButtons();
 
-        // Toggle color presets modal
-        colorPresetsToggle.addEventListener('click', () => {
-            colorPresetsModal.classList.toggle('hidden');
-            colorPresetsModal.classList.toggle('flex');
-        });
-
-        // Close color presets modal
-        closeColorPresetsModal.addEventListener('click', () => {
-            colorPresetsModal.classList.add('hidden');
-            colorPresetsModal.classList.remove('flex');
-        });
-
         // Color preset selection
         colorPresets.addEventListener('click', function(e) {
             const button = e.target.closest('button');
@@ -88,8 +76,6 @@ if (window.location.pathname === '/') {
                 updateBackgroundColor(color);
                 backgroundInput.value = color;
                 backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
-                colorPresetsModal.classList.add('hidden');
-                colorPresetsModal.classList.remove('flex');
             }
         });
         function updateBackgroundColor(color) {
@@ -135,28 +121,35 @@ if (window.location.pathname === '/') {
         }
 
         reactToColorInputChange();
+       
+        // Create color preset buttons
+        createColorPresetButtons();
+
+        // Toggle color presets popover
+        colorPresetsToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const rect = colorPresetsToggle.getBoundingClientRect();
+            colorPresetsPopover.style.top = `${rect.bottom + window.scrollY + 5}px`; // Added 5px for spacing
+            colorPresetsPopover.style.left = `${rect.left + window.scrollX}px`;
+            colorPresetsPopover.classList.toggle('hidden');
+        });
+
+        // Close color presets popover when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!colorPresetsPopover.contains(e.target) && e.target !== colorPresetsToggle) {
+                colorPresetsPopover.classList.add('hidden');
+            }
+        });
 
         // New color preset functionality
         colorPresets.addEventListener('click', function(e) {
             const button = e.target.closest('button');
             if (button) {
                 const color = button.dataset.color;
-                if (color === 'gradient') {
-                    wrapper.style.backgroundImage = 'linear-gradient(to right, #EC4899, #EF4444, #F59E0B)';
-                    wrapper.style.backgroundColor = 'transparent';
-                    backgroundInput.value = 'gradient';
-                } else {
-                    wrapper.style.backgroundImage = 'none';
-                    updateBackgroundColor(color);
-                    backgroundInput.value = color;
-                }
+                updateBackgroundColor(color);
+                backgroundInput.value = color;
                 backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
-                reactToColorInputChange();
-
-                // Remove 'selected' class from all buttons
-                colorPresets.querySelectorAll('button').forEach(btn => btn.classList.remove('ring-2', 'ring-blue-500'));
-                // Add 'selected' class to clicked button
-                button.classList.add('ring-2', 'ring-blue-500');
+                colorPresetsPopover.classList.add('hidden');
             }
         });
 
