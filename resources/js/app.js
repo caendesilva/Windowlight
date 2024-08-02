@@ -123,7 +123,7 @@ if (window.location.pathname === '/') {
         }
 
         reactToColorInputChange();
-       
+
         // Create color preset buttons
         createColorPresetButtons();
 
