@@ -206,14 +206,13 @@
 
         const useAutofocus = false; // Disable autofocus for now
 
-        @if(!$generated)
+        @if(! $generated)
             if (useAutofocus) {
                 // Move the cursor to the end of the textarea when the page loads
                 textarea.focus(); // Experimental replacement for autofocus, while this breaks noscript, it makes so it only focuses on fresh page loads
                 textarea.setSelectionRange(textarea.value.length, textarea.value.length);
             }
         @endif
-
     </script>
 
     <noscript><style>#backgroundPicker, .requires-javascript { display: none; }</style></noscript>
