@@ -1,9 +1,7 @@
 import './bootstrap';
-
 import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
-
 Alpine.start();
 
 // If on the homepage, we need to initialize the scripts
@@ -12,7 +10,6 @@ if (window.location.pathname === '/') {
 
     document.addEventListener('DOMContentLoaded', function() {
         // Color picker interactivity
-
         const backgroundPicker = document.getElementById('backgroundPicker');
         const backgroundInput = document.getElementById('backgroundInput');
         const wrapper = document.getElementById('code-card-wrapper');
@@ -20,13 +17,12 @@ if (window.location.pathname === '/') {
         const colorPresetsToggle = document.getElementById('colorPresetsToggle');
         const colorPresetsPopover = document.getElementById('colorPresetsPopover');
 
-        backgroundPicker.addEventListener('input', function () {
+        backgroundPicker.addEventListener('input', function() {
             backgroundInput.value = this.value;
-
             updateBackgroundColor(this.value);
         });
 
-        backgroundInput.addEventListener('input', function () {
+        backgroundInput.addEventListener('input', function() {
             reactToColorInputChange();
         });
 
@@ -80,9 +76,9 @@ if (window.location.pathname === '/') {
                 backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
             }
         });
+
         function updateBackgroundColor(color) {
             // Reactive background color state change
-
             if (color === 'transparent' || color === 'none') {
                 // Low priority known bug: When setting to transparent, the html2canvas options
                 // need to be reinitialized if the page was not loaded with a transparent background
@@ -95,7 +91,6 @@ if (window.location.pathname === '/') {
         function reactToColorInputChange() {
             // Adds some UX normalization and reactivity to the color input
             // Obviously, we do a similar validation on the backend too.
-
             let value = backgroundInput.value;
 
             if (!value.startsWith('#') && (value.length === 6 || value.length === 3)) {
@@ -135,41 +130,42 @@ if (window.location.pathname === '/') {
             colorPresetsPopover.style.left = `${rect.left + window.scrollX}px`;
             colorPresetsPopover.classList.toggle('hidden');
         });
+
         // Add popover to the color presets toggle button
         function addToggleButtonTooltip() {
             const tooltip = document.createElement('div');
             tooltip.className = 'tooltip';
             tooltip.textContent = 'Choose preset color';
             tooltip.style.cssText = `
-            visibility: hidden;
-            position: absolute;
-            bottom: 140%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.1s;
-            pointer-events: none;
-            z-index: 10;
-        `;
+                visibility: hidden;
+                position: absolute;
+                bottom: 140%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #333;
+                color: white;
+                text-align: center;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                white-space: nowrap;
+                opacity: 0;
+                transition: opacity 0.1s;
+                pointer-events: none;
+                z-index: 10;
+            `;
 
             const arrow = document.createElement('div');
             arrow.style.cssText = `
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #333 transparent transparent transparent;
-        `;
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: #333 transparent transparent transparent;
+            `;
 
             tooltip.appendChild(arrow);
 
@@ -186,6 +182,7 @@ if (window.location.pathname === '/') {
                 tooltip.style.opacity = '0';
             });
         }
+
         // Call the function to add the tooltip to the toggle button
         addToggleButtonTooltip();
 
@@ -222,24 +219,21 @@ if (window.location.pathname === '/') {
         const headerButtons = document.getElementById('headerButtons');
         const codeCardHeader = document.getElementById('code-card-header');
 
-        useHeader.addEventListener('change', function () {
+        useHeader.addEventListener('change', function() {
             // Low priority known issue: When setting to this to false, the Torchlight
             // <pre> element should regain its top border radius, and vice versa
-
             if (this.checked) {
                 codeCardHeader.style.display = 'flex';
             } else {
                 codeCardHeader.style.display = 'none';
-
                 headerButtons.checked = false;
                 headerButtons.dispatchEvent(new Event('change'));
             }
         });
 
-        headerButtons.addEventListener('change', function () {
+        headerButtons.addEventListener('change', function() {
             if (this.checked) {
                 codeCardHeader.querySelector('#header-buttons').style.display = 'revert';
-
                 useHeader.checked = true;
                 useHeader.dispatchEvent(new Event('change'));
             } else {
@@ -251,7 +245,7 @@ if (window.location.pathname === '/') {
         const headerText = document.getElementById('headerText');
         const headerTitle = document.querySelector('#code-card-header #header-title-text');
 
-        headerText.addEventListener('input', function () {
+        headerText.addEventListener('input', function() {
             headerTitle.textContent = this.value;
         });
 
@@ -261,7 +255,7 @@ if (window.location.pathname === '/') {
         const lineNumbersInitialState = lineNumbers.checked;
         let hasNotifiedAboutLineNumbers = false;
 
-        lineNumbers.addEventListener('change', function () {
+        lineNumbers.addEventListener('change', function() {
             if (lineNumbersInitialState === false && hasNotifiedAboutLineNumbers === false) {
                 toast('Please regenerate the image to see the line numbers.');
                 hasNotifiedAboutLineNumbers = true;
@@ -272,7 +266,7 @@ if (window.location.pathname === '/') {
         // Shadow change
         const useShadow = document.getElementById('useShadow');
 
-        useShadow.addEventListener('change', function () {
+        useShadow.addEventListener('change', function() {
             if (this.checked) {
                 codeCard.classList.add('shadow-lg');
             } else {
@@ -281,11 +275,10 @@ if (window.location.pathname === '/') {
         });
 
         // Progressive textarea enhancements
-
         const textarea = document.querySelector('textarea');
 
         // When inside the form and using CMD/CTRL + Enter, submit the form
-        textarea.addEventListener('keydown', function (event) {
+        textarea.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
                 event.preventDefault();
                 this.form.submit();
@@ -331,7 +324,6 @@ if (window.location.pathname === '/') {
 
         // Add the indentation event listener to the textarea
         textarea.addEventListener('keydown', handleIndentation);
-
 
         function addTooltips() {
             const buttons = colorPresets.querySelectorAll('button');
@@ -399,19 +391,19 @@ if (window.location.pathname === '/') {
         }
 
         const template = `
-        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <span>${message}</span>
-            <div class="timeout">
-                <div class="progress-bar"></div>
+            <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <span>${message}</span>
+                <div class="timeout">
+                    <div class="progress-bar"></div>
+                </div>
             </div>
-        </div>
         `;
 
         document.body.appendChild(document.createRange().createContextualFragment(template));
 
         const toast = document.querySelector('.toast');
 
-        setTimeout(() => {toast.style.opacity = '0';}, 3000);
-        setTimeout(() => {toast.remove();}, 3500);
+        setTimeout(() => { toast.style.opacity = '0'; }, 3000);
+        setTimeout(() => { toast.remove(); }, 3500);
     }
 }
