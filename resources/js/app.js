@@ -14,6 +14,9 @@ if (window.location.pathname === '/') {
         const backgroundPicker = document.getElementById('backgroundPicker');
         const backgroundInput = document.getElementById('backgroundInput');
         const wrapper = document.getElementById('code-card-wrapper');
+        const colorPresets = document.getElementById('colorPresets');
+        const colorPresetsToggle = document.getElementById('colorPresetsToggle');
+        const colorPresetsPopover = document.getElementById('colorPresetsPopover');
 
         backgroundPicker.addEventListener('input', function () {
             backgroundInput.value = this.value;
@@ -25,6 +28,56 @@ if (window.location.pathname === '/') {
             reactToColorInputChange();
         });
 
+        // Color presets
+        const presetColors = [
+            { name: 'White', color: '#FFFFFF' },
+            { name: 'Light Gray', color: '#F3F4F6' },
+            { name: 'Dark Gray', color: '#1F2937' },
+            { name: 'Almost Black', color: '#111827' },
+            { name: 'Blue', color: '#3B82F6' },
+            { name: 'Green', color: '#10B981' },
+            { name: 'Red', color: '#EF4444' },
+            { name: 'Yellow', color: '#F59E0B' },
+            { name: 'Purple', color: '#8B5CF6' },
+            { name: 'Transparent', color: 'transparent' }
+        ];
+
+        // Function to create color preset buttons
+        function createColorPresetButtons() {
+            colorPresets.innerHTML = ''; // Clear existing buttons
+            presetColors.forEach(preset => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'w-8 h-8 rounded-full border border-gray-300 dark:border-gray-600';
+                button.style.backgroundColor = preset.color;
+                button.dataset.color = preset.color;
+                button.title = preset.name;
+
+                if (preset.color === 'transparent') {
+                    button.innerHTML = `
+                        <svg class="w-full h-full text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    `;
+                }
+
+                colorPresets.appendChild(button);
+            });
+        }
+
+        // Create color preset buttons
+        createColorPresetButtons();
+
+        // Color preset selection
+        colorPresets.addEventListener('click', function(e) {
+            const button = e.target.closest('button');
+            if (button) {
+                const color = button.dataset.color;
+                updateBackgroundColor(color);
+                backgroundInput.value = color;
+                backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
+            }
+        });
         function updateBackgroundColor(color) {
             // Reactive background color state change
 
@@ -68,6 +121,97 @@ if (window.location.pathname === '/') {
         }
 
         reactToColorInputChange();
+       
+        // Create color preset buttons
+        createColorPresetButtons();
+
+        // Toggle color presets popover
+        colorPresetsToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const rect = colorPresetsToggle.getBoundingClientRect();
+            colorPresetsPopover.style.top = `${rect.bottom + window.scrollY + 5}px`; // Added 5px for spacing
+            colorPresetsPopover.style.left = `${rect.left + window.scrollX}px`;
+            colorPresetsPopover.classList.toggle('hidden');
+        });
+        // Add popover to the color presets toggle button
+        function addToggleButtonTooltip() {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = 'Choose preset color';
+            tooltip.style.cssText = `
+            visibility: hidden;
+            position: absolute;
+            bottom: 140%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.1s;
+            pointer-events: none;
+            z-index: 10;
+        `;
+
+            const arrow = document.createElement('div');
+            arrow.style.cssText = `
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        `;
+
+            tooltip.appendChild(arrow);
+
+            colorPresetsToggle.style.position = 'relative';
+            colorPresetsToggle.appendChild(tooltip);
+
+            colorPresetsToggle.addEventListener('mouseenter', () => {
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+            });
+
+            colorPresetsToggle.addEventListener('mouseleave', () => {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+            });
+        }
+        // Call the function to add the tooltip to the toggle button
+        addToggleButtonTooltip();
+
+        // Close color presets popover when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!colorPresetsPopover.contains(e.target) && e.target !== colorPresetsToggle) {
+                colorPresetsPopover.classList.add('hidden');
+            }
+        });
+
+        // New color preset functionality
+        colorPresets.addEventListener('click', function(e) {
+            const button = e.target.closest('button');
+            if (button) {
+                const color = button.dataset.color;
+                updateBackgroundColor(color);
+                backgroundInput.value = color;
+                backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
+                colorPresetsPopover.classList.add('hidden');
+            }
+        });
+
+        // Initialize selected state
+        const initialColor = backgroundInput.value;
+        const initialButton = colorPresets.querySelector(`button[data-color="${initialColor}"]`);
+        if (initialButton) {
+            initialButton.classList.add('ring-2', 'ring-blue-500');
+        }
 
         // Selection dropdown reactivity
 
@@ -185,6 +329,64 @@ if (window.location.pathname === '/') {
 
         // Add the indentation event listener to the textarea
         textarea.addEventListener('keydown', handleIndentation);
+
+
+        function addTooltips() {
+            const buttons = colorPresets.querySelectorAll('button');
+            buttons.forEach(button => {
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                tooltip.textContent = button.title;
+                tooltip.style.cssText = `
+                    visibility: hidden;
+                    position: absolute;
+                    bottom: 140%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: #333;
+                    color: white;
+                    text-align: center;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    opacity: 0;
+                    transition: opacity 0.1s;
+                    pointer-events: none;
+                    z-index: 10;
+                `;
+
+                const arrow = document.createElement('div');
+                arrow.style.cssText = `
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -5px;
+                    border-width: 5px;
+                    border-style: solid;
+                    border-color: #333 transparent transparent transparent;
+                `;
+
+                tooltip.appendChild(arrow);
+
+                button.style.position = 'relative';
+                button.appendChild(tooltip);
+
+                button.addEventListener('mouseenter', () => {
+                    tooltip.style.visibility = 'visible';
+                    tooltip.style.opacity = '1';
+                });
+
+                button.addEventListener('mouseleave', () => {
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.opacity = '0';
+                });
+            });
+        }
+
+        // Call the function to add tooltips
+        addTooltips();
     });
 
     // Toast notification
