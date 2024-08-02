@@ -11,25 +11,25 @@ if (window.location.pathname === '/') {
     // Todo: Add feature to send an API request to save state changes in the background? (Or we refactor to use LocalStorage instead of sessions)
 
     document.addEventListener('DOMContentLoaded', function() {
-        // Color picker interactivity
-
+        // DOM element selections
         const backgroundPicker = document.getElementById('backgroundPicker');
         const backgroundInput = document.getElementById('backgroundInput');
         const wrapper = document.getElementById('code-card-wrapper');
         const colorPresets = document.getElementById('colorPresets');
         const colorPresetsToggle = document.getElementById('colorPresetsToggle');
         const colorPresetsPopover = document.getElementById('colorPresetsPopover');
+        const useHeader = document.getElementById('useHeader');
+        const headerButtons = document.getElementById('headerButtons');
+        const codeCardHeader = document.getElementById('code-card-header');
+        const headerText = document.getElementById('headerText');
+        const headerTitle = document.querySelector('#code-card-header #header-title-text');
+        const lineNumbers = document.getElementById('lineNumbers');
+        const codeCard = document.getElementById('code-card');
+        const useShadow = document.getElementById('useShadow');
+        const textarea = document.querySelector('textarea');
 
-        backgroundPicker.addEventListener('input', function() {
-            backgroundInput.value = this.value;
-            updateBackgroundColor(this.value);
-        });
-
-        backgroundInput.addEventListener('input', function() {
-            reactToColorInputChange();
-        });
-
-        // Color presets
+        // Constants
+        const TAB_SIZE = 4;
         const presetColors = [
             { name: 'White', color: '#FFFFFF' },
             { name: 'Light Gray', color: '#F3F4F6' },
@@ -43,7 +43,112 @@ if (window.location.pathname === '/') {
             { name: 'Transparent', color: 'transparent' }
         ];
 
-        // Function to create color preset buttons
+        // Initialization
+        createColorPresetButtons();
+        reactToColorInputChange();
+        addToggleButtonTooltip();
+        addTooltips();
+
+        const lineNumbersInitialState = lineNumbers.checked;
+        let hasNotifiedAboutLineNumbers = false;
+
+        // Initialize selected state
+        const initialColor = backgroundInput.value;
+        const initialButton = colorPresets.querySelector(`button[data-color="${initialColor}"]`);
+        if (initialButton) {
+            initialButton.classList.add('ring-2', 'ring-blue-500');
+        }
+
+        // Event listeners
+        backgroundPicker.addEventListener('input', function() {
+            backgroundInput.value = this.value;
+            updateBackgroundColor(this.value);
+        });
+
+        backgroundInput.addEventListener('input', function() {
+            reactToColorInputChange();
+        });
+
+        colorPresets.addEventListener('click', function(e) {
+            const button = e.target.closest('button');
+            if (button) {
+                const color = button.dataset.color;
+                updateBackgroundColor(color);
+                backgroundInput.value = color;
+                backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
+                colorPresetsPopover.classList.add('hidden');
+            }
+        });
+
+        colorPresetsToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const rect = colorPresetsToggle.getBoundingClientRect();
+            colorPresetsPopover.style.top = `${rect.bottom + window.scrollY + 5}px`; // Added 5px for spacing
+            colorPresetsPopover.style.left = `${rect.left + window.scrollX}px`;
+            colorPresetsPopover.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!colorPresetsPopover.contains(e.target) && e.target !== colorPresetsToggle) {
+                colorPresetsPopover.classList.add('hidden');
+            }
+        });
+
+        useHeader.addEventListener('change', function() {
+            // Low priority known issue: When setting to this to false, the Torchlight
+            // <pre> element should regain its top border radius, and vice versa
+
+            if (this.checked) {
+                codeCardHeader.style.display = 'flex';
+            } else {
+                codeCardHeader.style.display = 'none';
+
+                headerButtons.checked = false;
+                headerButtons.dispatchEvent(new Event('change'));
+            }
+        });
+
+        headerButtons.addEventListener('change', function() {
+            if (this.checked) {
+                codeCardHeader.querySelector('#header-buttons').style.display = 'revert';
+
+                useHeader.checked = true;
+                useHeader.dispatchEvent(new Event('change'));
+            } else {
+                codeCardHeader.querySelector('#header-buttons').style.display = 'none';
+            }
+        });
+
+        headerText.addEventListener('input', function() {
+            headerTitle.textContent = this.value;
+        });
+
+        lineNumbers.addEventListener('change', function() {
+            if (lineNumbersInitialState === false && hasNotifiedAboutLineNumbers === false) {
+                toast('Please regenerate the image to see the line numbers.');
+                hasNotifiedAboutLineNumbers = true;
+            }
+            codeCard.setAttribute('data-line-numbers', this.checked);
+        });
+
+        useShadow.addEventListener('change', function() {
+            if (this.checked) {
+                codeCard.classList.add('shadow-lg');
+            } else {
+                codeCard.classList.remove('shadow-lg');
+            }
+        });
+
+        textarea.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
+                event.preventDefault();
+                this.form.submit();
+            }
+        });
+
+        textarea.addEventListener('keydown', handleIndentation);
+
+        // Functions
         function createColorPresetButtons() {
             colorPresets.innerHTML = ''; // Clear existing buttons
             presetColors.forEach(preset => {
@@ -65,20 +170,6 @@ if (window.location.pathname === '/') {
                 colorPresets.appendChild(button);
             });
         }
-
-        // Create color preset buttons
-        createColorPresetButtons();
-
-        // Color preset selection
-        colorPresets.addEventListener('click', function(e) {
-            const button = e.target.closest('button');
-            if (button) {
-                const color = button.dataset.color;
-                updateBackgroundColor(color);
-                backgroundInput.value = color;
-                backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
-            }
-        });
 
         function updateBackgroundColor(color) {
             // Reactive background color state change
@@ -122,21 +213,6 @@ if (window.location.pathname === '/') {
             updateBackgroundColor(value);
         }
 
-        reactToColorInputChange();
-
-        // Create color preset buttons
-        createColorPresetButtons();
-
-        // Toggle color presets popover
-        colorPresetsToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const rect = colorPresetsToggle.getBoundingClientRect();
-            colorPresetsPopover.style.top = `${rect.bottom + window.scrollY + 5}px`; // Added 5px for spacing
-            colorPresetsPopover.style.left = `${rect.left + window.scrollX}px`;
-            colorPresetsPopover.classList.toggle('hidden');
-        });
-
-        // Add popover to the color presets toggle button
         function addToggleButtonTooltip() {
             const tooltip = document.createElement('div');
             tooltip.className = 'tooltip';
@@ -188,115 +264,6 @@ if (window.location.pathname === '/') {
             });
         }
 
-        // Call the function to add the tooltip to the toggle button
-        addToggleButtonTooltip();
-
-        // Close color presets popover when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!colorPresetsPopover.contains(e.target) && e.target !== colorPresetsToggle) {
-                colorPresetsPopover.classList.add('hidden');
-            }
-        });
-
-        // New color preset functionality
-        colorPresets.addEventListener('click', function(e) {
-            const button = e.target.closest('button');
-            if (button) {
-                const color = button.dataset.color;
-                updateBackgroundColor(color);
-                backgroundInput.value = color;
-                backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
-                colorPresetsPopover.classList.add('hidden');
-            }
-        });
-
-        // Initialize selected state
-        const initialColor = backgroundInput.value;
-        const initialButton = colorPresets.querySelector(`button[data-color="${initialColor}"]`);
-        if (initialButton) {
-            initialButton.classList.add('ring-2', 'ring-blue-500');
-        }
-
-        // Selection dropdown reactivity
-
-        // On show menu bar change
-        const useHeader = document.getElementById('useHeader');
-        const headerButtons = document.getElementById('headerButtons');
-        const codeCardHeader = document.getElementById('code-card-header');
-
-        useHeader.addEventListener('change', function() {
-            // Low priority known issue: When setting to this to false, the Torchlight
-            // <pre> element should regain its top border radius, and vice versa
-
-            if (this.checked) {
-                codeCardHeader.style.display = 'flex';
-            } else {
-                codeCardHeader.style.display = 'none';
-
-                headerButtons.checked = false;
-                headerButtons.dispatchEvent(new Event('change'));
-            }
-        });
-
-        headerButtons.addEventListener('change', function() {
-            if (this.checked) {
-                codeCardHeader.querySelector('#header-buttons').style.display = 'revert';
-
-                useHeader.checked = true;
-                useHeader.dispatchEvent(new Event('change'));
-            } else {
-                codeCardHeader.querySelector('#header-buttons').style.display = 'none';
-            }
-        });
-
-        // Header text change
-        const headerText = document.getElementById('headerText');
-        const headerTitle = document.querySelector('#code-card-header #header-title-text');
-
-        headerText.addEventListener('input', function() {
-            headerTitle.textContent = this.value;
-        });
-
-        // Line numbers change
-        const lineNumbers = document.getElementById('lineNumbers');
-        const codeCard = document.getElementById('code-card');
-        const lineNumbersInitialState = lineNumbers.checked;
-        let hasNotifiedAboutLineNumbers = false;
-
-        lineNumbers.addEventListener('change', function() {
-            if (lineNumbersInitialState === false && hasNotifiedAboutLineNumbers === false) {
-                toast('Please regenerate the image to see the line numbers.');
-                hasNotifiedAboutLineNumbers = true;
-            }
-            codeCard.setAttribute('data-line-numbers', this.checked);
-        });
-
-        // Shadow change
-        const useShadow = document.getElementById('useShadow');
-
-        useShadow.addEventListener('change', function() {
-            if (this.checked) {
-                codeCard.classList.add('shadow-lg');
-            } else {
-                codeCard.classList.remove('shadow-lg');
-            }
-        });
-
-        // Progressive textarea enhancements
-
-        const textarea = document.querySelector('textarea');
-
-        // When inside the form and using CMD/CTRL + Enter, submit the form
-        textarea.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
-                event.preventDefault();
-                this.form.submit();
-            }
-        });
-
-        // New feature: Indentation with TAB and SHIFT+TAB
-        const TAB_SIZE = 4;
-
         function handleIndentation(e) {
             if (e.key === 'Tab') {
                 e.preventDefault();
@@ -330,9 +297,6 @@ if (window.location.pathname === '/') {
                 }
             }
         }
-
-        // Add the indentation event listener to the textarea
-        textarea.addEventListener('keydown', handleIndentation);
 
         function addTooltips() {
             const buttons = colorPresets.querySelectorAll('button');
@@ -387,9 +351,6 @@ if (window.location.pathname === '/') {
                 });
             });
         }
-
-        // Call the function to add tooltips
-        addTooltips();
     });
 
     // Toast notification
