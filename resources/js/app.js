@@ -133,6 +133,59 @@ if (window.location.pathname === '/') {
             colorPresetsPopover.style.left = `${rect.left + window.scrollX}px`;
             colorPresetsPopover.classList.toggle('hidden');
         });
+        // Add popover to the color presets toggle button
+        function addToggleButtonTooltip() {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = 'Choose preset color';
+            tooltip.style.cssText = `
+            visibility: hidden;
+            position: absolute;
+            bottom: 140%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.1s;
+            pointer-events: none;
+            z-index: 10;
+        `;
+
+            const arrow = document.createElement('div');
+            arrow.style.cssText = `
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        `;
+
+            tooltip.appendChild(arrow);
+
+            colorPresetsToggle.style.position = 'relative';
+            colorPresetsToggle.appendChild(tooltip);
+
+            colorPresetsToggle.addEventListener('mouseenter', () => {
+                tooltip.style.visibility = 'visible';
+                tooltip.style.opacity = '1';
+            });
+
+            colorPresetsToggle.addEventListener('mouseleave', () => {
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+            });
+        }
+        // Call the function to add the tooltip to the toggle button
+        addToggleButtonTooltip();
 
         // Close color presets popover when clicking outside
         document.addEventListener('click', (e) => {
