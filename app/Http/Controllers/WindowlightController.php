@@ -16,6 +16,7 @@ use Illuminate\View\View;
  * Todo: Support multiple background shadow sizes
  * Todo: Support background gradients
  * Todo: Support background images
+ * Todo: Automatically adjust padding size based on code screenshot dimensions
  */
 class WindowlightController extends Controller
 {
