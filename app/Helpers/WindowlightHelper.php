@@ -26,7 +26,8 @@ class WindowlightHelper
         return Number::clamp($length + 4, 10, 120);
     }
 
-    public static function hslToHex($h, $s, $l) {
+    public static function hslToHex(int $h, int $s, int $l): string
+    {
         $h /= 360;
         $s /= 100;
         $l /= 100;
