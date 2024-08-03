@@ -49,6 +49,7 @@ class GenerateRequest extends FormRequest
             'headerButtons' => 'nullable|boolean',
             'headerText' => 'nullable|string',
             'background' => 'nullable|string|regex:/^#[a-f0-9]{6}$/i',
+            'padding' => 'nullable|string|in:small,medium,large',
         ];
     }
 
