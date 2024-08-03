@@ -5,6 +5,9 @@ namespace App\Helpers;
 use Illuminate\Support\Number;
 use Illuminate\Support\Str;
 
+/**
+ * General helper functions for the Windowlight code snippet generator app.
+ */
 class WindowlightHelper
 {
     /** @experimental */
