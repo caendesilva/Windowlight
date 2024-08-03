@@ -10,6 +10,16 @@ if ($widthType === 'auto') {
 }
 
 $width = $width ?? 64; // Ch
+
+$paddingClasses = [
+    'none' => 'padding-none',
+    'small' => 'padding-small',
+    'medium' => 'padding-medium',
+    'large' => 'padding-large',
+    'extra-large' => 'padding-extra-large',
+];
+
+$paddingClass = $paddingClasses[$padding] ?? $paddingClasses['medium'];
 @endphp
 
 {{-- To improve compatability we use non-semantic elements, meaning divs everywhere, as well as inline styles. --}}
@@ -131,7 +141,7 @@ $width = $width ?? 64; // Ch
     @endif
 </style>
 
-<div id="code-card-wrapper">
+<div id="code-card-wrapper" class="{{ $paddingClass }}">
     <div id="code-card" @class(['shadow-lg' => $useShadow])>
         @if($useHeader)
             <div id="code-card-header">
