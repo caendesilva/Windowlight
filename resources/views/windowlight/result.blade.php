@@ -9,8 +9,17 @@ if ($widthType === 'auto') {
     $width = App\Helpers\ResultWindowHelper::calculateWindowWidth($result);
 }
 
-$padding = 2; // Rem
 $width = $width ?? 64; // Ch
+
+$paddingClasses = [
+    'none' => 'padding-none',
+    'small' => 'padding-small',
+    'medium' => 'padding-medium',
+    'large' => 'padding-large',
+    'extra-large' => 'padding-extra-large',
+];
+
+$paddingClass = $paddingClasses[$padding] ?? $paddingClasses['medium'];
 @endphp
 
 {{-- To improve compatability we use non-semantic elements, meaning divs everywhere, as well as inline styles. --}}
@@ -18,7 +27,7 @@ $width = $width ?? 64; // Ch
 <style>
     #code-card-wrapper {
         /* Dynamic styles */
-        padding: {{ $padding }}rem;
+        padding: 2rem; /* Default padding */
         width: {{ $width }}ch;
         background: {{ $background }};
 
@@ -32,6 +41,26 @@ $width = $width ?? 64; // Ch
         overflow: hidden;
         max-width: 100%;
         min-width: 320px;
+    }
+
+    #code-card-wrapper.padding-none {
+        padding: 0;
+    }
+
+    #code-card-wrapper.padding-small {
+        padding: 1rem;
+    }
+
+    #code-card-wrapper.padding-medium {
+        padding: 2rem;
+    }
+
+    #code-card-wrapper.padding-large {
+        padding: 3rem;
+    }
+
+    #code-card-wrapper.padding-extra-large {
+        padding: 4rem;
     }
 
     @if($lineNumbers)
@@ -69,6 +98,7 @@ $width = $width ?? 64; // Ch
             background: #212529;
             color: #fff;
         }
+
         #code-card-header #header-buttons {
             /* Positions the buttons outside the flex container, making the header text centered */
             position: absolute;
@@ -111,7 +141,7 @@ $width = $width ?? 64; // Ch
     @endif
 </style>
 
-<div id="code-card-wrapper">
+<div id="code-card-wrapper" class="{{ $paddingClass }}">
     <div id="code-card" @class(['shadow-lg' => $useShadow])>
         @if($useHeader)
             <div id="code-card-header">

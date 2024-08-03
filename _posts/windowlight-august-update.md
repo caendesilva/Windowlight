@@ -30,6 +30,16 @@ We've revamped our color picker to make it even more user-friendly:
 
 This update streamlines the process of customizing your code screenshots, allowing you to create visually striking images in seconds.
 
+#### 3. Preset Padding Sizes
+
+We've added preset padding sizes to give you more control over the look of your code screenshots:
+
+- **Small**: Compact padding for tighter code windows
+- **Medium (default)**: Balanced padding for most use cases
+- **Large**: Generous padding for a spacious feel
+
+Choose the padding size that best suits your needs and aesthetics. We're also working on automatically adjusting the padding based on the dimensions of the generated code screenshot. Stay tuned for updates!
+
 ### Why These Updates Matter
 
 These new features are designed to make Windowlight even more powerful and user-friendly:
