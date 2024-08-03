@@ -1,4 +1,4 @@
-<div class="mb-4">
+<div class="mb-4 ml-4">
     <x-input-label for="padding" value="Padding Size" />
     <div class="relative">
         <select id="padding" name="padding" class="block appearance-none w-48 bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
