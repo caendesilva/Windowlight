@@ -33,6 +33,18 @@ $width = $width ?? 64; // Ch
         min-width: 320px;
     }
 
+    #code-card-wrapper.padding-small {
+        padding: 0.5rem;
+    }
+
+    #code-card-wrapper.padding-medium {
+        padding: 1rem;
+    }
+
+    #code-card-wrapper.padding-large {
+        padding: 2rem;
+    }
+
     @if($lineNumbers)
         #code-card-wrapper pre code.torchlight .line {
             /* Add matching padding to the right when using alternative width */
