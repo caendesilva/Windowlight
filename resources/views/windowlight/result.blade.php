@@ -2,24 +2,24 @@
 
 @php
 
-// Fit, auto, or a specific width
-$widthType = 'auto'; // Todo: Add this as an option
+    // Fit, auto, or a specific width
+    $widthType = 'auto'; // Todo: Add this as an option
 
-if ($widthType === 'auto') {
-    $width = App\Helpers\ResultWindowHelper::calculateWindowWidth($result);
-}
+    if ($widthType === 'auto') {
+        $width = App\Helpers\WindowlightHelper::calculateWindowWidth($result);
+    }
 
-$width = $width ?? 64; // Ch
+    $width = $width ?? 64; // Ch
 
-$paddingClasses = [
-    'none' => 'padding-none',
-    'small' => 'padding-small',
-    'medium' => 'padding-medium',
-    'large' => 'padding-large',
-    'extra-large' => 'padding-extra-large',
-];
+    $paddingClasses = [
+        'none' => 'padding-none',
+        'small' => 'padding-small',
+        'medium' => 'padding-medium',
+        'large' => 'padding-large',
+        'extra-large' => 'padding-extra-large',
+    ];
 
-$paddingClass = $paddingClasses[$padding] ?? $paddingClasses['medium'];
+    $paddingClass = $paddingClasses[$padding] ?? $paddingClasses['medium'];
 @endphp
 
 {{-- To improve compatability we use non-semantic elements, meaning divs everywhere, as well as inline styles. --}}
@@ -31,12 +31,12 @@ $paddingClass = $paddingClasses[$padding] ?? $paddingClasses['medium'];
         width: {{ $width }}ch;
         background: {{ $background }};
 
-        @if($widthType === 'fit')
-        /* Alternative width */
+    @if($widthType === 'fit')
+ /* Alternative width */
         width: fit-content;
-        @endif
+    @endif
 
-        /* Static styles */
+ /* Static styles */
         resize: horizontal;
         overflow: hidden;
         max-width: 100%;
@@ -65,20 +65,22 @@ $paddingClass = $paddingClasses[$padding] ?? $paddingClasses['medium'];
 
     @if($lineNumbers)
         #code-card-wrapper pre code.torchlight .line {
-            /* Add matching padding to the right when using alternative width */
-            padding-right: 1.5rem;
-        }
+        /* Add matching padding to the right when using alternative width */
+        padding-right: 1.5rem;
+    }
+
     @endif
 
     #code-card-wrapper pre {
         /* Remove the default margin */
         margin: 0;
 
-        @if($useHeader)
-            /* Remove top border radius as that is handled by the header */
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        @endif
+    @if($useHeader)
+ /* Remove top border radius as that is handled by the header */
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    @endif
+
     }
 
     #code-card-wrapper:hover {
@@ -88,56 +90,56 @@ $paddingClass = $paddingClasses[$padding] ?? $paddingClasses['medium'];
 
     @if($useHeader)
         #code-card-header {
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 14px;
-            border-top-left-radius: .25rem;
-            border-top-right-radius: .25rem;
-            background: #212529;
-            color: #fff;
-        }
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 14px;
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+        background: #212529;
+        color: #fff;
+    }
 
-        #code-card-header #header-buttons {
-            /* Positions the buttons outside the flex container, making the header text centered */
-            position: absolute;
-        }
+    #code-card-header #header-buttons {
+        /* Positions the buttons outside the flex container, making the header text centered */
+        position: absolute;
+    }
 
-        #code-card-header .header-button {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            opacity: .75;
-            margin-right: 1px;
-        }
+    #code-card-header .header-button {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        opacity: .75;
+        margin-right: 1px;
+    }
 
-        #code-card-header .header-button-red {
-            background: #f3615a;
-        }
+    #code-card-header .header-button-red {
+        background: #f3615a;
+    }
 
-        #code-card-header .header-button-yellow {
-            background: #f4c036;
-        }
+    #code-card-header .header-button-yellow {
+        background: #f4c036;
+    }
 
-        #code-card-header .header-button-green {
-            background: #3ccb3e;
-        }
+    #code-card-header .header-button-green {
+        background: #3ccb3e;
+    }
 
-        #code-card-header #header-title {
-            font-size: 14px;
-            font-weight: 400;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, .75);
-            font-family: sans-serif;
-        }
+    #code-card-header #header-title {
+        font-size: 14px;
+        font-weight: 400;
+        margin: 0 auto;
+        color: rgba(255, 255, 255, .75);
+        font-family: sans-serif;
+    }
 
-        .header-text-placeholder {
-            /** Makes so the header has the same height regardless of header text state */
-            visibility: hidden;
-            user-select: none;
-        }
+    .header-text-placeholder {
+        /** Makes so the header has the same height regardless of header text state */
+        visibility: hidden;
+        user-select: none;
+    }
     @endif
 </style>
 

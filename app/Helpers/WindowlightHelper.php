@@ -5,7 +5,7 @@ namespace App\Helpers;
 use Illuminate\Support\Number;
 use Illuminate\Support\Str;
 
-class ResultWindowHelper
+class WindowlightHelper
 {
     /** @experimental */
     public static function calculateWindowWidth(string $html): int
