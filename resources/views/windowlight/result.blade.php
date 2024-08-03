@@ -80,6 +80,7 @@ $width = $width ?? 64; // Ch
             background: #212529;
             color: #fff;
         }
+
         #code-card-header #header-buttons {
             /* Positions the buttons outside the flex container, making the header text centered */
             position: absolute;
