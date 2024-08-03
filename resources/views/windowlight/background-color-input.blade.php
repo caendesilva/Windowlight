@@ -39,16 +39,9 @@
 <x-input-error :messages="$errors->get('background')" class="mt-2" />
 
 <datalist id="colors">
-    <option value="#FFFFFF">White</option>
-    <option value="#F3F4F6">Light Gray</option>
-    <option value="#1F2937">Dark Gray</option>
-    <option value="#111827">Almost Black</option>
-    <option value="#3B82F6">Blue</option>
-    <option value="#10B981">Green</option>
-    <option value="#EF4444">Red</option>
-    <option value="#F59E0B">Yellow</option>
-    <option value="#8B5CF6">Purple</option>
-    <option value="transparent">Transparent</option>
+    @foreach(\App\Helpers\WindowlightHelper::getBackgroundColors() as $name => $hex)
+        <option value="{{ $hex }}">{{ $name }}</option>
+    @endforeach
 </datalist>
 
 <!-- Color Presets Popover -->

@@ -28,7 +28,18 @@ class WindowlightHelper
 
     public static function getBackgroundColors()
     {
-        //
+        return [
+            'White' => '#FFFFFF',
+            'Light Gray' => '#F3F4F6',
+            'Dark Gray' => '#1F2937',
+            'Almost Black' => '#111827',
+            'Blue' => '#3B82F6',
+            'Green' => '#10B981',
+            'Red' => '#EF4444',
+            'Yellow' => '#F59E0B',
+            'Purple' => '#8B5CF6',
+            'Transparent' => 'transparent',
+        ];
     }
 
     /**
