@@ -148,7 +148,7 @@ if (window.location.pathname === '/') {
         const codeCardWrapper = document.getElementById('code-card-wrapper');
 
         padding.addEventListener('change', function() {
-            codeCardWrapper.classList.remove('padding-small', 'padding-medium', 'padding-large');
+            codeCardWrapper.classList.remove('padding-none', 'padding-small', 'padding-medium', 'padding-large', 'padding-extra-large');
             codeCardWrapper.classList.add(`padding-${this.value}`);
         });
 

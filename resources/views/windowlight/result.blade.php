@@ -33,6 +33,10 @@ $width = $width ?? 64; // Ch
         min-width: 320px;
     }
 
+    #code-card-wrapper.padding-none {
+        padding: 0;
+    }
+
     #code-card-wrapper.padding-small {
         padding: 1rem;
     }
@@ -43,6 +47,10 @@ $width = $width ?? 64; // Ch
 
     #code-card-wrapper.padding-large {
         padding: 3rem;
+    }
+
+    #code-card-wrapper.padding-extra-large {
+        padding: 4rem;
     }
 
     @if($lineNumbers)
