@@ -9,7 +9,6 @@ if ($widthType === 'auto') {
     $width = App\Helpers\ResultWindowHelper::calculateWindowWidth($result);
 }
 
-$padding = 2; // Rem
 $width = $width ?? 64; // Ch
 @endphp
 
@@ -18,7 +17,7 @@ $width = $width ?? 64; // Ch
 <style>
     #code-card-wrapper {
         /* Dynamic styles */
-        padding: {{ $padding }}rem;
+        padding: 2rem; /* Default padding */
         width: {{ $width }}ch;
         background: {{ $background }};
 
