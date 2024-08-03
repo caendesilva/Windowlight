@@ -96,6 +96,6 @@ class WindowlightHelper
         $g = round($g * 255);
         $b = round($b * 255);
 
-        return sprintf("#%02x%02x%02x", $r, $g, $b);
+        return sprintf('#%02x%02x%02x', $r, $g, $b);
     }
 }
