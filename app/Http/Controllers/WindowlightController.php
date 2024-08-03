@@ -14,7 +14,6 @@ use Illuminate\View\View;
  * Improvement ideas: (PRs welcome!)
  *
  * Todo: Support multiple background shadow sizes
- * Todo: Support multiple padding sizes
  * Todo: Support background gradients
  * Todo: Support background images
  */
@@ -45,6 +44,7 @@ class WindowlightController extends Controller
         $request->session()->put('options.useShadow', $validated['useShadow'] ?? false);
         $request->session()->put('options.headerButtons', $validated['headerButtons'] ?? true);
         $request->session()->put('options.headerText', $validated['headerText'] ?? '');
+        $request->session()->put('options.padding', $validated['padding'] ?? 'medium');
 
         $torchlight = new TorchlightSnippetGenerator(
             $validated['code'],
@@ -88,6 +88,7 @@ class WindowlightController extends Controller
             'useShadow' => old('useShadow') ?? session('options.useShadow') ?? false,
             'headerButtons' => old('headerButtons') ?? session('options.headerButtons') ?? true,
             'headerText' => old('headerText') ?? session('options.headerText') ?? '',
+            'padding' => old('padding') ?? session('options.padding') ?? 'medium',
             'generated' => session('generated') ?? false,
         ];
 
