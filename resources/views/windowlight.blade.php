@@ -38,8 +38,8 @@
                                     </div>
 
                                     <div>
-                                        @include('windowlight.options-checkboxes')
                                         @include('windowlight.padding-input')
+                                        @include('windowlight.options-checkboxes')
                                     </div>
                                 </div>
                             </fieldset>
