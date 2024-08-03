@@ -145,9 +145,11 @@ if (window.location.pathname === '/') {
         });
 
         const padding = document.getElementById('padding');
+        const codeCardWrapper = document.getElementById('code-card-wrapper');
 
         padding.addEventListener('change', function() {
-            codeCard.dataset.padding = this.value;
+            codeCardWrapper.classList.remove('padding-small', 'padding-medium', 'padding-large');
+            codeCardWrapper.classList.add(`padding-${this.value}`);
         });
 
         textarea.addEventListener('keydown', function(event) {
