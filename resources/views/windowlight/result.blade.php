@@ -34,15 +34,15 @@ $width = $width ?? 64; // Ch
     }
 
     #code-card-wrapper.padding-small {
-        padding: 0.5rem;
-    }
-
-    #code-card-wrapper.padding-medium {
         padding: 1rem;
     }
 
-    #code-card-wrapper.padding-large {
+    #code-card-wrapper.padding-medium {
         padding: 2rem;
+    }
+
+    #code-card-wrapper.padding-large {
+        padding: 3rem;
     }
 
     @if($lineNumbers)
