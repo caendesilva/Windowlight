@@ -144,6 +144,12 @@ if (window.location.pathname === '/') {
             }
         });
 
+        const padding = document.getElementById('padding');
+
+        padding.addEventListener('change', function() {
+            codeCard.dataset.padding = this.value;
+        });
+
         textarea.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' && (event.metaKey || event.ctrlKey)) {
                 event.preventDefault();
