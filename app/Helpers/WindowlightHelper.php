@@ -26,7 +26,12 @@ class WindowlightHelper
         return Number::clamp($length + 4, 10, 120);
     }
 
-    public static function getBackgroundColors()
+    /**
+     * Get the preset background color options.
+     *
+     * @return array<string, string> An associative array of color names and hex values.
+     */
+    public static function getBackgroundColors(): array
     {
         return [
             'White' => '#FFFFFF',
