@@ -26,6 +26,19 @@ class WindowlightHelper
         return Number::clamp($length + 4, 10, 120);
     }
 
+    /**
+     * Converts HSL color values to hexadecimal color code.
+     *
+     * This function takes HSL (Hue, Saturation, Lightness) color values and
+     * converts them to the corresponding hexadecimal color code.
+     *
+     * @param  int  $h  Hue value (0-360)
+     * @param  int  $s  Saturation value (0-100)
+     * @param  int  $l  Lightness value (0-100)
+     * @return string Hexadecimal color code (e.g., "#40bfbf")
+     *
+     * @example $hex = hslToHex(180, 50, 50);  echo $hex; // Output: #40bfbf
+     */
     public static function hslToHex(int $h, int $s, int $l): string
     {
         $h /= 360;
