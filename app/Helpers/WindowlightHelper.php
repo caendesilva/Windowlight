@@ -26,6 +26,11 @@ class WindowlightHelper
         return Number::clamp($length + 4, 10, 120);
     }
 
+    public static function getBackgroundColors()
+    {
+        //
+    }
+
     /**
      * Converts HSL color values to hexadecimal color code.
      *
