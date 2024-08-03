@@ -76,7 +76,6 @@ if (window.location.pathname === '/') {
                 updateBackgroundColor(color);
                 backgroundInput.value = color;
                 backgroundPicker.value = color === 'transparent' ? '#ffffff' : color;
-                colorPresetsPopover.classList.add('hidden');
             }
         });
 
