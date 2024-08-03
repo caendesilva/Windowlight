@@ -38,8 +38,15 @@
                                     </div>
 
                                     <div>
-                                        @include('windowlight.options-checkboxes')
-                                        @include('windowlight.padding-input')
+                                        <fieldset class="ml-4">
+                                            <legend>
+                                                <x-input-label>
+                                                    <strong>Options</strong>
+                                                </x-input-label>
+                                            </legend>
+                                            @include('windowlight.padding-input')
+                                            @include('windowlight.options-checkboxes')
+                                        </fieldset>
                                     </div>
                                 </div>
                             </fieldset>
