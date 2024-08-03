@@ -39,11 +39,16 @@
 <x-input-error :messages="$errors->get('background')" class="mt-2" />
 
 <datalist id="colors">
+    <option value="#FFFFFF">White</option>
+    <option value="#F3F4F6">Light Gray</option>
+    <option value="#1F2937">Dark Gray</option>
+    <option value="#111827">Almost Black</option>
+    <option value="#3B82F6">Blue</option>
+    <option value="#10B981">Green</option>
+    <option value="#EF4444">Red</option>
+    <option value="#F59E0B">Yellow</option>
+    <option value="#8B5CF6">Purple</option>
     <option value="transparent">Transparent</option>
-    <option value="none">Transparent</option>
-    <option value="#ffffff">White</option>
-    <option value="#000000">Black</option>
-    <option value="#f3f4f6">Gray</option>
 </datalist>
 
 <!-- Color Presets Popover -->
