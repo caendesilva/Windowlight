@@ -93,6 +93,12 @@ if (window.location.pathname === '/') {
             }
         });
 
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !colorPresetsPopover.classList.contains('hidden')) {
+                colorPresetsPopover.classList.add('hidden');
+            }
+        });
+
         useHeader.addEventListener('change', function() {
             // Low priority known issue: When setting to this to false, the Torchlight
             // <pre> element should regain its top border radius, and vice versa
