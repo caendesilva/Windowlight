@@ -35,10 +35,10 @@
                                         @include('windowlight.language-input')
                                         @include('windowlight.header-text-input')
                                         @include('windowlight.background-color-input')
-                                        @include('windowlight.padding-input')
                                     </div>
 
                                     <div>
+                                        @include('windowlight.padding-input')
                                         @include('windowlight.options-checkboxes')
                                     </div>
                                 </div>
