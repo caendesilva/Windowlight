@@ -40,7 +40,7 @@
 
 <datalist id="colors">
     @foreach(\App\Helpers\ColorHelper::getBackgroundColors() as $name => $hex)
-        <option value="{{ $hex }}">{{ $name }}</option>
+        <option value="{{ $hex }}">{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}</option>
     @endforeach
 </datalist>
 
