@@ -120,6 +120,20 @@ class WindowlightHelper
         return sprintf('#%02x%02x%02x', $r, $g, $b);
     }
 
+    /**
+     * Determines if a given hex color is dark or light.
+     *
+     * This implementation calculates the relative luminance of the color based on the RGB values.
+     * If the luminance is less than 0.5, the color is considered dark, and the function returns true.
+     * Otherwise, it returns false.
+     *
+     * This approach provides a good balance between simplicity and accuracy for determining
+     * whether a color is dark or light. It takes into account the human eye's different
+     * sensitivities to red, green, and blue light.
+     *
+     * @param  string  $hex  The hex color code to check (with or without the leading '#')
+     * @return bool True if the color is dark, false if it's light
+     */
     public static function isColorDark(string $hex): bool
     {
         // Remove # if present
