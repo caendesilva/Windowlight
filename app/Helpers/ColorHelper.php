@@ -6,11 +6,15 @@ class ColorHelper
 {
     protected const SATURATION_BASE = 80;
     protected const LIGHTNESS_BASE = 90;
+    public static int|float $HUE_OFFSET;
 
     public static function generateColorScheme(): array
     {
         $count = 10;
-        $startHue = 0;
+
+        // Rotate hue on each request to create a waterfall effect when spam refreshing
+        $startHue = (int) (microtime(true) * 100) % 360;
+        self::$HUE_OFFSET = $startHue;
 
         $offset = 360 / $count;
 
@@ -23,6 +27,9 @@ class ColorHelper
 
             $colors[] = self::hslToHex($hue, $saturation, $lightness);
         }
+
+        // Fix waterfall order
+        $colors = array_reverse($colors);
 
         return $colors;
     }
