@@ -47,7 +47,7 @@
 <!-- Color Presets Popover -->
 <div id="colorPresetsPopover" class="hidden absolute bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg z-10">
     <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">Color Presets</h3>
-    <div id="colorPresets" class="grid grid-cols-5 gap-2">
+    <div id="colorPresets" class="grid grid-cols-6 gap-2">
         <!-- Color preset buttons will be dynamically added here -->
     </div>
 </div>
