@@ -119,4 +119,21 @@ class WindowlightHelper
 
         return sprintf('#%02x%02x%02x', $r, $g, $b);
     }
+
+    public static function isColorDark(string $hex): bool
+    {
+        // Remove # if present
+        $hex = ltrim($hex, '#');
+
+        // Convert hex to RGB
+        $r = hexdec(substr($hex, 0, 2));
+        $g = hexdec(substr($hex, 2, 2));
+        $b = hexdec(substr($hex, 4, 2));
+
+        // Calculate relative luminance
+        $luminance = (0.2126 * $r + 0.7152 * $g + 0.0722 * $b) / 255;
+
+        // Return true if the color is dark (luminance is less than 0.5)
+        return $luminance < 0.5;
+    }
 }
