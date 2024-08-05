@@ -35,15 +35,17 @@ class ColorHelper
     {
         return [
             'soft_pink' => '#fad1d1',
-            'pale_peach' => '#faead1',
-            'light_lime' => '#f2fad1',
-            'mint_green' => '#d9fad1',
-            'aqua_mist' => '#d1fae1',
+            'peach_cream' => '#fae6d1',
+            'lemon_chiffon' => '#fafad1',
+            'lime_zest' => '#e6fad1',
+            'mint_frost' => '#d1fad1',
+            'aqua_mist' => '#d1fae6',
             'sky_blue' => '#d1fafa',
-            'baby_blue' => '#d1e1fa',
-            'lavender' => '#d9d1fa',
-            'light_lilac' => '#f2d1fa',
-            'pastel_rose' => '#fad1ea',
+            'powder_blue' => '#d1e6fa',
+            'periwinkle_mist' => '#d1d1fa',
+            'lilac_haze' => '#e6d1fa',
+            'orchid_blush' => '#fad1fa',
+            'rose_petal' => '#fad1e6',
         ];
     }
 
