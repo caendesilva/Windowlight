@@ -34,6 +34,7 @@ class ColorHelper
     public static function getBackgroundColors(): array
     {
         return [
+            'rose_petal' => '#fad1e6',
             'soft_pink' => '#fad1d1',
             'peach_cream' => '#fae6d1',
             'lemon_chiffon' => '#fafad1',
@@ -45,7 +46,6 @@ class ColorHelper
             'periwinkle_mist' => '#d1d1fa',
             'lilac_haze' => '#e6d1fa',
             'orchid_blush' => '#fad1fa',
-            'rose_petal' => '#fad1e6',
         ];
     }
 
