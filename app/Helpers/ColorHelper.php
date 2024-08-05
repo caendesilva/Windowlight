@@ -7,6 +7,25 @@ class ColorHelper
     protected const SATURATION_BASE = 80;
     protected const LIGHTNESS_BASE = 90;
 
+    public static function generateColorScheme(): array
+    {
+        $count = 10;
+
+        $offset = 360 / $count;
+
+        $colors = [];
+
+        for ($i = 0; $i < $count; $i++) {
+            $hue = $offset * $i;
+            $saturation = self::SATURATION_BASE;
+            $lightness = self::LIGHTNESS_BASE;
+
+            $colors[] = self::hslToHex($hue, $saturation, $lightness);
+        }
+
+        return $colors;
+    }
+
     /**
      * Get the preset background color options.
      *
