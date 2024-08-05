@@ -33,7 +33,18 @@ class ColorHelper
      */
     public static function getBackgroundColors(): array
     {
-        return array_combine(static::generateColorScheme(), static::generateColorScheme());
+        return [
+            "soft_pink"     => "#fad1d1",
+            "pale_peach"    => "#faead1",
+            "light_lime"    => "#f2fad1",
+            "mint_green"    => "#d9fad1",
+            "aqua_mist"     => "#d1fae1",
+            "sky_blue"      => "#d1fafa",
+            "baby_blue"     => "#d1e1fa",
+            "lavender"      => "#d9d1fa",
+            "light_lilac"   => "#f2d1fa",
+            "pastel_rose"   => "#fad1ea"
+        ];
     }
 
     /**
