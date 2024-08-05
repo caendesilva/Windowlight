@@ -7,7 +7,7 @@ class ColorHelper
     protected const SATURATION_BASE = 80;
     protected const LIGHTNESS_BASE = 90;
 
-    public static function generateColorScheme(int $count = 10, float $startHue = 0, float $endHue = 360): array
+    public static function generateColorScheme(int $count = 12, float $startHue = 0, float $endHue = 360): array
     {
         $colors = [];
 
