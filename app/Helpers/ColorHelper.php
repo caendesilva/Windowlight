@@ -12,7 +12,8 @@ class ColorHelper
         $colors = [];
 
         $hueRange = $endHue - $startHue;
-        $offset = $hueRange / $count;
+        $needsOffset = abs($hueRange) < 360;
+        $offset = $hueRange / ($count - ($needsOffset ? 1 : 0));
 
         for ($i = 0; $i < $count; $i++) {
             $hue = ($startHue + $offset * $i) % 360;
