@@ -16,10 +16,10 @@ class ColorHelper
 
         for ($i = 0; $i < $count; $i++) {
             $hue = ($startHue + $offset * $i) % 360;
-            $saturation = self::SATURATION_BASE;
-            $lightness = self::LIGHTNESS_BASE;
+            $saturation = static::SATURATION_BASE;
+            $lightness = static::LIGHTNESS_BASE;
 
-            $colors[] = self::hslToHex($hue, $saturation, $lightness);
+            $colors[] = static::hslToHex($hue, $saturation, $lightness);
         }
 
         return $colors;
