@@ -39,7 +39,7 @@
 <x-input-error :messages="$errors->get('background')" class="mt-2" />
 
 <datalist id="colors">
-    @foreach(\App\Helpers\WindowlightHelper::getBackgroundColors() as $name => $hex)
+    @foreach(\App\Helpers\ColorHelper::getBackgroundColors() as $name => $hex)
         <option value="{{ $hex }}">{{ $name }}</option>
     @endforeach
 </datalist>
