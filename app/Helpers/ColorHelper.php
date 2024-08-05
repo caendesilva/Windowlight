@@ -10,13 +10,14 @@ class ColorHelper
     public static function generateColorScheme(): array
     {
         $count = 10;
+        $startHue = 0;
 
         $offset = 360 / $count;
 
         $colors = [];
 
         for ($i = 0; $i < $count; $i++) {
-            $hue = $offset * $i;
+            $hue = ($startHue + $offset * $i) % 360;
             $saturation = self::SATURATION_BASE;
             $lightness = self::LIGHTNESS_BASE;
 
