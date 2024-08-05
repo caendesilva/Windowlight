@@ -139,6 +139,11 @@ class WindowlightHelper
         // Remove # if present
         $hex = ltrim($hex, '#');
 
+        if (strlen($hex) !== 6) {
+            // Invalid color value
+            return false;
+        }
+
         // Convert hex to RGB
         $r = hexdec(substr($hex, 0, 2));
         $g = hexdec(substr($hex, 2, 2));
