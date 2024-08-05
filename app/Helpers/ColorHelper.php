@@ -4,6 +4,9 @@ namespace App\Helpers;
 
 class ColorHelper
 {
+    protected const SATURATION_BASE = 80;
+    protected const LIGHTNESS_BASE = 90;
+
     /**
      * Get the preset background color options.
      *
