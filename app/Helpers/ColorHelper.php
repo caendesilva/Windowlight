@@ -47,6 +47,14 @@ class ColorHelper
             'periwinkle_mist' => '#d1d1fa',
             'lilac_haze' => '#e6d1fa',
             'orchid_blush' => '#fad1fa',
+
+            // Base colors
+            'white' => '#ffffff',
+            'light_gray' => '#f3f4f6',
+            'mid_gray' => '#e5e7eb',
+            'dark_gray' => '#1f2937',
+            'almost_black' => '#111827',
+            'transparent' => 'transparent',
         ];
     }
 
