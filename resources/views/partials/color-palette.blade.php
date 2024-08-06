@@ -1,14 +1,7 @@
 <section class="color-palette not-prose font-sans flex flex-row flex-wrap items-center w-fit p-2 gap-2 border border-gray-300">
     @foreach(\App\Helpers\ColorHelper::getBackgroundColors() as $name => $hex)
-                <figure
-                        @class([
-                            'w-8 h-8 rounded-lg',
-                            'border border-gray-300' => $hex === 'transparent'
-                        ])
-                        style="background: {{ $hex }};"
-                        title="{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}"
-                ></figure>   
-        @endforeach
+        <figure class="w-8 h-8 border border-gray-300 rounded-lg" style="background: {{ $hex }};" title="{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}"></figure>
+    @endforeach
 </section>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
