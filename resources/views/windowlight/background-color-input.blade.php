@@ -39,17 +39,15 @@
 <x-input-error :messages="$errors->get('background')" class="mt-2" />
 
 <datalist id="colors">
-    <option value="transparent">Transparent</option>
-    <option value="none">Transparent</option>
-    <option value="#ffffff">White</option>
-    <option value="#000000">Black</option>
-    <option value="#f3f4f6">Gray</option>
+    @foreach(\App\Helpers\ColorHelper::getBackgroundColors() as $name => $hex)
+        <option value="{{ $hex }}">{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}</option>
+    @endforeach
 </datalist>
 
 <!-- Color Presets Popover -->
 <div id="colorPresetsPopover" class="hidden absolute bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg z-10">
     <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-gray-100">Color Presets</h3>
-    <div id="colorPresets" class="grid grid-cols-5 gap-2">
+    <div id="colorPresets" class="grid grid-cols-6 gap-2">
         <!-- Color preset buttons will be dynamically added here -->
     </div>
 </div>

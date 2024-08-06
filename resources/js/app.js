@@ -30,18 +30,20 @@ if (window.location.pathname === '/') {
 
         // Constants
         const TAB_SIZE = 4;
-        const presetColors = [
-            { name: 'White', color: '#FFFFFF' },
-            { name: 'Light Gray', color: '#F3F4F6' },
-            { name: 'Dark Gray', color: '#1F2937' },
-            { name: 'Almost Black', color: '#111827' },
-            { name: 'Blue', color: '#3B82F6' },
-            { name: 'Green', color: '#10B981' },
-            { name: 'Red', color: '#EF4444' },
-            { name: 'Yellow', color: '#F59E0B' },
-            { name: 'Purple', color: '#8B5CF6' },
-            { name: 'Transparent', color: 'transparent' }
-        ];
+
+        // Function to read colors from datalist
+        function getColorsFromDatalist() {
+            const datalist = document.getElementById('colors');
+            const options = datalist.querySelectorAll('option');
+
+            return Array.from(options).map(option => ({
+                name: option.textContent,
+                color: option.value
+            }));
+        }
+
+        // Get colors from datalist
+        const presetColors = getColorsFromDatalist();
 
         // Initialization
         createColorPresetButtons();
