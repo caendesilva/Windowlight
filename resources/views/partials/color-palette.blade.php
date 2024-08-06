@@ -1,6 +1,10 @@
 <section class="color-palette not-prose font-sans flex flex-row flex-wrap items-center w-full p-2 gap-2 border border-gray-300">
     @foreach(\App\Helpers\ColorHelper::getBackgroundColors() as $name => $hex)
-        <figure class="flex-grow basis-0 aspect-square min-w-[2rem] max-w-[3rem] border border-gray-300 rounded-lg" style="background: {{ $hex }};" title="{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}"></figure>
+        <figure class="flex-grow basis-0 aspect-square min-w-[2rem] max-w-[4rem] border border-gray-300 rounded-lg" style="background: {{ $hex }};" title="{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}"></figure>
+
+        @if($loop->iteration === (int) ceil(count(\App\Helpers\ColorHelper::getBackgroundColors()) / 2))
+            <div class="w-full hidden sm:block lg:hidden"></div>
+        @endif
     @endforeach
 </section>
 <script>
