@@ -26,5 +26,14 @@ export default {
         },
     },
 
+    safelist: [
+        'w-8',
+        'h-8',
+        'rounded-full',
+        'border',
+        'border-gray-300',
+        'dark:border-gray-600'
+    ],
+
     plugins: [forms, typography],
 };
