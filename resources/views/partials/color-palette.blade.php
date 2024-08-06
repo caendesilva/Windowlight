@@ -1,8 +1,58 @@
-<section class="color-palette not-prose font-sans flex flex-row flex-wrap items-center w-full p-2 gap-2 border border-gray-300">
-    @foreach(\App\Helpers\ColorHelper::getBackgroundColors() as $name => $hex)
-        <figure class="flex-grow basis-0 aspect-square min-w-[2rem] max-w-[3rem] border border-gray-300 rounded-lg" style="background: {{ $hex }};" title="{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}"></figure>
+@php
+    $colors = \App\Helpers\ColorHelper::getBackgroundColors();
+    $totalColors = count($colors);
+    $breakpoints = [
+        'sm' => ['width' => 640, 'rows' => 3],
+        'md' => ['width' => 768, 'rows' => 2],
+        'lg' => ['width' => 1024, 'rows' => 1],
+    ];
+@endphp
+
+<style>
+    .color-palette-item {
+        width: calc({{ 100 / ceil($totalColors / 3) }}% - 0.5rem);
+    }
+    @media (min-width: 768px) {
+        .color-palette-item {
+            width: calc({{ 100 / ceil($totalColors / 2) }}% - 0.5rem);
+        }
+    }
+    @media (min-width: 1024px) {
+        .color-palette-item {
+            width: calc({{ 100 / $totalColors }}% - 0.5rem);
+        }
+    }
+</style>
+
+<section class="color-palette not-prose font-sans flex flex-row flex-wrap items-center justify-center w-full p-2 gap-2 border border-gray-300">
+    @foreach($colors as $name => $hex)
+        <figure class="color-palette-item aspect-square border border-gray-300 rounded-lg" style="background: {{ $hex }};" title="{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}"></figure>
     @endforeach
 </section>
+
+<script>
+    function adjustColorPalette() {
+        const container = document.querySelector('.color-palette');
+        const items = container.querySelectorAll('.color-palette-item');
+        const containerWidth = container.offsetWidth;
+
+        let itemsPerRow = Math.ceil({{ $totalColors }} / 3); // Default for mobile (3 rows)
+        if (containerWidth >= 768) {
+            itemsPerRow = Math.ceil({{ $totalColors }} / 2); // Medium screens (2 rows)
+        }
+        if (containerWidth >= 1024) {
+            itemsPerRow = {{ $totalColors }}; // Large screens (1 row)
+        }
+
+        const itemWidth = `calc(${100 / itemsPerRow}% - 0.5rem)`;
+        items.forEach(item => {
+            item.style.width = itemWidth;
+        });
+    }
+
+    window.addEventListener('load', adjustColorPalette);
+    window.addEventListener('resize', adjustColorPalette);
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const colorPalette = document.querySelector('.color-palette');
