@@ -3,7 +3,7 @@
         @if($name === 'white')
             <div class="w-full hidden sm:block lg:hidden"></div>
         @endif
-        <figure class="flex-grow basis-0 aspect-square min-w-[2rem] max-w-[4rem] border border-gray-300 rounded-lg" style="background: {{ $hex }};" title="{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}"></figure>
+        <figure class="flex-grow basis-0 aspect-square min-w-[2rem] max-w-[3rem] border border-gray-300 rounded-lg" style="background: {{ $hex }};" title="{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}"></figure>
     @endforeach
 </section>
 <script>
