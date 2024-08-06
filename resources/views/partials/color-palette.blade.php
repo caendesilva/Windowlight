@@ -11,23 +11,20 @@
 <style>
     .color-palette-item {
         width: calc({{ 100 / ceil($totalColors / 3) }}% - 0.5rem);
-        max-width: 4rem;
     }
     @media (min-width: 768px) {
         .color-palette-item {
             width: calc({{ 100 / ceil($totalColors / 2) }}% - 0.5rem);
-            max-width: 6rem;
         }
     }
     @media (min-width: 1024px) {
         .color-palette-item {
             width: calc({{ 100 / $totalColors }}% - 0.5rem);
-            max-width: 3rem;
         }
     }
 </style>
 
-<section class="color-palette not-prose font-sans flex flex-row flex-wrap lg:flex-nowrap items-center justify-center w-full p-2 gap-2 border border-gray-300">
+<section class="color-palette not-prose font-sans flex flex-row flex-wrap items-center justify-center w-full p-2 gap-2 border border-gray-300">
     @foreach($colors as $name => $hex)
         <figure class="color-palette-item aspect-square border border-gray-300 rounded-lg" style="background: {{ $hex }};" title="{{ \Hyde\Foundation\HydeKernel::makeTitle($name) }}"></figure>
     @endforeach
@@ -40,20 +37,16 @@
         const containerWidth = container.offsetWidth;
 
         let itemsPerRow = Math.ceil({{ $totalColors }} / 3); // Default for mobile (3 rows)
-        let maxWidth = '4rem';
         if (containerWidth >= 768) {
             itemsPerRow = Math.ceil({{ $totalColors }} / 2); // Medium screens (2 rows)
-            maxWidth = '6rem';
         }
         if (containerWidth >= 1024) {
             itemsPerRow = {{ $totalColors }}; // Large screens (1 row)
-            maxWidth = '3rem';
         }
 
         const itemWidth = `calc(${100 / itemsPerRow}% - 0.5rem)`;
         items.forEach(item => {
             item.style.width = itemWidth;
-            item.style.maxWidth = maxWidth;
         });
     }
 
