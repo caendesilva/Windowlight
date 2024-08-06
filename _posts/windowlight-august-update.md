@@ -45,10 +45,8 @@ Choose the padding size that best suits your needs and aesthetics. We're also wo
 These new features are designed to make Windowlight even more powerful and user-friendly:
 
 - **Improved Workflow**: Format your code on the fly, without needing to switch between Windowlight and your code editor.
-
-[//]: # (- **Enhanced Customization**: With configurable tab sizes, you can match your preferred coding style.)
-[//]: # (- **Greater Flexibility**: [Brief mention of how other new features enhance flexibility])
 - **Greater Flexibility**: The new color presets option open up more creative possibilities for your code screenshots.
+- **Enhanced Customization**: Choose the padding size that best fits your content, ensuring your code is presented exactly as you want it.
 
 ### The Windowlight Advantage
 
