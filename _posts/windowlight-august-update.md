@@ -16,27 +16,27 @@ One of the standout features in this update is the new **smart code indentation*
 
 - Use **Tab** to indent selected code blocks
 - Use **Shift + Tab** to deindent selected code blocks
-- Configurable tab size (default is 4 spaces)
 
 This feature allows for quick and easy code formatting, ensuring your screenshots always look polished and professional. Perfect for when you paste in an indented function or snippet that you want to align with the window.
 
 #### 2. Enhanced Color Picker with Presets
 
-We've revamped our color picker to make it even more user-friendly:
+We've revamped our color picker to make it even more user-friendly with quick-select color presets where you choose from a range of predefined background colors with a single click. Try hovering on this interactive display!
 
-- **Quick-select color presets**: Choose from a range of predefined background colors with a single click.
-[//]: # (- **Gradient option**: Add a stylish gradient background to your code screenshots.)
-- **Improved transparency support**: Easily toggle between solid colors and transparency.
+[Blade]: @include("partials.color-palette")
 
-This update streamlines the process of customizing your code screenshots, allowing you to create visually striking images in seconds.
+This update streamlines the process of customizing your code screenshots, allowing you to create visually striking images in seconds. Just open the new color preset menu <img src="https://windowlight.desilva.se/images/background-preset-menu-icon.svg" class="not-prose" style="display: inline;" width="16" height="12" alt="preset menu icon">
+and choose from a variety of beautiful color options.
 
 #### 3. Preset Padding Sizes
 
 We've added preset padding sizes to give you more control over the look of your code screenshots:
 
+- **None**: No padding for a clean, minimalistic look
 - **Small**: Compact padding for tighter code windows
 - **Medium (default)**: Balanced padding for most use cases
 - **Large**: Generous padding for a spacious feel
+- **Extra Large**: Maximum padding for a bold, standout appearance
 
 Choose the padding size that best suits your needs and aesthetics. We're also working on automatically adjusting the padding based on the dimensions of the generated code screenshot. Stay tuned for updates!
 
@@ -45,10 +45,8 @@ Choose the padding size that best suits your needs and aesthetics. We're also wo
 These new features are designed to make Windowlight even more powerful and user-friendly:
 
 - **Improved Workflow**: Format your code on the fly, without needing to switch between Windowlight and your code editor.
-
-[//]: # (- **Enhanced Customization**: With configurable tab sizes, you can match your preferred coding style.)
-[//]: # (- **Greater Flexibility**: [Brief mention of how other new features enhance flexibility])
 - **Greater Flexibility**: The new color presets option open up more creative possibilities for your code screenshots.
+- **Enhanced Customization**: Choose the padding size that best fits your content, ensuring your code is presented exactly as you want it.
 
 ### The Windowlight Advantage
 
