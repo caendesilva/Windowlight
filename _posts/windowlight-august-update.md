@@ -22,11 +22,12 @@ This feature allows for quick and easy code formatting, ensuring your screenshot
 
 #### 2. Enhanced Color Picker with Presets
 
-We've revamped our color picker to make it even more user-friendly with quick-select color presets where you choose from a range of predefined background colors with a single click.
+We've revamped our color picker to make it even more user-friendly with quick-select color presets where you choose from a range of predefined background colors with a single click. Try hovering on this interactive display!
 
 [Blade]: @include("partials.color-palette")
 
-This update streamlines the process of customizing your code screenshots, allowing you to create visually striking images in seconds.
+This update streamlines the process of customizing your code screenshots, allowing you to create visually striking images in seconds. Just open the new color preset menu <img src="https://windowlight.desilva.se/images/background-preset-menu-icon.svg" class="not-prose" style="display: inline;" width="16" height="12" alt="preset menu icon">
+and choose from a variety of beautiful color options.
 
 #### 3. Preset Padding Sizes
 
