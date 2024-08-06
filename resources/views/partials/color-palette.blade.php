@@ -1,7 +1,7 @@
-<div style="font-family: sans-serif;display: flex; flex-direction: row; align-items: center; width: fit-content; margin: 0.5rem; padding: 0.5rem; border: 1px solid gray">
+<div class="font-sans flex flex-row items-center w-fit m-2 p-2 border border-gray-300">
     @foreach(\App\Helpers\ColorHelper::getBackgroundColors() as $name => $hex)
-        <figure style="background: {{ $hex }}; width: 4rem; height: 4rem; margin: 0.5rem; padding: 1rem; display: block; border: 1px solid gray;">
-            <figcaption style="font-size: 1rem; margin: 0; padding: 0; text-align: center; display: flex; flex-direction: column; justify-content: space-between; height: 100%; width: 100%; {{ \App\Helpers\ColorHelper::isColorDark($hex) ? 'color: white;' : 'color: black;' }}">
+        <figure class="w-16 h-16 m-2 p-4 border border-gray-300" style="background: {{ $hex }};">
+            <figcaption class="text-base m-0 p-0 text-center flex flex-col justify-between h-full w-full {{ \App\Helpers\ColorHelper::isColorDark($hex) ? 'text-white' : 'text-black' }}">
                 <header>{{ $name }}</header>
                 <footer>{{ $hex }}</footer>
             </figcaption>
