@@ -22,11 +22,9 @@ This feature allows for quick and easy code formatting, ensuring your screenshot
 
 #### 2. Enhanced Color Picker with Presets
 
-We've revamped our color picker to make it even more user-friendly:
+We've revamped our color picker to make it even more user-friendly with quick-select color presets where you choose from a range of predefined background colors with a single click.
 
-- **Quick-select color presets**: Choose from a range of predefined background colors with a single click.
-[//]: # (- **Gradient option**: Add a stylish gradient background to your code screenshots.)
-- **Improved transparency support**: Easily toggle between solid colors and transparency.
+
 
 This update streamlines the process of customizing your code screenshots, allowing you to create visually striking images in seconds.
 
