@@ -34,6 +34,7 @@ class ColorHelper
     public static function getBackgroundColors(): array
     {
         return [
+            // Pastel palette
             'rose_petal' => '#fad1e6',
             'soft_pink' => '#fad1d1',
             'peach_cream' => '#fae6d1',
