@@ -24,7 +24,7 @@ This feature allows for quick and easy code formatting, ensuring your screenshot
 
 We've revamped our color picker to make it even more user-friendly with quick-select color presets where you choose from a range of predefined background colors with a single click.
 
-
+[Blade]: @include("partials.color-palette")
 
 This update streamlines the process of customizing your code screenshots, allowing you to create visually striking images in seconds.
 
