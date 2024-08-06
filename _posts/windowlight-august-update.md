@@ -16,7 +16,6 @@ One of the standout features in this update is the new **smart code indentation*
 
 - Use **Tab** to indent selected code blocks
 - Use **Shift + Tab** to deindent selected code blocks
-- Configurable tab size (default is 4 spaces)
 
 This feature allows for quick and easy code formatting, ensuring your screenshots always look polished and professional. Perfect for when you paste in an indented function or snippet that you want to align with the window.
 
